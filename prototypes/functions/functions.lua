@@ -5,5 +5,4 @@
 
 -- Add this mod to the reskins function host.
 if not reskins.compatibility then reskins.compatibility = {} end
-reskins.compatibility.triggers = require("triggers")
 reskins.compatibility.directory = "__reskins-compatibility__"

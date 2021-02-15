@@ -3,5 +3,9 @@
 --
 -- See LICENSE in the project directory for license information.
 
+-- Mods
+require("prototypes.mods.deadlock-stacking-beltboxes")
+-- require("prototypes.mods.sciencecosttweaker")
+
 -- Assign deferred icons
 reskins.lib.assign_deferred_icons("compatibility", "data-updates")

@@ -5,10 +5,25 @@
   "title": "Artisanal Reskins: Compatibility",
   "author": "Kirazy",
   "contact": "kirazy@live.com",
-  "homepage": "https://forums.factorio.com/viewtopic.php?f=51&t=85707",
+  "homepage": "",
   "dependencies":
   [
     "base",
-    "reskins-library >= 1.1.1"
+    "reskins-library >= 1.1.3",
+    "(?) reskins-bobs",
+    "(?) reskins-angels",
+    "? classic-beacon",
+    "? classic-mining-drill",
+    "? deadlock-beltboxes-loaders",
+    "? DeadlockCrating",
+    "? DeadlockStackingForBobs",
+    "? DeadlockStackingForVanilla",
+    "(?) electricboiler",
+    "? LoaderRedux",
+    "? mini-machines",
+    "? miniloader",
+    "(?) ScienceCostTweakerM",
+    "? semi-classic-mining-drill",
+    "? vanilla-loaders-hd"
   ]
 }
