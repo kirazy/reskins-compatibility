@@ -6,3 +6,5 @@ Date: 2021.02.XX
     - Moved mod compatibility for Classic Beacon, Classic Mining Drill, Deadlock Crating, Deadlock Stacking Beltboxes& Loaders, Loader Redux, Mini Machines, Miniloader, Semi-Classic Mining Drill, and Vanilla Loaders into this mod, from Artisanal Reskins: Bob's Mods
   Changes:
     - Dropped support for legacy graphics from Loader Redux
+  Locale:
+    - Added localization support for German
