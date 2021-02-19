@@ -6,6 +6,7 @@
 -- Mods
 require("prototypes.mods.deadlock-stacking-beltboxes")
 -- require("prototypes.mods.sciencecosttweaker")
+require("prototypes.mods.circuitprocessing")
 
 -- Assign deferred icons
 reskins.lib.assign_deferred_icons("compatibility", "data-updates")

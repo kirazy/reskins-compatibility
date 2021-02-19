@@ -12,6 +12,7 @@
     "reskins-library >= 1.1.3",
     "(?) reskins-bobs",
     "(?) reskins-angels",
+    "? CircuitProcessing",
     "? classic-beacon",
     "? classic-mining-drill",
     "? deadlock-beltboxes-loaders",
