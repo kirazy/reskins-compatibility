@@ -7,4 +7,4 @@ Date: 2021.02.XX
   Changes:
     - Dropped support for legacy graphics from Loader Redux
   Locale:
-    - Added localization support for German
+    - Added partial localization for German and Russian
