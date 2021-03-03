@@ -8,7 +8,7 @@ if mods["CircuitProcessing"] then
     local circuit_style_locale = {"",
     {"mod-setting-description.reskins-compatibility-do-circuitprocessing-circuit-style"},
     {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-standard"},
-    {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-tier"},
+    -- {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-tier"},
     {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-default"},
     }
     data:extend({
@@ -17,7 +17,7 @@ if mods["CircuitProcessing"] then
             name = "reskins-compatibility-do-circuitprocessing-circuit-style",
             setting_type = "startup",
             default_value = "colored-standard",
-            allowed_values = {"off", "colored-standard", "colored-tier"},
+            allowed_values = {"off", "colored-standard"}, -- "colored-tier"},
             localised_description = circuit_style_locale,
         },
     })

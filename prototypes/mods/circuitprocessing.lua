@@ -17,12 +17,12 @@ local inputs = {
 }
 
 local circuits = {
-    -- First stage intermediaries
+    -- First stage intermediates
     ["circuit-board"] = {image = "circuit-board"}, -- 3
     ["superior-circuit-board"] = {image = "superior-circuit-board"}, -- 4
     ["multi-layer-circuit-board"] = {image = "multi-layer-circuit-board"}, -- 5
 
-    -- Second stage intermediaries, direct ingredients to mainline finished products
+    -- Second stage intermediates, direct ingredients to mainline finished products
     ["cp-electronic-circuit-board"] = {image = "basic-electronic-board"}, -- 2
     ["cp-advanced-circuit-board"] = {image = "electronic-circuit-board"}, -- 3
     ["cp-processing-board"] = {image = "electronic-logic-board"}, -- 4
