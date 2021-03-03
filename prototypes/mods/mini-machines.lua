@@ -6,9 +6,9 @@
 -- Check for mini-machines
 if not mods["mini-machines"] then return end
 
-----------------------------------------------------------------------------------------------------
--- STRUCTURES
-----------------------------------------------------------------------------------------------------
+-- Setup technologies table
+local linked_technologies = {}
+local originated_technologies = {}
 
 -- Chemical plants
 if reskins.compatibility.triggers.minimachines.chemplants then
@@ -20,6 +20,12 @@ if reskins.compatibility.triggers.minimachines.chemplants then
     }
 
     reskins.lib.rescale_minimachine(chemplants, "assembling-machine", "chemical%-plant", "chemical-plant", 2/3)
+
+    -- Technologies
+    originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
+    linked_technologies["mini-chemplant-2"] = "chemical-plant-2"
+    linked_technologies["mini-chemplant-3"] = "chemical-plant-3"
+    linked_technologies["mini-chemplant-4"] = "chemical-plant-4"
 end
 
 -- Electrolysers
@@ -33,6 +39,13 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
     }
 
     reskins.lib.rescale_minimachine(electrolysers, "assembling-machine", "electrolyser", "electrolyser", 2/3)
+
+    -- Technologies
+    originated_technologies["mini-electro-1"] = {mod = "bobs", group = "assembly", tier = 1, icon_name = "electrolyser", icon_base = "electrolyser-1", icon_mask = "electrolyser-1", icon_highlights = "electrolyser-1"}
+    linked_technologies["mini-electro-2"] = "electrolyser-2"
+    linked_technologies["mini-electro-3"] = "electrolyser-3"
+    linked_technologies["mini-electro-4"] = "electrolyser-4"
+    linked_technologies["mini-electro-5"] = "electrolyser-5"
 end
 
 -- Assembling machines
@@ -46,7 +59,15 @@ if reskins.compatibility.triggers.minimachines.assemblers then
         ["mini-assembler-6"] = "assembling-machine-6",
     }
 
-reskins.lib.rescale_minimachine(assemblers, "assembling-machine", "assembling%-machine", "assembling-machine", 2/3)
+    reskins.lib.rescale_minimachine(assemblers, "assembling-machine", "assembling%-machine", "assembling-machine", 2/3)
+
+    -- Technologies
+    linked_technologies["mini-assembler-1"] = "automation"
+    linked_technologies["mini-assembler-2"] = "automation-2"
+    linked_technologies["mini-assembler-3"] = "automation-3"
+    linked_technologies["mini-assembler-4"] = "automation-4"
+    linked_technologies["mini-assembler-5"] = "automation-5"
+    linked_technologies["mini-assembler-6"] = "automation-6"
 end
 
 -- Mining drills
@@ -60,9 +81,16 @@ if reskins.compatibility.triggers.minimachines.miners then
     }
 
     reskins.lib.rescale_minimachine(miners, "mining-drill", "electric%-mining%-drill", "electric-mining-drill", 2/3)
+
+    -- Technologies
+    originated_technologies["mini-miner-1"] = {mod = "bobs", group = "mining", tier = 1, icon_name = "mining-drill"}
+    linked_technologies["mini-miner-2"] = "bob-drills-1"
+    linked_technologies["mini-miner-3"] = "bob-drills-2"
+    linked_technologies["mini-miner-4"] = "bob-drills-3"
+    linked_technologies["mini-miner-5"] = "bob-drills-4"
 end
 
--- Radars (Warfare)
+-- Radars
 if reskins.compatibility.triggers.minimachines.radar then
     local radars = {
         ["mini-radar-1"] = "radar",
@@ -73,6 +101,13 @@ if reskins.compatibility.triggers.minimachines.radar then
     }
 
     reskins.lib.rescale_minimachine(radars, "radar", "radar", "radar", 2/3)
+
+    -- Technologies
+    originated_technologies["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"}
+    linked_technologies["mini-radar-2"] = "radars"
+    linked_technologies["mini-radar-3"] = "radars-2"
+    linked_technologies["mini-radar-4"] = "radars-3"
+    linked_technologies["mini-radar-5"] = "radars-4"
 end
 
 -- Oil refineries
@@ -85,6 +120,12 @@ if reskins.compatibility.triggers.minimachines.refineries then
     }
 
     reskins.lib.rescale_minimachine(refineries, "assembling-machine", "oil%-refinery", "oil-refinery", 3/5)
+
+    -- Technologies
+    originated_technologies["mini-refinery-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery"}
+    linked_technologies["mini-refinery-2"] = "oil-processing-2"
+    linked_technologies["mini-refinery-3"] = "oil-processing-3"
+    linked_technologies["mini-refinery-4"] = "oil-processing-4"
 end
 
 -- Storage tanks
@@ -97,6 +138,12 @@ if reskins.compatibility.triggers.minimachines.storagetanks then
     }
 
     reskins.lib.rescale_minimachine(storagetanks, "storage-tank", "storage%-tank", "storage-tank", 2/3)
+
+    -- Technologies
+    originated_technologies["mini-tank-1"] = {group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank"}
+    originated_technologies["mini-tank-2"] = {group = "mini-machine", tier = 2, prog_tier = 3, icon_name = "storage-tank"}
+    originated_technologies["mini-tank-3"] = {group = "mini-machine", tier = 3, prog_tier = 4, icon_name = "storage-tank"}
+    originated_technologies["mini-tank-4"] = {group = "mini-machine", tier = 4, prog_tier = 5, icon_name = "storage-tank"}
 end
 
 -- Beacons
@@ -141,58 +188,16 @@ if reskins.compatibility.triggers.minimachines.furnaces then
             entity.fluid_boxes[1].pipe_picture = reskins.bobs.assembly_pipe_pictures(tint)
         end
     end
+
+    -- Technologies
+    linked_technologies["mini-furnace-1"] = "advanced-material-processing-2"
+    linked_technologies["mini-furnace-2"] = "advanced-material-processing-3"
+    linked_technologies["mini-furnace-3"] = "advanced-material-processing-4"
+    linked_technologies["mini-bobmetal-1"] = "electric-mixing-furnace"
+    linked_technologies["mini-bobchem-1"] = "electric-chemical-furnace"
+    linked_technologies["mini-bobmulti-1"] = "multi-purpose-furnace-1"
+    linked_technologies["mini-bobmulti-2"] = "multi-purpose-furnace-2"
 end
-
-----------------------------------------------------------------------------------------------------
--- TECHNOLOGY
-----------------------------------------------------------------------------------------------------
--- Generate tech icons from other technologies
-local linked_technologies = {
-    -- Assembling Machines
-    ["mini-assembler-1"] = "automation",
-    ["mini-assembler-2"] = "automation-2",
-    ["mini-assembler-3"] = "automation-3",
-    ["mini-assembler-4"] = "automation-4",
-    ["mini-assembler-5"] = "automation-5",
-    ["mini-assembler-6"] = "automation-6",
-
-    -- Electrolysers
-    ["mini-electro-2"] = "electrolyser-2",
-    ["mini-electro-3"] = "electrolyser-3",
-    ["mini-electro-4"] = "electrolyser-4",
-    ["mini-electro-5"] = "electrolyser-5",
-
-    -- Radars
-    ["mini-radar-2"] = "radars",
-    ["mini-radar-3"] = "radars-2",
-    ["mini-radar-4"] = "radars-3",
-    ["mini-radar-5"] = "radars-4",
-
-    -- Furnaces
-    ["mini-furnace-1"] = "advanced-material-processing-2",
-    ["mini-furnace-2"] = "advanced-material-processing-3",
-    ["mini-furnace-3"] = "advanced-material-processing-4",
-    ["mini-bobmetal-1"] = "electric-mixing-furnace",
-    ["mini-bobchem-1"] = "electric-chemical-furnace",
-    ["mini-bobmulti-1"] = "multi-purpose-furnace-1",
-    ["mini-bobmulti-2"] = "multi-purpose-furnace-2",
-
-    -- Chemical Plants
-    ["mini-chemplant-2"] = "chemical-plant-2",
-    ["mini-chemplant-3"] = "chemical-plant-3",
-    ["mini-chemplant-4"] = "chemical-plant-4",
-
-    -- Oil Refineries
-    ["mini-refinery-2"] = "oil-processing-2",
-    ["mini-refinery-3"] = "oil-processing-3",
-    ["mini-refinery-4"] = "oil-processing-4",
-
-    -- Miners
-    ["mini-miner-2"] = "bob-drills-1",
-    ["mini-miner-3"] = "bob-drills-2",
-    ["mini-miner-4"] = "bob-drills-3",
-    ["mini-miner-5"] = "bob-drills-4",
-}
 
 -- Miniaturize the linked techs
 for name, source in pairs(linked_technologies) do
@@ -203,29 +208,6 @@ end
 local inputs = {
     mod = "compatibility",
     type = "technology"
-}
-
-local originated_technologies = {
-    -- Radars
-    ["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"},
-
-    -- Electrolysers
-    ["mini-electro-1"] = {mod = "bobs", group = "assembly", tier = 1, icon_name = "electrolyser", icon_base = "electrolyser-1", icon_mask = "electrolyser-1", icon_highlights = "electrolyser-1"},
-
-    -- Storage Tanks
-    ["mini-tank-1"] = {group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank"},
-    ["mini-tank-2"] = {group = "mini-machine", tier = 2, prog_tier = 3, icon_name = "storage-tank"},
-    ["mini-tank-3"] = {group = "mini-machine", tier = 3, prog_tier = 4, icon_name = "storage-tank"},
-    ["mini-tank-4"] = {group = "mini-machine", tier = 4, prog_tier = 5, icon_name = "storage-tank"},
-
-    -- Chemical Plants
-    ["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"},
-
-    -- Oil Refinery
-    ["mini-refinery-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery"},
-
-    -- Miners
-    ["mini-miner-1"] = {mod = "bobs", group = "mining", tier = 1, icon_name = "mining-drill"},
 }
 
 -- Miniaturize the originated techs

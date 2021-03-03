@@ -5,6 +5,7 @@
 
 -- Check to see if reskinning needs to be done.
 if not mods["DeadlockCrating"] then return end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
 
 -- Set input parameters
 local inputs = {
