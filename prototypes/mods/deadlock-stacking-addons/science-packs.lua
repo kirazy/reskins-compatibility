@@ -1,11 +1,12 @@
 -- Copyright (c) 2021 Kirazy
--- Part of Artisanal Reskins: Bob's Mods
+-- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not reskins.bobs then return end -- Don't reskin the stack icons without reskins-bobs
 if not mods["deadlock-beltboxes-loaders"] then return end
+if mods["ScienceCostTweakerM"] then return end
+if not (reskins.bobs and reskins.bobs.triggers.technology.items) then return end
 
 local inputs = {
     mod = "compatibility",

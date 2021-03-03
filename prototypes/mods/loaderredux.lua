@@ -1,11 +1,12 @@
 -- Copyright (c) 2021 Kirazy
--- Part of Artisanal Reskins: Bob's Mods
+-- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
 if not mods["LoaderRedux"] then return end
 if mods["vanilla-loaders-hd"] then return end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
 
 -- Set input parameters
 local inputs = {

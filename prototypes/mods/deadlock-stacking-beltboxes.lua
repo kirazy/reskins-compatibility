@@ -1,13 +1,12 @@
 -- Copyright (c) 2021 Kirazy
--- Part of Artisanal Reskins: Bob's Mods
+-- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
 -- if not reskins.bobs then return end
 if not mods["deadlock-beltboxes-loaders"] then return end
--- if not mods["boblogistics"] then return end
--- if reskins.lib.setting("reskins-bobs-do-boblogistics") == false then return end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
 
 -- Set input parameters
 local inputs = {

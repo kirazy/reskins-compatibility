@@ -1,13 +1,14 @@
 -- Copyright (c) 2021 Kirazy
--- Part of Artisanal Reskins: Bob's Mods
+-- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not reskins.bobs then return end
 if not mods["classic-mining-drill"] then return end
-if not mods["bobmining"] then return end
-if reskins.lib.setting("reskins-bobs-do-bobmining") == false then return end
+if not (reskins.bobs and reskins.bobs.triggers.mining.entities) then return end
+
+-- Flag available for Mini-Machines compatibility pass
+if reskins.compatibility then reskins.compatibility.triggers.minimachines.miners = true end
 
 -- Set input parameters
 local inputs = {
