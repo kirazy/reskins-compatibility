@@ -5,6 +5,7 @@
 
 -- Check to see if reskinning needs to be done.
 if not mods["CircuitProcessing"] then return end
+if not reskins.bobs then return end
 
 -- Setup inputs
 local inputs = {
@@ -17,6 +18,11 @@ local inputs = {
 }
 
 local circuits = {
+    -- Basic Boards
+    ["wooden-board"] = {mod = "bobs", group = "electronics", subgroup = "circuits"},
+    ["phenolic-board"] = {mod = "bobs", group = "electronics", subgroup = "circuits"},
+    ["fibreglass-board"] = {mod = "bobs", group = "electronics", subgroup = "circuits"},
+
     -- First stage intermediates
     ["circuit-board"] = {image = "circuit-board"}, -- 3
     ["superior-circuit-board"] = {image = "superior-circuit-board"}, -- 4
@@ -37,17 +43,3 @@ local circuits = {
 }
 
 reskins.lib.create_icons_from_list(circuits, inputs)
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Need modified phenolic board for a 2-pip cutout
