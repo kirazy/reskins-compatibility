@@ -11,5 +11,6 @@ Date: 2021.03.04
     - Internal code revisions such that reskinning is trigger-based
     - Added a symbol to Mini Machines icons to distinguish them from their normal-sized counterparts
     - Improved support for Circuit Processing with proper color alignment; note that this is a work-in-progress and sprites are preliminary pending a more detailed pass, and rich text for the setting description is incomplete
+    - Images are now losslessly compressed, instead of lossy; there is a modest increase in filesize
   Locale:
     - Added partial localization for German and Russian
