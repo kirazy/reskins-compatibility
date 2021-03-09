@@ -19,7 +19,7 @@ This mod is constantly being worked on, but I am a graduate student and school h
 **Localization**  
 You are welcome to help with localization, please use [this Crowdin project](https://crowdin.com/project/factorio-mods-localization). You can find more details [here](https://github.com/dima74/factorio-mods-localization#how-to-translate-using-crowdin). Locale updates will be released on the weekend they are received from Crowdin.
 
-# Licensing
+## Licensing
 
 Graphics contained within the following subdirectories are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/):  
 `../graphics/icons/mad-clowns`  
@@ -27,7 +27,7 @@ Graphics contained within the following subdirectories are licensed under [CC BY
 
 All other content is licensed under [MIT](https://opensource.org/licenses/MIT).
 
-# Mod Support
+## Mod Support
 
 The following is a complete list of mods supported by Artisanal Reskins: Compatibility, and the way in which they are supported
 
