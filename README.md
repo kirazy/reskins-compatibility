@@ -14,13 +14,10 @@ If there is a mod that is unsupported by Artisanal Reskins and you would like it
 If you are a mod author and want to support Artisanal Reskins, and find yourself in the position of wanting to add this mod as a dependency, please **stop** and talk to me.
 
 **Updates**  
-This mod is constantly being worked on, but I am a graduate student and school has resumed.
-- Regular content updates will be released monthly.
-- Locale updates will be released on the weekend they are received from Crowdin.
-- Critical bugfixes will be released on an as-needed basis.
+This mod is constantly being worked on, but I am a graduate student and school has resumed. Regular content updates will be released monthly, and critical bugfixes will be released on an as-needed basis.
 
 **Localization**  
-You are welcome to help with localization, please use [this Crowdin project](https://crowdin.com/project/factorio-mods-localization). You can find more details [here](https://github.com/dima74/factorio-mods-localization#how-to-translate-using-crowdin).
+You are welcome to help with localization, please use [this Crowdin project](https://crowdin.com/project/factorio-mods-localization). You can find more details [here](https://github.com/dima74/factorio-mods-localization#how-to-translate-using-crowdin). Locale updates will be released on the weekend they are received from Crowdin.  
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N622M4Q)
 
