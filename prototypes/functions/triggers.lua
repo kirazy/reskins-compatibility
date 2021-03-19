@@ -7,7 +7,10 @@ local triggers = {}
 
 triggers.minimachines = {
     -- Individual entity reskins
-    chemplants = false,
+    chemplants = {
+        bobs = false,
+        angels = false,
+    },
     electrolysers = false,
     assemblers = false,
     miners = false,

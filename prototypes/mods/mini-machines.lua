@@ -11,7 +11,22 @@ local linked_technologies = {}
 local originated_technologies = {}
 
 -- Chemical plants
-if reskins.compatibility.triggers.minimachines.chemplants then
+if reskins.compatibility.triggers.minimachines.chemplants.angels then
+    local chemplants = {
+        ["mini-chemplant-1"] = "angels-chemical-plant",
+        ["mini-chemplant-2"] = "angels-chemical-plant-2",
+        ["mini-chemplant-3"] = "angels-chemical-plant-3",
+        ["mini-chemplant-4"] = "angels-chemical-plant-4",
+    }
+
+    reskins.lib.rescale_minimachine(chemplants, "assembling-machine", "chemical%-plant", "chemical-plant", 2/3)
+
+    -- Technologies
+    -- originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
+    -- linked_technologies["mini-chemplant-2"] = "chemical-plant-2"
+    -- linked_technologies["mini-chemplant-3"] = "chemical-plant-3"
+    -- linked_technologies["mini-chemplant-4"] = "chemical-plant-4"
+elseif reskins.compatibility.triggers.minimachines.chemplants.bobs then
     local chemplants = {
         ["mini-chemplant-1"] = "chemical-plant",
         ["mini-chemplant-2"] = "chemical-plant-2",
