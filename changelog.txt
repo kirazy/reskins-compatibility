@@ -1,9 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
-Date: 2021.04.XX
+Date: 2021.03.20
   Features:
     - Added support for Realistic Reactor Glow
     - Added support for Mini Machines miniature Angel's Chemical Plants
+    - Added support for Extended Angels Bioprocessing structures
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 2021.03.13
