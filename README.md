@@ -22,10 +22,10 @@ You are welcome to help with localization, please use [this Crowdin project](htt
 ## Licensing
 
 Graphics contained within the following subdirectories are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/):
-`../graphics/icons/mad-clowns`
-`../graphics/technology/mad-clowns`
-`../graphics/icons/extendedangels`
-`../graphics/technology/extendedangels`
+`../graphics/icons/mad-clowns`  
+`../graphics/technology/mad-clowns`  
+`../graphics/icons/extendedangels`  
+`../graphics/technology/extendedangels`  
 
 All other content is licensed under [MIT](https://opensource.org/licenses/MIT).
 
