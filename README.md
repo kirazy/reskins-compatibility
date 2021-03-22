@@ -25,7 +25,7 @@ Graphics contained within the following subdirectories are licensed under [CC BY
 `../graphics/icons/mad-clowns`  
 `../graphics/technology/mad-clowns`  
 `../graphics/icons/extendedangels`  
-`../graphics/technology/extendedangels`  
+`../graphics/entity/extendedangels`  
 
 All other content is licensed under [MIT](https://opensource.org/licenses/MIT).
 
