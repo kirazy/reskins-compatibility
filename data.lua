@@ -3,18 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
---[[ TODO:
-0. Move compatibility features into this mod
---> Centralize belt tier/color handling, have it determined in a central location and then have the entities all be mapped to a given tier and pull the tint information from there
---> Have belt color and tier determined in library initial functions, Angels/Bobs/Compat can then pull from whatever is set in that location
-
-1. Mini-machine symbol for icons
-2. Circuit-processing circuit color overrides
-3. Circuit-processing full uniqueness
-4. Chromatic belts
-
-]]--
-
 -- Core functions
 require("prototypes.functions.functions")
 require("prototypes.functions.circuitprocessing-sprites")
@@ -27,3 +15,18 @@ require("prototypes.mods.loaderredux")
 require("prototypes.mods.miniloader")
 require("prototypes.mods.semi-classic-mining-drill")
 require("prototypes.mods.vanilla-loaders-hd")
+
+-- Extended Angels
+require("prototypes.mods.extendedangels.arboretum")
+require("prototypes.mods.extendedangels.bioprocessor")
+require("prototypes.mods.extendedangels.butchery")
+require("prototypes.mods.extendedangels.composter")
+require("prototypes.mods.extendedangels.field")
+require("prototypes.mods.extendedangels.hatchery")
+require("prototypes.mods.extendedangels.nutrient-extractor")
+require("prototypes.mods.extendedangels.press")
+require("prototypes.mods.extendedangels.refugium-biter")
+require("prototypes.mods.extendedangels.refugium-fish")
+require("prototypes.mods.extendedangels.refugium-puffer")
+require("prototypes.mods.extendedangels.seed-extractor")
+require("prototypes.mods.extendedangels.tree-generator")
