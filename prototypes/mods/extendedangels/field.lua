@@ -66,7 +66,7 @@ for name, map in pairs(tier_map) do
                     priority = "extra-high",
                     width = 224,
                     height = 224,
-                    shift = {0, -0.5},
+                    shift = {0, 0},
                     tint = inputs.tint,
                 },
                 -- Highlights
@@ -75,7 +75,7 @@ for name, map in pairs(tier_map) do
                     priority = "extra-high",
                     width = 224,
                     height = 224,
-                    shift = {0, -0.5},
+                    shift = {0, 0},
                     blend_mode = reskins.lib.blend_mode,
                 }
             }
