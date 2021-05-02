@@ -13,7 +13,6 @@ local inputs = {
     icon_name = "warehouse",
     base_entity = "oil-refinery",
     particles = {["big-tint"] = 5, ["medium"] = 2},
-    icon_layers = 3,
     make_explosions = false,
     make_remnants = false,
 }
@@ -158,6 +157,12 @@ for warehouse, map in pairs(types) do
         -- Determine what tint we're using
         inputs.tint = map.tint or reskins.lib.tint_index[tier]
 
+        if reskins.lib.setting("reskins-compatibility-extendedangels-warehouse-tiering") then
+            inputs.icon_layers = 3
+        else
+            inputs.icon_layers = 1
+        end
+
         if n == 1 then
             reskins.lib.construct_icon(name, tier, inputs)
         else
@@ -182,41 +187,43 @@ for warehouse, map in pairs(types) do
             entity.drawing_box = {{-3, -3.5}, {3, 3}}
         end
 
-        table.insert(entity.picture.layers, {
-            filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/warehouse-mask.png",
-            priority = "extra-high",
-            width = 197,
-            height = 223,
-            shift = util.by_pixel(0, -15),
-            tint = inputs.tint,
-            hr_version = {
-                filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/hr-warehouse-mask.png",
+        if reskins.lib.setting("reskins-compatibility-extendedangels-warehouse-tiering") then
+            table.insert(entity.picture.layers, {
+                filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/warehouse-mask.png",
                 priority = "extra-high",
-                width = 391,
-                height = 446,
-                shift = util.by_pixel(-0.5, -15),
+                width = 197,
+                height = 223,
+                shift = util.by_pixel(0, -15),
                 tint = inputs.tint,
-                scale = 0.5,
-            }
-        })
+                hr_version = {
+                    filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/hr-warehouse-mask.png",
+                    priority = "extra-high",
+                    width = 391,
+                    height = 446,
+                    shift = util.by_pixel(-0.5, -15),
+                    tint = inputs.tint,
+                    scale = 0.5,
+                }
+            })
 
-        table.insert(entity.picture.layers, {
-            filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/warehouse-highlights.png",
-            priority = "extra-high",
-            width = 197,
-            height = 223,
-            shift = util.by_pixel(0, -15),
-            blend_mode = reskins.lib.blend_mode,
-            hr_version = {
-                filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/hr-warehouse-highlights.png",
+            table.insert(entity.picture.layers, {
+                filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/warehouse-highlights.png",
                 priority = "extra-high",
-                width = 391,
-                height = 446,
-                shift = util.by_pixel(-0.5, -15),
+                width = 197,
+                height = 223,
+                shift = util.by_pixel(0, -15),
                 blend_mode = reskins.lib.blend_mode,
-                scale = 0.5,
-            }
-        })
+                hr_version = {
+                    filename = reskins.compatibility.directory.."/graphics/entity/extendedangels/warehouse/hr-warehouse-highlights.png",
+                    priority = "extra-high",
+                    width = 391,
+                    height = 446,
+                    shift = util.by_pixel(-0.5, -15),
+                    blend_mode = reskins.lib.blend_mode,
+                    scale = 0.5,
+                }
+            })
+        end
 
         -- Label to skip to next iteration
         ::continue::
