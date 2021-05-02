@@ -16,16 +16,16 @@ local circuits = {
 
 for circuit, map in pairs(circuits) do
     -- Make standard sprites
-    -- data:extend({
-    --     {
-    --         type = "sprite",
-    --         name = "reskins-bob-"..circuit.."-vanilla",
-    --         filename = reskins.bobs.directory.."/graphics/icons/sprites/circuits/vanilla/"..circuit..".png",
-    --         size = 40,
-    --         mipmap_count= 2,
-    --         flags = {"gui-icon"},
-    --     }
-    -- })
+    data:extend({
+        {
+            type = "sprite",
+            name = "reskins-compatibility-"..circuit.."-standard",
+            filename = reskins.compatibility.directory.."/graphics/icons/sprites/circuits/standard/"..circuit..".png",
+            size = 40,
+            mipmap_count= 2,
+            flags = {"gui-icon"},
+        }
+    })
 
     -- Fetch tint
     local tint = reskins.lib.tint_index[map.tier]

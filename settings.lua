@@ -6,10 +6,10 @@
 -- Circuit Processing
 if mods["CircuitProcessing"] then
     local circuit_style_locale = {"",
-    {"mod-setting-description.reskins-compatibility-do-circuitprocessing-circuit-style"},
-    {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-standard"},
-    -- {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-tier"},
-    {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-default"},
+        {"mod-setting-description.reskins-compatibility-do-circuitprocessing-circuit-style"},
+        {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-standard"},
+        -- {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-tier"},
+        {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-default"},
     }
     data:extend({
         {
