@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
-Date: ????
+Date: 2021-05-02
   Features:
     - Added support for Extended Angels tungsten carbide powder with variations
     - Added tier support for Extended Angels warehouses, and setting "Extended Angels: Warehouse tiering" to toggle whether the structures and icons display tier coloring in-world
