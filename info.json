@@ -8,7 +8,7 @@
     "homepage": "",
     "dependencies": [
         "base",
-        "reskins-library >= 1.1.3",
+        "reskins-library >= 1.1.6",
         "(?) reskins-bobs",
         "(?) reskins-angels",
         "? angels-smelting-extended",

@@ -7,6 +7,8 @@
 require("prototypes.mods.deadlock-stacking-beltboxes")
 -- require("prototypes.mods.sciencecosttweaker")
 require("prototypes.mods.circuitprocessing")
+require("prototypes.mods.extendedangels.items-updates")
+require("prototypes.mods.extendedangels.technology-updates")
 require("prototypes.mods.mad-clowns.mad-clowns-items")
 require("prototypes.mods.mad-clowns.mad-clowns-technology")
 require("prototypes.mods.realisticreactorglow")
