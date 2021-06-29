@@ -11,7 +11,8 @@ require("prototypes.mods.extendedangels.items-updates")
 require("prototypes.mods.extendedangels.technology-updates")
 require("prototypes.mods.mad-clowns.mad-clowns-items")
 require("prototypes.mods.mad-clowns.mad-clowns-technology")
-require("prototypes.mods.realisticreactorglow")
+require("prototypes.mods.realisticreactorglow.entities-updates")
+require("prototypes.mods.realisticreactorglow.technology-updates")
 
 -- Assign deferred icons
 reskins.lib.assign_deferred_icons("compatibility", "data-updates")
