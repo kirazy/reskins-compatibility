@@ -9,7 +9,7 @@ if mods["CircuitProcessing"] then
         {"mod-setting-description.reskins-compatibility-do-circuitprocessing-circuit-style"},
         {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-standard"},
         -- {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-tier"},
-        {"reskins-compatibility.reskins-compatibility-do-circuitprocessing-circuit-style-default"},
+        {"reskins-defaults.default"}, " [color="..reskins.lib.default_tint.."]", {"string-mod-setting.reskins-compatibility-do-circuitprocessing-circuit-style-colored-standard"}, "[/color]",
     }
     data:extend({
         {
