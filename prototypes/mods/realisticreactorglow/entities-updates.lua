@@ -6,7 +6,7 @@
 -- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then return end
 if not (reskins.bobs and reskins.bobs.triggers.power.entities) then return end
-if reskins.lib.setting("bobmods-power-nuclear") == false then return end
+if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then return end
 
 local reactors = {
     ["nuclear-reactor"] = {base = 1},

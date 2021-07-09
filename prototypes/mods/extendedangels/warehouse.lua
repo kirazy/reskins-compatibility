@@ -5,7 +5,7 @@
 
 -- Check to see if reskinning needs to be done.
 if not mods["extendedangels"] then return end
-if not reskins.angels and reskins.angels.triggers.storage.entities then return end
+if not (reskins.angels and reskins.angels.triggers.storage.entities) then return end
 
 local inputs = {
     mod = "compatibility",

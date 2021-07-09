@@ -6,6 +6,9 @@ Date: ????
       - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
   Changes:
     - Revised support method for Miniloader and Vanilla Loaders mods
+    - Adjusted entity support to reflect changes in Artisanal Reskins: Bob's Mods triggers
+  Bugfixes:
+    - Fixed startup error related to loading with Extended Angels but not Artisanal Reskins: Angel's Mods
   Locale:
     - Removed default text from string mod setting descriptions for ease of translation and reduction of reduplication of translation effort; defaults are now appended automatically
 ---------------------------------------------------------------------------------------------------
