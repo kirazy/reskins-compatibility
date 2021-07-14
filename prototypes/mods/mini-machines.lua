@@ -19,7 +19,7 @@ if reskins.compatibility.triggers.minimachines.chemplants.angels then
         ["mini-chemplant-4"] = "angels-chemical-plant-4",
     }
 
-    reskins.lib.rescale_minimachine(chemplants, "assembling-machine", "chemical%-plant", "chemical-plant", 2/3)
+    reskins.lib.rescale_minimachine(chemplants, "assembling-machine", 2/3, "chemical%-plant", "chemical-plant")
 
     -- Technologies
     -- originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
@@ -34,7 +34,7 @@ elseif reskins.compatibility.triggers.minimachines.chemplants.bobs then
         ["mini-chemplant-4"] = "chemical-plant-4",
     }
 
-    reskins.lib.rescale_minimachine(chemplants, "assembling-machine", "chemical%-plant", "chemical-plant", 2/3)
+    reskins.lib.rescale_minimachine(chemplants, "assembling-machine", 2/3, "chemical%-plant", "chemical-plant")
 
     -- Technologies
     originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
@@ -53,7 +53,7 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
         ["mini-electro-5"] = "electrolyser-5",
     }
 
-    reskins.lib.rescale_minimachine(electrolysers, "assembling-machine", "electrolyser", "electrolyser", 2/3)
+    reskins.lib.rescale_minimachine(electrolysers, "assembling-machine", 2/3, "electrolyser", "electrolyser")
 
     -- Technologies
     originated_technologies["mini-electro-1"] = {mod = "bobs", group = "assembly", tier = 1, icon_name = "electrolyser", icon_base = "electrolyser-1", icon_mask = "electrolyser-1", icon_highlights = "electrolyser-1"}
@@ -74,7 +74,7 @@ if reskins.compatibility.triggers.minimachines.assemblers then
         ["mini-assembler-6"] = "assembling-machine-6",
     }
 
-    reskins.lib.rescale_minimachine(assemblers, "assembling-machine", "assembling%-machine", "assembling-machine", 2/3)
+    reskins.lib.rescale_minimachine(assemblers, "assembling-machine", 2/3, "assembling%-machine", "assembling-machine")
 
     -- Technologies
     linked_technologies["mini-assembler-1"] = "automation"
@@ -95,7 +95,7 @@ if reskins.compatibility.triggers.minimachines.miners then
         ["mini-miner-5"] = "bob-mining-drill-4",
     }
 
-    reskins.lib.rescale_minimachine(miners, "mining-drill", "electric%-mining%-drill", "electric-mining-drill", 2/3)
+    reskins.lib.rescale_minimachine(miners, "mining-drill", 2/3, "electric%-mining%-drill", "electric-mining-drill")
 
     -- Technologies
     originated_technologies["mini-miner-1"] = {mod = "bobs", group = "mining", tier = 1, icon_name = "mining-drill"}
@@ -115,7 +115,7 @@ if reskins.compatibility.triggers.minimachines.radar then
         ["mini-radar-5"] = "radar-5",
     }
 
-    reskins.lib.rescale_minimachine(radars, "radar", "radar", "radar", 2/3)
+    reskins.lib.rescale_minimachine(radars, "radar", 2/3, "radar", "radar")
 
     -- Technologies
     originated_technologies["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"}
@@ -134,7 +134,7 @@ if reskins.compatibility.triggers.minimachines.refineries then
         ["mini-refinery-4"] = "oil-refinery-4",
     }
 
-    reskins.lib.rescale_minimachine(refineries, "assembling-machine", "oil%-refinery", "oil-refinery", 3/5)
+    reskins.lib.rescale_minimachine(refineries, "assembling-machine", 3/5, "oil%-refinery", "oil-refinery")
 
     -- Technologies
     originated_technologies["mini-refinery-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery"}
@@ -152,7 +152,7 @@ if reskins.compatibility.triggers.minimachines.storagetanks then
         ["mini-tank-4"] = "storage-tank-4",
     }
 
-    reskins.lib.rescale_minimachine(storagetanks, "storage-tank", "storage%-tank", "storage-tank", 2/3)
+    reskins.lib.rescale_minimachine(storagetanks, "storage-tank", 2/3, "storage%-tank", "storage-tank")
 
     -- Technologies
     originated_technologies["mini-tank-1"] = {group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank"}
@@ -169,26 +169,26 @@ if reskins.compatibility.triggers.minimachines.beacons then
         ["mini-beacon-3"] = "beacon-3",
     }
 
-    reskins.lib.rescale_minimachine(beacons, "beacon", "beacon", "beacon", 2/3)
+    reskins.lib.rescale_minimachine(beacons, "beacon", 2/3, "beacon", "beacon")
 end
 
 -- Furnaces
 if reskins.compatibility.triggers.minimachines.furnaces then
     local furnaces = {
-        ["mini-furnace-1"] = "electric-furnace",
-        ["mini-furnace-2"] = "electric-furnace-2",
-        ["mini-furnace-3"] = "electric-furnace-3",
+        ["mini-furnace-1"] = {source = "electric-furnace", pattern = "electric%-furnace", replacement = "electric-furnace"},
+        ["mini-furnace-2"] = {source = "electric-furnace-2", pattern = "electric%-furnace", replacement = "electric-furnace"},
+        ["mini-furnace-3"] = {source = "electric-furnace-3", pattern = "electric%-furnace", replacement = "electric-furnace"},
     }
 
     local assembly_furnaces = {
-        ["mini-bobchem-1"] = "electric-chemical-furnace",
-        ["mini-bobmetal-1"] = "electric-mixing-furnace",
-        ["mini-bobmulti-1"] = "electric-chemical-mixing-furnace",
-        ["mini-bobmulti-2"] = "electric-chemical-mixing-furnace-2",
+        ["mini-bobchem-1"]  = {source = "electric-chemical-furnace", pattern = "electric%-chemical%-furnace", replacement = "electric-chemical-furnace"},
+        ["mini-bobmetal-1"] = {source = "electric-mixing-furnace", pattern = "electric%-mixing%-furnace", replacement = "electric-mixing-furnace"},
+        ["mini-bobmulti-1"] = {source = "electric-chemical-mixing-furnace", pattern = "electric%-chemical%-mixing%-furnace", replacement = "electric-chemical-mixing-furnace"},
+        ["mini-bobmulti-2"] = {source = "electric-chemical-mixing-furnace-2", pattern = "electric%-chemical%-mixing%-furnace", replacement = "electric-chemical-mixing-furnace"},
     }
 
-    reskins.lib.rescale_minimachine(furnaces, "furnace", "electric%-furnace", "electric-furnace", 2/3)
-    reskins.lib.rescale_minimachine(assembly_furnaces, "assembling-machine", "electric%-furnace", "electric-furnace", 2/3)
+    reskins.lib.rescale_minimachine(furnaces, "furnace", 2/3)
+    reskins.lib.rescale_minimachine(assembly_furnaces, "assembling-machine", 2/3)
 
     -- Handle fluid boxes for the assembly furnaces
     for name, _ in pairs(assembly_furnaces) do
@@ -227,6 +227,6 @@ local inputs = {
 
 -- Miniaturize the originated techs
 reskins.lib.create_icons_from_list(originated_technologies, inputs)
-for name, map in pairs(originated_technologies) do
+for name, _ in pairs(originated_technologies) do
     reskins.lib.rescale_minimachine_technology(name, name)
 end

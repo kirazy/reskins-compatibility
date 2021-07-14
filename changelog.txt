@@ -2,11 +2,10 @@
 Version: 2.0.0
 Date: ????
   Features:
-      - Major revisions to all color masks for all entities, items, and icons
-      - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
+    - Major revisions to all color masks for all entities, items, and icons
+    - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
   Changes:
-    - Revised support method for Miniloader and Vanilla Loaders mods
-    - Adjusted entity support to reflect changes in Artisanal Reskins: Bob's Mods triggers
+    - Revised support method for Miniloader and Vanilla Loaders mods, sprites are now stored locally
   Bugfixes:
     - Fixed startup error related to loading with Extended Angels but not Artisanal Reskins: Angel's Mods
   Locale:
