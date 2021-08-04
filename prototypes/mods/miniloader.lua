@@ -14,8 +14,8 @@ local inputs = {
     mod = "compatibility",
     group = "miniloader",
     particles = {["medium"] = 1, ["big"] = 4},
-    icon_layers = 2,
-    technology_icon_layers = 2,
+    technology_icon_size = 256,
+    technology_icon_mipmaps = 4,
     make_remnants = false,
 }
 

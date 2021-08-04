@@ -15,7 +15,6 @@ local inputs = {
     mod = "compatibility",
     group = "vanilla-loaders-hd",
     particles = {["medium"] = 1, ["big"] = 4},
-    icon_layers = 2,
     make_remnants = false,
 }
 
