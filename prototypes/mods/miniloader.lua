@@ -31,11 +31,11 @@ local tier_map = {
     ["express-miniloader-loader"] = {tier = 3, sprite_variant = 2},
     ["turbo-miniloader-loader"] = {tier = 4, sprite_variant = 2},
     ["ultimate-miniloader-loader"] = {tier = 5, sprite_variant = 2},
-    ["filter-miniloader-loader"] = {tier = 1, sprite_variant = 1},
-    ["fast-filter-miniloader-loader"] = {tier = 2, sprite_variant = 2},
-    ["express-filter-miniloader-loader"] = {tier = 3, sprite_variant = 2},
-    ["turbo-filter-miniloader-loader"] = {tier = 4, sprite_variant = 2},
-    ["ultimate-filter-miniloader-loader"] = {tier = 5, sprite_variant = 2},
+    ["filter-miniloader-loader"] = {tier = 1, sprite_variant = 1, is_filter = true},
+    ["fast-filter-miniloader-loader"] = {tier = 2, sprite_variant = 2, is_filter = true},
+    ["express-filter-miniloader-loader"] = {tier = 3, sprite_variant = 2, is_filter = true},
+    ["turbo-filter-miniloader-loader"] = {tier = 4, sprite_variant = 2, is_filter = true},
+    ["ultimate-filter-miniloader-loader"] = {tier = 5, sprite_variant = 2, is_filter = true},
 
     -- Inserter Entities
     ["basic-miniloader-inserter"] = {tier = 0, is_inserter = true},
@@ -162,15 +162,17 @@ for name, map in pairs(tier_map) do
             }
         }
     else
+        local base_path = map.is_filter and "filter-structure" or "structure"
+
         entity.structure.direction_in.sheets = {
             -- Base
             {
-                filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/miniloader-structure-base.png",
+                filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/miniloader-"..base_path.."-base.png",
                 width = 96,
                 height = 96,
                 y = 0,
                 hr_version = {
-                    filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/hr-miniloader-structure-base.png",
+                    filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/hr-miniloader-"..base_path.."-base.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -234,12 +236,12 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_out.sheets = {
             -- Base
             {
-                filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/miniloader-structure-base.png",
+                filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/miniloader-"..base_path.."-base.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 hr_version = {
-                    filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/hr-miniloader-structure-base.png",
+                    filename = reskins.compatibility.directory.."/graphics/entity/miniloader/miniloader/hr-miniloader-"..base_path.."-base.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
