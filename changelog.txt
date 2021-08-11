@@ -4,6 +4,7 @@ Date: ????
   Features:
     - Major revisions to all color masks for all entities, items, and icons
     - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
+    - Added progression tiering for Angel's Bioprocessing structures added by Extended Angels
   Changes:
     - Revised support method for Miniloader and Vanilla Loaders mods, sprites are now stored locally
   Bugfixes:
