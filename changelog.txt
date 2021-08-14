@@ -2,8 +2,8 @@
 Version: 2.0.0
 Date: ????
   Features:
-    - Major revisions to all color masks for all entities, items, and icons
-    - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
+    - Revisions to all color masks for all entities, items, and icons are ongoing
+    - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced for revised entities
     - Added progression tiering for Angel's Bioprocessing structures added by Extended Angels
     - Added support for Offshore P.U.M.P.S. and ground water
   Changes:
