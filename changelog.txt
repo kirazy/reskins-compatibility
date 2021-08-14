@@ -5,6 +5,7 @@ Date: ????
     - Major revisions to all color masks for all entities, items, and icons
     - Perceived brightness and contrast have been improved and oversaturation and color blowouts have been reduced
     - Added progression tiering for Angel's Bioprocessing structures added by Extended Angels
+    - Added support for Offshore P.U.M.P.S. and ground water
   Changes:
     - Revised support method for Miniloader and Vanilla Loaders mods, sprites are now stored locally
   Bugfixes:
