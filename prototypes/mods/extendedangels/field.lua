@@ -19,18 +19,18 @@ local inputs = {
 }
 
 local tier_map = {
-    ["crop-farm"] = {tier = 1, field = "basic"},
-    ["crop-farm-2"] = {tier = 2, field = "basic"},
-    ["crop-farm-3"] = {tier = 3, field = "basic"},
-    ["temperate-farm"] = {tier = 1, field = "temperate"},
-    ["temperate-farm-2"] = {tier = 2, field = "temperate"},
-    ["temperate-farm-3"] = {tier = 3, field = "temperate"},
-    ["swamp-farm"] = {tier = 1, field = "swamp"},
-    ["swamp-farm-2"] = {tier = 2, field = "swamp"},
-    ["swamp-farm-3"] = {tier = 3, field = "swamp"},
-    ["desert-farm"] = {tier = 1, field = "desert"},
-    ["desert-farm-2"] = {tier = 2, field = "desert"},
-    ["desert-farm-3"] = {tier = 3, field = "desert"},
+    ["crop-farm"] = {tier = 1, prog_tier = 0, field = "basic"},
+    ["crop-farm-2"] = {tier = 2, prog_tier = 1, field = "basic"},
+    ["crop-farm-3"] = {tier = 3, prog_tier = 2, field = "basic"},
+    ["temperate-farm"] = {tier = 1, prog_tier = 2, field = "temperate"},
+    ["temperate-farm-2"] = {tier = 2, prog_tier = 3, field = "temperate"},
+    ["temperate-farm-3"] = {tier = 3, prog_tier = 4, field = "temperate"},
+    ["swamp-farm"] = {tier = 1, prog_tier = 2, field = "swamp"},
+    ["swamp-farm-2"] = {tier = 2, prog_tier = 3, field = "swamp"},
+    ["swamp-farm-3"] = {tier = 3, prog_tier = 4, field = "swamp"},
+    ["desert-farm"] = {tier = 1, prog_tier = 2, field = "desert"},
+    ["desert-farm-2"] = {tier = 2, prog_tier = 3, field = "desert"},
+    ["desert-farm-3"] = {tier = 3, prog_tier = 4, field = "desert"},
 }
 
 -- Reskin entities, create and assign extra details

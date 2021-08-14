@@ -15,7 +15,6 @@ local inputs = {
     mod = "compatibility",
     group = "vanilla-loaders-hd",
     particles = {["medium"] = 1, ["big"] = 4},
-    icon_layers = 2,
     make_remnants = false,
 }
 
@@ -45,10 +44,143 @@ for name, map in pairs(tier_map) do
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
     -- Retint the entity mask
-    entity.structure.direction_in.sheets[2].tint = inputs.tint
-    entity.structure.direction_in.sheets[2].hr_version.tint = inputs.tint
-    entity.structure.direction_out.sheets[2].tint = inputs.tint
-    entity.structure.direction_out.sheets[2].hr_version.tint = inputs.tint
+    entity.structure.direction_in.sheets = {
+        -- Base
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                scale = 0.5,
+            }
+        },
+        -- Mask
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            tint = inputs.tint,
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                tint = inputs.tint,
+                scale = 0.5,
+            }
+        },
+        -- Highlights
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            blend_mode = "additive",
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                blend_mode = "additive",
+                scale = 0.5,
+            }
+        },
+        -- Shadow
+        {
+            filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            draw_as_shadow = true,
+            hr_version = {
+                filename = "__vanilla-loaders-hd__/graphics/entity/loader/hr-loader-structure-shadow.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                draw_as_shadow = true,
+                scale = 0.5,
+            }
+        }
+    }
+
+    entity.structure.direction_out.sheets = {
+        -- Base
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            y = 96,
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                y = 192,
+                scale = 0.5,
+            }
+        },
+        -- Mask
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            y = 96,
+            tint = inputs.tint,
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                y = 192,
+                tint = inputs.tint,
+                scale = 0.5,
+            }
+        },
+        -- Highlights
+        {
+            filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            y = 96,
+            blend_mode = "additive",
+            hr_version = {
+                filename = reskins.compatibility.directory.."/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                y = 192,
+                blend_mode = "additive",
+                scale = 0.5,
+            }
+        },
+        -- Shadow
+        {
+            filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
+            priority = "extra-high",
+            width = 106,
+            height = 96,
+            y = 96,
+            draw_as_shadow = true,
+            hr_version = {
+                filename = "__vanilla-loaders-hd__/graphics/entity/loader/hr-loader-structure-shadow.png",
+                priority = "extra-high",
+                width = 212,
+                height = 192,
+                y = 192,
+                draw_as_shadow = true,
+                scale = 0.5,
+            }
+        }
+    }
 
     -- Apply belt set
     entity.belt_animation_set = reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)

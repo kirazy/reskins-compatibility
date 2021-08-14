@@ -30,6 +30,14 @@ local function light_tint(tint)
     return {r = (tint.r + white)/2, g = (tint.g + white)/2, b = (tint.b + white)/2}
 end
 
+local function tweak_tint(tint)
+    local hsl_tint = reskins.lib.RGBtoHSL(tint)
+    hsl_tint.s = (hsl_tint.s - 0.1 >= 0) and hsl_tint.s - 0.1 or 0
+    -- hsl_tint.l = (hsl_tint.l - 0.2 >= 0) and hsl_tint.l - 0.2 or 0
+
+    return reskins.lib.HSLtoRGB(hsl_tint)
+end
+
 -- Reskin entities
 for name, map in pairs(tier_map) do
     -- Fetch entity, item
@@ -39,7 +47,7 @@ for name, map in pairs(tier_map) do
     if not entity then goto continue end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[map.tier]
+    inputs.tint = tweak_tint(reskins.lib.belt_tint_index[map.tier])
 
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
