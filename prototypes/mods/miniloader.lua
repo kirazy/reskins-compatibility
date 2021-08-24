@@ -24,18 +24,18 @@ inputs.tier_labels = reskins.lib.setting("reskins-bobs-do-belt-entity-tier-label
 
 local tier_map = {
     -- 1x1 Loader Entities
-    ["basic-miniloader-loader"] = {tier = 0, sprite_variant = 1},
-    ["chute-miniloader-loader"] = {tier = 0, sprite_variant = 1},
-    ["miniloader-loader"] = {tier = 1, sprite_variant = 1},
-    ["fast-miniloader-loader"] = {tier = 2, sprite_variant = 2},
-    ["express-miniloader-loader"] = {tier = 3, sprite_variant = 2},
-    ["turbo-miniloader-loader"] = {tier = 4, sprite_variant = 2},
-    ["ultimate-miniloader-loader"] = {tier = 5, sprite_variant = 2},
-    ["filter-miniloader-loader"] = {tier = 1, sprite_variant = 1, is_filter = true},
-    ["fast-filter-miniloader-loader"] = {tier = 2, sprite_variant = 2, is_filter = true},
-    ["express-filter-miniloader-loader"] = {tier = 3, sprite_variant = 2, is_filter = true},
-    ["turbo-filter-miniloader-loader"] = {tier = 4, sprite_variant = 2, is_filter = true},
-    ["ultimate-filter-miniloader-loader"] = {tier = 5, sprite_variant = 2, is_filter = true},
+    ["basic-miniloader-loader"] = {tier = 0, sprite_variant = 1, base_belt = "basic-transport-belt"},
+    ["chute-miniloader-loader"] = {tier = 0, sprite_variant = 1, base_belt = "transport-belt"},
+    ["miniloader-loader"] = {tier = 1, sprite_variant = 1, base_belt = "transport-belt"},
+    ["fast-miniloader-loader"] = {tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt"},
+    ["express-miniloader-loader"] = {tier = 3, sprite_variant = 2, base_belt = "express-transport-belt"},
+    ["turbo-miniloader-loader"] = {tier = 4, sprite_variant = 2, base_belt = "turbo-transport-belt"},
+    ["ultimate-miniloader-loader"] = {tier = 5, sprite_variant = 2, base_belt = "ultimate-transport-belt"},
+    ["filter-miniloader-loader"] = {tier = 1, sprite_variant = 1, is_filter = true, base_belt = "transport-belt"},
+    ["fast-filter-miniloader-loader"] = {tier = 2, sprite_variant = 2, is_filter = true, base_belt = "fast-transport-belt"},
+    ["express-filter-miniloader-loader"] = {tier = 3, sprite_variant = 2, is_filter = true, base_belt = "express-transport-belt"},
+    ["turbo-filter-miniloader-loader"] = {tier = 4, sprite_variant = 2, is_filter = true, base_belt = "turbo-transport-belt"},
+    ["ultimate-filter-miniloader-loader"] = {tier = 5, sprite_variant = 2, is_filter = true, base_belt = "ultimate-transport-belt"},
 
     -- Inserter Entities
     ["basic-miniloader-inserter"] = {tier = 0, is_inserter = true},
@@ -79,6 +79,7 @@ for name, map in pairs(tier_map) do
 
     -- Fetch entity
     local entity = data.raw[inputs.type][name]
+    local base_belt = data.raw["transport-belt"][map.base_belt]
 
     -- Check if entity exists, if not, skip this iteration
     if not entity then goto continue end
@@ -303,7 +304,7 @@ for name, map in pairs(tier_map) do
         }
 
         -- Apply belt set
-        entity.belt_animation_set = reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
+        entity.belt_animation_set = base_belt and base_belt.belt_animation_set -- or reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
     end
 
     -- Label to skip to next iteration
