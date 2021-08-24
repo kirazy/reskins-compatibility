@@ -15,6 +15,7 @@ require("prototypes.mods.loaderredux")
 require("prototypes.mods.miniloader")
 require("prototypes.mods.semi-classic-mining-drill")
 require("prototypes.mods.vanilla-loaders-hd")
+require("prototypes.mods.deadlockblackrubberbelts")
 
 -- Extended Angels
 require("prototypes.mods.extendedangels.arboretum")
