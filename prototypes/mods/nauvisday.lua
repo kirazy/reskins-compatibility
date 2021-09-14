@@ -158,3 +158,10 @@ entity.working_visualisations = {
 
 entity.fluid_boxes[1].pipe_picture = nil
 entity.fluid_boxes[1].secondary_draw_orders = {east = 3, west = 3, south = 3}
+
+-- Disable burner energy source light
+entity.energy_source.light_flicker = {
+    color = {0, 0, 0},
+    minimum_light_size = 0,
+    light_intensity_to_size_coefficient = 0,
+}
