@@ -4,6 +4,7 @@
 -- See LICENSE in the project directory for license information.
 
 -- Mods
+require("prototypes.mods.aai-industry")
 require("prototypes.mods.deadlock-stacking-beltboxes")
 -- require("prototypes.mods.sciencecosttweaker")
 require("prototypes.mods.circuitprocessing")

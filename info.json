@@ -8,9 +8,10 @@
     "homepage": "",
     "dependencies": [
         "base",
-        "reskins-library >= 2.0.0",
+        "reskins-library >= 2.0.3",
         "(?) reskins-bobs",
         "(?) reskins-angels",
+        "? aai-industry",
         "? angels-smelting-extended",
         "? CircuitProcessing",
         "? classic-beacon",
