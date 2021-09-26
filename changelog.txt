@@ -3,6 +3,8 @@ Version: 2.0.3
 Date: ????
   Features:
     - Added support for the burner assembling machine when AAI Industry is present
+  Bugfixes:
+    - Fixed that circuit reskinning did not respect the configuration settings when used with Circuit Processing
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.2
 Date: 2021-09-14

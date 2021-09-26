@@ -6,6 +6,7 @@
 -- Check to see if reskinning needs to be done.
 if not mods["CircuitProcessing"] then return end
 if not reskins.bobs then return end
+if reskins.lib.setting("reskins-compatibility-do-circuitprocessing-circuit-style") == "off" then return end
 
 -- Setup inputs
 local inputs = {
