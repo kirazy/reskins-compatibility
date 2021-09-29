@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.4
 Date: ????
-  Changes:
+  Bugfixes:
+    - Fixed that a trigger check was not properly wrapped in parens and caused a startup error
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.3
 Date: 2021-09-29
