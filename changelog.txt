@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.3
-Date: ????
+Date: 2021-09-29
   Features:
     - Added support for the burner assembling machine when AAI Industry is present
   Bugfixes:
