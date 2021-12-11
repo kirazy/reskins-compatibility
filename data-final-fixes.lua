@@ -7,6 +7,7 @@
 require("prototypes.functions.overrides-final-fixes")
 
 -- Mods
+require("prototypes.mods.bio-industries") -- Bio Industries does a lot of work on icons in data-final-fixes
 require("prototypes.mods.mini-machines") -- Mini-machines sets up machines in data-final-fixes
 require("prototypes.mods.deadlock-crating") -- DeadlockCrating sets up machines in data-final-fixes
 require("prototypes.mods.deadlock-stacking-addons.science-packs") -- Stack items and recipes are generated in data-final-fixes
