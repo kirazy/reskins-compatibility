@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -12,7 +12,7 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 local inputs = {
     type = "loader",
     icon_name = "loader",
-    base_entity = "splitter",
+    base_entity_name = "splitter",
     mod = "compatibility",
     group = "loaderredux",
     particles = {["medium"] = 1, ["big"] = 4},

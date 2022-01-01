@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -11,7 +11,7 @@ if not (reskins.angels and reskins.angels.triggers.bioprocessing.entities) then 
 local inputs = {
     type = "assembling-machine",
     icon_name = "nutrient-extractor",
-    base_entity = "assembling-machine-1",
+    base_entity_name = "assembling-machine-1",
     mod = "compatibility",
     particles = {["big"] = 1, ["medium"] = 2},
     group = "extendedangels",

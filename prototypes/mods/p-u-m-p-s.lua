@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -10,7 +10,7 @@ if not (reskins.bobs and reskins.bobs.triggers.logistics.entities) then return e
 -- Set input parameters
 local inputs = {
     icon_name = "offshore-pump",
-    base_entity = "offshore-pump",
+    base_entity_name = "offshore-pump",
     mod = "compatibility",
     particles = {["small"] = 3},
     group = "p-u-m-p-s",

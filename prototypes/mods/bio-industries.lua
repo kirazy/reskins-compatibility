@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -115,7 +115,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
     -- Set input parameters
     local inputs = {
         type = "boiler",
-        base_entity = "boiler",
+        base_entity_name = "boiler",
         icon_name = "boiler",
         mod = "bobs",
         group = "power",

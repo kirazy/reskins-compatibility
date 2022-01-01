@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -11,7 +11,7 @@ local inputs = {
     mod = "compatibility",
     group = "extendedangels",
     icon_name = "warehouse",
-    base_entity = "oil-refinery",
+    base_entity_name = "oil-refinery",
     particles = {["big-tint"] = 5, ["medium"] = 2},
     make_explosions = false,
     make_remnants = false,
@@ -169,7 +169,7 @@ for warehouse, map in pairs(types) do
             reskins.lib.setup_standard_entity(name, tier, inputs)
 
             -- Setup explosions
-            reskins.lib.create_explosions_and_particles(name, {base_entity = inputs.base_entity, type = inputs.type, tint = map.particle_tint, particles = inputs.particles})
+            reskins.lib.create_explosions_and_particles(name, {base_entity_name = inputs.base_entity_name, type = inputs.type, tint = map.particle_tint, particles = inputs.particles})
 
             -- Reskin entities
             local picture

@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -10,7 +10,7 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 
 -- Set input parameters
 local inputs = {
-    base_entity = "underground-belt",
+    base_entity_name = "underground-belt",
     mod = "compatibility",
     particles = {["medium"] = 3, ["small"] = 2},
     make_icons = false,
