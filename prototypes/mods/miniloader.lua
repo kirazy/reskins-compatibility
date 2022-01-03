@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -10,7 +10,7 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 -- Set input parameters
 local inputs = {
     icon_name = "miniloader",
-    base_entity = "splitter",
+    base_entity_name = "splitter",
     mod = "compatibility",
     group = "miniloader",
     particles = {["medium"] = 1, ["big"] = 4},

@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -11,7 +11,7 @@ if not (reskins.bobs and reskins.bobs.triggers.greenhouse.entities) then return 
 local inputs = {
     type = "assembling-machine",
     icon_name = "dead-greenhouse",
-    base_entity = "lab",
+    base_entity_name = "lab",
     mod = "compatibility",
     group = "nauvisday",
     icon_layers = 1,

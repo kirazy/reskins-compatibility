@@ -1,4 +1,4 @@
--- Copyright (c) 2021 Kirazy
+-- Copyright (c) 2022 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -56,7 +56,7 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
     reskins.lib.rescale_minimachine(electrolysers, "assembling-machine", 2/3, "electrolyser", "electrolyser")
 
     -- Technologies
-    originated_technologies["mini-electro-1"] = {mod = "bobs", group = "assembly", tier = 1, icon_name = "electrolyser", icon_base = "electrolyser-1", icon_mask = "electrolyser-1", icon_highlights = "electrolyser-1"}
+    originated_technologies["mini-electro-1"] = {mod = "bobs", group = "assembly", tier = 1, technology_icon_size = 256, technology_icon_mipmaps = 4, icon_name = "electrolyser", icon_base = "electrolyser-1", icon_mask = "electrolyser-1", icon_highlights = "electrolyser-1"}
     linked_technologies["mini-electro-2"] = "electrolyser-2"
     linked_technologies["mini-electro-3"] = "electrolyser-3"
     linked_technologies["mini-electro-4"] = "electrolyser-4"
