@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.0
-Date: ????
+Date: 2022-01-03
   Bugfixes:
     - Fixed that the Mini electrolyser 1 technology from Mini Machines mod was improperly scaled
   Locale:
