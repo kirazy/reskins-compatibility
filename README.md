@@ -7,17 +7,19 @@
 [Artisanal Reskins: Library](https://github.com/kirazy/reskins-library)  
 
 **An ongoing effort in compatibility for small mods and Artisanal Reskins**  
-This mod serves as the central location to unify and harmonize one-off mods or compatibility issues that players may experience with the Artisanal Reskins suite of mods.
+This mod serves as the central location to unify and harmonize one-off mods or compatibility issues that players may experience with the Artisanal Reskins suite of mods. The scope is limited to mods that interact with either Bob's mods or Angel's mods, but in the future Artisanal Reskins may expand to include other mod sets.
 
 If there is a mod that is unsupported by Artisanal Reskins and you would like it to be, please make a thread on the discussion tab.
 
 If you are a mod author and want to support Artisanal Reskins, and find yourself in the position of wanting to add this mod as a dependency, please **stop** and talk to me.
 
-**Updates**  
-This mod is constantly being worked on, but I am a graduate student and school has resumed. Regular content updates will be released monthly, and critical bugfixes will be released on an as-needed basis.
+**Update Schedule**  
+Regular content and low-impact bugs will be released monthly.  
+Critical bug fixes will be deployed on an as-needed basis.  
+Locale updates will be released on the weekend of the week in which they are received from Crowdin.
 
 **Localization**  
-You are welcome to help with localization, please use [this Crowdin project](https://crowdin.com/project/factorio-mods-localization). You can find more details [here](https://github.com/dima74/factorio-mods-localization#how-to-translate-using-crowdin). Locale updates will be released on the weekend they are received from Crowdin.
+You are welcome to help with localization, please use [this Crowdin project](https://crowdin.com/project/factorio-mods-localization). You can find more details [here](https://github.com/dima74/factorio-mods-localization#how-to-translate-using-crowdin).
 
 ## Licensing
 
@@ -57,6 +59,9 @@ Reskins the stacked science packs to use custom sprites instead of dynamically g
 - **[Deadlock Stacking for Vanilla](https://mods.factorio.com/mod/DeadlockStackingForVanilla)**  
 Reskins the stacked science packs to use custom sprites instead of dynamically generated icons, and supports Bob's science color update setting.
 
+- **[Extended Angels](https://mods.factorio.com/mod/extendedangels)**  
+Tier labels and color progression are applied to the added Bioprocessing structures and Warehouses.
+
 - **[Loader Redux](https://mods.factorio.com/mod/LoaderRedux)**  
 Tier labels are displayed on loader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
 
@@ -68,6 +73,12 @@ Mini machine icons are completely redone in the Artisanal Reskin style, but shru
 
 - **[Miniloader](https://mods.factorio.com/mod/miniloader)**  
 Tier labels are displayed on miniloader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
+
+- **[Offshore P.U.M.P.S. and ground water](https://mods.factorio.com/mod/P-U-M-P-S)**  
+Reskins the offshore pumps using Artisanal Reskins consistent color masks, supports traditional and progression tier mappings.
+
+- **[Realistic Reactor Glow](https://mods.factorio.com/mod/RealisticReactorGlow)**  
+Supports the cyan and realistic reactor glow colors, applying them to all the nuclear reactors added by Bob's Power.
 
 - **[Semi-Classic Mining Drill](https://mods.factorio.com/mod/semi-classic-mining-drill)**  
 Reskins all miners added by Bob's Mining to conform to the Semi-Classic Mining Drill, and supports tier labels and custom colors.
