@@ -2,6 +2,7 @@
 Version: 2.1.3
 Date: ????
   Changes:
+    - Added support for adjusted progression tiers for Extended Angels' Ange's Bioprocessing structures to reflect changes to ingredients in Extended Angels version 0.5.8
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.2
 Date: 2022-04-03

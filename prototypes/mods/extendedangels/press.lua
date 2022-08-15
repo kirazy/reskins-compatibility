@@ -24,6 +24,13 @@ local tier_map = {
     ["bio-press-3"] = {tier = 3},
 }
 
+-- Adjust for changes in Extended Angels due to modifications to ingredients in Angel's Bioprocessing 0.7.23
+if reskins.lib.migration.is_version_or_newer(mods["extendedangels"], "0.5.8") then
+    tier_map["bio-press"].prog_tier = 2
+    tier_map["bio-press-2"].prog_tier = 3
+    tier_map["bio-press-3"].prog_tier = 4
+end
+
 -- Reskin entities, create and assign extra details
 for name, map in pairs(tier_map) do
     -- Fetch entity
