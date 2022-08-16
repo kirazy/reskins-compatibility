@@ -53,13 +53,13 @@ local intermediates = {
     ["casting-powder-depleted-uranium-1"] = {type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(1, "smelting")},
     ["casting-powder-depleted-uranium-2"] = {type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(2, "smelting")},
 
-    ["molten-aluminium-smelting-3"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(4, "smelting")},
-    ["molten-aluminium-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(3, "smelting")},
-    ["molten-aluminium-smelting-5"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(5, "smelting")},
+    -- ["molten-aluminium-smelting-3"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(4, "smelting")},
+    -- ["molten-aluminium-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(3, "smelting")},
+    -- ["molten-aluminium-smelting-5"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(5, "smelting")},
 
-    ["molten-iron-smelting-6"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-iron", icon_extras = reskins.angels.num_tier(6, "smelting")},
+    -- ["molten-iron-smelting-6"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-iron", icon_extras = reskins.angels.num_tier(6, "smelting")},
 
-    ["angels-brass-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-brass", icon_extras = reskins.angels.num_tier(4, "smelting")},
+    -- ["angels-brass-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-brass", icon_extras = reskins.angels.num_tier(4, "smelting")},
 
     ["magnesium-pellet-smelting"] = {type = "recipe", subgroup = "ingots/magnesium", image = "ingot-magnesium"},
 }
