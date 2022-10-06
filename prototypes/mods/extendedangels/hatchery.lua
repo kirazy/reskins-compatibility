@@ -51,8 +51,8 @@ for name, map in pairs(tier_map) do
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
     -- Reskin entities
-    entity.animation = nil
-    entity.idle_animation = {
+    entity.idle_animation = nil
+    entity.animation = {
         layers = {
             -- Base
             {

@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.5
 Date: ????
-  Changes:
+  Locale:
+    - Updated Russian localization.
+  Bugfixes:
+    - Fixed that the Angel's Bioprocessing Hatchery textures would disappear when entities were loaded into an unpowered machine.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.4
 Date: 2022-08-16
