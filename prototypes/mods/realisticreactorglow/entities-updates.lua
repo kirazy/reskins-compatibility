@@ -9,10 +9,15 @@ if not (reskins.bobs and reskins.bobs.triggers.power.entities) then return end
 if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then return end
 
 local reactors = {
-    ["nuclear-reactor"] = {base = 1},
-    ["nuclear-reactor-2"] = {base = 2},
-    ["nuclear-reactor-3"] = {base = 3},
+    ["nuclear-reactor"] = {material = "base"},
+    ["nuclear-reactor-2"] = {material = "silver-aluminum"},
+    ["nuclear-reactor-3"] = {material = "gold-copper"},
 }
+
+if reskins.lib.migration.is_version_or_newer(mods["bobpower"], "1.1.6") then
+    reactors["nuclear-reactor"].material = "aluminum-invar"
+    reactors["nuclear-reactor-2"].material = "silver-titanium"
+end
 
 local light_color = ""
 if reskins.lib.setting("RealisticReactorGlow-cyan") then
@@ -20,7 +25,7 @@ if reskins.lib.setting("RealisticReactorGlow-cyan") then
 end
 
 -- Fix lighting
-for name, map in pairs(reactors) do
+for name, mapping in pairs(reactors) do
     local entity = data.raw.reactor[name]
 
     if not entity then goto continue end
@@ -55,7 +60,7 @@ for name, map in pairs(reactors) do
     entity.use_fuel_glow_color = nil
 
     -- Modify the icon
-    local icon_path = reskins.compatibility.directory.."/graphics/icons/realisticreactorglow/nuclear-reactor/nuclear-reactor-"..map.base.."-color"..light_color..".png"
+    local icon_path = reskins.compatibility.directory.."/graphics/icons/realisticreactorglow/nuclear-reactor/nuclear-reactor-"..mapping.material.."-color"..light_color..".png"
     entity.icons[1].icon = icon_path
 
     -- Modify the icon pictures
