@@ -118,11 +118,19 @@ if reskins.compatibility.triggers.minimachines.radar then
     reskins.lib.rescale_minimachine(radars, "radar", 2/3, "radar", "radar")
 
     -- Technologies
-    originated_technologies["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"}
-    linked_technologies["mini-radar-2"] = "radars"
-    linked_technologies["mini-radar-3"] = "radars-2"
-    linked_technologies["mini-radar-4"] = "radars-3"
-    linked_technologies["mini-radar-5"] = "radars-4"
+    if reskins.lib.migration.is_version_or_newer(mods["bobpower"], "1.1.6") then
+        originated_technologies["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"}
+        linked_technologies["mini-radar-2"] = "radars-2"
+        linked_technologies["mini-radar-3"] = "radars-3"
+        linked_technologies["mini-radar-4"] = "radars-4"
+        linked_technologies["mini-radar-5"] = "radars-5"
+    else
+        originated_technologies["mini-radar-1"] = {mod = "bobs", group = "warfare", tier = 1, icon_name = "radar"}
+        linked_technologies["mini-radar-2"] = "radars"
+        linked_technologies["mini-radar-3"] = "radars-2"
+        linked_technologies["mini-radar-4"] = "radars-3"
+        linked_technologies["mini-radar-5"] = "radars-4"
+    end
 end
 
 -- Oil refineries
