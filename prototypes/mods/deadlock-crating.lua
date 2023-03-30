@@ -1,4 +1,4 @@
--- Copyright (c) 2022 Kirazy
+-- Copyright (c) 2023 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -12,22 +12,22 @@ local inputs = {
     type = "assembling-machine",
     base_entity_name = "assembling-machine-1",
     mod = "compatibility",
-    particles = {["big"] = 1, ["medium"] = 2},
+    particles = { ["big"] = 1,["medium"] = 2 },
     make_icons = false,
     make_remnants = false,
 }
 
 local tier_map = {
-    ["deadlock-crating-machine-1"] = {tier = 1},
-    ["deadlock-crating-machine-2"] = {tier = 2},
-    ["deadlock-crating-machine-3"] = {tier = 3},
-    ["deadlock-crating-machine-4"] = {tier = 4},
-    ["deadlock-crating-machine-5"] = {tier = 5},
+    ["deadlock-crating-machine-1"] = { tier = 1 },
+    ["deadlock-crating-machine-2"] = { tier = 2 },
+    ["deadlock-crating-machine-3"] = { tier = 3 },
+    ["deadlock-crating-machine-4"] = { tier = 4 },
+    ["deadlock-crating-machine-5"] = { tier = 5 },
 }
 
 local function light_tint(tint)
     local white = 0.95
-    return {r = (tint.r + white)/2, g = (tint.g + white)/2, b = (tint.b + white)/2}
+    return { r = (tint.r + white) / 2, g = (tint.g + white) / 2, b = (tint.b + white) / 2 }
 end
 
 local function tweak_tint(tint)

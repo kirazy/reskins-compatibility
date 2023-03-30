@@ -1,4 +1,4 @@
--- Copyright (c) 2022 Kirazy
+-- Copyright (c) 2023 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -15,12 +15,12 @@ local inputs = {
 }
 
 local tier_map = {
-    ["basic-transport-belt"] = {tier = 0},
-    ["transport-belt"] = {tier = 1},
-    ["fast-transport-belt"] = {tier = 2},
-    ["express-transport-belt"] = {tier = 3},
-    ["turbo-transport-belt"] = {tier = 4},
-    ["ultimate-transport-belt"] = {tier = 5},
+    ["basic-transport-belt"] = { tier = 0 },
+    ["transport-belt"] = { tier = 1 },
+    ["fast-transport-belt"] = { tier = 2 },
+    ["express-transport-belt"] = { tier = 3 },
+    ["turbo-transport-belt"] = { tier = 4 },
+    ["ultimate-transport-belt"] = { tier = 5 },
 }
 
 reskins.lib.parse_inputs(inputs)
@@ -44,7 +44,7 @@ for name, map in pairs(tier_map) do
             icon_mipmaps = 4,
         },
         {
-            icon = actions.icons_path.."/rubber-belt-mask.png",
+            icon = actions.icons_path .. "/rubber-belt-mask.png",
             icon_size = 64,
             icon_mipmaps = 4,
             tint = inputs.tint,

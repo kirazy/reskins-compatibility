@@ -1,4 +1,4 @@
--- Copyright (c) 2022 Kirazy
+-- Copyright (c) 2023 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE in the project directory for license information.
@@ -12,7 +12,7 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 local inputs = {
     base_entity_name = "underground-belt",
     mod = "compatibility",
-    particles = {["medium"] = 3, ["small"] = 2},
+    particles = { ["medium"] = 3,["small"] = 2 },
     make_icons = false,
     make_remnants = false,
 }
@@ -21,23 +21,23 @@ local inputs = {
 inputs.tier_labels = reskins.lib.setting("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
-    ["basic-transport-belt-loader"] = {tier = 0, is_loader = true, sprite_variant = 1},
-    ["transport-belt-loader"] = {tier = 1, is_loader = true, sprite_variant = 1},
-    ["fast-transport-belt-loader"] = {tier = 2, is_loader = true, sprite_variant = 2},
-    ["express-transport-belt-loader"] = {tier = 3, is_loader = true, sprite_variant = 2},
-    ["turbo-transport-belt-loader"] = {tier = 4, is_loader = true, sprite_variant = 2},
-    ["ultimate-transport-belt-loader"] = {tier = 5, is_loader = true, sprite_variant = 2},
-    ["basic-transport-belt-beltbox"] = {tier = 0, sprite_variant = 1},
-    ["transport-belt-beltbox"] = {tier = 1, sprite_variant = 1},
-    ["fast-transport-belt-beltbox"] = {tier = 2, sprite_variant = 2},
-    ["express-transport-belt-beltbox"] = {tier = 3, sprite_variant = 2},
-    ["turbo-transport-belt-beltbox"] = {tier = 4, sprite_variant = 2},
-    ["ultimate-transport-belt-beltbox"] = {tier = 5, sprite_variant = 2},
+    ["basic-transport-belt-loader"] = { tier = 0, is_loader = true, sprite_variant = 1 },
+    ["transport-belt-loader"] = { tier = 1, is_loader = true, sprite_variant = 1 },
+    ["fast-transport-belt-loader"] = { tier = 2, is_loader = true, sprite_variant = 2 },
+    ["express-transport-belt-loader"] = { tier = 3, is_loader = true, sprite_variant = 2 },
+    ["turbo-transport-belt-loader"] = { tier = 4, is_loader = true, sprite_variant = 2 },
+    ["ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, sprite_variant = 2 },
+    ["basic-transport-belt-beltbox"] = { tier = 0, sprite_variant = 1 },
+    ["transport-belt-beltbox"] = { tier = 1, sprite_variant = 1 },
+    ["fast-transport-belt-beltbox"] = { tier = 2, sprite_variant = 2 },
+    ["express-transport-belt-beltbox"] = { tier = 3, sprite_variant = 2 },
+    ["turbo-transport-belt-beltbox"] = { tier = 4, sprite_variant = 2 },
+    ["ultimate-transport-belt-beltbox"] = { tier = 5, sprite_variant = 2 },
 }
 
 local function light_tint(tint)
     local white = 0.95
-    return {r = (tint.r + white)/2, g = (tint.g + white)/2, b = (tint.b + white)/2}
+    return { r = (tint.r + white) / 2, g = (tint.g + white) / 2, b = (tint.b + white) / 2 }
 end
 
 local function tweak_tint(tint)
