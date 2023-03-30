@@ -39,7 +39,7 @@ for name, map in pairs(tier_map) do
     -- Reskin icon
     inputs.icon = {
         {
-            icon = actions.icons_path.."/rubber-belt.png",
+            icon = actions.icons_path .. "/rubber-belt-" .. inputs.base .. ".png",
             icon_size = 64,
             icon_mipmaps = 4,
         },
