@@ -4,7 +4,7 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["DeadlockCrating"] then return end
+if not mods["DeadlockCrating"] and not mods["IntermodalContainers"] then return end
 if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
 
 -- Set input parameters
@@ -17,13 +17,26 @@ local inputs = {
     make_remnants = false,
 }
 
-local tier_map = {
-    ["deadlock-crating-machine-1"] = { tier = 1 },
-    ["deadlock-crating-machine-2"] = { tier = 2 },
-    ["deadlock-crating-machine-3"] = { tier = 3 },
-    ["deadlock-crating-machine-4"] = { tier = 4 },
-    ["deadlock-crating-machine-5"] = { tier = 5 },
-}
+local tier_map = {}
+
+local root
+if mods["IntermodalContainers"] then
+    root = "__IntermodalContainers__"
+
+    tier_map["ic-containerization-machine-1"] = { tier = 1 }
+    tier_map["ic-containerization-machine-2"] = { tier = 2 }
+    tier_map["ic-containerization-machine-3"] = { tier = 3 }
+    tier_map["ic-containerization-machine-4"] = { tier = 4 }
+    tier_map["ic-containerization-machine-5"] = { tier = 5 }
+elseif mods["DeadlockCrating"] then
+    root = "__DeadlockCrating__"
+
+    tier_map["deadlock-crating-machine-1"] = { tier = 1 }
+    tier_map["deadlock-crating-machine-2"] = { tier = 2 }
+    tier_map["deadlock-crating-machine-3"] = { tier = 3 }
+    tier_map["deadlock-crating-machine-4"] = { tier = 4 }
+    tier_map["deadlock-crating-machine-5"] = { tier = 5 }
+end
 
 local function light_tint(tint)
     local white = 0.95
@@ -61,30 +74,30 @@ for name, map in pairs(tier_map) do
     -- Icon handling
     inputs.icon = {
         {
-            icon = "__DeadlockCrating__/graphics/icons/mipmaps/crating-icon-base.png"
+            icon = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
         },
         {
-            icon = "__DeadlockCrating__/graphics/icons/mipmaps/crating-icon-mask.png",
+            icon = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
             tint = inputs.tint,
-        }
+        },
     }
 
     inputs.icon_picture = {
         layers = {
             {
-                filename = "__DeadlockCrating__/graphics/icons/mipmaps/crating-icon-base.png",
+                filename = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
                 size = 64,
                 scale = 0.25,
                 mipmaps = 4,
             },
             {
-                filename = "__DeadlockCrating__/graphics/icons/mipmaps/crating-icon-mask.png",
+                filename = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
                 size = 64,
                 scale = 0.25,
                 mipmaps = 4,
-                tint = inputs.tint
-            }
-        }
+                tint = inputs.tint,
+            },
+        },
     }
 
     reskins.lib.append_tier_labels(map.tier, inputs)
