@@ -48,7 +48,25 @@ for name, map in pairs(tier_map) do
             icon_size = 64,
             icon_mipmaps = 4,
             tint = inputs.tint,
-        }
+        },
+    }
+
+    inputs.icon_picture = {
+        layers = {
+            {
+                filename = actions.icons_path .. "/rubber-belt-" .. inputs.base .. ".png",
+                size = 64,
+                mipmaps = 4,
+                scale = 0.25,
+            },
+            {
+                filename = actions.icons_path .. "/rubber-belt-mask.png",
+                size = 64,
+                mipmaps = 4,
+                scale = 0.25,
+                tint = inputs.tint,
+            },
+        },
     }
 
     reskins.lib.append_tier_labels(map.tier, inputs)

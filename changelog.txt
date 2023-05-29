@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.9
 Date: ????
-  Changes:
+  Bugfixes:
+    - Fixed that the item-on-ground icons for transport belts when used with Black Rubber Belts were broken.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.8
 Date: 2023-04-13
