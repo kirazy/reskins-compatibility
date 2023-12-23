@@ -8,6 +8,7 @@ require("prototypes.functions.functions")
 require("prototypes.functions.circuitprocessing-sprites")
 
 -- Mods
+require("prototypes.mods.aai-loaders")
 require("prototypes.mods.classic-beacon")
 require("prototypes.mods.classic-mining-drill")
 -- require("prototypes.mods.electricboiler")

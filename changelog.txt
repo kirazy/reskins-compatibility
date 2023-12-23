@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.10
 Date: ????
+  Features:
+    - Added support for AAI Loaders and AAI Loaders: Bob's Logistics, reskins-bobs#45
   Changes:
     - Internal updates to reflect changes to Artisanal Reskins: Library, now depends on version 2.1.6
 ---------------------------------------------------------------------------------------------------
