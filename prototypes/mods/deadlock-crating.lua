@@ -12,7 +12,7 @@ local inputs = {
     type = "assembling-machine",
     base_entity_name = "assembling-machine-1",
     mod = "compatibility",
-    particles = { ["big"] = 1,["medium"] = 2 },
+    particles = { ["big"] = 1, ["medium"] = 2 },
     make_icons = false,
     make_remnants = false,
 }
@@ -72,35 +72,24 @@ for name, map in pairs(tier_map) do
     entity.working_visualisations[1].light.color = light_tint(inputs.tint)
 
     -- Icon handling
-    inputs.icon = {
+    ---@type data.IconData[]
+    local icons = {
         {
             icon = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
         },
         {
             icon = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
             tint = inputs.tint,
         },
     }
 
-    inputs.icon_picture = {
-        layers = {
-            {
-                filename = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
-                size = 64,
-                scale = 0.25,
-                mipmaps = 4,
-            },
-            {
-                filename = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
-                size = 64,
-                scale = 0.25,
-                mipmaps = 4,
-                tint = inputs.tint,
-            },
-        },
-    }
+    inputs.icon = reskins.lib.add_tier_labels_to_icons(icons, map.tier)
+    inputs.icon_picture = reskins.lib.convert_icons_to_sprite(icons, 0.25)
 
-    reskins.lib.append_tier_labels(map.tier, inputs)
     reskins.lib.assign_icons(name, inputs)
 
     -- Tech handling

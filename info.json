@@ -8,7 +8,7 @@
     "homepage": "",
     "dependencies": [
         "base",
-        "reskins-library >= 2.1.0",
+        "reskins-library >= 2.1.6",
         "(?) reskins-bobs",
         "(?) reskins-angels",
         "? aai-industry",

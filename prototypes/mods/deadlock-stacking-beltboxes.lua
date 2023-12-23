@@ -12,7 +12,7 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 local inputs = {
     base_entity_name = "underground-belt",
     mod = "compatibility",
-    particles = { ["medium"] = 3,["small"] = 2 },
+    particles = { ["medium"] = 3, ["small"] = 2 },
     make_icons = false,
     make_remnants = false,
 }
@@ -79,33 +79,23 @@ for name, map in pairs(tier_map) do
         -- entity.belt_animation_set = reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
 
         -- Icon handling
-        inputs.icon = {
+        ---@type data.IconData[]
+        local icons = {
             {
-                icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png"
+                icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png",
+                icon_size = 64,
+                icon_mipmaps = 4,
             },
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-mask.png",
+                icon_size = 64,
+                icon_mipmaps = 4,
                 tint = inputs.tint,
-            }
+            },
         }
 
-        inputs.icon_picture = {
-            layers = {
-                {
-                    filename = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png",
-                    size = 64,
-                    scale = 0.25,
-                    mipmaps = 4,
-                },
-                {
-                    filename = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-mask.png",
-                    size = 64,
-                    scale = 0.25,
-                    mipmaps = 4,
-                    tint = inputs.tint
-                }
-            }
-        }
+        inputs.icon = reskins.lib.add_tier_labels_to_icons(icons, map.tier)
+        inputs.icon_picture = reskins.lib.convert_icons_to_sprite(icons, 0.25)
     else
         -- Retint the mask
         entity.animation.layers[2].tint = inputs.tint
@@ -115,36 +105,25 @@ for name, map in pairs(tier_map) do
         entity.working_visualisations[1].light.color = light_tint(inputs.tint)
 
         -- Icon handling
-        inputs.icon = {
+        ---@type data.IconData[]
+        local icons = {
             {
-                icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-base.png"
+                icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-base.png",
+                icon_size = 64,
+                icon_mipmaps = 4,
             },
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-mask.png",
+                icon_size = 64,
+                icon_mipmaps = 4,
                 tint = inputs.tint,
-            }
+            },
         }
 
-        inputs.icon_picture = {
-            layers = {
-                {
-                    filename = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-base.png",
-                    size = 64,
-                    scale = 0.25,
-                    mipmaps = 4,
-                },
-                {
-                    filename = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-mask.png",
-                    size = 64,
-                    scale = 0.25,
-                    mipmaps = 4,
-                    tint = inputs.tint
-                }
-            }
-        }
+        inputs.icon = reskins.lib.add_tier_labels_to_icons(icons, map.tier)
+        inputs.icon_picture = reskins.lib.convert_icons_to_sprite(icons, 0.25)
     end
 
-    reskins.lib.append_tier_labels(map.tier, inputs)
     reskins.lib.assign_icons(name, inputs)
 
     -- Label to skip to next iteration
