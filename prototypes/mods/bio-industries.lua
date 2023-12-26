@@ -527,5 +527,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 end
 
 -- Recipe fixes
-data.raw.recipe["bi-bio-boiler"].normal.main_product = nil
-data.raw.recipe["bi-bio-boiler"].expensive.main_product = nil
+if data.raw.recipe["bi-bio-boiler"] then -- The recipe will not exist if the startup setting BI_Bio_Fuel is disabled 
+    data.raw.recipe["bi-bio-boiler"].normal.main_product = nil
+    data.raw.recipe["bi-bio-boiler"].expensive.main_product = nil
+end
