@@ -1,4 +1,4 @@
--- Copyright (c) 2023 Kirazy
+-- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
 -- See LICENSE.md in the project directory for license information.
