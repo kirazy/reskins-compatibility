@@ -80,7 +80,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-mask.png",
                     line_length = 8,
                     width = 98,
                     height = 113,
@@ -92,7 +92,7 @@ local function drill_animations(inputs)
                     tint = inputs.tint,
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-mask.png",
                         line_length = 8,
                         width = 196,
                         height = 226,
@@ -108,7 +108,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-highlights.png",
                     line_length = 8,
                     width = 98,
                     height = 113,
@@ -117,10 +117,10 @@ local function drill_animations(inputs)
                     direction_count = 1,
                     shift = util.by_pixel(0, -8.5),
                     run_mode = "forward-then-backward",
-                    blend_mode = reskins.lib.blend_mode, -- "additive",
+                    blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-highlights.png",
                         line_length = 8,
                         width = 196,
                         height = 226,
@@ -129,7 +129,7 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(0, -8),
                         run_mode = "forward-then-backward",
-                        blend_mode = reskins.lib.blend_mode, -- "additive",
+                        blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         scale = 0.5
                     }
                 },
@@ -196,7 +196,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-mask.png",
                     line_length = 8,
                     width = 105,
                     height = 98,
@@ -208,7 +208,7 @@ local function drill_animations(inputs)
                     run_mode = "forward-then-backward",
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-mask.png",
                         line_length = 8,
                         width = 211,
                         height = 197,
@@ -224,7 +224,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-highlights.png",
                     line_length = 8,
                     width = 105,
                     height = 98,
@@ -233,10 +233,10 @@ local function drill_animations(inputs)
                     direction_count = 1,
                     shift = util.by_pixel(3.5, -1),
                     run_mode = "forward-then-backward",
-                    blend_mode = reskins.lib.blend_mode, -- "additive",
+                    blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-highlights.png",
                         line_length = 8,
                         width = 211,
                         height = 197,
@@ -245,7 +245,7 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(3.75, -1.25),
                         run_mode = "forward-then-backward",
-                        blend_mode = reskins.lib.blend_mode, -- "additive",
+                        blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         scale = 0.5
                     }
                 },
@@ -312,7 +312,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-mask.png",
                     line_length = 8,
                     width = 98,
                     height = 109,
@@ -324,7 +324,7 @@ local function drill_animations(inputs)
                     tint = inputs.tint,
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-mask.png",
                         line_length = 8,
                         width = 196,
                         height = 219,
@@ -340,7 +340,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-highlights.png",
                     line_length = 8,
                     width = 98,
                     height = 109,
@@ -349,10 +349,10 @@ local function drill_animations(inputs)
                     direction_count = 1,
                     shift = util.by_pixel(0, -1.5),
                     run_mode = "forward-then-backward",
-                    blend_mode = reskins.lib.blend_mode, -- "additive",
+                    blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-highlights.png",
                         line_length = 8,
                         width = 196,
                         height = 219,
@@ -361,7 +361,7 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(0, -1.25),
                         run_mode = "forward-then-backward",
-                        blend_mode = reskins.lib.blend_mode, -- "additive",
+                        blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         scale = 0.5
                     }
                 },
@@ -428,7 +428,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-mask.png",
                     line_length = 8,
                     width = 105,
                     height = 98,
@@ -440,7 +440,7 @@ local function drill_animations(inputs)
                     tint = inputs.tint,
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-mask.png",
                         line_length = 8,
                         width = 211,
                         height = 197,
@@ -456,7 +456,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-highlights.png",
                     line_length = 8,
                     width = 105,
                     height = 98,
@@ -465,10 +465,10 @@ local function drill_animations(inputs)
                     direction_count = 1,
                     shift = util.by_pixel(-3.5, -1),
                     run_mode = "forward-then-backward",
-                    blend_mode = reskins.lib.blend_mode, -- "additive",
+                    blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                     hr_version = {
                         priority = "high",
-                        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-highlights.png",
                         line_length = 8,
                         width = 211,
                         height = 197,
@@ -477,7 +477,7 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-3.75, -0.75),
                         run_mode = "forward-then-backward",
-                        blend_mode = reskins.lib.blend_mode, -- "additive",
+                        blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         scale = 0.5
                     }
                 },
@@ -519,7 +519,7 @@ end
 local area_drill_animations = {
     north = {
         priority = "high",
-        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-N.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-N.png",
         line_length = 8,
         width = 98,
         height = 113,
@@ -530,7 +530,7 @@ local area_drill_animations = {
         run_mode = "forward-then-backward",
         hr_version = {
             priority = "high",
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-N.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-N.png",
             line_length = 8,
             width = 196,
             height = 226,
@@ -544,7 +544,7 @@ local area_drill_animations = {
     },
     east = {
         priority = "high",
-        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-E.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-E.png",
         line_length = 8,
         width = 105,
         height = 98,
@@ -555,7 +555,7 @@ local area_drill_animations = {
         run_mode = "forward-then-backward",
         hr_version = {
             priority = "high",
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-E.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-E.png",
             line_length = 8,
             width = 211,
             height = 197,
@@ -569,7 +569,7 @@ local area_drill_animations = {
     },
     south = {
         priority = "high",
-        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-S.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-S.png",
         line_length = 8,
         width = 98,
         height = 109,
@@ -580,7 +580,7 @@ local area_drill_animations = {
         run_mode = "forward-then-backward",
         hr_version = {
             priority = "high",
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-S.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-S.png",
             line_length = 8,
             width = 196,
             height = 219,
@@ -594,7 +594,7 @@ local area_drill_animations = {
     },
     west = {
         priority = "high",
-        filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-W.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-W.png",
         line_length = 8,
         width = 105,
         height = 98,
@@ -605,7 +605,7 @@ local area_drill_animations = {
         run_mode = "forward-then-backward",
         hr_version = {
             priority = "high",
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-W.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-W.png",
             line_length = 8,
             width = 211,
             height = 197,
@@ -657,7 +657,7 @@ for name, map in pairs(tier_map) do
 
     -- Parse map
     local tier = map[1]
-    if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+    if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
         tier = map[2]
     end
 
@@ -667,11 +667,11 @@ for name, map in pairs(tier_map) do
         inputs.icon_extras = {
             -- Type indicator
             {
-                icon = reskins.bobs.directory .. "/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png"
+                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png"
             },
             {
-                icon = reskins.bobs.directory .. "/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png",
-                tint = util.get_color_with_alpha(reskins.lib.tint_index[tier], 0.75)
+                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png",
+                tint = util.get_color_with_alpha(reskins.lib.tiers.get_tint(tier), 0.75)
             }
         }
     else
@@ -680,7 +680,7 @@ for name, map in pairs(tier_map) do
     end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.tint_index[tier]
+    inputs.tint = reskins.lib.tiers.get_tint(tier)
 
     reskins.lib.setup_standard_entity(name, tier, inputs)
 

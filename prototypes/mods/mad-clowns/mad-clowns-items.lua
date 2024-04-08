@@ -6,7 +6,7 @@
 -- Check to see if reskinning needs to be done.
 if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then return end
 
--- Setup inputs and constants
+---@type CreateIconsFromListInputs
 local inputs = {
     mod = "compatibility",
     group = "mad-clowns",
@@ -14,37 +14,40 @@ local inputs = {
     flat_icon = true,
 }
 
+---@type CreateIconsFromListTable
 local intermediates = {
-    ----------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
     -- Intermediates
-    ----------------------------------------------------------------------------------------------------
-    -- Processed Ores
+    ------------------------------------------------------------------------------------------------
     ["processed-depleted-uranium"] = { subgroup = "processed-ores" },
     ["processed-magnesium"] = { subgroup = "processed-ores" },
     ["processed-osmium"] = { subgroup = "processed-ores" },
-    -- Powders
+
     ["powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium" },
     ["casting-powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture" },
     ["powder-osmium"] = { subgroup = "powders/osmium" },
     ["casting-powder-osmium"] = { subgroup = "powders/osmium-mixture", image = "powder-osmium-mixture" },
-    -- Plates
+
     ["clowns-plate-depleted-uranium"] = { subgroup = "plates" },
     ["clowns-plate-magnesium"] = { subgroup = "plates" },
     ["clowns-plate-osmium"] = { subgroup = "plates" },
-    -- Liquid Molten
+
     ["liquid-molten-magnesium"] = { type = "fluid", subgroup = "liquid-material" },
-    -- Pellets
+
     ["pellet-depleted-uranium"] = { subgroup = "pellets" },
     ["pellet-magnesium"] = { subgroup = "pellets" },
     ["pellet-osmium"] = { subgroup = "pellets" },
-    -- Ingots
+
     ["ingot-magnesium"] = { subgroup = "ingots/magnesium" },
-    ----------------------------------------------------------------------------------------------------
+
+    ------------------------------------------------------------------------------------------------
     -- Recipes
-    ----------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
     ["pellet-magnesium-titanium-smelting"] = { type = "recipe", mod = "angels", group = "smelting", subgroup = "ingots/titanium", image = "ingot-titanium", icon_extras = reskins.angels.num_tier(3, "smelting") },
+
     ["casting-powder-depleted-uranium-1"] = { type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(1, "smelting") },
     ["casting-powder-depleted-uranium-2"] = { type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(2, "smelting") },
+
     -- ["molten-aluminium-smelting-3"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(4, "smelting")},
     -- ["molten-aluminium-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(3, "smelting")},
     -- ["molten-aluminium-smelting-5"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(5, "smelting")},
@@ -56,7 +59,7 @@ local intermediates = {
     ["magnesium-pellet-smelting"] = { type = "recipe", subgroup = "ingots/magnesium", image = "ingot-magnesium" },
 }
 
-reskins.lib.create_icons_from_list(intermediates, inputs)
+reskins.internal.create_icons_from_list(intermediates, inputs)
 
 -- local composite_recipes = {}
 
@@ -65,7 +68,7 @@ reskins.lib.create_icons_from_list(intermediates, inputs)
 -- end
 
 -- Make variations for ingots
-if reskins.lib.setting("reskins-angels-use-item-variations") then
+if reskins.lib.settings.get_value("reskins-angels-use-item-variations") then
     local ingot_variations = {
         "magnesium",
     }
@@ -77,16 +80,16 @@ if reskins.lib.setting("reskins-angels-use-item-variations") then
         -- Setup initial pictures table with primary icon
         item.pictures = {
             {
-                filename = reskins.compatibility.directory .. "/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. ".png",
+                filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. ".png",
                 size = 64,
                 mipmap_count = 4,
                 scale = 0.25,
-            }
+            },
         }
 
         for i = 1, 8, 1 do
             table.insert(item.pictures, {
-                filename = reskins.compatibility.directory .. "/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. "-" .. i .. ".png",
+                filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. "-" .. i .. ".png",
                 size = 64,
                 mipmap_count = 4,
                 scale = 0.25,
@@ -114,7 +117,7 @@ for powder, material in pairs(powder_variations) do
 
     for i = 1, 6, 1 do
         table.insert(item.pictures, {
-            filename = reskins.compatibility.directory .. "/graphics/icons/mad-clowns/powders/" .. material .. "/powder-" .. material .. "-" .. i .. ".png",
+            filename = "__reskins-compatibility__/graphics/icons/mad-clowns/powders/" .. material .. "/powder-" .. material .. "-" .. i .. ".png",
             size = 64,
             mipmap_count = 4,
             scale = 0.25,
@@ -123,18 +126,3 @@ for powder, material in pairs(powder_variations) do
 
     ::continue::
 end
-
--- -- Clear recipe icons
--- local recipes = {
---     "magnesium-pellet-smelting",
--- }
-
--- for _, name in pairs(recipes) do
---     local recipe = data.raw.recipe[name]
---     if not recipe then goto continue end
-
---     recipe.icon = nil
---     recipe.icons = nil
-
---     ::continue::
--- end

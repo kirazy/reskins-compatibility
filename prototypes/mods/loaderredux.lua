@@ -21,14 +21,14 @@ local inputs = {
 }
 
 -- Handle belt tier labels
-inputs.tier_labels = reskins.lib.setting("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
-    ["loader"] = { tier = 1, sprite_variant = 1 },
-    ["fast-loader"] = { tier = 2, sprite_variant = 2 },
-    ["express-loader"] = { tier = 3, sprite_variant = 2, },
-    ["purple-loader"] = { tier = 4, sprite_variant = 2 },
-    ["green-loader"] = { tier = 5, sprite_variant = 2 },
+    ["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
+    ["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
+    ["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express, },
+    ["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
+    ["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }
 
 -- Reskin entities
@@ -40,7 +40,7 @@ for name, map in pairs(tier_map) do
     if not entity then goto continue end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[map.tier]
+    inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
@@ -51,7 +51,7 @@ for name, map in pairs(tier_map) do
     entity.structure.direction_out.sheets[2].hr_version.tint = inputs.tint
 
     -- Apply belt set
-    -- entity.belt_animation_set = reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
+    -- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
     -- Label to skip to next iteration
     ::continue::

@@ -25,7 +25,7 @@ local tier_map = {
 }
 
 -- Adjust for changes in Extended Angels due to modifications to ingredients in Angel's Bioprocessing 0.7.23
-if reskins.lib.migration.is_version_or_newer(mods["extendedangels"], "0.5.8") then
+if reskins.lib.version.is_same_or_newer(mods["extendedangels"], "0.5.8") then
     tier_map["bio-butchery"].prog_tier = 2
     tier_map["bio-butchery-2"].prog_tier = 3
     tier_map["bio-butchery-3"].prog_tier = 4
@@ -41,12 +41,12 @@ for name, map in pairs(tier_map) do
 
     -- Handle tier
     local tier = map.tier
-    if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+    if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
         tier = map.prog_tier or map.tier
     end
 
     -- Determine what tint we're using
-    inputs.tint = map.tint or reskins.lib.tint_index[tier]
+    inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
 
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
@@ -59,7 +59,7 @@ for name, map in pairs(tier_map) do
                 layers = {
                     -- Base patch
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/butchery/butchery-base-patch.png",
+                        filename = "__reskins-compatibility__/graphics/entity/extendedangels/butchery/butchery-base-patch.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,
@@ -67,7 +67,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Mask
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/butchery/butchery-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/extendedangels/butchery/butchery-mask.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,
@@ -76,12 +76,12 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/butchery/butchery-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/extendedangels/butchery/butchery-highlights.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,
                         shift = { 0, 0 },
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                     }
                 }
             }

@@ -39,7 +39,7 @@ for name, map in pairs(tier_map) do
 
     -- Handle tier
     local tier = map.tier
-    if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+    if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
         tier = map.prog_tier or map.tier
     end
 
@@ -47,7 +47,7 @@ for name, map in pairs(tier_map) do
     inputs.icon_name = "tree-generator-" .. map.field
 
     -- Determine what tint we're using
-    inputs.tint = map.tint or reskins.lib.tint_index[tier]
+    inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
 
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
@@ -73,7 +73,7 @@ for name, map in pairs(tier_map) do
                 shift = { 0, 0 },
             },
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/tree-generator/tree-generator-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/extendedangels/tree-generator/tree-generator-mask.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -83,14 +83,14 @@ for name, map in pairs(tier_map) do
                 tint = inputs.tint,
             },
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/tree-generator/tree-generator-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/extendedangels/tree-generator/tree-generator-highlights.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
                 line_length = 1,
                 frame_count = 1,
                 shift = { 0, 0 },
-                blend_mode = reskins.lib.blend_mode,
+                blend_mode = reskins.lib.settings.blend_mode,
             },
             {
                 filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-pipes.png",

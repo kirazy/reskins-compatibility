@@ -17,6 +17,3 @@ require("prototypes.mods.nauvisday")
 require("prototypes.mods.p-u-m-p-s")
 require("prototypes.mods.realisticreactorglow.entities-updates")
 require("prototypes.mods.realisticreactorglow.technology-updates")
-
--- Assign deferred icons
-reskins.lib.assign_deferred_icons("compatibility", "data-updates")

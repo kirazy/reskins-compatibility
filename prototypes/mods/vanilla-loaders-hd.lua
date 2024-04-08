@@ -19,15 +19,15 @@ local inputs = {
 }
 
 -- Handle belt tier labels
-inputs.tier_labels = reskins.lib.setting("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
-    ["basic-loader"] = { tier = 0, sprite_variation = 1 },
-    ["loader"] = { tier = 1, sprite_variation = 1 },
-    ["fast-loader"] = { tier = 2, sprite_variation = 2 },
-    ["express-loader"] = { tier = 3, sprite_variation = 2 },
-    ["purple-loader"] = { tier = 4, sprite_variation = 2 },
-    ["green-loader"] = { tier = 5, sprite_variation = 2 },
+    ["basic-loader"] = { tier = 0, set_type = reskins.lib.defines.belt_sprites.standard },
+    ["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
+    ["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
+    ["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
+    ["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
+    ["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }
 
 -- Reskin entities
@@ -39,7 +39,7 @@ for name, map in pairs(tier_map) do
     if not entity then goto continue end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[map.tier]
+    inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
@@ -47,12 +47,12 @@ for name, map in pairs(tier_map) do
     entity.structure.direction_in.sheets = {
         -- Base
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -61,13 +61,13 @@ for name, map in pairs(tier_map) do
         },
         -- Mask
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             tint = inputs.tint,
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -77,13 +77,13 @@ for name, map in pairs(tier_map) do
         },
         -- Highlights
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             blend_mode = "additive",
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -112,13 +112,13 @@ for name, map in pairs(tier_map) do
     entity.structure.direction_out.sheets = {
         -- Base
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             y = 96,
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -128,14 +128,14 @@ for name, map in pairs(tier_map) do
         },
         -- Mask
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             y = 96,
             tint = inputs.tint,
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -146,14 +146,14 @@ for name, map in pairs(tier_map) do
         },
         -- Highlights
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
             priority = "extra-high",
             width = 106,
             height = 96,
             y = 96,
             blend_mode = "additive",
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
                 priority = "extra-high",
                 width = 212,
                 height = 192,
@@ -183,7 +183,7 @@ for name, map in pairs(tier_map) do
     }
 
     -- Apply belt set
-    -- entity.belt_animation_set = reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
+    -- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
     -- Label to skip to next iteration
     ::continue::

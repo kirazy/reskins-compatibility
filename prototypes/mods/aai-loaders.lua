@@ -21,16 +21,16 @@ for name, map in pairs(loaders) do
 
     if reskins.bobs and (reskins.bobs.triggers.logistics.entities == true) then
         if loader and loader.icons and loader.icons[2] then
-            loader.icons[2].tint = reskins.lib.belt_tint_index[map.tier]
+            loader.icons[2].tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
-            reskins.lib.add_tier_labels_to_entity(name, "loader-1x1", map.tier)
+            reskins.lib.tiers.add_tier_labels_to_prototype_by_reference(map.tier, loader)
         end
     end
 
     local technology = data.raw["technology"][name]
     if reskins.bobs and (reskins.bobs.triggers.logistics.technology == true) then
         if technology and technology.icons and technology.icons[2] then
-            technology.icons[2].tint = reskins.lib.belt_tint_index[map.tier]
+            technology.icons[2].tint = reskins.lib.tiers.get_belt_tint(map.tier)
         end
     end
 end

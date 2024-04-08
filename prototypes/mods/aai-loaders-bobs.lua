@@ -24,6 +24,6 @@ for name, map in pairs(loaders) do
             loader.icons[3] = nil
         end
 
-        reskins.lib.add_tier_labels_to_entity(name, "loader-1x1", map.tier)
+        reskins.lib.tiers.add_tier_labels_to_prototype_by_reference(map.tier, loader)
     end
 end

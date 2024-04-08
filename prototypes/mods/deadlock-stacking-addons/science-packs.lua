@@ -8,6 +8,7 @@ if not mods["deadlock-beltboxes-loaders"] then return end
 if mods["ScienceCostTweakerM"] then return end
 if not (reskins.bobs and reskins.bobs.triggers.technology.items) then return end
 
+---@type CreateIconsFromListInputs
 local inputs = {
     mod = "compatibility",
     group = "deadlock-stacking",
@@ -17,24 +18,27 @@ local inputs = {
     tier_labels = false,
 }
 
+---@type data.IconData[]
 local recipe_stack_icon_extras = {
     {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
         icon_size = 64,
         icon_mipmaps = 1,
         scale = 0.25,
-    }
+    },
 }
 
+---@type data.IconData[]
 local recipe_unstack_icon_extras = {
     {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",
         icon_size = 64,
         icon_mipmaps = 1,
         scale = 0.25,
-    }
+    },
 }
 
+---@type CreateIconsFromListTable
 local science_packs = {
     ["automation-science-pack"] = {},
     ["logistic-science-pack"] = {},
@@ -46,7 +50,7 @@ local science_packs = {
     ["space-science-pack"] = {},
 }
 
-if reskins.lib.setting("bobmods-enemies-enablenewartifacts") == true then
+if reskins.lib.settings.get_value("bobmods-enemies-enablenewartifacts") == true then
     science_packs["alien-science-pack"] = {}
     science_packs["alien-science-pack-blue"] = {}
     science_packs["alien-science-pack-orange"] = {}
@@ -57,8 +61,8 @@ if reskins.lib.setting("bobmods-enemies-enablenewartifacts") == true then
     science_packs["science-pack-gold"] = {}
 end
 
-if reskins.lib.setting("bobmods-tech-colorupdate") == true then
-    if reskins.lib.setting("reskins-lib-customize-tier-colors") == true then
+if reskins.lib.settings.get_value("bobmods-tech-colorupdate") == true then
+    if reskins.lib.settings.get_value("reskins-lib-customize-tier-colors") == true then
         science_packs["automation-science-pack"] = { tier = 1 }
         science_packs["logistic-science-pack"] = { tier = 2 }
         science_packs["chemical-science-pack"] = { tier = 3 }
@@ -73,10 +77,11 @@ if reskins.lib.setting("bobmods-tech-colorupdate") == true then
     end
 end
 
-if reskins.lib.setting("bobmods-burnerphase") == true then
+if reskins.lib.settings.get_value("bobmods-burnerphase") == true then
     science_packs["steam-science-pack"] = {}
 end
 
+---@type CreateIconsFromListTable
 local stacking_items = {}
 
 for name, map in pairs(science_packs) do
@@ -88,7 +93,7 @@ for name, map in pairs(science_packs) do
     -- Check if item exists, if not, skip this iteration
     if not data.raw.item[item_name] then goto continue end
 
-    -- Setup paramters
+    ---@type CreateIconsFromListOverrides
     local parameters = {}
     if map.tier then
         -- We're working with the layered icons
@@ -113,4 +118,4 @@ for name, map in pairs(science_packs) do
     ::continue::
 end
 
-reskins.lib.create_icons_from_list(stacking_items, inputs)
+reskins.internal.create_icons_from_list(stacking_items, inputs)

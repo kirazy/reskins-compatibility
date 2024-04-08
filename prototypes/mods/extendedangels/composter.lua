@@ -34,12 +34,12 @@ for name, map in pairs(tier_map) do
 
     -- Handle tier
     local tier = map.tier
-    if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+    if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
         tier = map.prog_tier or map.tier
     end
 
     -- Determine what tint we're using
-    inputs.tint = map.tint or reskins.lib.tint_index[tier]
+    inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
 
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
@@ -52,7 +52,7 @@ for name, map in pairs(tier_map) do
                 layers = {
                     -- Mask
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/composter/composter-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/extendedangels/composter/composter-mask.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,
@@ -61,12 +61,12 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/extendedangels/composter/composter-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/extendedangels/composter/composter-highlights.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,
                         shift = { 0, 0 },
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                     }
                 }
             }

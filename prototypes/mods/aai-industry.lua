@@ -38,7 +38,7 @@ entity.animation = {
         },
         -- Shadow
         {
-            filename = reskins.bobs.directory .. "/graphics/entity/assembly/assembling-machine/shadows/assembling-machine-0-shadow.png",
+            filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/assembling-machine-0-shadow.png",
             priority = "high",
             width = 132,
             height = 83,
@@ -47,7 +47,7 @@ entity.animation = {
             draw_as_shadow = true,
             shift = util.by_pixel(27, 5),
             hr_version = {
-                filename = reskins.bobs.directory .. "/graphics/entity/assembly/assembling-machine/shadows/hr-assembling-machine-0-shadow.png",
+                filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/hr-assembling-machine-0-shadow.png",
                 priority = "high",
                 width = 264,
                 height = 165,
@@ -107,7 +107,7 @@ entity.energy_source.smoke = {
 
 -- Rescale as needed
 if reskins.bobs.triggers.assembly.burner_assembling_machine_is_small then
-    reskins.lib.rescale_entity(entity.animation, 2 / 3)
-    reskins.lib.rescale_entity(entity.working_visualisations, 2 / 3)
-    reskins.lib.rescale_entity(entity.energy_source.smoke, 2 / 3)
+    reskins.lib.prototypes.rescale_prototype(entity.animation, 2 / 3)
+    reskins.lib.prototypes.rescale_prototype(entity.working_visualisations, 2 / 3)
+    reskins.lib.prototypes.rescale_prototype(entity.energy_source.smoke, 2 / 3)
 end

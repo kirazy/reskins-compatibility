@@ -7,7 +7,7 @@
 if not mods["extendedangels"] then return end
 if not (reskins.angels and reskins.angels.triggers.smelting.items) then return end
 
--- Setup inputs and constants
+---@type CreateIconsFromListInputs
 local inputs = {
     mod = "compatibility",
     group = "extendedangels",
@@ -15,6 +15,7 @@ local inputs = {
     flat_icon = true,
 }
 
+---@type CreateIconsFromListTable
 local intermediates = {
     -- Items
     ["powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide" },
@@ -24,7 +25,7 @@ local intermediates = {
     ["tungsten-carbide-smelting-3"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(3, "smelting") },
 }
 
-reskins.lib.create_icons_from_list(intermediates, inputs)
+reskins.internal.create_icons_from_list(intermediates, inputs)
 
 -- Setup powder variations
 local powder = data.raw.item["powder-tungsten-carbide"]
@@ -34,7 +35,7 @@ if powder then
 
     for i = 1, 6, 1 do
         table.insert(powder.pictures, {
-            filename = reskins.compatibility.directory .. "/graphics/icons/extendedangels/powders/tungsten-carbide/powder-tungsten-carbide-" .. i .. ".png",
+            filename = "__reskins-compatibility__/graphics/icons/extendedangels/powders/tungsten-carbide/powder-tungsten-carbide-" .. i .. ".png",
             size = 64,
             mipmap_count = 4,
             scale = 0.25,

@@ -60,7 +60,7 @@ for name, map in pairs(tier_map) do
     if not entity then goto continue end
 
     -- Determine what tint we're using
-    inputs.tint = tweak_tint(reskins.lib.belt_tint_index[map.tier])
+    inputs.tint = tweak_tint(reskins.lib.tiers.get_belt_tint(map.tier))
 
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
@@ -78,19 +78,26 @@ for name, map in pairs(tier_map) do
             icon = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
             icon_size = 64,
             icon_mipmaps = 4,
+            scale = 0.5,
         },
         {
             icon = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
             icon_size = 64,
             icon_mipmaps = 4,
+            scale = 0.5,
             tint = inputs.tint,
         },
     }
 
-    inputs.icon = reskins.lib.add_tier_labels_to_icons(icons, map.tier)
-    inputs.icon_picture = reskins.lib.convert_icons_to_sprite(icons, 0.25)
+    ---@type DeferrableIconData
+    local deferrable_icon = {
+        name = entity.name,
+        type_name = entity.type,
+        icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, icons),
+        picture = reskins.lib.sprites.create_sprite_from_icons(icons, 0.5),
+    }
 
-    reskins.lib.assign_icons(name, inputs)
+    reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
 
     -- Tech handling
     local technology = data.raw.technology[string.gsub(name, "machine%-", "")]
@@ -99,5 +106,85 @@ for name, map in pairs(tier_map) do
     technology.icons[2].tint = inputs.tint
 
     -- Label to skip to next iteration
+    ::continue::
+end
+
+-- Regenerate the crate icons with correct scaling.
+
+local function crate_item_base_layer()
+    return {
+        icon = "__DeadlockCrating__/graphics/icons/mipmaps/crate.png",
+        icon_size = 64,
+        icon_mipmaps = 4,
+        scale = 0.5,
+    }
+end
+
+local function pack_crate_recipe_label()
+    return {
+        icon = "__DeadlockCrating__/graphics/icons/square/arrow-d-64.png",
+        icon_size = 64,
+        scale = 0.25,
+        shift = { 0, 4 },
+    }
+end
+
+local function unpack_crate_recipe_label()
+    return {
+        icon = "__DeadlockCrating__/graphics/icons/square/arrow-u-64.png",
+        icon_size = 64,
+        scale = 0.25,
+        shift = { 0, -4 },
+    }
+end
+
+
+local function update_crate_icons(name, icons, picture)
+    local crate_item = data.raw.item[string.format("deadlock-crate-%s", name)]
+    if crate_item then
+        crate_item.icons = icons
+        crate_item.pictures = picture
+    end
+
+    local pack_recipe = data.raw.recipe[string.format("deadlock-packrecipe-%s", name)]
+    if pack_recipe then
+        local pack_icons = util.copy(icons)
+        table.insert(pack_icons, pack_crate_recipe_label())
+
+        pack_recipe.icons = pack_icons
+    end
+
+    local unpack_recipe = data.raw.recipe[string.format("deadlock-unpackrecipe-%s", name)]
+    if unpack_recipe then
+        local unpack_icons = util.copy(icons)
+        table.insert(unpack_icons, unpack_crate_recipe_label())
+
+        unpack_recipe.icons = unpack_icons
+    end
+end
+
+for name, _ in pairs(data.raw.item) do
+    if not name:find("deadlock%-crate%-") then goto continue end
+
+    local item_name = name:gsub("deadlock%-crate%-", "")
+    local item = data.raw.item[item_name]
+    if item then
+        local icon_data = reskins.lib.icons.get_icon_from_prototype_by_reference(item)
+
+        -- Get icon. Get tier. Clean icon. Rebuild icon. Add label. Update.
+        local removed_tier_labels, removed_symbols, removed_letters
+
+        icon_data, removed_tier_labels = reskins.lib.tiers.remove_tier_labels_from_icons(icon_data)
+        icon_data, removed_symbols = reskins.lib.icons.remove_symbols_from_icons(icon_data)
+        icon_data, removed_letters = reskins.lib.icons.remove_letters_from_icons(icon_data)
+
+        icon_data = reskins.lib.icons.scale_icon(icon_data, 0.7, false)
+
+        local crated_icons = reskins.lib.icons.combine_icons(false, crate_item_base_layer(), icon_data, removed_symbols, removed_letters, removed_tier_labels)
+        local crated_picture = reskins.lib.sprites.create_sprite_from_icons(crated_icons, 0.5)
+
+        update_crate_icons(item.name, crated_icons, crated_picture)
+    end
+
     ::continue::
 end

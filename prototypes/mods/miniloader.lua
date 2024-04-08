@@ -20,7 +20,7 @@ local inputs = {
 }
 
 -- Handle belt tier labels
-inputs.tier_labels = reskins.lib.setting("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
     -- 1x1 Loader Entities
@@ -84,7 +84,7 @@ for name, map in pairs(tier_map) do
     if not entity then goto continue end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[map.tier]
+    inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
@@ -96,12 +96,12 @@ for name, map in pairs(tier_map) do
         entity.platform_picture.sheets = {
             -- Base
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -111,13 +111,13 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 tint = inputs.tint,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -128,13 +128,13 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 blend_mode = "additive",
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -167,12 +167,12 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_in.sheets = {
             -- Base
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 width = 96,
                 height = 96,
                 y = 0,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -182,13 +182,13 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 width = 96,
                 height = 96,
                 y = 0,
                 tint = inputs.tint,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -199,13 +199,13 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 width = 96,
                 height = 96,
                 y = 0,
                 blend_mode = "additive",
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -236,12 +236,12 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_out.sheets = {
             -- Base
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -251,13 +251,13 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 tint = inputs.tint,
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -268,13 +268,13 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 width = 96,
                 height = 96,
                 y = 96,
                 blend_mode = "additive",
                 hr_version = {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
                     height = 192,
                     priority = "extra-high",
                     scale = 0.5,
@@ -303,7 +303,7 @@ for name, map in pairs(tier_map) do
         }
 
         -- Apply belt set
-        entity.belt_animation_set = base_belt and base_belt.belt_animation_set -- or reskins.lib.transport_belt_animation_set(inputs.tint, map.sprite_variant)
+        entity.belt_animation_set = base_belt and base_belt.belt_animation_set
     end
 
     -- Label to skip to next iteration
@@ -322,7 +322,7 @@ for name, map in pairs(item_map) do
     inputs.icon_base = map.icon_base or "miniloader"
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[map.tier]
+    inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
     reskins.lib.construct_icon(name, map.tier, inputs)
 
@@ -374,7 +374,7 @@ for name, tier in pairs(technology_map) do
     inputs.icon_base = nil
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.belt_tint_index[tier]
+    inputs.tint = reskins.lib.tiers.get_belt_tint(tier)
 
     reskins.lib.construct_technology_icon(name, inputs)
 

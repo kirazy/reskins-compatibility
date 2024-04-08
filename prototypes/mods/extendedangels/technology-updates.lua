@@ -7,7 +7,7 @@
 if not mods["extendedangels"] then return end
 if not (reskins.angels and reskins.angels.triggers.storage.technologies) then return end
 
--- Setup standard inputs
+---@type CreateIconsFromListInputs
 local inputs = {
     mod = "compatibility",
     group = "extendedangels",
@@ -17,6 +17,7 @@ local inputs = {
     flat_icon = true,
 }
 
+---@type CreateIconsFromListTable
 local technologies = {}
 
 -- Reskin warehouse technologies
@@ -31,4 +32,4 @@ technologies["warehouses-4"] = { mod = "angels", group = "addons-storage", subgr
 -- technologies["logistic-silos"] = {subgroup = "silos"}
 -- technologies["ore-silos"] = {subgroup = "silos"}
 
-reskins.lib.create_icons_from_list(technologies, inputs)
+reskins.internal.create_icons_from_list(technologies, inputs)

@@ -8,7 +8,7 @@ if not mods["RealisticReactorGlow"] then return end
 if not (reskins.bobs and reskins.bobs.triggers.power.technologies) then return end
 if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then return end
 
--- Setup standard inputs
+---@type CreateIconsFromListInputs
 local inputs = {
     mod = "compatibility",
     group = "realisticreactorglow",
@@ -19,7 +19,7 @@ local inputs = {
 }
 
 local light_color = ""
-if reskins.lib.setting("RealisticReactorGlow-cyan") then
+if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then
     light_color = "_cyan"
 end
 
@@ -29,7 +29,7 @@ local material_tiers = {
     "gold-copper",
 }
 
-if reskins.lib.migration.is_version_or_newer(mods["bobpower"], "1.1.6") then
+if reskins.lib.version.is_same_or_newer(mods["bobpower"], "1.1.6") then
     material_tiers = {
         "aluminum-invar",
         "silver-titanium",
@@ -37,10 +37,11 @@ if reskins.lib.migration.is_version_or_newer(mods["bobpower"], "1.1.6") then
     }
 end
 
+---@type CreateIconsFromListTable
 local technologies = {
     ["nuclear-power"] = { tier = 1, prog_tier = 3, icon_base = "nuclear-power-" .. material_tiers[1] .. "-color" .. light_color, tint = reskins.bobs.nuclear_reactor_index["nuclear-reactor"].tint },         -- t3 reactor
     ["bob-nuclear-power-2"] = { tier = 2, prog_tier = 4, icon_base = "nuclear-power-" .. material_tiers[2] .. "-color" .. light_color, tint = reskins.bobs.nuclear_reactor_index["nuclear-reactor-2"].tint }, -- t4 reactor
     ["bob-nuclear-power-3"] = { tier = 3, prog_tier = 5, icon_base = "nuclear-power-" .. material_tiers[3] .. "-color" .. light_color, tint = reskins.bobs.nuclear_reactor_index["nuclear-reactor-3"].tint }, -- t5 reactor
 }
 
-reskins.lib.create_icons_from_list(technologies, inputs)
+reskins.internal.create_icons_from_list(technologies, inputs)

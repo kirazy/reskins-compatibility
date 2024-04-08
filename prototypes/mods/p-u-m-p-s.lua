@@ -53,7 +53,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -63,7 +63,7 @@ local function return_animation(tint, direction)
                     shift = util.by_pixel(-2, -16),
                     tint = tint,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-mask.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -77,7 +77,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -85,9 +85,9 @@ local function return_animation(tint, direction)
                     width = 48,
                     height = 84,
                     shift = util.by_pixel(-2, -16),
-                    blend_mode = reskins.lib.blend_mode,
+                    blend_mode = reskins.lib.settings.blend_mode,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-highlights.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -95,7 +95,7 @@ local function return_animation(tint, direction)
                         width = 90,
                         height = 162,
                         shift = util.by_pixel(-1, -15),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         scale = 0.5
                     }
                 },
@@ -151,7 +151,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -161,7 +161,7 @@ local function return_animation(tint, direction)
                     shift = util.by_pixel(14, -2),
                     tint = tint,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-mask.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -175,7 +175,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -183,9 +183,9 @@ local function return_animation(tint, direction)
                     width = 64,
                     height = 52,
                     shift = util.by_pixel(14, -2),
-                    blend_mode = reskins.lib.blend_mode,
+                    blend_mode = reskins.lib.settings.blend_mode,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-highlights.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -193,7 +193,7 @@ local function return_animation(tint, direction)
                         width = 124,
                         height = 102,
                         shift = util.by_pixel(15, -2),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         scale = 0.5
                     }
                 },
@@ -249,7 +249,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -259,7 +259,7 @@ local function return_animation(tint, direction)
                     shift = util.by_pixel(-2, 0),
                     tint = tint,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-mask.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -273,7 +273,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -281,9 +281,9 @@ local function return_animation(tint, direction)
                     width = 48,
                     height = 96,
                     shift = util.by_pixel(-2, 0),
-                    blend_mode = reskins.lib.blend_mode,
+                    blend_mode = reskins.lib.settings.blend_mode,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-highlights.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -291,7 +291,7 @@ local function return_animation(tint, direction)
                         width = 92,
                         height = 192,
                         shift = util.by_pixel(-1, 0),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         scale = 0.5
                     }
                 },
@@ -347,7 +347,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -357,7 +357,7 @@ local function return_animation(tint, direction)
                     shift = util.by_pixel(-16, -2),
                     tint = tint,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-mask.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -371,7 +371,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -379,9 +379,9 @@ local function return_animation(tint, direction)
                     width = 64,
                     height = 52,
                     shift = util.by_pixel(-16, -2),
-                    blend_mode = reskins.lib.blend_mode,
+                    blend_mode = reskins.lib.settings.blend_mode,
                     hr_version = {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-highlights.png",
                         priority = "high",
                         line_length = 8,
                         frame_count = 32,
@@ -389,7 +389,7 @@ local function return_animation(tint, direction)
                         width = 124,
                         height = 102,
                         shift = util.by_pixel(-15, -2),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         scale = 0.5
                     }
                 },
@@ -650,7 +650,7 @@ local function return_base_pictures(direction)
 end
 
 local function return_underwater_pictures(direction, use_alternate)
-    local filepath = use_alternate and reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/underwater/" or "__base__/graphics/entity/offshore-pump/"
+    local filepath = use_alternate and "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/underwater/" or "__base__/graphics/entity/offshore-pump/"
     local adjusted_alpha = use_alternate and { 1, 1, 1, 0.5 } or nil
 
     local underwater_pictures = {
@@ -746,12 +746,12 @@ for name, map in pairs(tier_map) do
 
         -- Handle tier
         local tier = map.tier
-        if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+        if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
             tier = map.prog_tier or map.tier
         end
 
         -- Determine what tint we're using, setup remaining inputs
-        inputs.tint = reskins.lib.tint_index[tier]
+        inputs.tint = reskins.lib.tiers.get_tint(tier)
         inputs.type = properties.type
 
         reskins.lib.setup_standard_entity(properties.name, tier, inputs)
@@ -761,6 +761,8 @@ for name, map in pairs(tier_map) do
 
         remnant.animation = {
             -- Variation 1
+            -- Complaining about missing field direction_count, which is not required if using layers and variations...
+            ---@diagnostic disable-next-line: missing-fields
             {
                 layers = {
                     -- Base
@@ -785,7 +787,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Mask
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-mask.png",
                         line_length = 1,
                         width = 74,
                         height = 72,
@@ -794,7 +796,7 @@ for name, map in pairs(tier_map) do
                         shift = util.by_pixel(2, -2),
                         tint = inputs.tint,
                         hr_version = {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-mask.png",
+                            filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-mask.png",
                             line_length = 1,
                             width = 146,
                             height = 140,
@@ -807,29 +809,31 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-highlights.png",
                         line_length = 1,
                         width = 74,
                         height = 72,
                         frame_count = 1,
                         direction_count = 4,
                         shift = util.by_pixel(2, -2),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         hr_version = {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-highlights.png",
+                            filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-highlights.png",
                             line_length = 1,
                             width = 146,
                             height = 140,
                             frame_count = 1,
                             direction_count = 4,
                             shift = util.by_pixel(2, -2.5),
-                            blend_mode = reskins.lib.blend_mode,
+                            blend_mode = reskins.lib.settings.blend_mode,
                             scale = 0.5
                         }
                     },
                 },
             },
             -- Variation 2
+            -- Complaining about missing field direction_count, which is not required if using layers and variations...
+            ---@diagnostic disable-next-line: missing-fields
             {
                 layers = {
                     -- Base
@@ -854,7 +858,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Mask
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-mask.png",
                         line_length = 1,
                         width = 68,
                         height = 68,
@@ -863,7 +867,7 @@ for name, map in pairs(tier_map) do
                         shift = util.by_pixel(1, 1),
                         tint = inputs.tint,
                         hr_version = {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-mask.png",
+                            filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-mask.png",
                             line_length = 1,
                             width = 136,
                             height = 134,
@@ -876,23 +880,23 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-highlights.png",
                         line_length = 1,
                         width = 68,
                         height = 68,
                         frame_count = 1,
                         direction_count = 4,
                         shift = util.by_pixel(1, 1),
-                        blend_mode = reskins.lib.blend_mode,
+                        blend_mode = reskins.lib.settings.blend_mode,
                         hr_version = {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-highlights.png",
+                            filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-highlights.png",
                             line_length = 1,
                             width = 136,
                             height = 134,
                             frame_count = 1,
                             direction_count = 4,
                             shift = util.by_pixel(1.5, 0.5),
-                            blend_mode = reskins.lib.blend_mode,
+                            blend_mode = reskins.lib.settings.blend_mode,
                             scale = 0.5
                         }
                     },

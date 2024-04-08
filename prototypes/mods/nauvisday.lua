@@ -25,18 +25,18 @@ if not entity then return end
 
 reskins.lib.setup_standard_entity("dead-greenhouse", 0, inputs)
 
-local dead_greenhouse_base = reskins.lib.make_4way_animation_from_spritesheet({
+local dead_greenhouse_base = reskins.lib.sprites.make_4way_animation_from_spritesheet({
     -- Base
-    filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-base.png",
+    filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-base.png",
     width = 97,
     height = 96,
     shift = util.by_pixel(0, 0),
     hr_version = {
-        filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-base.png",
+        filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-base.png",
         width = 194,
         height = 192,
         shift = util.by_pixel(0, 0),
-        scale = 0.5
+        scale = 0.5,
     },
 })
 
@@ -50,8 +50,8 @@ local dead_greenhouse_integration_patch = {
         width = 242,
         height = 162,
         shift = util.by_pixel(0, 15.5),
-        scale = 0.5
-    }
+        scale = 0.5,
+    },
 }
 
 local dead_greenhouse_shadow = {
@@ -66,8 +66,8 @@ local dead_greenhouse_shadow = {
         height = 136,
         shift = util.by_pixel(13, 11),
         scale = 0.5,
-        draw_as_shadow = true
-    }
+        draw_as_shadow = true,
+    },
 }
 
 -- Reskin the entity
@@ -76,67 +76,67 @@ entity.animation = {
         layers = {
             dead_greenhouse_base.north,
             dead_greenhouse_integration_patch,
-            dead_greenhouse_shadow
-        }
+            dead_greenhouse_shadow,
+        },
     },
     east = {
         layers = {
             dead_greenhouse_base.east,
             dead_greenhouse_integration_patch,
-            dead_greenhouse_shadow
-        }
+            dead_greenhouse_shadow,
+        },
     },
     south = {
         layers = {
             dead_greenhouse_base.south,
             dead_greenhouse_integration_patch,
-            dead_greenhouse_shadow
-        }
+            dead_greenhouse_shadow,
+        },
     },
     west = {
         layers = {
             dead_greenhouse_base.west,
             dead_greenhouse_integration_patch,
-            dead_greenhouse_shadow
-        }
+            dead_greenhouse_shadow,
+        },
     },
 }
 
 entity.idle_animation = nil
 
-local dead_greenhouse_working = reskins.lib.make_4way_animation_from_spritesheet({
+local dead_greenhouse_working = reskins.lib.sprites.make_4way_animation_from_spritesheet({
     layers = {
         -- Light Underlayer
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-lit.png",
+            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-lit.png",
             width = 97,
             height = 96,
             shift = util.by_pixel(0, 0),
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-lit.png",
+                filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-lit.png",
                 width = 194,
                 height = 192,
                 shift = util.by_pixel(0, 0),
-                scale = 0.5
-            }
+                scale = 0.5,
+            },
         },
         -- Light
         {
-            filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-light.png",
+            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-light.png",
             width = 97,
             height = 96,
             shift = util.by_pixel(0, 0),
             draw_as_light = true,
             hr_version = {
-                filename = reskins.compatibility.directory .. "/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-light.png",
+                filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-light.png",
                 width = 194,
                 height = 192,
                 shift = util.by_pixel(0, 0),
                 draw_as_light = true,
-                scale = 0.5
-            }
+                scale = 0.5,
+            },
         },
-    }
+    },
 })
 
 entity.working_visualisations = {
@@ -151,9 +151,9 @@ entity.working_visualisations = {
     -- Pipe shadow fixes
     {
         always_draw = true,
-        north_animation = reskins.lib.vertical_pipe_shadow { 0, -1 },
-        south_animation = reskins.lib.vertical_pipe_shadow { 0, 1 },
-    }
+        north_animation = reskins.lib.sprites.pipes.get_vertical_pipe_shadow({ 0, -1 }),
+        south_animation = reskins.lib.sprites.pipes.get_vertical_pipe_shadow({ 0, 1 }),
+    },
 }
 
 entity.fluid_boxes[1].pipe_picture = nil

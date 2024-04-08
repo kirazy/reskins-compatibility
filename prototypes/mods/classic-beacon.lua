@@ -43,12 +43,12 @@ for name, map in pairs(tier_map) do
 
     -- Parse map
     local tier = map[1]
-    if reskins.lib.setting("reskins-lib-tier-mapping") == "progression-map" then
+    if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
         tier = map[2]
     end
 
     -- Determine what tint we're using
-    inputs.tint = reskins.lib.tint_index[tier]
+    inputs.tint = reskins.lib.tiers.get_tint(tier)
 
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
@@ -72,7 +72,7 @@ for name, map in pairs(tier_map) do
                         },
                         -- Mask
                         {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/classic-beacon/beacon/beacon-mask.png",
+                            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/beacon-mask.png",
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
@@ -80,11 +80,11 @@ for name, map in pairs(tier_map) do
                         },
                         -- Highlights
                         {
-                            filename = reskins.compatibility.directory .. "/graphics/entity/classic-beacon/beacon/beacon-highlights.png",
+                            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/beacon-highlights.png",
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
-                            blend_mode = reskins.lib.blend_mode, -- "additive",
+                            blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         },
                         -- Shadow
                         {
@@ -130,7 +130,7 @@ for name, map in pairs(tier_map) do
         }
     }
 
-    if reskins.lib.setting("classic-beacon-do-high-res") == true then
+    if reskins.lib.settings.get_value("classic-beacon-do-high-res") == true then
         -- Beacon Base
         entity.graphics_set.animation_list[1].animation.layers[1].hr_version = {
             filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-base.png",
@@ -141,7 +141,7 @@ for name, map in pairs(tier_map) do
         }
         -- Beacon Mask
         entity.graphics_set.animation_list[1].animation.layers[2].hr_version = {
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-beacon/beacon/hr-beacon-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-mask.png",
             width = 232,
             height = 186,
             shift = util.by_pixel(11, 1.5),
@@ -150,11 +150,11 @@ for name, map in pairs(tier_map) do
         }
         -- Beacon Highlights
         entity.graphics_set.animation_list[1].animation.layers[3].hr_version = {
-            filename = reskins.compatibility.directory .. "/graphics/entity/classic-beacon/beacon/hr-beacon-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-highlights.png",
             width = 232,
             height = 186,
             shift = util.by_pixel(11, 1.5),
-            blend_mode = reskins.lib.blend_mode, -- "additive",
+            blend_mode = reskins.lib.settings.blend_mode, -- "additive",
             scale = 0.5,
         }
         -- Beacon Base Shadow
