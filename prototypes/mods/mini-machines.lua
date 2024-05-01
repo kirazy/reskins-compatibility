@@ -74,7 +74,7 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
         icon_name = "electrolyser",
         icon_base = "electrolyser-1",
         icon_mask = "electrolyser-1",
-        icon_highlights = "electrolyser-1"
+        icon_highlights = "electrolyser-1",
     }
 
     technology_source_mapping["mini-electro-2"] = "electrolyser-2"
@@ -289,7 +289,6 @@ local function set_mini_version_of_source_icon_on_target(target_name, source_nam
 
     -- Switch to mini image set.
     for n = 1, #icons do
-
         icons[n].icon = string.gsub(icons[n].icon, "/" .. pattern .. "/", "/" .. replacement .. "/mini-")
     end
 
@@ -321,8 +320,8 @@ for name, map in pairs(mini_machine_maps) do
     local source_prototype = data.raw[map.type_name][map.source]
     local target_prototype = data.raw[map.type_name][name]
 
-    if not source_prototype or not target_prototype then return end
-
-    reskins.lib.prototypes.rescale_remnants_of_prototype(target_prototype, map.scale)
-    set_mini_version_of_source_icon_on_target(name, map.source, map.pattern or map.type_name, map.replacement or map.type_name)
+    if source_prototype and target_prototype then
+        reskins.lib.prototypes.rescale_remnants_of_prototype(target_prototype, map.scale)
+        set_mini_version_of_source_icon_on_target(name, map.source, map.pattern or map.type_name, map.replacement or map.type_name)
+    end
 end
