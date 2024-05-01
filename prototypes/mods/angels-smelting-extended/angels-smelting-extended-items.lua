@@ -43,9 +43,9 @@ local function add_icon_sources_for_recipe(recipes_icon_sources, recipe_name, so
     end
 
     -- Check for liquids and set type parameter
-    for _, name in pairs(source_names) do
-        if string.find(name, "liquid") then
-            sources[name].type_name = "fluid"
+    for _, source in pairs(sources) do
+        if string.find(source.name, "liquid") then
+            source.type_name = "fluid"
         end
     end
 
