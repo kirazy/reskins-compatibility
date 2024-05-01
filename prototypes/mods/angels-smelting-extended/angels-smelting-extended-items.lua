@@ -10,17 +10,23 @@ if not reskins.angels then return end
 ----------------------------------------------------------------------------------------------------
 -- ITEMS AND RECIPES
 ----------------------------------------------------------------------------------------------------
+
 -- Fix ASE-sand-die and ASE-metal-die
+
+---@type data.IconData[]
 data.raw.item["ASE-sand-die"].icons = { {
     icon = "__angelssmelting__/graphics/icons/expendable-mold.png",
     icon_size = 32,
-    icon_mipmaps = 1,
+    icon_mipmaps = 0,
+    scale = 1,
 } }
 
+---@type data.IconData[]
 data.raw.item["ASE-metal-die"].icons = { {
     icon = "__angelssmelting__/graphics/icons/non-expendable-mold.png",
     icon_size = 32,
-    icon_mipmaps = 1,
+    icon_mipmaps = 0,
+    scale = 1,
 } }
 
 ---
@@ -53,7 +59,7 @@ local function add_icon_sources_for_recipe(recipes_icon_sources, recipe_name, so
     recipes_icon_sources[recipe_name] = sources
 end
 
--- A map of recipe names to the icon sources used to create a combined icon. 
+-- A map of recipe names to the icon sources used to create a combined icon.
 -- The first entry in each IconSources is the first layer of the created icon.
 ---@type { [string]: IconSources }
 local recipe_icon_source_map = {}
