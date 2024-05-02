@@ -6,7 +6,6 @@ Date: ????
     - Added regeneration of Deadlock's Crating crate pack/unpack recipes and crate items. Fixes scaling issues.
   Changes:
     - Internal updates to reflect changes to Artisanal Reskins: Library, now depends on version 2.2.0
-
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.10
 Date: 2023-12-23
