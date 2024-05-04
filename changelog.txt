@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.0
-Date: ????
+Date: 2024-05-04
   Features:
     - Added regeneration of Deadlock's Stacking Beltboxes and Loaders stack items and stack/unstack recipes for reskinned icons. Fixes scaling issues.
     - Added regeneration of Deadlock's Crating crate pack/unpack recipes and crate items. Fixes scaling issues.
