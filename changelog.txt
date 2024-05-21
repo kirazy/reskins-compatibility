@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.1
-Date: ????
+Date: 2024-05-21
   Bugfixes:
     - Fixed missing `icon_size` causing startup errors when used with the Classing Mining Drill and Semi-Class Mining Drill mods.
 ---------------------------------------------------------------------------------------------------
