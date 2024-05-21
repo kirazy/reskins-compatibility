@@ -74,8 +74,8 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(0, -8),
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Mask
                 {
@@ -102,8 +102,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(0, -8),
                         run_mode = "forward-then-backward",
                         tint = inputs.tint,
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Highlights
                 {
@@ -130,8 +130,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(0, -8),
                         run_mode = "forward-then-backward",
                         blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Shadow
                 {
@@ -160,10 +160,10 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(1.25, -7.25),
                         draw_as_shadow = true,
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
-                }
-            }
+                        scale = 0.5,
+                    },
+                },
+            },
         },
         east = {
             layers = {
@@ -190,8 +190,8 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(3.75, -1.25),
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Mask
                 {
@@ -218,8 +218,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(3.75, -1.25),
                         tint = inputs.tint,
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Highlights
                 {
@@ -246,8 +246,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(3.75, -1.25),
                         run_mode = "forward-then-backward",
                         blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Shadow
                 {
@@ -276,10 +276,10 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(6.25, -0.25),
                         draw_as_shadow = true,
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
-                }
-            }
+                        scale = 0.5,
+                    },
+                },
+            },
         },
         south = {
             layers = {
@@ -306,8 +306,8 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(0, -1.25),
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Mask
                 {
@@ -334,8 +334,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(0, -1.25),
                         run_mode = "forward-then-backward",
                         tint = inputs.tint,
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Highlights
                 {
@@ -362,8 +362,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(0, -1.25),
                         run_mode = "forward-then-backward",
                         blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Shadow
                 {
@@ -392,10 +392,10 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(1, 2.5),
                         draw_as_shadow = true,
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
-                }
-            }
+                        scale = 0.5,
+                    },
+                },
+            },
         },
         west = {
             layers = {
@@ -422,8 +422,8 @@ local function drill_animations(inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-3.75, -0.75),
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Mask
                 {
@@ -450,8 +450,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(-3.75, -0.75),
                         run_mode = "forward-then-backward",
                         tint = inputs.tint,
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Highlights
                 {
@@ -478,8 +478,8 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(-3.75, -0.75),
                         run_mode = "forward-then-backward",
                         blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-                        scale = 0.5
-                    }
+                        scale = 0.5,
+                    },
                 },
                 -- Shadow
                 {
@@ -508,11 +508,11 @@ local function drill_animations(inputs)
                         shift = util.by_pixel(1.25, -0.25),
                         draw_as_shadow = true,
                         run_mode = "forward-then-backward",
-                        scale = 0.5
-                    }
-                }
-            }
-        }
+                        scale = 0.5,
+                    },
+                },
+            },
+        },
     }
 end
 
@@ -539,8 +539,8 @@ local area_drill_animations = {
             direction_count = 1,
             shift = util.by_pixel(0, -8),
             run_mode = "forward-then-backward",
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     },
     east = {
         priority = "high",
@@ -564,8 +564,8 @@ local area_drill_animations = {
             direction_count = 1,
             shift = util.by_pixel(3.75, -1.25),
             run_mode = "forward-then-backward",
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     },
     south = {
         priority = "high",
@@ -589,8 +589,8 @@ local area_drill_animations = {
             direction_count = 1,
             shift = util.by_pixel(0, -1.25),
             run_mode = "forward-then-backward",
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     },
     west = {
         priority = "high",
@@ -614,9 +614,9 @@ local area_drill_animations = {
             direction_count = 1,
             shift = util.by_pixel(-3.75, -0.75),
             run_mode = "forward-then-backward",
-            scale = 0.5
-        }
-    }
+            scale = 0.5,
+        },
+    },
 }
 
 -- Rescale mining drill animation playback speed to something visually appealing
@@ -664,16 +664,7 @@ for name, map in pairs(tier_map) do
     -- Handle icon base
     if string.find(name, "area") then
         inputs.icon_base = "large-area-electric-mining-drill"
-        inputs.icon_extras = {
-            -- Type indicator
-            {
-                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png"
-            },
-            {
-                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png",
-                tint = util.get_color_with_alpha(reskins.lib.tiers.get_tint(tier), 0.75)
-            }
-        }
+        inputs.icon_extras = reskins.lib.icons.get_symbol("area-drill", reskins.lib.tiers.get_tint(tier))
     else
         inputs.icon_base = "electric-mining-drill"
         inputs.icon_extras = nil

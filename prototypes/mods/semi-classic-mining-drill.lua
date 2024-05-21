@@ -2095,16 +2095,7 @@ for name, map in pairs(tier_map) do
     if string.find(name, "area") then
         inputs.icon_base = "large-area-electric-mining-drill"
         inputs.is_area_drill = true
-        inputs.icon_extras = {
-            -- Type indicator
-            {
-                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png"
-            },
-            {
-                icon = "__reskins-bobs__/graphics/icons/mining/electric-mining-drill/area-drill-symbol.png",
-                tint = util.get_color_with_alpha(reskins.lib.tiers.get_tint(tier), 0.75)
-            }
-        }
+        inputs.icon_extras = reskins.lib.icons.get_symbol("area-drill", reskins.lib.tiers.get_tint(tier))
     else
         inputs.icon_base = "electric-mining-drill"
         inputs.is_area_drill = false
