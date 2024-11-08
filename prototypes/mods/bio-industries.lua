@@ -283,7 +283,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
             layers = {
                 -- Base
                 {
-                    filename = "__base__/graphics/entity/boiler/remnants/hr-boiler-remnants.png",
+                    filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
                     line_length = 1,
                     width = 274,
                     height = 220,
@@ -331,7 +331,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-N-idle.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-N-idle.png",
                         priority = "extra-high",
                         width = 269,
                         height = 221,
@@ -360,7 +360,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Shadow
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-N-shadow.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-N-shadow.png",
                         priority = "extra-high",
                         width = 274,
                         height = 164,
@@ -374,7 +374,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-E-idle.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-E-idle.png",
                         priority = "extra-high",
                         width = 216,
                         height = 301,
@@ -403,7 +403,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Shadow
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-E-shadow.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-E-shadow.png",
                         priority = "extra-high",
                         width = 184,
                         height = 194,
@@ -417,7 +417,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-S-idle.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-S-idle.png",
                         priority = "extra-high",
                         width = 260,
                         height = 192,
@@ -446,7 +446,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Shadow
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-S-shadow.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-S-shadow.png",
                         priority = "extra-high",
                         width = 311,
                         height = 131,
@@ -460,7 +460,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-W-idle.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-W-idle.png",
                         priority = "extra-high",
                         width = 196,
                         height = 273,
@@ -489,7 +489,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Shadow
                     {
-                        filename = "__base__/graphics/entity/boiler/hr-boiler-W-shadow.png",
+                        filename = "__base__/graphics/entity/boiler/boiler-W-shadow.png",
                         priority = "extra-high",
                         width = 206,
                         height = 218,

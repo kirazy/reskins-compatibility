@@ -31,7 +31,7 @@ local function return_animation(tint, direction)
             layers = {
                 -- Base
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_North.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_North.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -69,7 +69,7 @@ local function return_animation(tint, direction)
                 },
                 -- Shadow
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_North-shadow.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_North-shadow.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -86,7 +86,7 @@ local function return_animation(tint, direction)
             layers = {
                 -- Base
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_East.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -124,7 +124,7 @@ local function return_animation(tint, direction)
                 },
                 -- Shadow
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-shadow.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_East-shadow.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -141,7 +141,7 @@ local function return_animation(tint, direction)
             layers = {
                 -- Base
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_South.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -179,7 +179,7 @@ local function return_animation(tint, direction)
                 },
                 -- Shadow
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-shadow.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_South-shadow.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -196,7 +196,7 @@ local function return_animation(tint, direction)
             layers = {
                 -- Base
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_West.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -234,7 +234,7 @@ local function return_animation(tint, direction)
                 },
                 -- Shadow
                 {
-                    filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-shadow.png",
+                    filename = "__base__/graphics/entity/offshore-pump/offshore-pump_West-shadow.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -259,7 +259,7 @@ end
 local function return_fluid_animation(direction)
     local fluid_animation = {
         north = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_North-fluid.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_North-fluid.png",
             apply_runtime_tint = true,
             line_length = 8,
             frame_count = 32,
@@ -270,7 +270,7 @@ local function return_fluid_animation(direction)
             scale = 0.5,
         },
         east = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-fluid.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_East-fluid.png",
             apply_runtime_tint = true,
             line_length = 8,
             frame_count = 32,
@@ -281,7 +281,7 @@ local function return_fluid_animation(direction)
             scale = 0.5,
         },
         south = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-fluid.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_South-fluid.png",
             apply_runtime_tint = true,
             line_length = 8,
             frame_count = 32,
@@ -292,7 +292,7 @@ local function return_fluid_animation(direction)
             scale = 0.5,
         },
         west = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-fluid.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_West-fluid.png",
             apply_runtime_tint = true,
             line_length = 8,
             frame_count = 32,
@@ -314,28 +314,28 @@ end
 local function return_glass_pictures(direction)
     local glass_pictures = {
         north = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_North-glass.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_North-glass.png",
             width = 36,
             height = 40,
             shift = util.by_pixel(-2, -22),
             scale = 0.5,
         },
         east = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-glass.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_East-glass.png",
             width = 30,
             height = 32,
             shift = util.by_pixel(5, -13),
             scale = 0.5,
         },
         south = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-glass.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_South-glass.png",
             width = 40,
             height = 24,
             shift = util.by_pixel(-1, -6),
             scale = 0.5,
         },
         west = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-glass.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_West-glass.png",
             width = 30,
             height = 32,
             shift = util.by_pixel(-6, -14),
@@ -353,28 +353,28 @@ end
 local function return_base_pictures(direction)
     local base_pictures = {
         north = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_North-legs.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_North-legs.png",
             width = 114,
             height = 106,
             shift = util.by_pixel(-1, -5),
             scale = 0.5,
         },
         east = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-legs.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_East-legs.png",
             width = 106,
             height = 60,
             shift = util.by_pixel(4, 13),
             scale = 0.5,
         },
         south = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-legs.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_South-legs.png",
             width = 110,
             height = 108,
             shift = util.by_pixel(-2, 6),
             scale = 0.5,
         },
         west = {
-            filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-legs.png",
+            filename = "__base__/graphics/entity/offshore-pump/offshore-pump_West-legs.png",
             width = 108,
             height = 64,
             shift = util.by_pixel(-6, 12),
@@ -479,7 +479,7 @@ for name, map in pairs(tier_map) do
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1.png",
+                        filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-1.png",
                         line_length = 1,
                         width = 146,
                         height = 140,
@@ -521,7 +521,7 @@ for name, map in pairs(tier_map) do
                 layers = {
                     -- Base
                     {
-                        filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2.png",
+                        filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-2.png",
                         line_length = 1,
                         width = 136,
                         height = 134,
