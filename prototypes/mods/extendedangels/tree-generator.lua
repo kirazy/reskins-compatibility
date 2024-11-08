@@ -31,7 +31,7 @@ local tier_map = {
 
 -- Reskin entities, create and assign extra details
 for name, map in pairs(tier_map) do
-    -- Fetch entity
+    ---@type data.AssemblingMachinePrototype
     local entity = data.raw[inputs.type][name]
 
     -- Check if entity exists, if not, skip this iteration
@@ -52,7 +52,7 @@ for name, map in pairs(tier_map) do
     reskins.lib.setup_standard_entity(name, tier, inputs)
 
     -- Reskin entities
-    entity.animation = {
+    entity.graphics_set.animation = {
         layers = {
             {
                 filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-shadow.png",
@@ -122,7 +122,7 @@ for name, map in pairs(tier_map) do
         },
     }
 
-    entity.working_visualisations = {
+    entity.graphics_set.working_visualisations = {
         {
             fadeout = true,
             animation = {

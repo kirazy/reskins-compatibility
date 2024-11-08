@@ -51,7 +51,7 @@ local dead_greenhouse_shadow = {
 }
 
 -- Reskin the entity
-entity.animation = {
+entity.graphics_set.animation = {
     north = {
         layers = {
             dead_greenhouse_base.north,
@@ -82,7 +82,7 @@ entity.animation = {
     },
 }
 
-entity.idle_animation = nil
+entity.graphics_set.idle_animation = nil
 
 local dead_greenhouse_working = reskins.lib.sprites.make_4way_animation_from_spritesheet({
     layers = {
@@ -106,7 +106,7 @@ local dead_greenhouse_working = reskins.lib.sprites.make_4way_animation_from_spr
     },
 })
 
-entity.working_visualisations = {
+entity.graphics_set.working_visualisations = {
     {
         fadeout = true,
         north_animation = dead_greenhouse_working.north,

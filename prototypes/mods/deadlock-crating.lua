@@ -53,7 +53,7 @@ end
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
-    -- Fetch entity, item
+    ---@type data.AssemblingMachinePrototype
     local entity = data.raw[inputs.type][name]
 
     -- Check if entity exists, if not, skip this iteration
@@ -65,9 +65,9 @@ for name, map in pairs(tier_map) do
     reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
     -- Retint the mask
-    entity.animation.layers[2].tint = inputs.tint
-    entity.working_visualisations[1].animation.tint = light_tint(inputs.tint)
-    entity.working_visualisations[1].light.color = light_tint(inputs.tint)
+    entity.graphics_set.animation.layers[2].tint = inputs.tint
+    entity.graphics_set.working_visualisations[1].animation.tint = light_tint(inputs.tint)
+    entity.graphics_set.working_visualisations[1].light.color = light_tint(inputs.tint)
 
     -- Icon handling
     ---@type data.IconData[]

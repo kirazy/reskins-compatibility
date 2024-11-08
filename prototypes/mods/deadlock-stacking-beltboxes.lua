@@ -57,7 +57,7 @@ for name, map in pairs(tier_map) do
         inputs.type = "furnace"
     end
 
-    -- Fetch entity, item
+    ---@type data.FurnacePrototype|data.Loader1x1Prototype
     local entity = data.raw[inputs.type][name]
 
     -- Check if entity exists, if not, skip this iteration
@@ -71,6 +71,8 @@ for name, map in pairs(tier_map) do
     ---@type data.IconData[]
     local icon_data
     if map.is_loader then
+        ---@cast entity data.Loader1x1Prototype
+
         -- Retint the mask
         entity.structure.direction_in.sheets[3].tint = inputs.tint
         entity.structure.direction_out.sheets[3].tint = inputs.tint
@@ -92,10 +94,12 @@ for name, map in pairs(tier_map) do
             },
         }
     else
+        ---@cast entity data.FurnacePrototype
+
         -- Retint the mask
-        entity.animation.layers[2].tint = inputs.tint
-        entity.working_visualisations[1].animation.tint = light_tint(inputs.tint)
-        entity.working_visualisations[1].light.color = light_tint(inputs.tint)
+        entity.graphics_set.animation.layers[2].tint = inputs.tint
+        entity.graphics_set.working_visualisations[1].animation.tint = light_tint(inputs.tint)
+        entity.graphics_set.working_visualisations[1].light.color = light_tint(inputs.tint)
 
         icon_data = {
             {

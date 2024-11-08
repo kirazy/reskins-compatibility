@@ -560,6 +560,7 @@ for name, map in pairs(tier_map) do
 
         -- Reskin entities
         if inputs.type == "offshore-pump" then
+            ---@cast entity data.OffshorePumpPrototype
             entity.graphics_set = {
                 underwater_layer_offset = 30,
                 base_render_layer = "ground-patch",
@@ -570,8 +571,9 @@ for name, map in pairs(tier_map) do
                 underwater_pictures = return_underwater_pictures(),
             }
         else
-            entity.animation = return_animation(inputs.tint)
-            entity.working_visualisations = {
+            ---@cast entity data.AssemblingMachinePrototype
+            entity.graphics_set.animation = return_animation(inputs.tint)
+            entity.graphics_set.working_visualisations = {
                 -- Underwater pictures
                 {
                     always_draw = true,

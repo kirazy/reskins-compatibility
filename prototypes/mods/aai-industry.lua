@@ -14,7 +14,7 @@ local entity = data.raw["assembling-machine"]["burner-assembling-machine"]
 if not entity then return end
 
 -- Reskin the burner assembling machine in the appropriate style
-entity.animation = {
+entity.graphics_set.animation = {
     layers = {
         -- aai-industry Base
         {
@@ -43,7 +43,7 @@ entity.animation = {
 }
 
 -- Ensure the working visualisation is properly set
-entity.working_visualisations = {
+entity.graphics_set.working_visualisations = {
     {
         fadeout = true,
         effect = "flicker",
@@ -79,7 +79,7 @@ entity.energy_source.smoke = {
 
 -- Rescale as needed
 if reskins.bobs.triggers.assembly.burner_assembling_machine_is_small then
-    reskins.lib.prototypes.rescale_prototype(entity.animation, 2 / 3)
-    reskins.lib.prototypes.rescale_prototype(entity.working_visualisations, 2 / 3)
+    reskins.lib.prototypes.rescale_prototype(entity.graphics_set.animation, 2 / 3)
+    reskins.lib.prototypes.rescale_prototype(entity.graphics_set.working_visualisations, 2 / 3)
     reskins.lib.prototypes.rescale_prototype(entity.energy_source.smoke, 2 / 3)
 end
