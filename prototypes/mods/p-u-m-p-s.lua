@@ -442,15 +442,25 @@ data.raw.recipe["water-offshore"].crafting_machine_tint = {
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
-    -- Fetch entities
     local entities = {
-        pump_placeholder = { name = name .. "-placeholder", entity = data.raw["offshore-pump"][name .. "-placeholder"], type = "offshore-pump" },
-        pump_assembly = { name = name, entity = data.raw["assembling-machine"][name], type = "assembling-machine" },
-        pump_offshore = { name = name, entity = data.raw["offshore-pump"][name], type = "offshore-pump" },
+        pump_placeholder = {
+            name = name .. "-placeholder",
+            entity = data.raw["offshore-pump"][name .. "-placeholder"],
+            type = "offshore-pump"
+        },
+        pump_assembly = {
+            name = name,
+            entity = data.raw["assembling-machine"][name],
+            type = "assembling-machine"
+        },
+        pump_offshore = {
+            name = name,
+            entity = data.raw["offshore-pump"][name],
+            type = "offshore-pump"
+        },
     }
 
     for _, properties in pairs(entities) do
-        -- Fetch entity
         local entity = properties.entity
 
         -- Check if entity exists, if not, skip this iteration

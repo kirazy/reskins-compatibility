@@ -76,7 +76,7 @@ for name, map in pairs(tier_map) do
         inputs.make_explosions = false
     end
 
-    -- Fetch entity
+    ---@type data.InserterPrototype|data.Loader1x1Prototype
     local entity = data.raw[inputs.type][name]
     local base_belt = data.raw["transport-belt"][map.base_belt]
 
@@ -90,6 +90,7 @@ for name, map in pairs(tier_map) do
 
     -- Retint the mask
     if map.is_inserter then
+        ---@cast entity data.InserterPrototype
         local base_path = map.is_filter and "filter-inserter" or "inserter"
 
         entity.corpse = "small-remnants"
@@ -135,6 +136,7 @@ for name, map in pairs(tier_map) do
             },
         }
     else
+        ---@cast entity data.Loader1x1Prototype
         local base_path = map.is_filter and "filter-structure" or "structure"
 
         entity.structure.direction_in.sheets = {

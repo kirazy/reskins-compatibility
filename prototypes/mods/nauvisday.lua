@@ -7,7 +7,7 @@
 if not mods["NauvisDay"] then return end
 if not (reskins.bobs and reskins.bobs.triggers.greenhouse.entities) then return end
 
--- Set input parameters
+---@type SetupStandardEntityInputs
 local inputs = {
     type = "assembling-machine",
     icon_name = "dead-greenhouse",
@@ -17,10 +17,7 @@ local inputs = {
     icon_layers = 1,
 }
 
--- Fetch entity
 local entity = data.raw["assembling-machine"]["dead-greenhouse"]
-
--- Check if entity exists, if not, return
 if not entity then return end
 
 reskins.lib.setup_standard_entity("dead-greenhouse", 0, inputs)

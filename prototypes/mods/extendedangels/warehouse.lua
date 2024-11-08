@@ -87,7 +87,7 @@ local function create_standard_warehouse_picture()
 end
 
 -- Setup defaults
-reskins.lib.parse_inputs(inputs)
+reskins.lib.set_inputs_defaults(inputs)
 
 -- Reskin Extended Angels warehouses
 for warehouse, map in pairs(types) do

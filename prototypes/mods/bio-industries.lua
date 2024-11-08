@@ -265,7 +265,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
     }
 
     for name, map in pairs(boilers) do
-        -- Fetch entity
+        ---@type data.BoilerPrototype
         local entity = data.raw[inputs.type][name]
 
         -- Check if entity exists, if not, skip this iteration

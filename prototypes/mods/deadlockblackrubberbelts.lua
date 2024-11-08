@@ -23,11 +23,11 @@ local tier_map = {
     ["ultimate-transport-belt"] = { tier = 5 },
 }
 
-reskins.lib.parse_inputs(inputs)
+reskins.lib.set_inputs_defaults(inputs)
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
-    -- Fetch entity
+    ---@type data.TransportBeltPrototype
     local entity = data.raw[inputs.type][name]
 
     -- Check if entity exists, if not, skip this iteration
