@@ -15,14 +15,14 @@ if not reskins.angels then return end
 
 ---@type data.IconData[]
 data.raw.item["ASE-sand-die"].icons = { {
-    icon = "__angelssmelting__/graphics/icons/expendable-mold.png",
+    icon = "__angelssmeltinggraphics__/graphics/icons/expendable-mold.png",
     icon_size = 32,
     scale = 1,
 } }
 
 ---@type data.IconData[]
 data.raw.item["ASE-metal-die"].icons = { {
-    icon = "__angelssmelting__/graphics/icons/non-expendable-mold.png",
+    icon = "__angelssmeltinggraphics__/graphics/icons/non-expendable-mold.png",
     icon_size = 32,
     scale = 1,
 } }

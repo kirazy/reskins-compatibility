@@ -56,7 +56,7 @@ for name, map in pairs(tier_map) do
         layers = {
             -- Base
             {
-                filename = "__angelsbioprocessing__/graphics/entity/bio-hatchery/bio-hatchery-off.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/bio-hatchery/bio-hatchery-off.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -89,7 +89,7 @@ for name, map in pairs(tier_map) do
                 layers = {
                     -- Base
                     {
-                        filename = "__angelsbioprocessing__/graphics/entity/bio-hatchery/bio-hatchery-animation.png",
+                        filename = "__angelsbioprocessinggraphics__/graphics/entity/bio-hatchery/bio-hatchery-animation.png",
                         priority = "extra-high",
                         width = 160,
                         height = 160,

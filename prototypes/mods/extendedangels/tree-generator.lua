@@ -55,7 +55,7 @@ for name, map in pairs(tier_map) do
     entity.graphics_set.animation = {
         layers = {
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-shadow.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-shadow.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -64,7 +64,7 @@ for name, map in pairs(tier_map) do
                 shift = { 0, 0 },
             },
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-base.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-base.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -93,7 +93,7 @@ for name, map in pairs(tier_map) do
                 blend_mode = reskins.lib.settings.blend_mode,
             },
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-pipes.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-pipes.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -102,7 +102,7 @@ for name, map in pairs(tier_map) do
                 shift = { 0, 0 },
             },
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-1.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-1.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -111,7 +111,7 @@ for name, map in pairs(tier_map) do
                 shift = { 0, 0 },
             },
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-top.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-top.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,
@@ -126,7 +126,7 @@ for name, map in pairs(tier_map) do
         {
             fadeout = true,
             animation = {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-generator-top-on.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-generator-top-on.png",
                 priority = "extra-high",
                 width = 160,
                 height = 160,

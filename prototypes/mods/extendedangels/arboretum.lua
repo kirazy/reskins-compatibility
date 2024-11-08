@@ -48,14 +48,14 @@ for name, map in pairs(tier_map) do
         layers = {
             -- Shadow
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-arboretum-shadow.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-arboretum-shadow.png",
                 width = 224,
                 height = 256,
                 shift = { 0, -0.50 },
             },
             -- Base
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-arboretum-base.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-arboretum-base.png",
                 width = 224,
                 height = 256,
                 shift = { 0, -0.50 },
@@ -80,14 +80,14 @@ for name, map in pairs(tier_map) do
             },
             -- Pipes
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-arboretum-pipes.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-arboretum-pipes.png",
                 width = 224,
                 height = 256,
                 shift = { 0, -0.50 },
             },
             -- Off
             {
-                filename = "__angelsbioprocessing__/graphics/entity/trees/bio-arboretum-off.png",
+                filename = "__angelsbioprocessinggraphics__/graphics/entity/trees/bio-arboretum-off.png",
                 width = 224,
                 height = 256,
                 shift = { 0, -0.50 },
