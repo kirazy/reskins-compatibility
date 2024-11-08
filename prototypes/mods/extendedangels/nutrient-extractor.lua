@@ -13,7 +13,7 @@ local inputs = {
     icon_name = "nutrient-extractor",
     base_entity_name = "assembling-machine-1",
     mod = "compatibility",
-    particles = { ["big"] = 1,["medium"] = 2 },
+    particles = { ["big"] = 1, ["medium"] = 2 },
     group = "extendedangels",
     make_remnants = false,
 }
@@ -86,7 +86,7 @@ for name, map in pairs(tier_map) do
                 animation_speed = 0.5,
                 blend_mode = reskins.lib.settings.blend_mode,
             },
-        }
+        },
     }
 
     -- Label to skip to next iteration

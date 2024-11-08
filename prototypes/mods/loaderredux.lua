@@ -15,7 +15,7 @@ local inputs = {
     base_entity_name = "splitter",
     mod = "compatibility",
     group = "loaderredux",
-    particles = { ["medium"] = 1,["big"] = 4 },
+    particles = { ["medium"] = 1, ["big"] = 4 },
     icon_layers = 2,
     make_remnants = false,
 }
@@ -26,7 +26,7 @@ inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity
 local tier_map = {
     ["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
     ["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
-    ["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express, },
+    ["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
     ["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
     ["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }

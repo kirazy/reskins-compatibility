@@ -12,7 +12,7 @@ local inputs = {
     group = "extendedangels",
     icon_name = "warehouse",
     base_entity_name = "oil-refinery",
-    particles = { ["big-tint"] = 5,["medium"] = 2 },
+    particles = { ["big-tint"] = 5, ["medium"] = 2 },
     make_explosions = false,
     make_remnants = false,
 }
@@ -142,7 +142,7 @@ for warehouse, map in pairs(types) do
             end
 
             entity.picture = {
-                layers = picture
+                layers = picture,
             }
 
             -- Fix drawing box

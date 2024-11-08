@@ -13,7 +13,7 @@ local inputs = {
     base_entity_name = "splitter",
     mod = "compatibility",
     group = "miniloader",
-    particles = { ["medium"] = 1,["big"] = 4 },
+    particles = { ["medium"] = 1, ["big"] = 4 },
     technology_icon_size = 256,
     make_remnants = false,
 }
@@ -35,6 +35,7 @@ local tier_map = {
     ["express-filter-miniloader-loader"] = { tier = 3, sprite_variant = 2, is_filter = true, base_belt = "express-transport-belt" },
     ["turbo-filter-miniloader-loader"] = { tier = 4, sprite_variant = 2, is_filter = true, base_belt = "turbo-transport-belt" },
     ["ultimate-filter-miniloader-loader"] = { tier = 5, sprite_variant = 2, is_filter = true, base_belt = "ultimate-transport-belt" },
+
     -- Inserter Entities
     ["basic-miniloader-inserter"] = { tier = 0, is_inserter = true },
     ["chute-miniloader-inserter"] = { tier = 0, is_inserter = true },
@@ -131,7 +132,7 @@ for name, map in pairs(tier_map) do
                 width = 192,
                 y = 192,
                 draw_as_shadow = true,
-            }
+            },
         }
     else
         local base_path = map.is_filter and "filter-structure" or "structure"
@@ -175,7 +176,7 @@ for name, map in pairs(tier_map) do
                 scale = 0.5,
                 width = 192,
                 y = 0,
-            }
+            },
         }
 
         entity.structure.direction_out.sheets = {
@@ -217,7 +218,7 @@ for name, map in pairs(tier_map) do
                 width = 192,
                 y = 192,
                 draw_as_shadow = true,
-            }
+            },
         }
 
         -- Apply belt set

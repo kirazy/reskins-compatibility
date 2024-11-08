@@ -25,7 +25,7 @@ entity.animation = {
             frame_count = 32,
             line_length = 8,
             shift = util.by_pixel(0, 2),
-            scale = 0.5
+            scale = 0.5,
         },
         -- Shadow
         {
@@ -37,9 +37,9 @@ entity.animation = {
             line_length = 8,
             draw_as_shadow = true,
             shift = util.by_pixel(27, 5),
-            scale = 0.5
-        }
-    }
+            scale = 0.5,
+        },
+    },
 }
 
 -- Ensure the working visualisation is properly set
@@ -56,7 +56,7 @@ entity.working_visualisations = {
             draw_as_glow = true,
             shift = util.by_pixel(0, 2),
             scale = 0.5,
-        }
+        },
     },
 }
 
@@ -73,8 +73,8 @@ entity.energy_source.smoke = {
         name = "smoke",
         deviation = { 0.1, 0.1 },
         position = { 0.5, -1.5 },
-        frequency = 7.5
-    }
+        frequency = 7.5,
+    },
 }
 
 -- Rescale as needed

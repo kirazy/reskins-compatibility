@@ -39,7 +39,7 @@ local function return_animation(tint, direction)
                     width = 90,
                     height = 162,
                     shift = util.by_pixel(-1, -15),
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Mask
                 {
@@ -52,7 +52,7 @@ local function return_animation(tint, direction)
                     height = 162,
                     shift = util.by_pixel(-1, -15),
                     tint = tint,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Highlights
                 {
@@ -65,7 +65,7 @@ local function return_animation(tint, direction)
                     height = 162,
                     shift = util.by_pixel(-1, -15),
                     blend_mode = reskins.lib.settings.blend_mode,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Shadow
                 {
@@ -78,9 +78,9 @@ local function return_animation(tint, direction)
                     height = 134,
                     shift = util.by_pixel(13, -7),
                     draw_as_shadow = true,
-                    scale = 0.5
-                }
-            }
+                    scale = 0.5,
+                },
+            },
         },
         east = {
             layers = {
@@ -94,7 +94,7 @@ local function return_animation(tint, direction)
                     width = 124,
                     height = 102,
                     shift = util.by_pixel(15, -2),
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Mask
                 {
@@ -107,7 +107,7 @@ local function return_animation(tint, direction)
                     height = 102,
                     shift = util.by_pixel(15, -2),
                     tint = tint,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Highlights
                 {
@@ -120,7 +120,7 @@ local function return_animation(tint, direction)
                     height = 102,
                     shift = util.by_pixel(15, -2),
                     blend_mode = reskins.lib.settings.blend_mode,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Shadow
                 {
@@ -133,9 +133,9 @@ local function return_animation(tint, direction)
                     height = 66,
                     shift = util.by_pixel(27, 8),
                     draw_as_shadow = true,
-                    scale = 0.5
-                }
-            }
+                    scale = 0.5,
+                },
+            },
         },
         south = {
             layers = {
@@ -149,7 +149,7 @@ local function return_animation(tint, direction)
                     width = 92,
                     height = 192,
                     shift = util.by_pixel(-1, 0),
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Mask
                 {
@@ -162,7 +162,7 @@ local function return_animation(tint, direction)
                     height = 192,
                     shift = util.by_pixel(-1, 0),
                     tint = tint,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Highlights
                 {
@@ -175,7 +175,7 @@ local function return_animation(tint, direction)
                     height = 192,
                     shift = util.by_pixel(-1, 0),
                     blend_mode = reskins.lib.settings.blend_mode,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Shadow
                 {
@@ -188,9 +188,9 @@ local function return_animation(tint, direction)
                     height = 128,
                     shift = util.by_pixel(15, 23),
                     draw_as_shadow = true,
-                    scale = 0.5
-                }
-            }
+                    scale = 0.5,
+                },
+            },
         },
         west = {
             layers = {
@@ -204,7 +204,7 @@ local function return_animation(tint, direction)
                     width = 124,
                     height = 102,
                     shift = util.by_pixel(-15, -2),
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Mask
                 {
@@ -217,7 +217,7 @@ local function return_animation(tint, direction)
                     height = 102,
                     shift = util.by_pixel(-15, -2),
                     tint = tint,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Highlights
                 {
@@ -230,7 +230,7 @@ local function return_animation(tint, direction)
                     height = 102,
                     shift = util.by_pixel(-15, -2),
                     blend_mode = reskins.lib.settings.blend_mode,
-                    scale = 0.5
+                    scale = 0.5,
                 },
                 -- Shadow
                 {
@@ -243,10 +243,10 @@ local function return_animation(tint, direction)
                     height = 66,
                     shift = util.by_pixel(-3, 8),
                     draw_as_shadow = true,
-                    scale = 0.5
-                }
-            }
-        }
+                    scale = 0.5,
+                },
+            },
+        },
     }
 
     if direction then
@@ -267,7 +267,7 @@ local function return_fluid_animation(direction)
             width = 40,
             height = 40,
             shift = util.by_pixel(-1, -22),
-            scale = 0.5
+            scale = 0.5,
         },
         east = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-fluid.png",
@@ -278,7 +278,7 @@ local function return_fluid_animation(direction)
             width = 38,
             height = 50,
             shift = util.by_pixel(6, -11),
-            scale = 0.5
+            scale = 0.5,
         },
         south = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-fluid.png",
@@ -289,7 +289,7 @@ local function return_fluid_animation(direction)
             width = 36,
             height = 14,
             shift = util.by_pixel(-1, -4),
-            scale = 0.5
+            scale = 0.5,
         },
         west = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-fluid.png",
@@ -300,8 +300,8 @@ local function return_fluid_animation(direction)
             width = 36,
             height = 50,
             shift = util.by_pixel(-7, -11),
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     }
 
     if direction then
@@ -318,29 +318,29 @@ local function return_glass_pictures(direction)
             width = 36,
             height = 40,
             shift = util.by_pixel(-2, -22),
-            scale = 0.5
+            scale = 0.5,
         },
         east = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-glass.png",
             width = 30,
             height = 32,
             shift = util.by_pixel(5, -13),
-            scale = 0.5
+            scale = 0.5,
         },
         south = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-glass.png",
             width = 40,
             height = 24,
             shift = util.by_pixel(-1, -6),
-            scale = 0.5
+            scale = 0.5,
         },
         west = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-glass.png",
             width = 30,
             height = 32,
             shift = util.by_pixel(-6, -14),
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     }
 
     if direction then
@@ -357,29 +357,29 @@ local function return_base_pictures(direction)
             width = 114,
             height = 106,
             shift = util.by_pixel(-1, -5),
-            scale = 0.5
+            scale = 0.5,
         },
         east = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_East-legs.png",
             width = 106,
             height = 60,
             shift = util.by_pixel(4, 13),
-            scale = 0.5
+            scale = 0.5,
         },
         south = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_South-legs.png",
             width = 110,
             height = 108,
             shift = util.by_pixel(-2, 6),
-            scale = 0.5
+            scale = 0.5,
         },
         west = {
             filename = "__base__/graphics/entity/offshore-pump/hr-offshore-pump_West-legs.png",
             width = 108,
             height = 64,
             shift = util.by_pixel(-6, 12),
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     }
 
     if direction then
@@ -400,7 +400,7 @@ local function return_underwater_pictures(direction, use_alternate)
             height = 36,
             shift = util.by_pixel(-1, -32),
             tint = adjusted_alpha,
-            scale = 0.5
+            scale = 0.5,
         },
         east = {
             filename = filepath .. "hr-offshore-pump_East-underwater.png",
@@ -408,7 +408,7 @@ local function return_underwater_pictures(direction, use_alternate)
             height = 72,
             shift = util.by_pixel(39, 17),
             tint = adjusted_alpha,
-            scale = 0.5
+            scale = 0.5,
         },
         south = {
             filename = filepath .. "hr-offshore-pump_South-underwater.png",
@@ -416,7 +416,7 @@ local function return_underwater_pictures(direction, use_alternate)
             height = 48,
             shift = util.by_pixel(-1, 49),
             tint = adjusted_alpha,
-            scale = 0.5
+            scale = 0.5,
         },
         west = {
             filename = filepath .. "hr-offshore-pump_West-underwater.png",
@@ -424,8 +424,8 @@ local function return_underwater_pictures(direction, use_alternate)
             height = 72,
             shift = util.by_pixel(-40, 17),
             tint = adjusted_alpha,
-            scale = 0.5
-        }
+            scale = 0.5,
+        },
     }
 
     if direction then
@@ -486,7 +486,7 @@ for name, map in pairs(tier_map) do
                         frame_count = 1,
                         direction_count = 4,
                         shift = util.by_pixel(2, -2.5),
-                        scale = 0.5
+                        scale = 0.5,
                     },
                     -- Mask
                     {
@@ -498,7 +498,7 @@ for name, map in pairs(tier_map) do
                         direction_count = 4,
                         shift = util.by_pixel(2, -2.5),
                         tint = inputs.tint,
-                        scale = 0.5
+                        scale = 0.5,
                     },
                     -- Highlights
                     {
@@ -510,7 +510,7 @@ for name, map in pairs(tier_map) do
                         direction_count = 4,
                         shift = util.by_pixel(2, -2.5),
                         blend_mode = reskins.lib.settings.blend_mode,
-                        scale = 0.5
+                        scale = 0.5,
                     },
                 },
             },
@@ -528,7 +528,7 @@ for name, map in pairs(tier_map) do
                         frame_count = 1,
                         direction_count = 4,
                         shift = util.by_pixel(1.5, 0.5),
-                        scale = 0.5
+                        scale = 0.5,
                     },
                     -- Mask
                     {
@@ -540,7 +540,7 @@ for name, map in pairs(tier_map) do
                         direction_count = 4,
                         shift = util.by_pixel(1.5, 0.5),
                         tint = inputs.tint,
-                        scale = 0.5
+                        scale = 0.5,
                     },
                     -- Highlights
                     {
@@ -552,10 +552,10 @@ for name, map in pairs(tier_map) do
                         direction_count = 4,
                         shift = util.by_pixel(1.5, 0.5),
                         blend_mode = reskins.lib.settings.blend_mode,
-                        scale = 0.5
+                        scale = 0.5,
                     },
-                }
-            }
+                },
+            },
         }
 
         -- Reskin entities
@@ -613,7 +613,7 @@ for name, map in pairs(tier_map) do
                     east_animation = return_fluid_animation("east"),
                     south_animation = return_fluid_animation("south"),
                     west_animation = return_fluid_animation("west"),
-                }
+                },
             }
         end
 

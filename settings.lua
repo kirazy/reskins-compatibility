@@ -30,6 +30,6 @@ if mods["extendedangels"] then
             name = "reskins-compatibility-extendedangels-warehouse-tiering",
             setting_type = "startup",
             default_value = true,
-        }
+        },
     })
 end

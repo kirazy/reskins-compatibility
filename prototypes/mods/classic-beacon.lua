@@ -97,9 +97,9 @@ for name, map in pairs(tier_map) do
                             shift = util.by_pixel(11, 1.5),
                             scale = 1,
                             draw_as_shadow = true,
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             },
             -- Beacon Antenna
             {
@@ -129,11 +129,11 @@ for name, map in pairs(tier_map) do
                             shift = util.by_pixel(100.5, 15.5),
                             scale = 1,
                             draw_as_shadow = true,
-                        }
-                    }
-                }
-            }
-        }
+                        },
+                    },
+                },
+            },
+        },
     }
 
     if reskins.lib.settings.get_value("classic-beacon-do-high-res") == true then
@@ -208,7 +208,7 @@ for name, map in pairs(tier_map) do
             scale = 5,
         },
         rotate = false,
-        orientation_to_variation = false
+        orientation_to_variation = false,
     }
 
     -- Label to skip to next iteration

@@ -12,7 +12,7 @@ local inputs = {
     type = "assembling-machine",
     base_entity_name = "assembling-machine-1",
     mod = "compatibility",
-    particles = { ["big"] = 1,["medium"] = 2 },
+    particles = { ["big"] = 1, ["medium"] = 2 },
     group = "extendedangels",
     make_remnants = false,
 }
@@ -119,7 +119,7 @@ for name, map in pairs(tier_map) do
                 frame_count = 1,
                 shift = { 0, 0 },
             },
-        }
+        },
     }
 
     entity.working_visualisations = {
@@ -135,7 +135,7 @@ for name, map in pairs(tier_map) do
                 shift = { 0, 0 },
                 draw_as_glow = true,
             },
-            light = { intensity = 4, size = 4, color = { r = 0.5, g = 1.0, b = 0.5 } }
+            light = { intensity = 4, size = 4, color = { r = 0.5, g = 1.0, b = 0.5 } },
         },
     }
 

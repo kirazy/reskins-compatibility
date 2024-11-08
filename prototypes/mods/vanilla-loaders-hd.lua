@@ -14,7 +14,7 @@ local inputs = {
     base_entity_name = "splitter",
     mod = "compatibility",
     group = "vanilla-loaders-hd",
-    particles = { ["medium"] = 1,["big"] = 4 },
+    particles = { ["medium"] = 1, ["big"] = 4 },
     make_remnants = false,
 }
 
@@ -79,7 +79,7 @@ for name, map in pairs(tier_map) do
             height = 192,
             draw_as_shadow = true,
             scale = 0.5,
-        }
+        },
     }
 
     entity.structure.direction_out.sheets = {
@@ -121,7 +121,7 @@ for name, map in pairs(tier_map) do
             y = 192,
             draw_as_shadow = true,
             scale = 0.5,
-        }
+        },
     }
 
     -- Apply belt set

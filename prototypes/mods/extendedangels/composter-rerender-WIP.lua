@@ -13,7 +13,7 @@ local inputs = {
     icon_name = "composter",
     base_entity_name = "assembling-machine-1",
     mod = "angels",
-    particles = { ["big"] = 1,["medium"] = 2 },
+    particles = { ["big"] = 1, ["medium"] = 2 },
     group = "bioprocessing",
     make_remnants = false,
 }
@@ -87,7 +87,7 @@ for name, map in pairs(tier_map) do
             composter_base(),
             composter_mask(inputs.tint),
             composter_highlights(),
-        }
+        },
     }
 
     entity.idle_animation = {
@@ -104,7 +104,7 @@ for name, map in pairs(tier_map) do
                 shift = util.by_pixel(0, 0),
                 scale = 0.5,
             },
-        }
+        },
     }
 
     entity.working_visualisations = {
@@ -119,7 +119,7 @@ for name, map in pairs(tier_map) do
                 line_length = 5,
                 shift = util.by_pixel(0, 0),
                 scale = 0.5,
-            }
+            },
         },
 
         -- Shadow
@@ -133,7 +133,7 @@ for name, map in pairs(tier_map) do
                 shift = util.by_pixel(0, 0),
                 -- draw_as_shadow = true,
                 scale = 0.5,
-            }
+            },
         },
     }
 

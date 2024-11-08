@@ -103,8 +103,8 @@ for name, _ in pairs(data.raw.item) do
     local item_name = name:gsub("deadlock%-stack%-", "")
 
     for _, exception in pairs(name_exception_patterns) do
-        if item_name:find(exception) then 
-            goto continue 
+        if item_name:find(exception) then
+            goto continue
         end
     end
 

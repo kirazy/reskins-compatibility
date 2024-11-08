@@ -94,8 +94,8 @@ local function vertical_drill_animation(speed, inputs)
                 draw_as_shadow = true,
                 shift = util.by_pixel(49, 7),
                 scale = 0.5,
-            }
-        }
+            },
+        },
     }
 end
 
@@ -167,8 +167,8 @@ local function horizontal_drill_animation(speed, inputs, is_front)
                     scale = 0.5,
                 },
                 -- Shadow
-                horizontal_drill_shadow(speed)
-            }
+                horizontal_drill_shadow(speed),
+            },
         }
     else
         -- Standard horizontal animation
@@ -219,8 +219,8 @@ local function horizontal_drill_animation(speed, inputs, is_front)
                     scale = 0.5,
                 },
                 -- Shadow
-                horizontal_drill_shadow(speed)
-            }
+                horizontal_drill_shadow(speed),
+            },
         }
     end
 
@@ -278,8 +278,8 @@ local function drill_dry_animation(speed, inputs)
                     shift = util.by_pixel(19, -3),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         east = {
             layers = {
@@ -323,8 +323,8 @@ local function drill_dry_animation(speed, inputs)
                     shift = util.by_pixel(20, 6),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         south = {
             layers = {
@@ -355,8 +355,8 @@ local function drill_dry_animation(speed, inputs)
                     shift = util.by_pixel(19, 2),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         west = {
             layers = {
@@ -400,8 +400,8 @@ local function drill_dry_animation(speed, inputs)
                     shift = util.by_pixel(15, 6),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
     }
 end
@@ -445,8 +445,8 @@ local function drill_dry_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(1, -44),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             east_animation = nil,
             south_animation = nil,
@@ -495,8 +495,8 @@ local function drill_dry_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(25, -12),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = {
                 layers = {
@@ -511,8 +511,8 @@ local function drill_dry_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-2, 20),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             west_animation = {
                 layers = {
@@ -527,9 +527,9 @@ local function drill_dry_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-25, -11),
                         scale = 0.5,
-                    }
-                }
-            }
+                    },
+                },
+            },
         },
 
         -- Front Frame
@@ -573,7 +573,7 @@ local function drill_dry_working_visualisation(speed, inputs)
                         shift = util.by_pixel(0, 13),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = {
                 priority = "high",
@@ -586,7 +586,7 @@ local function drill_dry_working_visualisation(speed, inputs)
                 direction_count = 1,
                 shift = util.by_pixel(-4, 1),
                 scale = 0.5,
-            }
+            },
         },
 
         -- Drill Front Animation
@@ -607,7 +607,7 @@ local function drill_dry_working_visualisation(speed, inputs)
             east_position = { 1.5, -1.5 },
             south_position = { 1, 0.5 },
             west_position = { -1.5, -1.5 },
-        }
+        },
     }
 end
 
@@ -661,8 +661,8 @@ local function drill_wet_animation(speed, inputs)
                     shift = util.by_pixel(19, 1),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         east = {
             layers = {
@@ -706,8 +706,8 @@ local function drill_wet_animation(speed, inputs)
                     shift = util.by_pixel(20, 8),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         south = {
             layers = {
@@ -738,8 +738,8 @@ local function drill_wet_animation(speed, inputs)
                     shift = util.by_pixel(19, 2),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
         west = {
             layers = {
@@ -783,8 +783,8 @@ local function drill_wet_animation(speed, inputs)
                     shift = util.by_pixel(15, 8),
                     repeat_count = 5,
                     scale = 0.5,
-                }
-            }
+                },
+            },
         },
     }
 end
@@ -828,12 +828,12 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(1, -44),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             east_animation = nil,
             south_animation = nil,
-            west_animation = nil
+            west_animation = nil,
         },
 
         -- Drill Back Animation
@@ -878,8 +878,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(25, -12),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = {
                 layers = {
@@ -894,8 +894,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-2, 20),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             west_animation = {
                 layers = {
@@ -910,9 +910,9 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-25, -11),
                         scale = 0.5,
-                    }
-                }
-            }
+                    },
+                },
+            },
         },
 
         -- Fluid Window Background (Bottom)
@@ -933,7 +933,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-1, -18),
                         scale = 0.5,
                     },
-                }
+                },
             },
             east_animation = nil,
             south_animation = {
@@ -950,7 +950,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-1, -33),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = nil,
         },
@@ -972,7 +972,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(1, 21),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = {
                 layers = {
@@ -987,8 +987,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(11, 0),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = nil,
             east_animation = {
@@ -1005,7 +1005,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-12, 0),
                         scale = 0.5,
                     },
-                }
+                },
             },
         },
         -- Fluid Base (Bottom)
@@ -1027,7 +1027,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(0, -17),
                         scale = 0.5,
                     },
-                }
+                },
             },
             east_animation = nil,
             south_animation = {
@@ -1044,9 +1044,9 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(0, -32),
                         scale = 0.5,
                     },
-                }
+                },
             },
-            west_animation = nil
+            west_animation = nil,
         },
 
         -- Fluid Base (Front)
@@ -1067,7 +1067,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(2, 21),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = {
                 layers = {
@@ -1082,8 +1082,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(12, -1),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = nil,
             east_animation = {
@@ -1100,7 +1100,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-12, -1),
                         scale = 0.5,
                     },
-                }
+                },
             },
         },
 
@@ -1123,7 +1123,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-2, -17),
                         scale = 0.5,
                     },
-                }
+                },
             },
             east_animation = nil,
             south_animation = {
@@ -1140,7 +1140,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-2, -32),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = nil,
         },
@@ -1163,7 +1163,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(2, 22),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = {
                 layers = {
@@ -1178,8 +1178,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(11, 0),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = nil,
             east_animation = {
@@ -1196,7 +1196,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-12, 0),
                         scale = 0.5,
                     },
-                }
+                },
             },
         },
 
@@ -1217,7 +1217,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(-2, 20),
                         scale = 0.5,
                     },
-                }
+                },
             },
             west_animation = {
                 layers = {
@@ -1232,8 +1232,8 @@ local function drill_wet_working_visualisation(speed, inputs)
                         direction_count = 1,
                         shift = util.by_pixel(-4, 1),
                         scale = 0.5,
-                    }
-                }
+                    },
+                },
             },
             south_animation = {
                 layers = {
@@ -1260,7 +1260,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(0, 19),
                         scale = 0.5,
                     },
-                }
+                },
             },
             east_animation = {
                 layers = {
@@ -1276,7 +1276,7 @@ local function drill_wet_working_visualisation(speed, inputs)
                         shift = util.by_pixel(3, 2),
                         scale = 0.5,
                     },
-                }
+                },
             },
         },
 
@@ -1298,7 +1298,7 @@ local function drill_wet_working_visualisation(speed, inputs)
             east_position = { 1.5, -1.5 },
             south_position = { 1, 0.5 },
             west_position = { -1.5, -1.5 },
-        }
+        },
     }
 end
 
@@ -1412,8 +1412,8 @@ for name, map in pairs(tier_map) do
                 shift = util.by_pixel(7, -0.5),
                 blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                 scale = 0.5,
-            }
-        }
+            },
+        },
     })
 
     -- Reskin entities
