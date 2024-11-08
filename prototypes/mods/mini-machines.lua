@@ -70,7 +70,6 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
         group = "assembly",
         tier = 1,
         technology_icon_size = 256,
-        technology_icon_mipmaps = 4,
         icon_name = "electrolyser",
         icon_base = "electrolyser-1",
         icon_mask = "electrolyser-1",
@@ -230,7 +229,6 @@ local function set_rescaled_version_of_source_technology_on_target(target_name, 
     local base_layer = {
         icon = "__reskins-library__/graphics/technology/mini-machine-underlay.png",
         icon_size = 256,
-        icon_mipmaps = 1,
         scale = 1,
     }
 
@@ -238,7 +236,6 @@ local function set_rescaled_version_of_source_technology_on_target(target_name, 
     local overlay_layer = {
         icon = "__reskins-library__/graphics/technology/mini-machine-overlay.png",
         icon_size = 256,
-        icon_mipmaps = 3,
         scale = 1,
     }
 
@@ -267,7 +264,6 @@ end
 local mini_machine_icon_overlay = {
     icon = "__reskins-library__/graphics/icons/mini-machine-overlay.png",
     icon_size = 64,
-    icon_mipmaps = 2,
     scale = 0.5,
 }
 

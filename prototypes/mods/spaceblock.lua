@@ -27,7 +27,6 @@ for name, map in pairs(fixes) do
             {
                 icon = map.icon,
                 icon_size = 64,
-                icon_mipmaps = 4,
                 scale = 0.5,
                 tint = { r = 0.85, g = 0.5, b = 1, a = 1 },
             },
@@ -54,18 +53,15 @@ local function make_boiler_icons_base(tint)
             {
                 icon = "__reskins-bobs__/graphics/icons/power/boiler/boiler-icon-base.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
             },
             {
                 icon = "__reskins-bobs__/graphics/icons/power/boiler/boiler-icon-mask.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 tint = tint,
             },
             {
                 icon = "__reskins-bobs__/graphics/icons/power/boiler/boiler-icon-highlights.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 tint = { 1, 1, 1, 0 },
             },
         }
@@ -74,7 +70,6 @@ local function make_boiler_icons_base(tint)
             {
                 icon = "__base__/graphics/icons/boiler.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 tint = tint,
             },
         }
@@ -106,7 +101,6 @@ local function collect_icons(prototype)
         {
             icon = prototype.icon,
             icon_size = prototype.icon_size,
-            icon_mipmaps = prototype.icon_mipmaps or 0,
         },
     }
 
@@ -114,10 +108,6 @@ local function collect_icons(prototype)
     for _, icon_data in pairs(icons) do
         if not icon_data.icon_size then
             icon_data.icon_size = prototype.icon_size
-        end
-
-        if not icon_data.icon_mipmaps then
-            icon_data.icon_mipmaps = prototype.icon_mipmaps or 0
         end
     end
 

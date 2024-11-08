@@ -13,7 +13,6 @@ local inputs = {
     group = "extendedangels",
     type = "technology",
     technology_icon_size = 256,
-    technology_icon_mipmaps = 2,
     flat_icon = true,
 }
 

@@ -41,13 +41,11 @@ for name, map in pairs(tier_map) do
         {
             icon = actions.icons_path .. "/rubber-belt-" .. inputs.base .. ".png",
             icon_size = 64,
-            icon_mipmaps = 4,
             scale = 0.5,
         },
         {
             icon = actions.icons_path .. "/rubber-belt-mask.png",
             icon_size = 64,
-            icon_mipmaps = 4,
             scale = 0.5,
             tint = inputs.tint,
         },

@@ -75,13 +75,11 @@ for name, map in pairs(tier_map) do
         {
             icon = root .. "/graphics/icons/mipmaps/crating-icon-base.png",
             icon_size = 64,
-            icon_mipmaps = 4,
             scale = 0.5,
         },
         {
             icon = root .. "/graphics/icons/mipmaps/crating-icon-mask.png",
             icon_size = 64,
-            icon_mipmaps = 4,
             scale = 0.5,
             tint = inputs.tint,
         },
@@ -113,7 +111,6 @@ local function crate_item_base_layer()
     return {
         icon = "__DeadlockCrating__/graphics/icons/mipmaps/crate.png",
         icon_size = 64,
-        icon_mipmaps = 4,
         scale = 0.5,
     }
 end

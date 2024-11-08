@@ -14,7 +14,6 @@ local inputs = {
     group = "realisticreactorglow",
     type = "technology",
     technology_icon_size = 256,
-    technology_icon_mipmaps = 4,
     icon_name = "nuclear-power",
 }
 

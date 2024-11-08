@@ -15,7 +15,6 @@ local inputs = {
     group = "miniloader",
     particles = { ["medium"] = 1,["big"] = 4 },
     technology_icon_size = 256,
-    technology_icon_mipmaps = 4,
     make_remnants = false,
 }
 

@@ -10,7 +10,6 @@ local function stack_item_base_layer()
     return {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/blank.png",
         icon_size = 32,
-        icon_mipmaps = 0,
         scale = 1,
     }
 end
@@ -20,7 +19,6 @@ local function stack_recipe_label()
     return {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
         icon_size = 64,
-        icon_mipmaps = 0,
         scale = 0.25,
     }
 end
@@ -30,7 +28,6 @@ local function unstack_recipe_label()
     return {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",
         icon_size = 64,
-        icon_mipmaps = 0,
         scale = 0.25,
     }
 end

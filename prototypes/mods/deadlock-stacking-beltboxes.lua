@@ -82,13 +82,11 @@ for name, map in pairs(tier_map) do
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 scale = 0.5,
             },
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-mask.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 scale = 0.5,
                 tint = inputs.tint,
             },
@@ -103,13 +101,11 @@ for name, map in pairs(tier_map) do
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-base.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 scale = 0.5,
             },
             {
                 icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-mask.png",
                 icon_size = 64,
-                icon_mipmaps = 4,
                 scale = 0.5,
                 tint = inputs.tint,
             },

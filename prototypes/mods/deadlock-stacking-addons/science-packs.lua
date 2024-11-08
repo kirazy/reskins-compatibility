@@ -23,7 +23,6 @@ local recipe_stack_icon_extras = {
     {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
         icon_size = 64,
-        icon_mipmaps = 1,
         scale = 0.25,
     },
 }
@@ -33,7 +32,6 @@ local recipe_unstack_icon_extras = {
     {
         icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",
         icon_size = 64,
-        icon_mipmaps = 1,
         scale = 0.25,
     },
 }

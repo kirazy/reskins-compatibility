@@ -17,7 +17,6 @@ if not reskins.angels then return end
 data.raw.item["ASE-sand-die"].icons = { {
     icon = "__angelssmelting__/graphics/icons/expendable-mold.png",
     icon_size = 32,
-    icon_mipmaps = 0,
     scale = 1,
 } }
 
@@ -25,7 +24,6 @@ data.raw.item["ASE-sand-die"].icons = { {
 data.raw.item["ASE-metal-die"].icons = { {
     icon = "__angelssmelting__/graphics/icons/non-expendable-mold.png",
     icon_size = 32,
-    icon_mipmaps = 0,
     scale = 1,
 } }
 
