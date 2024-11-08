@@ -101,9 +101,9 @@ for warehouse, map in pairs(types) do
         end
 
         inputs.type = map.is_logistics and "logistic-container" or "container"
-        local entity = data.raw[inputs.type][name]
 
-        -- Check if entity exists, if not, skip this iteration
+        ---@type data.LogisticContainerPrototype|data.ContainerPrototype
+        local entity = data.raw[inputs.type][name]
         if not entity then goto continue end
 
         -- Handle tier
@@ -144,9 +144,6 @@ for warehouse, map in pairs(types) do
             entity.picture = {
                 layers = picture,
             }
-
-            -- Fix drawing box
-            entity.drawing_box = { { -3, -3.5 }, { 3, 3 } }
         end
 
         if reskins.lib.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") then
