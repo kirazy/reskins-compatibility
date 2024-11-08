@@ -18,45 +18,26 @@ entity.animation = {
     layers = {
         -- aai-industry Base
         {
-            filename = "__aai-industry__/graphics/entity/burner-assembling-machine/burner-assembling-machine.png",
+            filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine.png",
             priority = "high",
-            width = 107,
-            height = 113,
+            width = 214,
+            height = 226,
             frame_count = 32,
             line_length = 8,
             shift = util.by_pixel(0, 2),
-            hr_version = {
-                filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine.png",
-                priority = "high",
-                width = 214,
-                height = 226,
-                frame_count = 32,
-                line_length = 8,
-                shift = util.by_pixel(0, 2),
-                scale = 0.5
-            }
+            scale = 0.5
         },
         -- Shadow
         {
-            filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/assembling-machine-0-shadow.png",
+            filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/hr-assembling-machine-0-shadow.png",
             priority = "high",
-            width = 132,
-            height = 83,
+            width = 264,
+            height = 165,
             frame_count = 32,
             line_length = 8,
             draw_as_shadow = true,
             shift = util.by_pixel(27, 5),
-            hr_version = {
-                filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/hr-assembling-machine-0-shadow.png",
-                priority = "high",
-                width = 264,
-                height = 165,
-                frame_count = 32,
-                line_length = 8,
-                draw_as_shadow = true,
-                shift = util.by_pixel(27, 5),
-                scale = 0.5
-            }
+            scale = 0.5
         }
     }
 }
@@ -67,23 +48,14 @@ entity.working_visualisations = {
         fadeout = true,
         effect = "flicker",
         animation = {
-            filename = "__aai-industry__/graphics/entity/burner-assembling-machine/burner-assembling-machine-light.png",
+            filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine-light.png",
             priority = "high",
-            width = 107,
-            height = 113,
+            width = 214,
+            height = 226,
             blend_mode = "additive",
             draw_as_glow = true,
             shift = util.by_pixel(0, 2),
-            hr_version = {
-                filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine-light.png",
-                priority = "high",
-                width = 214,
-                height = 226,
-                blend_mode = "additive",
-                draw_as_glow = true,
-                shift = util.by_pixel(0, 2),
-                scale = 0.5,
-            }
+            scale = 0.5,
         }
     },
 }

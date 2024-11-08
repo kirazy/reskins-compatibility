@@ -96,69 +96,42 @@ for name, map in pairs(tier_map) do
         entity.platform_picture.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
-                width = 96,
-                height = 96,
-                y = 96,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                }
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 tint = inputs.tint,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    tint = inputs.tint,
-                }
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 blend_mode = "additive",
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    blend_mode = "additive",
-                }
             },
             -- Shadow
             {
-                filename = "__miniloader__/graphics/entity/miniloader-structure-shadow.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 draw_as_shadow = true,
-                hr_version = {
-                    filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    draw_as_shadow = true,
-                }
             }
         }
     else
@@ -167,138 +140,84 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_in.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
-                width = 96,
-                height = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
                 y = 0,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 0,
-                }
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
-                width = 96,
-                height = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
                 y = 0,
                 tint = inputs.tint,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 0,
-                    tint = inputs.tint,
-                }
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
-                width = 96,
-                height = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
                 y = 0,
                 blend_mode = "additive",
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 0,
-                    blend_mode = "additive",
-                }
             },
             -- Shadow
             {
-                filename = "__miniloader__/graphics/entity/miniloader-structure-shadow.png",
+                filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
                 draw_as_shadow = true,
-                width = 96,
-                height = 96,
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
                 y = 0,
-                hr_version = {
-                    filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
-                    draw_as_shadow = true,
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 0,
-                }
             }
         }
 
         entity.structure.direction_out.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
-                width = 96,
-                height = 96,
-                y = 96,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                }
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 tint = inputs.tint,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    tint = inputs.tint,
-                }
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 blend_mode = "additive",
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    blend_mode = "additive",
-                }
             },
             -- Shadow
             {
-                filename = "__miniloader__/graphics/entity/miniloader-structure-shadow.png",
-                width = 96,
-                height = 96,
-                y = 96,
+                filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
+                height = 192,
+                priority = "extra-high",
+                scale = 0.5,
+                width = 192,
+                y = 192,
                 draw_as_shadow = true,
-                hr_version = {
-                    filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
-                    height = 192,
-                    priority = "extra-high",
-                    scale = 0.5,
-                    width = 192,
-                    y = 192,
-                    draw_as_shadow = true,
-                }
             }
         }
 

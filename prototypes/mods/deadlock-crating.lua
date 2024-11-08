@@ -66,9 +66,7 @@ for name, map in pairs(tier_map) do
 
     -- Retint the mask
     entity.animation.layers[2].tint = inputs.tint
-    entity.animation.layers[2].hr_version.tint = inputs.tint
     entity.working_visualisations[1].animation.tint = light_tint(inputs.tint)
-    entity.working_visualisations[1].animation.hr_version.tint = light_tint(inputs.tint)
     entity.working_visualisations[1].light.color = light_tint(inputs.tint)
 
     -- Icon handling

@@ -31,55 +31,32 @@ local function create_logistic_warehouse_picture(chest)
     {
         -- Base
         {
-            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-" .. chest .. ".png",
+            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-" .. chest .. ".png",
             priority = "extra-high",
-            width = 197,
-            height = 223,
-            shift = util.by_pixel(0, -15),
-            hr_version = {
-                filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-" .. chest .. ".png",
-                priority = "extra-high",
-                width = 391,
-                height = 446,
-                shift = util.by_pixel(-0.5, -15),
-                scale = 0.5,
-            }
+            width = 391,
+            height = 446,
+            shift = util.by_pixel(-0.5, -15),
+            scale = 0.5,
         },
         -- Shadow
         {
-            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-warehouse-shadow.png",
+            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-warehouse-shadow.png",
             priority = "extra-high",
-            width = 297,
-            height = 140,
-            shift = util.by_pixel(51, 30),
+            width = 592,
+            height = 276,
+            shift = util.by_pixel(52.5, 30.5),
             draw_as_shadow = true,
-            hr_version = {
-                filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-warehouse-shadow.png",
-                priority = "extra-high",
-                width = 592,
-                height = 276,
-                shift = util.by_pixel(52.5, 30.5),
-                draw_as_shadow = true,
-                scale = 0.5,
-            }
+            scale = 0.5,
         },
         -- Light
         {
-            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-warehouse-light.png",
+            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-warehouse-light.png",
             priority = "extra-high",
-            width = 7,
-            height = 16,
-            shift = util.by_pixel(72, -104),
+            width = 9,
+            height = 28,
+            shift = util.by_pixel(71.5, -104),
             draw_as_light = true,
-            hr_version = {
-                filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-logistic-warehouse-light.png",
-                priority = "extra-high",
-                width = 9,
-                height = 28,
-                shift = util.by_pixel(71.5, -104),
-                draw_as_light = true,
-                scale = 0.5,
-            }
+            scale = 0.5,
         },
     }
 end
@@ -89,37 +66,22 @@ local function create_standard_warehouse_picture()
     {
         -- Base
         {
-            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/warehouse.png",
+            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-warehouse.png",
             priority = "extra-high",
-            width = 197,
-            height = 223,
-            shift = util.by_pixel(0, -15),
-            hr_version = {
-                filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-warehouse.png",
-                priority = "extra-high",
-                width = 391,
-                height = 446,
-                shift = util.by_pixel(-0.5, -15),
-                scale = 0.5,
-            }
+            width = 391,
+            height = 446,
+            shift = util.by_pixel(-0.5, -15),
+            scale = 0.5,
         },
         -- Shadow
         {
-            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/warehouse-shadow.png",
+            filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-warehouse-shadow.png",
             priority = "extra-high",
-            width = 297,
-            height = 140,
-            shift = util.by_pixel(51, 30),
+            width = 592,
+            height = 276,
+            shift = util.by_pixel(52.5, 30.5),
             draw_as_shadow = true,
-            hr_version = {
-                filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/hr-warehouse-shadow.png",
-                priority = "extra-high",
-                width = 592,
-                height = 276,
-                shift = util.by_pixel(52.5, 30.5),
-                draw_as_shadow = true,
-                scale = 0.5,
-            }
+            scale = 0.5,
         },
     }
 end
@@ -189,39 +151,23 @@ for warehouse, map in pairs(types) do
 
         if reskins.lib.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") then
             table.insert(entity.picture.layers, {
-                filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/warehouse-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/hr-warehouse-mask.png",
                 priority = "extra-high",
-                width = 197,
-                height = 223,
-                shift = util.by_pixel(0, -15),
+                width = 391,
+                height = 446,
+                shift = util.by_pixel(-0.5, -15),
                 tint = inputs.tint,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/hr-warehouse-mask.png",
-                    priority = "extra-high",
-                    width = 391,
-                    height = 446,
-                    shift = util.by_pixel(-0.5, -15),
-                    tint = inputs.tint,
-                    scale = 0.5,
-                }
+                scale = 0.5,
             })
 
             table.insert(entity.picture.layers, {
-                filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/warehouse-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/hr-warehouse-highlights.png",
                 priority = "extra-high",
-                width = 197,
-                height = 223,
-                shift = util.by_pixel(0, -15),
+                width = 391,
+                height = 446,
+                shift = util.by_pixel(-0.5, -15),
                 blend_mode = reskins.lib.settings.blend_mode,
-                hr_version = {
-                    filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/hr-warehouse-highlights.png",
-                    priority = "extra-high",
-                    width = 391,
-                    height = 446,
-                    shift = util.by_pixel(-0.5, -15),
-                    blend_mode = reskins.lib.settings.blend_mode,
-                    scale = 0.5,
-                }
+                scale = 0.5,
             })
         end
 

@@ -46,9 +46,7 @@ for name, map in pairs(tier_map) do
 
     -- Retint the entity mask
     entity.structure.direction_in.sheets[2].tint = inputs.tint
-    entity.structure.direction_in.sheets[2].hr_version.tint = inputs.tint
     entity.structure.direction_out.sheets[2].tint = inputs.tint
-    entity.structure.direction_out.sheets[2].hr_version.tint = inputs.tint
 
     -- Apply belt set
     -- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)

@@ -69,6 +69,7 @@ for name, map in pairs(tier_map) do
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
+                            scale = 1,
                         },
                         -- Mask
                         {
@@ -76,6 +77,7 @@ for name, map in pairs(tier_map) do
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
+                            scale = 1,
                             tint = inputs.tint,
                         },
                         -- Highlights
@@ -84,6 +86,7 @@ for name, map in pairs(tier_map) do
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
+                            scale = 1,
                             blend_mode = reskins.lib.settings.blend_mode, -- "additive",
                         },
                         -- Shadow
@@ -92,6 +95,7 @@ for name, map in pairs(tier_map) do
                             width = 116,
                             height = 93,
                             shift = util.by_pixel(11, 1.5),
+                            scale = 1,
                             draw_as_shadow = true,
                         }
                     }
@@ -112,6 +116,7 @@ for name, map in pairs(tier_map) do
                             frame_count = 32,
                             animation_speed = 0.5,
                             shift = util.by_pixel(-1, -55),
+                            scale = 1,
                         },
                         -- Shadow
                         {
@@ -122,6 +127,7 @@ for name, map in pairs(tier_map) do
                             frame_count = 32,
                             animation_speed = 0.5,
                             shift = util.by_pixel(100.5, 15.5),
+                            scale = 1,
                             draw_as_shadow = true,
                         }
                     }
@@ -132,7 +138,7 @@ for name, map in pairs(tier_map) do
 
     if reskins.lib.settings.get_value("classic-beacon-do-high-res") == true then
         -- Beacon Base
-        entity.graphics_set.animation_list[1].animation.layers[1].hr_version = {
+        entity.graphics_set.animation_list[1].animation.layers[1] = {
             filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-base.png",
             width = 232,
             height = 186,
@@ -140,7 +146,7 @@ for name, map in pairs(tier_map) do
             scale = 0.5,
         }
         -- Beacon Mask
-        entity.graphics_set.animation_list[1].animation.layers[2].hr_version = {
+        entity.graphics_set.animation_list[1].animation.layers[2] = {
             filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-mask.png",
             width = 232,
             height = 186,
@@ -149,7 +155,7 @@ for name, map in pairs(tier_map) do
             scale = 0.5,
         }
         -- Beacon Highlights
-        entity.graphics_set.animation_list[1].animation.layers[3].hr_version = {
+        entity.graphics_set.animation_list[1].animation.layers[3] = {
             filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-highlights.png",
             width = 232,
             height = 186,
@@ -158,7 +164,7 @@ for name, map in pairs(tier_map) do
             scale = 0.5,
         }
         -- Beacon Base Shadow
-        entity.graphics_set.animation_list[1].animation.layers[4].hr_version = {
+        entity.graphics_set.animation_list[1].animation.layers[4] = {
             filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-base-shadow.png",
             width = 232,
             height = 186,
@@ -167,7 +173,7 @@ for name, map in pairs(tier_map) do
             scale = 0.5,
         }
         -- Beacon Antenna Base
-        entity.graphics_set.animation_list[2].animation.layers[1].hr_version = {
+        entity.graphics_set.animation_list[2].animation.layers[1] = {
             filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-antenna.png",
             width = 108,
             height = 100,
@@ -178,7 +184,7 @@ for name, map in pairs(tier_map) do
             scale = 0.5,
         }
         -- Beacon Antenna Shadow
-        entity.graphics_set.animation_list[2].animation.layers[2].hr_version = {
+        entity.graphics_set.animation_list[2].animation.layers[2] = {
             filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-antenna-shadow.png",
             width = 126,
             height = 98,

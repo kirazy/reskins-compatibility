@@ -27,61 +27,38 @@ local tier_map = {
 local function composter_base()
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-base.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-base.png",
         priority = "extra-high",
-        width = 117,
-        height = 129,
+        width = 234,
+        height = 252,
         shift = util.by_pixel(0, 0),
-        hr_version = {
-            filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-base.png",
-            priority = "extra-high",
-            width = 234,
-            height = 252,
-            shift = util.by_pixel(0, 0),
-            scale = 0.5,
-        }
+        scale = 0.5,
     }
 end
 
 local function composter_mask(tint)
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-mask.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-mask.png",
         priority = "extra-high",
-        width = 117,
-        height = 129,
+        width = 234,
+        height = 252,
         shift = util.by_pixel(0, 0),
         tint = tint,
-        hr_version = {
-            filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-mask.png",
-            priority = "extra-high",
-            width = 234,
-            height = 252,
-            shift = util.by_pixel(0, 0),
-            tint = tint,
-            scale = 0.5,
-        }
+        scale = 0.5,
     }
 end
 
 local function composter_highlights()
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-highlights.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-highlights.png",
         priority = "extra-high",
-        width = 117,
-        height = 129,
+        width = 234,
+        height = 252,
         shift = util.by_pixel(0, 0),
         blend_mode = reskins.lib.settings.blend_mode,
-        hr_version = {
-            filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-highlights.png",
-            priority = "extra-high",
-            width = 234,
-            height = 252,
-            shift = util.by_pixel(0, 0),
-            blend_mode = reskins.lib.settings.blend_mode,
-            scale = 0.5,
-        }
+        scale = 0.5,
     }
 end
 
@@ -120,19 +97,12 @@ for name, map in pairs(tier_map) do
             composter_highlights(),
             -- Idle outputs
             {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-idle.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-idle.png",
                 priority = "extra-high",
-                width = 111,
-                height = 41,
+                width = 222,
+                height = 79,
                 shift = util.by_pixel(0, 0),
-                hr_version = {
-                    filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-idle.png",
-                    priority = "extra-high",
-                    width = 222,
-                    height = 79,
-                    shift = util.by_pixel(0, 0),
-                    scale = 0.5,
-                }
+                scale = 0.5,
             },
         }
     }
@@ -141,23 +111,14 @@ for name, map in pairs(tier_map) do
         -- Animation
         {
             animation = {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-animation.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-animation.png",
                 priority = "extra-high",
-                width = 111,
-                height = 41,
+                width = 222,
+                height = 79,
                 frame_count = 25,
                 line_length = 5,
                 shift = util.by_pixel(0, 0),
-                hr_version = {
-                    filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-animation.png",
-                    priority = "extra-high",
-                    width = 222,
-                    height = 79,
-                    frame_count = 25,
-                    line_length = 5,
-                    shift = util.by_pixel(0, 0),
-                    scale = 0.5,
-                }
+                scale = 0.5,
             }
         },
 
@@ -165,21 +126,13 @@ for name, map in pairs(tier_map) do
         {
             always_draw = true,
             animation = {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-shadow.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-shadow.png",
                 priority = "extra-high",
-                width = 145,
-                height = 84,
+                width = 287,
+                height = 165,
                 shift = util.by_pixel(0, 0),
                 -- draw_as_shadow = true,
-                hr_version = {
-                    filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-shadow.png",
-                    priority = "extra-high",
-                    width = 287,
-                    height = 165,
-                    shift = util.by_pixel(0, 0),
-                    -- draw_as_shadow = true,
-                    scale = 0.5,
-                }
+                scale = 0.5,
             }
         },
     }

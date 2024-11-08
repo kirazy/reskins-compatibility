@@ -73,9 +73,7 @@ for name, map in pairs(tier_map) do
     if map.is_loader then
         -- Retint the mask
         entity.structure.direction_in.sheets[3].tint = inputs.tint
-        entity.structure.direction_in.sheets[3].hr_version.tint = inputs.tint
         entity.structure.direction_out.sheets[3].tint = inputs.tint
-        entity.structure.direction_out.sheets[3].hr_version.tint = inputs.tint
 
         -- Apply belt set
         -- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
@@ -98,9 +96,7 @@ for name, map in pairs(tier_map) do
     else
         -- Retint the mask
         entity.animation.layers[2].tint = inputs.tint
-        entity.animation.layers[2].hr_version.tint = inputs.tint
         entity.working_visualisations[1].animation.tint = light_tint(inputs.tint)
-        entity.working_visualisations[1].animation.hr_version.tint = light_tint(inputs.tint)
         entity.working_visualisations[1].light.color = light_tint(inputs.tint)
 
         icon_data = {

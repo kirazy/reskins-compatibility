@@ -32,21 +32,13 @@ for name, mapping in pairs(reactors) do
 
     -- Lights
     entity.working_light_picture = {
-        filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/reactor-lights-color" .. light_color .. ".png",
+        filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/hr-reactor-lights-color" .. light_color .. ".png",
         blend_mode = "additive",
         draw_as_glow = true,
-        width = 160,
-        height = 160,
+        width = 320,
+        height = 320,
+        scale = 0.5,
         shift = { -0.03125, -0.1875 },
-        hr_version = {
-            filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/hr-reactor-lights-color" .. light_color .. ".png",
-            blend_mode = "additive",
-            draw_as_glow = true,
-            width = 320,
-            height = 320,
-            scale = 0.5,
-            shift = { -0.03125, -0.1875 },
-        }
     }
 
     -- Handle ambient-light
