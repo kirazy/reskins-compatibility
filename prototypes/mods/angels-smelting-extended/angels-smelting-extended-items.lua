@@ -67,8 +67,8 @@ local recipe_icon_source_map = {}
 ---@type { [string]: string[] }
 local recipe_source_names_map = {
     -- Plate composite recipes
-    ["angels-plate-tungsten"] = { "tungsten-plate", "casting-powder-tungsten" },
-    ["angels-roll-tungsten-converting"] = { "tungsten-plate", "angels-roll-tungsten" },
+    ["angels-plate-tungsten"] = { "bob-tungsten-plate", "casting-powder-tungsten" },
+    ["angels-roll-tungsten-converting"] = { "bob-tungsten-plate", "angels-roll-tungsten" },
     ["angels-roll-invar-converting"] = { "invar-alloy", "angels-roll-invar" },
     ["angels-roll-nitinol-converting"] = { "nitinol-alloy", "angels-roll-nitinol" },
     ["angels-plate-cobalt-steel"] = { "cobalt-steel-alloy", "liquid-molten-cobalt-steel" },
