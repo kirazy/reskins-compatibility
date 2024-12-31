@@ -90,7 +90,7 @@ for name, map in pairs(tier_map) do
         name = entity.name,
         type_name = entity.type,
         icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, icons),
-        picture = reskins.lib.sprites.create_sprite_from_icons(icons, 0.5),
+        picture = reskins.lib.sprites.create_sprite_from_icons(icons, 1.0),
     }
 
     reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
@@ -176,7 +176,7 @@ for name, _ in pairs(data.raw.item) do
         icon_data = reskins.lib.icons.scale_icon(icon_data, 0.7, false)
 
         local crated_icons = reskins.lib.icons.combine_icons(false, crate_item_base_layer(), icon_data, removed_symbols, removed_letters, removed_tier_labels)
-        local crated_picture = reskins.lib.sprites.create_sprite_from_icons(crated_icons, 0.5)
+        local crated_picture = reskins.lib.sprites.create_sprite_from_icons(crated_icons, 1.0)
 
         update_crate_icons(item.name, crated_icons, crated_picture)
     end

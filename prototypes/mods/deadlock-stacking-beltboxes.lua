@@ -121,7 +121,7 @@ for name, map in pairs(tier_map) do
         name = entity.name,
         type_name = entity.type,
         icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, icon_data),
-        pictures = reskins.lib.sprites.create_sprite_from_icons(icon_data, 0.5),
+        pictures = reskins.lib.sprites.create_sprite_from_icons(icon_data, 1.0),
     }
 
     reskins.lib.icons.assign_deferrable_icon(deferrable_icon)

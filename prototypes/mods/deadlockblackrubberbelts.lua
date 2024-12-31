@@ -52,7 +52,7 @@ for name, map in pairs(tier_map) do
     }
 
     local icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, base_icon_data)
-    local pictures = reskins.lib.sprites.create_sprite_from_icons(base_icon_data, 0.5)
+    local pictures = reskins.lib.sprites.create_sprite_from_icons(base_icon_data, 1.0)
 
     reskins.lib.icons.assign_icons_to_prototype_and_related_prototypes(name, "transport-belt", icon_data, pictures)
 
