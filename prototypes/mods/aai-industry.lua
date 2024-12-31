@@ -29,7 +29,7 @@ entity.graphics_set.animation = {
         },
         -- Shadow
         {
-            filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/hr-assembling-machine-0-shadow.png",
+            filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/assembling-machine-0-shadow.png",
             priority = "high",
             width = 264,
             height = 165,

@@ -43,7 +43,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -56,7 +56,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_North-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_North-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -98,7 +98,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -111,7 +111,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_East-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_East-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -153,7 +153,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -166,7 +166,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_South-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_South-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -208,7 +208,7 @@ local function return_animation(tint, direction)
                 },
                 -- Mask
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-mask.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -221,7 +221,7 @@ local function return_animation(tint, direction)
                 },
                 -- Highlights
                 {
-                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/hr-offshore-pump_West-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/offshore-pump_West-highlights.png",
                     priority = "high",
                     line_length = 8,
                     frame_count = 32,
@@ -500,7 +500,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Mask
                     {
-                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-mask.png",
                         line_length = 1,
                         width = 146,
                         height = 140,
@@ -512,7 +512,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-highlights.png",
                         line_length = 1,
                         width = 146,
                         height = 140,
@@ -542,7 +542,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Mask
                     {
-                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-mask.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-mask.png",
                         line_length = 1,
                         width = 136,
                         height = 134,
@@ -554,7 +554,7 @@ for name, map in pairs(tier_map) do
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2-highlights.png",
+                        filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-highlights.png",
                         line_length = 1,
                         width = 136,
                         height = 134,

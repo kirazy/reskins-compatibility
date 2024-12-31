@@ -47,7 +47,7 @@ for name, map in pairs(tier_map) do
     entity.structure.direction_in.sheets = {
         -- Base
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -55,7 +55,7 @@ for name, map in pairs(tier_map) do
         },
         -- Mask
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -64,7 +64,7 @@ for name, map in pairs(tier_map) do
         },
         -- Highlights
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -73,7 +73,7 @@ for name, map in pairs(tier_map) do
         },
         -- Shadow
         {
-            filename = "__vanilla-loaders-hd__/graphics/entity/loader/hr-loader-structure-shadow.png",
+            filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -85,7 +85,7 @@ for name, map in pairs(tier_map) do
     entity.structure.direction_out.sheets = {
         -- Base
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-base.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -94,7 +94,7 @@ for name, map in pairs(tier_map) do
         },
         -- Mask
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -104,7 +104,7 @@ for name, map in pairs(tier_map) do
         },
         -- Highlights
         {
-            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/hr-loader-structure-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
             priority = "extra-high",
             width = 212,
             height = 192,
@@ -114,7 +114,7 @@ for name, map in pairs(tier_map) do
         },
         -- Shadow
         {
-            filename = "__vanilla-loaders-hd__/graphics/entity/loader/hr-loader-structure-shadow.png",
+            filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
             priority = "extra-high",
             width = 212,
             height = 192,

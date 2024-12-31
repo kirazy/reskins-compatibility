@@ -23,7 +23,7 @@ if not entity then return end
 reskins.lib.setup_standard_entity("dead-greenhouse", 0, inputs)
 
 local dead_greenhouse_base = reskins.lib.sprites.make_4way_animation_from_spritesheet({
-    filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-base.png",
+    filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-base.png",
     width = 194,
     height = 192,
     shift = util.by_pixel(0, 0),
@@ -85,7 +85,7 @@ local dead_greenhouse_working = reskins.lib.sprites.make_4way_animation_from_spr
     layers = {
         -- Light Underlayer
         {
-            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-lit.png",
+            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-lit.png",
             width = 194,
             height = 192,
             shift = util.by_pixel(0, 0),
@@ -93,7 +93,7 @@ local dead_greenhouse_working = reskins.lib.sprites.make_4way_animation_from_spr
         },
         -- Light
         {
-            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/hr-dead-greenhouse-light.png",
+            filename = "__reskins-compatibility__/graphics/entity/nauvisday/dead-greenhouse/dead-greenhouse-light.png",
             width = 194,
             height = 192,
             shift = util.by_pixel(0, 0),

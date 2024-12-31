@@ -27,7 +27,7 @@ local tier_map = {
 local function composter_base()
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-base.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-base.png",
         priority = "extra-high",
         width = 234,
         height = 252,
@@ -39,7 +39,7 @@ end
 local function composter_mask(tint)
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-mask.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-mask.png",
         priority = "extra-high",
         width = 234,
         height = 252,
@@ -52,7 +52,7 @@ end
 local function composter_highlights()
     return
     {
-        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-highlights.png",
+        filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-highlights.png",
         priority = "extra-high",
         width = 234,
         height = 252,
@@ -97,7 +97,7 @@ for name, map in pairs(tier_map) do
             composter_highlights(),
             -- Idle outputs
             {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-idle.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-idle.png",
                 priority = "extra-high",
                 width = 222,
                 height = 79,
@@ -111,7 +111,7 @@ for name, map in pairs(tier_map) do
         -- Animation
         {
             animation = {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-animation.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-animation.png",
                 priority = "extra-high",
                 width = 222,
                 height = 79,
@@ -126,7 +126,7 @@ for name, map in pairs(tier_map) do
         {
             always_draw = true,
             animation = {
-                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/hr-composter-shadow.png",
+                filename = "__reskins-angels__/graphics/entity/bioprocessing/composter/composter-shadow.png",
                 priority = "extra-high",
                 width = 287,
                 height = 165,

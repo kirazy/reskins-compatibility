@@ -274,7 +274,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 },
                 -- Mask
                 {
-                    filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/hr-boiler-remnants-mask.png",
+                    filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-mask.png",
                     line_length = 1,
                     width = 274,
                     height = 220,
@@ -288,7 +288,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                 },
                 -- Highlights
                 {
-                    filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/hr-boiler-remnants-highlights.png",
+                    filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-highlights.png",
                     line_length = 1,
                     width = 274,
                     height = 220,
@@ -318,7 +318,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Mask
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-N-idle-mask.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-mask.png",
                         priority = "extra-high",
                         width = 269,
                         height = 221,
@@ -328,7 +328,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-N-idle-highlights.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-highlights.png",
                         priority = "extra-high",
                         width = 269,
                         height = 221,
@@ -361,7 +361,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Color mask
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-E-idle-mask.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-mask.png",
                         priority = "extra-high",
                         width = 216,
                         height = 301,
@@ -371,7 +371,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-E-idle-highlights.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-highlights.png",
                         priority = "extra-high",
                         width = 216,
                         height = 301,
@@ -404,7 +404,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Mask
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-S-idle-mask.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-mask.png",
                         priority = "extra-high",
                         width = 260,
                         height = 192,
@@ -414,7 +414,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-S-idle-highlights.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-highlights.png",
                         priority = "extra-high",
                         width = 260,
                         height = 192,
@@ -447,7 +447,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Mask
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-W-idle-mask.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-mask.png",
                         priority = "extra-high",
                         width = 196,
                         height = 273,
@@ -457,7 +457,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
                     },
                     -- Highlights
                     {
-                        filename = "__reskins-bobs__/graphics/entity/power/boiler/hr-boiler-W-idle-highlights.png",
+                        filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-highlights.png",
                         priority = "extra-high",
                         width = 196,
                         height = 273,

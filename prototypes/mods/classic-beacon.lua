@@ -147,7 +147,7 @@ for name, map in pairs(tier_map) do
         }
         -- Beacon Mask
         entity.graphics_set.animation_list[1].animation.layers[2] = {
-            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-mask.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/beacon-mask.png",
             width = 232,
             height = 186,
             shift = util.by_pixel(11, 1.5),
@@ -156,7 +156,7 @@ for name, map in pairs(tier_map) do
         }
         -- Beacon Highlights
         entity.graphics_set.animation_list[1].animation.layers[3] = {
-            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/hr-beacon-highlights.png",
+            filename = "__reskins-compatibility__/graphics/entity/classic-beacon/beacon/beacon-highlights.png",
             width = 232,
             height = 186,
             shift = util.by_pixel(11, 1.5),

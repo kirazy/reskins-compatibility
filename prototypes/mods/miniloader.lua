@@ -97,7 +97,7 @@ for name, map in pairs(tier_map) do
         entity.platform_picture.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -106,7 +106,7 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -116,7 +116,7 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -142,7 +142,7 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_in.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -151,7 +151,7 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -161,7 +161,7 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -184,7 +184,7 @@ for name, map in pairs(tier_map) do
         entity.structure.direction_out.sheets = {
             -- Base
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-" .. base_path .. "-base.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -193,7 +193,7 @@ for name, map in pairs(tier_map) do
             },
             -- Mask
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-mask.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,
@@ -203,7 +203,7 @@ for name, map in pairs(tier_map) do
             },
             -- Highlights
             {
-                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/hr-miniloader-structure-highlights.png",
+                filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
                 height = 192,
                 priority = "extra-high",
                 scale = 0.5,

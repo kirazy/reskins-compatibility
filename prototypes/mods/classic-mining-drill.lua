@@ -54,7 +54,7 @@ local function drill_animations(inputs)
                 -- Base
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-N.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-N.png",
                     line_length = 8,
                     width = 196,
                     height = 226,
@@ -68,7 +68,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-mask.png",
                     line_length = 8,
                     width = 196,
                     height = 226,
@@ -83,7 +83,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-N-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-N-highlights.png",
                     line_length = 8,
                     width = 196,
                     height = 226,
@@ -98,7 +98,7 @@ local function drill_animations(inputs)
                 -- Shadow
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-N-drill-shadow.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-N-drill-shadow.png",
                     flags = { "shadow" },
                     line_length = 8,
                     width = 201,
@@ -118,7 +118,7 @@ local function drill_animations(inputs)
                 -- Base
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-E.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-E.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -132,7 +132,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-mask.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -147,7 +147,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-E-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-E-highlights.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -162,7 +162,7 @@ local function drill_animations(inputs)
                 -- Shadow
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-E-drill-shadow.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-E-drill-shadow.png",
                     flags = { "shadow" },
                     line_length = 8,
                     width = 221,
@@ -182,7 +182,7 @@ local function drill_animations(inputs)
                 -- Base
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-S.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-S.png",
                     line_length = 8,
                     width = 196,
                     height = 219,
@@ -196,7 +196,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-mask.png",
                     line_length = 8,
                     width = 196,
                     height = 219,
@@ -211,7 +211,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-S-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-S-highlights.png",
                     line_length = 8,
                     width = 196,
                     height = 219,
@@ -226,7 +226,7 @@ local function drill_animations(inputs)
                 -- Shadow
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-S-drill-shadow.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-S-drill-shadow.png",
                     flags = { "shadow" },
                     line_length = 8,
                     width = 200,
@@ -246,7 +246,7 @@ local function drill_animations(inputs)
                 -- Base
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-W.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-W.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -260,7 +260,7 @@ local function drill_animations(inputs)
                 -- Mask
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-mask.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-mask.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -275,7 +275,7 @@ local function drill_animations(inputs)
                 -- Highlights
                 {
                     priority = "high",
-                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//hr-mining-drill-W-highlights.png",
+                    filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill//mining-drill-W-highlights.png",
                     line_length = 8,
                     width = 211,
                     height = 197,
@@ -290,7 +290,7 @@ local function drill_animations(inputs)
                 -- Shadow
                 {
                     priority = "high",
-                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/hr-electric-mining-drill-W-drill-shadow.png",
+                    filename = "__classic-mining-drill__/graphics/entity/mining-drill/electric-mining-drill-W-drill-shadow.png",
                     flags = { "shadow" },
                     line_length = 8,
                     width = 229,
@@ -311,7 +311,7 @@ end
 local area_drill_animations = {
     north = {
         priority = "high",
-        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-N.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-N.png",
         line_length = 8,
         width = 196,
         height = 226,
@@ -324,7 +324,7 @@ local area_drill_animations = {
     },
     east = {
         priority = "high",
-        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-E.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-E.png",
         line_length = 8,
         width = 211,
         height = 197,
@@ -337,7 +337,7 @@ local area_drill_animations = {
     },
     south = {
         priority = "high",
-        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-S.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-S.png",
         line_length = 8,
         width = 196,
         height = 219,
@@ -350,7 +350,7 @@ local area_drill_animations = {
     },
     west = {
         priority = "high",
-        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/hr-area-drill-W.png",
+        filename = "__reskins-compatibility__/graphics/entity/classic-mining-drill/electric-mining-drill/area-end/area-drill-W.png",
         line_length = 8,
         width = 211,
         height = 197,
