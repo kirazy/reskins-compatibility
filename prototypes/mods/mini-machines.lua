@@ -199,7 +199,7 @@ if reskins.compatibility.triggers.minimachines.furnaces then
 
     for _, name in pairs(assembly_furnaces) do
         local entity = data.raw["assembling-machine"][name]
-        if not entity then return end
+        if not entity then goto continue end
 
         if entity.fluid_boxes then
             -- Fetch tint
@@ -208,6 +208,8 @@ if reskins.compatibility.triggers.minimachines.furnaces then
             -- Set to standard pipe pictures for now; TODO: Custom pipe pictures
             entity.fluid_boxes[1].pipe_picture = reskins.bobs.assembly_pipe_pictures(tint)
         end
+
+        ::continue::
     end
 end
 
