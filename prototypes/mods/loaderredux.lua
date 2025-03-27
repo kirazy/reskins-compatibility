@@ -10,47 +10,47 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then ret
 
 -- Set input parameters
 local inputs = {
-    type = "loader",
-    icon_name = "loader",
-    base_entity_name = "splitter",
-    mod = "compatibility",
-    group = "loaderredux",
-    particles = { ["medium"] = 1, ["big"] = 4 },
-    icon_layers = 2,
-    make_remnants = false,
+	type = "loader",
+	icon_name = "loader",
+	base_entity_name = "splitter",
+	mod = "compatibility",
+	group = "loaderredux",
+	particles = { ["medium"] = 1, ["big"] = 4 },
+	icon_layers = 2,
+	make_remnants = false,
 }
 
 -- Handle belt tier labels
 inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
-    ["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
-    ["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
-    ["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
-    ["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
-    ["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
+	["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
+	["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
+	["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
+	["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
+	["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
-    ---@type data.LoaderPrototype
-    local entity = data.raw[inputs.type][name]
+	---@type data.LoaderPrototype
+	local entity = data.raw[inputs.type][name]
 
-    -- Check if entity exists, if not, skip this iteration
-    if not entity then goto continue end
+	-- Check if entity exists, if not, skip this iteration
+	if not entity then goto continue end
 
-    -- Determine what tint we're using
-    inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
+	-- Determine what tint we're using
+	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
-    reskins.lib.setup_standard_entity(name, map.tier, inputs)
+	reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
-    -- Retint the entity mask
-    entity.structure.direction_in.sheets[2].tint = inputs.tint
-    entity.structure.direction_out.sheets[2].tint = inputs.tint
+	-- Retint the entity mask
+	entity.structure.direction_in.sheets[2].tint = inputs.tint
+	entity.structure.direction_out.sheets[2].tint = inputs.tint
 
-    -- Apply belt set
-    -- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
+	-- Apply belt set
+	-- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
-    -- Label to skip to next iteration
-    ::continue::
+	-- Label to skip to next iteration
+	::continue::
 end

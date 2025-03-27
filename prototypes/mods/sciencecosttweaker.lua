@@ -14,6 +14,4 @@ if not mods["ScienceCostTweakerM"] then return end
 -- Technologies
 -- sct-lab-t1 -- sct-lab-t1-icon-128.png
 
-
-
 -- sct-automation-science-pack -- science-pack-1-128.png
