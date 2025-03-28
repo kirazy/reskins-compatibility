@@ -27,18 +27,18 @@ inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity
 
 local tier_map = {
 	-- 1x1 Loader Entities
-	["basic-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "basic-transport-belt" },
+	["basic-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
 	["chute-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "transport-belt" },
 	["miniloader-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
 	["fast-miniloader-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
 	["express-miniloader-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
-	["turbo-miniloader-loader"] = { tier = 4, sprite_variant = 2, base_belt = "turbo-transport-belt" },
-	["ultimate-miniloader-loader"] = { tier = 5, sprite_variant = 2, base_belt = "ultimate-transport-belt" },
+	["turbo-miniloader-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
+	["ultimate-miniloader-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
 	["filter-miniloader-loader"] = { tier = 1, sprite_variant = 1, is_filter = true, base_belt = "transport-belt" },
 	["fast-filter-miniloader-loader"] = { tier = 2, sprite_variant = 2, is_filter = true, base_belt = "fast-transport-belt" },
 	["express-filter-miniloader-loader"] = { tier = 3, sprite_variant = 2, is_filter = true, base_belt = "express-transport-belt" },
-	["turbo-filter-miniloader-loader"] = { tier = 4, sprite_variant = 2, is_filter = true, base_belt = "turbo-transport-belt" },
-	["ultimate-filter-miniloader-loader"] = { tier = 5, sprite_variant = 2, is_filter = true, base_belt = "ultimate-transport-belt" },
+	["turbo-filter-miniloader-loader"] = { tier = 4, sprite_variant = 2, is_filter = true, base_belt = "bob-turbo-transport-belt" },
+	["ultimate-filter-miniloader-loader"] = { tier = 5, sprite_variant = 2, is_filter = true, base_belt = "bob-ultimate-transport-belt" },
 
 	-- Inserter Entities
 	["basic-miniloader-inserter"] = { tier = 0, is_inserter = true },
@@ -259,8 +259,8 @@ for name, map in pairs(item_map) do
 	local base_item
 	if name ~= "chute-miniloader" then
 		base_item = data.raw["item"][string.gsub(string.gsub(name, "filter%-", ""), "miniloader", "transport-belt")]
-	elseif data.raw["item"]["basic-transport-belt"] then
-		base_item = data.raw["item"]["basic-transport-belt"]
+	elseif data.raw["item"]["bob-basic-transport-belt"] then
+		base_item = data.raw["item"]["bob-basic-transport-belt"]
 	end
 
 	if base_item then
