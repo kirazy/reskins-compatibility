@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["extendedangels"] then return end
-if not (reskins.angels and reskins.angels.triggers.storage.entities) then return end
+if not mods["extendedangels"] then
+	return
+end
+if not (reskins.angels and reskins.angels.triggers.storage.entities) then
+	return
+end
 
 local inputs = {
 	mod = "compatibility",
@@ -102,11 +106,15 @@ for warehouse, map in pairs(types) do
 
 		---@type data.LogisticContainerPrototype|data.ContainerPrototype
 		local entity = data.raw[inputs.type][name]
-		if not entity then goto continue end
+		if not entity then
+			goto continue
+		end
 
 		-- Handle tier
 		local tier = n
-		if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then tier = n + 1 end
+		if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
+			tier = n + 1
+		end
 
 		-- Construct icon base
 		local filename = map.is_logistics and "logistic-" .. warehouse .. "-icon-base" or warehouse .. "-icon-base"

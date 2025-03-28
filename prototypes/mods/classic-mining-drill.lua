@@ -4,11 +4,17 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["classic-mining-drill"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.mining.entities) then return end
+if not mods["classic-mining-drill"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.mining.entities) then
+	return
+end
 
 -- Flag available for Mini-Machines compatibility pass
-if reskins.compatibility then reskins.compatibility.triggers.minimachines.miners = true end
+if reskins.compatibility then
+	reskins.compatibility.triggers.minimachines.miners = true
+end
 
 -- Set input parameters
 local inputs = {
@@ -35,9 +41,13 @@ local tier_map = {
 
 -- Iterate through an object and edit every animation_speed; function from Bobmeister
 local function set_animation_speed(object, animation_speed)
-	if object.animation_speed then object.animation_speed = animation_speed end
+	if object.animation_speed then
+		object.animation_speed = animation_speed
+	end
 	for index, value in pairs(object) do
-		if type(value) == "table" then set_animation_speed(value, animation_speed) end
+		if type(value) == "table" then
+			set_animation_speed(value, animation_speed)
+		end
 	end
 end
 
@@ -371,7 +381,9 @@ for name, tier in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Fetch mining speed
 	mining_speeds[index] = data.raw[inputs.type][name].mining_speed
@@ -392,11 +404,15 @@ for name, map in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Parse map
 	local tier = map[1]
-	if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then tier = map[2] end
+	if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
+		tier = map[2]
+	end
 
 	-- Handle icon base
 	if string.find(name, "area") then

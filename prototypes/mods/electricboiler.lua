@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not reskins.bobs then return end
-if not mods["electricboiler"] then return end
+if not reskins.bobs then
+	return
+end
+if not mods["electricboiler"] then
+	return
+end
 
 local entities = {
 	["electric-boiler"] = { tier = 1, order = "electric-boiler-1" },

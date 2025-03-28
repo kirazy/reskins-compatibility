@@ -4,11 +4,17 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["semi-classic-mining-drill"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.mining.entities) then return end
+if not mods["semi-classic-mining-drill"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.mining.entities) then
+	return
+end
 
 -- Flag available for Mini-Machines compatibility pass
-if reskins.compatibility then reskins.compatibility.triggers.minimachines.miners = true end
+if reskins.compatibility then
+	reskins.compatibility.triggers.minimachines.miners = true
+end
 
 -- Set input parameters
 local inputs = {
@@ -228,7 +234,9 @@ end
 -- Setup local functions for reskinning the frames
 local function drill_dry_animation(speed, inputs)
 	local drill_type = "__semi-classic-mining-drill__/graphics/entity/electric-mining-drill"
-	if inputs.is_area_drill then drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame" end
+	if inputs.is_area_drill then
+		drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame"
+	end
 
 	return {
 		north = {
@@ -403,7 +411,9 @@ end
 
 local function drill_dry_working_visualisation(speed, inputs)
 	local drill_type = "__semi-classic-mining-drill__/graphics/entity/electric-mining-drill"
-	if inputs.is_area_drill then drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame" end
+	if inputs.is_area_drill then
+		drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame"
+	end
 
 	return {
 		-- Dust Animation 1
@@ -605,7 +615,9 @@ end
 
 local function drill_wet_animation(speed, inputs)
 	local drill_type = "__semi-classic-mining-drill__/graphics/entity/electric-mining-drill"
-	if inputs.is_area_drill then drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame" end
+	if inputs.is_area_drill then
+		drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame"
+	end
 
 	return {
 		north = {
@@ -780,7 +792,9 @@ end
 
 local function drill_wet_working_visualisation(speed, inputs)
 	local drill_type = "__semi-classic-mining-drill__/graphics/entity/electric-mining-drill"
-	if inputs.is_area_drill then drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame" end
+	if inputs.is_area_drill then
+		drill_type = "__reskins-compatibility__/graphics/entity/semi-classic-mining-drill/electric-mining-drill/area-frame"
+	end
 
 	return {
 		-- Dust Animation 1
@@ -1301,7 +1315,9 @@ for name, _ in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Fetch mining speed
 	mining_speeds[index] = data.raw[inputs.type][name].mining_speed
@@ -1322,11 +1338,15 @@ for name, map in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Parse map
 	local tier = map[1]
-	if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then tier = map[2] end
+	if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
+		tier = map[2]
+	end
 
 	-- Handle icon base
 	if string.find(name, "area") then

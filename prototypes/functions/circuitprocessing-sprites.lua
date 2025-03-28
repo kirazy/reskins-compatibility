@@ -4,7 +4,9 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not reskins.lib.settings.get_value("reskins-compatibility-do-circuitprocessing-circuit-style") then return end
+if not reskins.lib.settings.get_value("reskins-compatibility-do-circuitprocessing-circuit-style") then
+	return
+end
 
 local circuits = {
 	["basic-circuit-board"] = { tier = 1 },

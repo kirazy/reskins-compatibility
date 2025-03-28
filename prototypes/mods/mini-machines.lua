@@ -4,7 +4,9 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check for mini-machines
-if not mods["mini-machines"] then return end
+if not mods["mini-machines"] then
+	return
+end
 
 -- Setup technologies table
 local technology_source_mapping = {}
@@ -199,7 +201,9 @@ if reskins.compatibility.triggers.minimachines.furnaces then
 
 	for _, name in pairs(assembly_furnaces) do
 		local entity = data.raw["assembling-machine"][name]
-		if not entity then goto continue end
+		if not entity then
+			goto continue
+		end
 
 		if entity.fluid_boxes then
 			-- Fetch tint
@@ -225,7 +229,9 @@ local function set_rescaled_version_of_source_technology_on_target(target_name, 
 	local source = data.raw["technology"][source_name]
 	local target = data.raw["technology"][target_name]
 
-	if not target or not source then return end
+	if not target or not source then
+		return
+	end
 
 	---@type data.IconData
 	local base_layer = {
@@ -281,9 +287,13 @@ local mini_machine_icon_overlay = {
 local function set_mini_version_of_source_icon_on_target(target_name, source_name, pattern, replacement)
 	local source = data.raw["item"][source_name]
 	local icons = reskins.lib.icons.get_icon_from_prototype_by_reference(source)
-	if not icons then return end
+	if not icons then
+		return
+	end
 
-	if not reskins.lib.icons.is_icons_using_reskins_images(icons) then return end
+	if not reskins.lib.icons.is_icons_using_reskins_images(icons) then
+		return
+	end
 
 	-- Switch to mini image set.
 	for n = 1, #icons do

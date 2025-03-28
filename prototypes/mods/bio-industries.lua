@@ -4,17 +4,27 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["Bio_Industries"] then return end
-if reskins.lib.version.is_same_or_newer(mods["Bio_Industries"], "1.2.0") then return end -- Handle the graphics overhaul when it lands
+if not mods["Bio_Industries"] then
+	return
+end
+if reskins.lib.version.is_same_or_newer(mods["Bio_Industries"], "1.2.0") then
+	return
+end -- Handle the graphics overhaul when it lands
 
 ---@type CreateIconsFromListTable
 local intermediates = {}
 
-if reskins.bobs and reskins.bobs.triggers.greenhouse.items then intermediates["seedling"] = { mod = "bobs", group = "greenhouse", subgroup = "items" } end
+if reskins.bobs and reskins.bobs.triggers.greenhouse.items then
+	intermediates["seedling"] = { mod = "bobs", group = "greenhouse", subgroup = "items" }
+end
 
-if reskins.bobs and reskins.bobs.triggers.electronics.items then intermediates["bob-resin-wood"] = { mod = "bobs", type = "recipe", group = "plates", subgroup = "recipes" } end
+if reskins.bobs and reskins.bobs.triggers.electronics.items then
+	intermediates["bob-resin-wood"] = { mod = "bobs", type = "recipe", group = "plates", subgroup = "recipes" }
+end
 
-if reskins.bobs and reskins.bobs.triggers.plates.items then intermediates["carbon"] = { mod = "bobs", group = "plates", subgroup = "items" } end
+if reskins.bobs and reskins.bobs.triggers.plates.items then
+	intermediates["carbon"] = { mod = "bobs", group = "plates", subgroup = "items" }
+end
 
 reskins.internal.create_icons_from_list(intermediates, {
 	mod = "compatibility",
@@ -263,7 +273,9 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 		local entity = data.raw[inputs.type][name]
 
 		-- Check if entity exists, if not, skip this iteration
-		if not entity then goto continue end
+		if not entity then
+			goto continue
+		end
 
 		inputs.tint = map.tint
 

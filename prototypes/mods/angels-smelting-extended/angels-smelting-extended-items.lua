@@ -4,8 +4,12 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["angels-smelting-extended"] then return end
-if not reskins.angels then return end
+if not mods["angels-smelting-extended"] then
+	return
+end
+if not reskins.angels then
+	return
+end
 
 ----------------------------------------------------------------------------------------------------
 -- ITEMS AND RECIPES
@@ -42,11 +46,15 @@ local function add_icon_sources_for_recipe(recipes_icon_sources, recipe_name, so
 		{ name = source_names[2], type_name = "item", scale = reskins.angels.constants.recipe_corner_scale, shift = { -10, -10 } },
 	}
 
-	if source_names[3] then sources[3] = { name = source_names[3], type_name = "item", scale = reskins.angels.constants.recipe_corner_scale, shift = { 10, -10 } } end
+	if source_names[3] then
+		sources[3] = { name = source_names[3], type_name = "item", scale = reskins.angels.constants.recipe_corner_scale, shift = { 10, -10 } }
+	end
 
 	-- Check for liquids and set type parameter
 	for _, source in pairs(sources) do
-		if string.find(source.name, "liquid") then source.type_name = "fluid" end
+		if string.find(source.name, "liquid") then
+			source.type_name = "fluid"
+		end
 	end
 
 	-- Assign to the recipe table

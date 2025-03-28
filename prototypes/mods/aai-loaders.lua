@@ -4,7 +4,9 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["aai-loaders"] then return end
+if not mods["aai-loaders"] then
+	return
+end
 
 local loaders = {
 	["aai-basic-loader"] = { tier = 0 },
@@ -29,6 +31,8 @@ for name, map in pairs(loaders) do
 
 	local technology = data.raw["technology"][name]
 	if reskins.bobs and (reskins.bobs.triggers.logistics.technology == true) then
-		if technology and technology.icons and technology.icons[2] then technology.icons[2].tint = reskins.lib.tiers.get_belt_tint(map.tier) end
+		if technology and technology.icons and technology.icons[2] then
+			technology.icons[2].tint = reskins.lib.tiers.get_belt_tint(map.tier)
+		end
 	end
 end

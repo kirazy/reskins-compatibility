@@ -4,9 +4,15 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["deadlock-beltboxes-loaders"] then return end
-if mods["ScienceCostTweakerM"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.technology.items) then return end
+if not mods["deadlock-beltboxes-loaders"] then
+	return
+end
+if mods["ScienceCostTweakerM"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.technology.items) then
+	return
+end
 
 ---@type CreateIconsFromListInputs
 local inputs = {
@@ -75,7 +81,9 @@ if reskins.lib.settings.get_value("bobmods-tech-colorupdate") == true then
 	end
 end
 
-if reskins.lib.settings.get_value("bobmods-burnerphase") == true then science_packs["steam-science-pack"] = {} end
+if reskins.lib.settings.get_value("bobmods-burnerphase") == true then
+	science_packs["steam-science-pack"] = {}
+end
 
 ---@type CreateIconsFromListTable
 local stacking_items = {}
@@ -87,7 +95,9 @@ for name, map in pairs(science_packs) do
 	local recipe_unstack_name = "deadlock-stacks-unstack-" .. name
 
 	-- Check if item exists, if not, skip this iteration
-	if not data.raw.item[item_name] then goto continue end
+	if not data.raw.item[item_name] then
+		goto continue
+	end
 
 	---@type CreateIconsFromListOverrides
 	local parameters = {}

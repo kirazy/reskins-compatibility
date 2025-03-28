@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["miniloader"] then return end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
+if not mods["miniloader"] then
+	return
+end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
+	return
+end
 
 -- Set input parameters
 local inputs = {
@@ -81,7 +85,9 @@ for name, map in pairs(tier_map) do
 	local base_belt = data.raw["transport-belt"][map.base_belt]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
@@ -237,7 +243,9 @@ for name, map in pairs(item_map) do
 	local item = data.raw["item"][name]
 
 	-- Check if item exists, if not, skip this iteration
-	if not item then goto continue end
+	if not item then
+		goto continue
+	end
 
 	-- Setup icon details
 	inputs.icon_base = map.icon_base or "miniloader"
@@ -289,7 +297,9 @@ for name, tier in pairs(technology_map) do
 	local technology = data.raw["technology"][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not technology then goto continue end
+	if not technology then
+		goto continue
+	end
 
 	-- Fix inputs
 	inputs.icon_base = nil

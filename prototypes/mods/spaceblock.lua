@@ -4,7 +4,9 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["spaceblock"] then return end
+if not mods["spaceblock"] then
+	return
+end
 
 -- Fix one-off entities
 local fixes = {
@@ -106,7 +108,9 @@ local function collect_icons(prototype)
 
 	-- Ensure icons is properly populated
 	for _, icon_data in pairs(icons) do
-		if not icon_data.icon_size then icon_data.icon_size = prototype.icon_size end
+		if not icon_data.icon_size then
+			icon_data.icon_size = prototype.icon_size
+		end
 	end
 
 	return icons
@@ -143,7 +147,9 @@ local function reskin_boiler_icons(resource_name, fluid)
 	local entity = data.raw.boiler["spaceblock-dupe-boiler-" .. resource_name]
 	local recipe = data.raw.recipe["spaceblock-dupe-boiler-" .. resource_name]
 
-	if not item or not entity or not recipe then return end
+	if not item or not entity or not recipe then
+		return
+	end
 
 	local icon_tint = reskins.bobs and reskins.bobs.triggers.power.items and format_tint(fluid.base_color) or format_tint(fluid.flow_color)
 	local entity_tint = reskins.bobs and reskins.bobs.triggers.power.entities and format_tint(fluid.base_color) or format_tint(fluid.flow_color)
@@ -159,12 +165,16 @@ local function reskin_boiler_icons(resource_name, fluid)
 	local icons_base = make_boiler_icons_base(icon_tint)
 	local icons = reskins.lib.icons.add_icons_from_sources_to_icons(icons_base, { fluid_icon_source })
 
-	if recipe then recipe.icons = icons end
+	if recipe then
+		recipe.icons = icons
+	end
 	if entity then
 		entity.icons = icons
 		boilers["spaceblock-dupe-boiler-" .. resource_name] = { tint = entity_tint }
 	end
-	if item then item.icons = icons end
+	if item then
+		item.icons = icons
+	end
 end
 
 ---@param resource_name string
@@ -222,7 +232,9 @@ for name, resource in pairs(data.raw.resource) do
 		else
 			local item = data.raw.item[result.name]
 
-			if item then reskin_furnace_recipes(name, item) end
+			if item then
+				reskin_furnace_recipes(name, item)
+			end
 		end
 	end
 end
@@ -243,7 +255,9 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 		local entity = data.raw[inputs.type][name]
 
 		-- Check if entity exists, if not, skip this iteration
-		if not entity then goto continue end
+		if not entity then
+			goto continue
+		end
 
 		inputs.tint = map.tint
 

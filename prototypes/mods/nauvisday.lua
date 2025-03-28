@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["NauvisDay"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.greenhouse.entities) then return end
+if not mods["NauvisDay"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.greenhouse.entities) then
+	return
+end
 
 ---@type SetupStandardEntityInputs
 local inputs = {
@@ -18,7 +22,9 @@ local inputs = {
 }
 
 local entity = data.raw["assembling-machine"]["dead-greenhouse"]
-if not entity then return end
+if not entity then
+	return
+end
 
 reskins.lib.setup_standard_entity("dead-greenhouse", 0, inputs)
 

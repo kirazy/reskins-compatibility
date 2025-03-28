@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["DeadlockCrating"] and not mods["IntermodalContainers"] then return end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
+if not mods["DeadlockCrating"] and not mods["IntermodalContainers"] then
+	return
+end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
+	return
+end
 
 -- Set input parameters
 local inputs = {
@@ -57,7 +61,9 @@ for name, map in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Determine what tint we're using
 	inputs.tint = tweak_tint(reskins.lib.tiers.get_belt_tint(map.tier))
@@ -97,7 +103,9 @@ for name, map in pairs(tier_map) do
 
 	-- Tech handling
 	local technology = data.raw.technology[string.gsub(name, "machine%-", "")]
-	if not technology then goto continue end
+	if not technology then
+		goto continue
+	end
 
 	technology.icons[2].tint = inputs.tint
 
@@ -158,7 +166,9 @@ local function update_crate_icons(name, icons, picture)
 end
 
 for name, _ in pairs(data.raw.item) do
-	if not name:find("deadlock%-crate%-") then goto continue end
+	if not name:find("deadlock%-crate%-") then
+		goto continue
+	end
 
 	local item_name = name:gsub("deadlock%-crate%-", "")
 	local item = data.raw.item[item_name]

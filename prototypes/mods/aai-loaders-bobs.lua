@@ -4,7 +4,9 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["aai-loaders-bobs"] then return end
+if not mods["aai-loaders-bobs"] then
+	return
+end
 
 local loaders = {
 	["aai-boblogistics-basic-loader"] = { tier = 0 },

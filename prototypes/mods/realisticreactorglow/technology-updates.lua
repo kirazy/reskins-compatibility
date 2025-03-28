@@ -4,9 +4,15 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["RealisticReactorGlow"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.power.technologies) then return end
-if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then return end
+if not mods["RealisticReactorGlow"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.power.technologies) then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then
+	return
+end
 
 ---@type CreateIconsFromListInputs
 local inputs = {
@@ -18,7 +24,9 @@ local inputs = {
 }
 
 local light_color = ""
-if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then light_color = "_cyan" end
+if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then
+	light_color = "_cyan"
+end
 
 local material_tiers = {
 	"base",
@@ -26,11 +34,13 @@ local material_tiers = {
 	"gold-copper",
 }
 
-if reskins.lib.version.is_same_or_newer(mods["bobpower"], "1.1.6") then material_tiers = {
-	"aluminum-invar",
-	"silver-titanium",
-	"gold-copper",
-} end
+if reskins.lib.version.is_same_or_newer(mods["bobpower"], "1.1.6") then
+	material_tiers = {
+		"aluminum-invar",
+		"silver-titanium",
+		"gold-copper",
+	}
+end
 
 ---@type CreateIconsFromListTable
 local technologies = {

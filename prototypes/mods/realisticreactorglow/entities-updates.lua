@@ -4,9 +4,15 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["RealisticReactorGlow"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.power.entities) then return end
-if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then return end
+if not mods["RealisticReactorGlow"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.power.entities) then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then
+	return
+end
 
 local reactors = {
 	["nuclear-reactor"] = { material = "base" },
@@ -20,13 +26,17 @@ if reskins.lib.version.is_same_or_newer(mods["bobpower"], "1.1.6") then
 end
 
 local light_color = ""
-if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then light_color = "_cyan" end
+if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then
+	light_color = "_cyan"
+end
 
 -- Fix lighting
 for name, mapping in pairs(reactors) do
 	local entity = data.raw.reactor[name]
 
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Lights
 	entity.working_light_picture = {
@@ -55,7 +65,9 @@ for name, mapping in pairs(reactors) do
 
 	-- Modify the icon pictures
 	local item = data.raw.item[name]
-	if item.pictures and item.pictures.layers then item.pictures.layers[1].filename = icon_path end
+	if item.pictures and item.pictures.layers then
+		item.pictures.layers[1].filename = icon_path
+	end
 
 	-- Label to skip to next iteration
 	::continue::

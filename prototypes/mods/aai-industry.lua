@@ -4,14 +4,20 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["aai-industry"] then return end
-if not (reskins.bobs and reskins.bobs.triggers.assembly.entities) then return end
+if not mods["aai-industry"] then
+	return
+end
+if not (reskins.bobs and reskins.bobs.triggers.assembly.entities) then
+	return
+end
 
 -- We want to use the aai industry-style burner assembling machine
 local entity = data.raw["assembling-machine"]["burner-assembling-machine"]
 
 -- Verify the entity exists
-if not entity then return end
+if not entity then
+	return
+end
 
 -- Reskin the burner assembling machine in the appropriate style
 entity.graphics_set.animation = {

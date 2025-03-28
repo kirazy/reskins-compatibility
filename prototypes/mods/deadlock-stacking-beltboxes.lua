@@ -5,8 +5,12 @@
 
 -- Check to see if reskinning needs to be done.
 -- if not reskins.bobs then return end
-if not mods["deadlock-beltboxes-loaders"] then return end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then return end
+if not mods["deadlock-beltboxes-loaders"] then
+	return
+end
+if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
+	return
+end
 
 -- Set input parameters
 local inputs = {
@@ -61,7 +65,9 @@ for name, map in pairs(tier_map) do
 	local entity = data.raw[inputs.type][name]
 
 	-- Check if entity exists, if not, skip this iteration
-	if not entity then goto continue end
+	if not entity then
+		goto continue
+	end
 
 	-- Determine what tint we're using
 	inputs.tint = tweak_tint(reskins.lib.tiers.get_belt_tint(map.tier))

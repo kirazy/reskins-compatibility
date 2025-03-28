@@ -4,9 +4,15 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["CircuitProcessing"] then return end
-if not reskins.bobs then return end
-if reskins.lib.settings.get_value("reskins-compatibility-do-circuitprocessing-circuit-style") == "off" then return end
+if not mods["CircuitProcessing"] then
+	return
+end
+if not reskins.bobs then
+	return
+end
+if reskins.lib.settings.get_value("reskins-compatibility-do-circuitprocessing-circuit-style") == "off" then
+	return
+end
 
 ---@type CreateIconsFromListInputs
 local inputs = {

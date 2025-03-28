@@ -3,7 +3,9 @@
 --
 -- See LICENSE in the project directory for license information.
 
-if not mods["deadlock-beltboxes-loaders"] then return end
+if not mods["deadlock-beltboxes-loaders"] then
+	return
+end
 
 ---@returns data.IconData
 local function stack_item_base_layer()
@@ -98,18 +100,24 @@ local name_exception_patterns = {
 }
 
 for name, _ in pairs(data.raw.item) do
-	if not name:find("deadlock%-stack%-") then goto continue end
+	if not name:find("deadlock%-stack%-") then
+		goto continue
+	end
 
 	local item_name = name:gsub("deadlock%-stack%-", "")
 
 	for _, exception in pairs(name_exception_patterns) do
-		if item_name:find(exception) then goto continue end
+		if item_name:find(exception) then
+			goto continue
+		end
 	end
 
 	local item
 	for _, type_name in pairs(type_names_to_check) do
 		item = data.raw[type_name][item_name]
-		if item then break end
+		if item then
+			break
+		end
 	end
 
 	if item then

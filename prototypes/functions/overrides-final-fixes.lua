@@ -5,4 +5,6 @@
 
 -- Only reskin chemical plants when Mini-machines pulls from the vanilla chemical plants
 -- until such time as we handle the angels chemical plants as well
-if mods["angelspetrochem"] then reskins.compatibility.triggers.minimachines.chemplants.bobs = false end
+if mods["angelspetrochem"] then
+	reskins.compatibility.triggers.minimachines.chemplants.bobs = false
+end

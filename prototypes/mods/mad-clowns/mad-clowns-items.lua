@@ -4,7 +4,9 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then return end
+if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
+	return
+end
 
 ---@type CreateIconsFromListInputs
 local inputs = {
@@ -75,7 +77,9 @@ if reskins.lib.settings.get_value("reskins-angels-use-item-variations") then
 
 	for _, ingot in pairs(ingot_variations) do
 		local item = data.raw.item["ingot-" .. ingot]
-		if not item then goto continue end
+		if not item then
+			goto continue
+		end
 
 		-- Setup initial pictures table with primary icon
 		item.pictures = {
@@ -110,7 +114,9 @@ local powder_variations = {
 
 for powder, material in pairs(powder_variations) do
 	local item = data.raw.item[powder]
-	if not item then goto continue end
+	if not item then
+		goto continue
+	end
 
 	-- Setup initial pictures table
 	item.pictures = {}

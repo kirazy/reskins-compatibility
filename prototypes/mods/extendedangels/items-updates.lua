@@ -4,8 +4,12 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["extendedangels"] then return end
-if not (reskins.angels and reskins.angels.triggers.smelting.items) then return end
+if not mods["extendedangels"] then
+	return
+end
+if not (reskins.angels and reskins.angels.triggers.smelting.items) then
+	return
+end
 
 ---@type CreateIconsFromListInputs
 local inputs = {
