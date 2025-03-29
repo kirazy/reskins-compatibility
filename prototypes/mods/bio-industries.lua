@@ -7,9 +7,11 @@
 if not mods["Bio_Industries"] then
 	return
 end
+
+-- FIXME: Handle the graphics overhaul when it lands
 if reskins.lib.version.is_same_or_newer(mods["Bio_Industries"], "1.2.0") then
 	return
-end -- Handle the graphics overhaul when it lands
+end
 
 ---@type CreateIconsFromListTable
 local intermediates = {}

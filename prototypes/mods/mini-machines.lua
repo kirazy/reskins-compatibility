@@ -126,21 +126,12 @@ if reskins.compatibility.triggers.minimachines.radar then
 	mini_machine_maps["mini-radar-4"] = { source = "radar-4", type_name = "radar", scale = 2 / 3 }
 	mini_machine_maps["mini-radar-5"] = { source = "radar-5", type_name = "radar", scale = 2 / 3 }
 
-	if reskins.lib.version.is_same_or_newer(mods["bobpower"], "1.1.6") then
-		technology_icons_to_create["mini-radar-1"] = { mod = "bobs", group = "warfare", tier = 1, icon_name = "radar" }
+	technology_icons_to_create["mini-radar-1"] = { mod = "bobs", group = "warfare", tier = 1, icon_name = "radar" }
 
-		technology_source_mapping["mini-radar-2"] = "radars-2"
-		technology_source_mapping["mini-radar-3"] = "radars-3"
-		technology_source_mapping["mini-radar-4"] = "radars-4"
-		technology_source_mapping["mini-radar-5"] = "radars-5"
-	else
-		technology_icons_to_create["mini-radar-1"] = { mod = "bobs", group = "warfare", tier = 1, icon_name = "radar" }
-
-		technology_source_mapping["mini-radar-2"] = "radars"
-		technology_source_mapping["mini-radar-3"] = "radars-2"
-		technology_source_mapping["mini-radar-4"] = "radars-3"
-		technology_source_mapping["mini-radar-5"] = "radars-4"
-	end
+	technology_source_mapping["mini-radar-2"] = "radars-2"
+	technology_source_mapping["mini-radar-3"] = "radars-3"
+	technology_source_mapping["mini-radar-4"] = "radars-4"
+	technology_source_mapping["mini-radar-5"] = "radars-5"
 end
 
 if reskins.compatibility.triggers.minimachines.refineries then

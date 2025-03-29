@@ -23,35 +23,19 @@ local inputs = {
 }
 
 local tier_map = {
-	["crop-farm"] = { tier = 1, prog_tier = 0, field = "basic" },
-	["crop-farm-2"] = { tier = 2, prog_tier = 1, field = "basic" },
-	["crop-farm-3"] = { tier = 3, prog_tier = 2, field = "basic" },
-	["temperate-farm"] = { tier = 1, prog_tier = 2, field = "temperate" },
-	["temperate-farm-2"] = { tier = 2, prog_tier = 3, field = "temperate" },
-	["temperate-farm-3"] = { tier = 3, prog_tier = 4, field = "temperate" },
-	["swamp-farm"] = { tier = 1, prog_tier = 2, field = "swamp" },
-	["swamp-farm-2"] = { tier = 2, prog_tier = 3, field = "swamp" },
-	["swamp-farm-3"] = { tier = 3, prog_tier = 4, field = "swamp" },
-	["desert-farm"] = { tier = 1, prog_tier = 2, field = "desert" },
-	["desert-farm-2"] = { tier = 2, prog_tier = 3, field = "desert" },
-	["desert-farm-3"] = { tier = 3, prog_tier = 4, field = "desert" },
+	["crop-farm"] = { tier = 1, prog_tier = 1, field = "basic" },
+	["crop-farm-2"] = { tier = 2, prog_tier = 2, field = "basic" },
+	["crop-farm-3"] = { tier = 3, prog_tier = 3, field = "basic" },
+	["temperate-farm"] = { tier = 1, prog_tier = 3, field = "temperate" },
+	["temperate-farm-2"] = { tier = 2, prog_tier = 4, field = "temperate" },
+	["temperate-farm-3"] = { tier = 3, prog_tier = 5, field = "temperate" },
+	["swamp-farm"] = { tier = 1, prog_tier = 3, field = "swamp" },
+	["swamp-farm-2"] = { tier = 2, prog_tier = 4, field = "swamp" },
+	["swamp-farm-3"] = { tier = 3, prog_tier = 5, field = "swamp" },
+	["desert-farm"] = { tier = 1, prog_tier = 3, field = "desert" },
+	["desert-farm-2"] = { tier = 2, prog_tier = 4, field = "desert" },
+	["desert-farm-3"] = { tier = 3, prog_tier = 5, field = "desert" },
 }
-
--- Adjust for changes in Extended Angels due to modifications to ingredients in Angel's Bioprocessing 0.7.23
-if reskins.lib.version.is_same_or_newer(mods["extendedangels"], "0.5.8") then
-	tier_map["crop-farm"].prog_tier = 1
-	tier_map["crop-farm-2"].prog_tier = 2
-	tier_map["crop-farm-3"].prog_tier = 3
-	tier_map["temperate-farm"].prog_tier = 3
-	tier_map["temperate-farm-2"].prog_tier = 4
-	tier_map["temperate-farm-3"].prog_tier = 5
-	tier_map["swamp-farm"].prog_tier = 3
-	tier_map["swamp-farm-2"].prog_tier = 4
-	tier_map["swamp-farm-3"].prog_tier = 5
-	tier_map["desert-farm"].prog_tier = 3
-	tier_map["desert-farm-2"].prog_tier = 4
-	tier_map["desert-farm-3"].prog_tier = 5
-end
 
 -- Reskin entities, create and assign extra details
 for name, map in pairs(tier_map) do
