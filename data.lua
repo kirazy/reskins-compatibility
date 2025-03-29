@@ -5,7 +5,6 @@
 
 -- Core functions
 require("prototypes.functions.functions")
-require("prototypes.functions.circuitprocessing-sprites")
 
 -- Mods
 require("prototypes.mods.aai-loaders")
