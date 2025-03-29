@@ -5,6 +5,7 @@ Date: ????
     - Migration to Factorio 2.0!
   Changes:
     - Removed support for Circuit Processing due to changes in Bob's Electronics.
+    - Supports changed made in Vanilla Loaders for Bob's 2.0.0.
 ---------------------------------------------------------------------------------------------------
 Version: 2.2.1
 Date: 2024-05-21

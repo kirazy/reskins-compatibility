@@ -20,27 +20,25 @@ local inputs = {
 	group = "vanilla-loaders-hd",
 	particles = { ["medium"] = 1, ["big"] = 4 },
 	make_remnants = false,
+	tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling"),
 }
 
--- Handle belt tier labels
-inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
-
 local tier_map = {
-	["basic-loader"] = { tier = 0, set_type = reskins.lib.defines.belt_sprites.standard },
+	["bob-basic-loader"] = { tier = 0, set_type = reskins.lib.defines.belt_sprites.standard },
 	["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
 	["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
 	["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
-	["purple-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
-	["green-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
+	["bob-turbo-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
+	["bob-ultimate-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }
 
--- Reskin entities
 for name, map in pairs(tier_map) do
 	---@type data.LoaderPrototype
 	local entity = data.raw[inputs.type][name]
 	if not entity then
 		goto continue
 	end
+
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
 	reskins.lib.setup_standard_entity(name, map.tier, inputs)
@@ -125,9 +123,6 @@ for name, map in pairs(tier_map) do
 			scale = 0.5,
 		},
 	}
-
-	-- Apply belt set
-	-- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
 	::continue::
 end
