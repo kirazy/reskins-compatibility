@@ -83,13 +83,9 @@ for name, map in pairs(tier_map) do
 	---@type data.InserterPrototype|data.Loader1x1Prototype
 	local entity = data.raw[inputs.type][name]
 	local base_belt = data.raw["transport-belt"][map.base_belt]
-
-	-- Check if entity exists, if not, skip this iteration
 	if not entity then
 		goto continue
 	end
-
-	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
 	reskins.lib.setup_standard_entity(name, map.tier, inputs)
@@ -233,7 +229,6 @@ for name, map in pairs(tier_map) do
 		entity.belt_animation_set = base_belt and base_belt.belt_animation_set
 	end
 
-	-- Label to skip to next iteration
 	::continue::
 end
 
@@ -249,8 +244,6 @@ for name, map in pairs(item_map) do
 
 	-- Setup icon details
 	inputs.icon_base = map.icon_base or "miniloader"
-
-	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
 	reskins.lib.construct_icon(name, map.tier, inputs)
@@ -277,7 +270,6 @@ for name, map in pairs(item_map) do
 		reskins.lib.assign_order(name, inputs)
 	end
 
-	-- Label to skip to next iteration
 	::continue::
 end
 
@@ -295,20 +287,15 @@ local technology_map = {
 for name, tier in pairs(technology_map) do
 	-- Fetch technology
 	local technology = data.raw["technology"][name]
-
-	-- Check if entity exists, if not, skip this iteration
 	if not technology then
 		goto continue
 	end
 
 	-- Fix inputs
 	inputs.icon_base = nil
-
-	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_belt_tint(tier)
 
 	reskins.lib.construct_technology_icon(name, inputs)
 
-	-- Label to skip to next iteration
 	::continue::
 end

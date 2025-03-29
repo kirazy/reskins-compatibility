@@ -27,15 +27,15 @@ local inputs = {
 }
 
 local tier_map = {
-	["electric-mining-drill"] = { 1, 1 },
-	["bob-mining-drill-1"] = { 2, 2 },
-	["bob-mining-drill-2"] = { 3, 3 },
-	["bob-mining-drill-3"] = { 4, 4 },
-	["bob-mining-drill-4"] = { 5, 5 },
-	["bob-area-mining-drill-1"] = { 1, 2 },
-	["bob-area-mining-drill-2"] = { 2, 3 },
-	["bob-area-mining-drill-3"] = { 3, 4 },
-	["bob-area-mining-drill-4"] = { 4, 5 },
+	["electric-mining-drill"] = { tier = 1 },
+	["bob-mining-drill-1"] = { tier = 2 },
+	["bob-mining-drill-2"] = { tier = 3 },
+	["bob-mining-drill-3"] = { tier = 4 },
+	["bob-mining-drill-4"] = { tier = 5 },
+	["bob-area-mining-drill-1"] = { tier = 1, prog_tier = 2 },
+	["bob-area-mining-drill-2"] = { tier = 2, prog_tier = 3 },
+	["bob-area-mining-drill-3"] = { tier = 3, prog_tier = 4 },
+	["bob-area-mining-drill-4"] = { tier = 4, prog_tier = 5 },
 }
 
 -- Setup local functions for reskinning the mining drill animation
@@ -1313,8 +1313,6 @@ local index = 1
 for name, _ in pairs(tier_map) do
 	---@type data.MiningDrillPrototype
 	local entity = data.raw[inputs.type][name]
-
-	-- Check if entity exists, if not, skip this iteration
 	if not entity then
 		goto continue
 	end
@@ -1323,7 +1321,6 @@ for name, _ in pairs(tier_map) do
 	mining_speeds[index] = data.raw[inputs.type][name].mining_speed
 	index = index + 1
 
-	-- Label to skip to next iteration
 	::continue::
 end
 
@@ -1336,17 +1333,11 @@ local min_speed = mining_speeds[1]
 for name, map in pairs(tier_map) do
 	---@type data.MiningDrillPrototype
 	local entity = data.raw[inputs.type][name]
-
-	-- Check if entity exists, if not, skip this iteration
 	if not entity then
 		goto continue
 	end
 
-	-- Parse map
-	local tier = map[1]
-	if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
-		tier = map[2]
-	end
+	local tier = reskins.lib.tiers.get_tier(map)
 
 	-- Handle icon base
 	if string.find(name, "area") then
@@ -1359,7 +1350,6 @@ for name, map in pairs(tier_map) do
 		inputs.icon_extras = nil
 	end
 
-	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_tint(tier)
 
 	reskins.lib.setup_standard_entity(name, tier, inputs)
@@ -1432,6 +1422,5 @@ for name, map in pairs(tier_map) do
 	entity.wet_mining_graphics_set.shift_animation_transition_duration = 30 / speed
 	entity.wet_mining_graphics_set.working_visualisations = drill_wet_working_visualisation(speed, inputs)
 
-	-- Label to skip to next iteration
 	::continue::
 end

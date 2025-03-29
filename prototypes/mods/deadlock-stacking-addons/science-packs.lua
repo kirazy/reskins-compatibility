@@ -120,7 +120,6 @@ for name, map in pairs(science_packs) do
 	stacking_items[recipe_unstack_name].type = "recipe"
 	stacking_items[recipe_unstack_name].icon_extras = recipe_unstack_icon_extras
 
-	-- Label to skip to next iteration
 	::continue::
 end
 

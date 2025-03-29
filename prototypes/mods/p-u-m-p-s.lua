@@ -472,13 +472,7 @@ for name, map in pairs(tier_map) do
 			goto continue
 		end
 
-		-- Handle tier
-		local tier = map.tier
-		if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
-			tier = map.prog_tier or map.tier
-		end
-
-		-- Determine what tint we're using, setup remaining inputs
+		local tier = reskins.lib.tiers.get_tier(map)
 		inputs.tint = reskins.lib.tiers.get_tint(tier)
 		inputs.type = properties.type
 

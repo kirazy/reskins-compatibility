@@ -120,7 +120,6 @@ for warehouse, map in pairs(types) do
 		local filename = map.is_logistics and "logistic-" .. warehouse .. "-icon-base" or warehouse .. "-icon-base"
 		inputs.icon_filename = "__reskins-angels__/graphics/icons/addons-storage/warehouse/" .. filename .. ".png"
 
-		-- Determine what tint we're using
 		inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
 
 		if reskins.lib.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") then

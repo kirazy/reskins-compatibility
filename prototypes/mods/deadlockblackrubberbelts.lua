@@ -33,13 +33,9 @@ reskins.lib.set_inputs_defaults(inputs)
 for name, map in pairs(tier_map) do
 	---@type data.TransportBeltPrototype
 	local entity = data.raw[inputs.type][name]
-
-	-- Check if entity exists, if not, skip this iteration
 	if not entity then
 		goto continue
 	end
-
-	-- Determine what tint we're using
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier) -- actions.hsva2rgba(reskins.lib.RGBtoHSV(reskins.library.tiers.get_belt_tint(map.tier)).h, 0.8, 1)
 
 	---@type data.IconData[]
@@ -65,6 +61,5 @@ for name, map in pairs(tier_map) do
 	-- Reskin entity
 	entity.belt_animation_set.animation_set = actions.get_belt_animation_set(inputs.tint, inputs.base)
 
-	-- Label to skip to next iteration
 	::continue::
 end
