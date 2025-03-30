@@ -268,7 +268,7 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 	}
 
 	local boilers = {
-		["bi-bio-boiler"] = { tint = util.color("80801a") },
+		["bi-bio-boiler"] = { tint = util.color("#80801a") },
 	}
 
 	for name, map in pairs(boilers) do
@@ -293,12 +293,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Base
 				{
 					filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					scale = 0.5,
@@ -306,12 +302,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Mask
 				{
 					filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-mask.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					tint = inputs.tint,
@@ -320,12 +312,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Highlights
 				{
 					filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-highlights.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					blend_mode = reskins.lib.settings.blend_mode, -- "additive",
@@ -523,10 +511,4 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 		-- Label to skip to next iteration
 		::continue::
 	end
-end
-
--- Recipe fixes
-if data.raw.recipe["bi-bio-boiler"] then -- The recipe will not exist if the startup setting BI_Bio_Fuel is disabled
-	data.raw.recipe["bi-bio-boiler"].normal.main_product = nil
-	data.raw.recipe["bi-bio-boiler"].expensive.main_product = nil
 end

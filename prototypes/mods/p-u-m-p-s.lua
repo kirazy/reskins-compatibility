@@ -490,10 +490,8 @@ for name, map in pairs(tier_map) do
 					-- Base
 					{
 						filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-1.png",
-						line_length = 1,
 						width = 146,
 						height = 140,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(2, -2.5),
 						scale = 0.5,
@@ -501,10 +499,8 @@ for name, map in pairs(tier_map) do
 					-- Mask
 					{
 						filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-mask.png",
-						line_length = 1,
 						width = 146,
 						height = 140,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(2, -2.5),
 						tint = inputs.tint,
@@ -513,10 +509,8 @@ for name, map in pairs(tier_map) do
 					-- Highlights
 					{
 						filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-1-highlights.png",
-						line_length = 1,
 						width = 146,
 						height = 140,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(2, -2.5),
 						blend_mode = reskins.lib.settings.blend_mode,
@@ -532,10 +526,8 @@ for name, map in pairs(tier_map) do
 					-- Base
 					{
 						filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-2.png",
-						line_length = 1,
 						width = 136,
 						height = 134,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(1.5, 0.5),
 						scale = 0.5,
@@ -543,10 +535,8 @@ for name, map in pairs(tier_map) do
 					-- Mask
 					{
 						filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-mask.png",
-						line_length = 1,
 						width = 136,
 						height = 134,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(1.5, 0.5),
 						tint = inputs.tint,
@@ -555,10 +545,8 @@ for name, map in pairs(tier_map) do
 					-- Highlights
 					{
 						filename = "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/remnants/offshore-pump-remnants-variation-2-highlights.png",
-						line_length = 1,
 						width = 136,
 						height = 134,
-						frame_count = 1,
 						direction_count = 4,
 						shift = util.by_pixel(1.5, 0.5),
 						blend_mode = reskins.lib.settings.blend_mode,

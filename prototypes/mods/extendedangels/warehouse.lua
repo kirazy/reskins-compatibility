@@ -22,12 +22,12 @@ local inputs = {
 }
 
 local types = {
-	["warehouse"] = { particle_tint = util.color("403630") },
-	["warehouse-active-provider"] = { particle_tint = util.color("760fd6"), is_logistics = true },
-	["warehouse-passive-provider"] = { particle_tint = util.color("ff0000"), is_logistics = true },
-	["warehouse-storage"] = { particle_tint = util.color("ba7713"), is_logistics = true },
-	["warehouse-buffer"] = { particle_tint = util.color("00bf13"), is_logistics = true },
-	["warehouse-requester"] = { particle_tint = util.color("227dae"), is_logistics = true },
+	["warehouse"] = { particle_tint = util.color("#403630") },
+	["warehouse-active-provider"] = { particle_tint = util.color("#760fd6"), is_logistics = true },
+	["warehouse-passive-provider"] = { particle_tint = util.color("#ff0000"), is_logistics = true },
+	["warehouse-storage"] = { particle_tint = util.color("#ba7713"), is_logistics = true },
+	["warehouse-buffer"] = { particle_tint = util.color("#00bf13"), is_logistics = true },
+	["warehouse-requester"] = { particle_tint = util.color("#227dae"), is_logistics = true },
 }
 
 local function create_logistic_warehouse_picture(chest)

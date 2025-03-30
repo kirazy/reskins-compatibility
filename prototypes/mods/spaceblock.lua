@@ -272,12 +272,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Base
 				{
 					filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					scale = 0.5,
@@ -285,12 +281,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Mask
 				{
 					filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-mask.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					tint = inputs.tint,
@@ -299,12 +291,8 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 				-- Highlights
 				{
 					filename = "__reskins-bobs__/graphics/entity/power/boiler/remnants/boiler-remnants-highlights.png",
-					line_length = 1,
 					width = 274,
 					height = 220,
-					frame_count = 1,
-					variation_count = 1,
-					axially_symmetrical = false,
 					direction_count = 4,
 					shift = util.by_pixel(-0.5, -3),
 					blend_mode = reskins.lib.settings.blend_mode, -- "additive",

@@ -40,6 +40,7 @@ if powder then
 	for i = 1, 6, 1 do
 		table.insert(powder.pictures, {
 			filename = "__reskins-compatibility__/graphics/icons/extendedangels/powders/tungsten-carbide/powder-tungsten-carbide-" .. i .. ".png",
+			flags = { "icon" },
 			size = 64,
 			mipmap_count = 4,
 			scale = 0.25,
