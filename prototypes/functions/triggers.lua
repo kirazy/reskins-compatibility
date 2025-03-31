@@ -19,6 +19,7 @@ triggers.minimachines = {
 	storagetanks = false,
 	beacons = false,
 	furnaces = false,
+	centrifuges = false,
 }
 
 return triggers

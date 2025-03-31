@@ -9,7 +9,7 @@
     "dependencies": [
         "base",
         "reskins-library >= 2.3.0",
-        "(?) reskins-bobs",
+        "(?) reskins-bobs >= 2.3.2",
         "(?) reskins-angels",
         "? aai-industry",
         "? aai-loaders",

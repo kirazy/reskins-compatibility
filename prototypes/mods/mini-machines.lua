@@ -28,10 +28,34 @@ local mini_machine_maps = {}
 -- Chemical plants
 if reskins.compatibility.triggers.minimachines.chemplants.angels then
 	-- Use Angel's chemical plants.
-	mini_machine_maps["mini-chemplant-1"] = { source = "angels-chemical-plant", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-2"] = { source = "angels-chemical-plant-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-3"] = { source = "angels-chemical-plant-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-4"] = { source = "angels-chemical-plant-4", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
+	mini_machine_maps["mini-chemplant-1"] = {
+		source = "angels-chemical-plant",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-2"] = {
+		source = "angels-chemical-plant-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-3"] = {
+		source = "angels-chemical-plant-3",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-4"] = {
+		source = "angels-chemical-plant-4",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
 
 	-- Technologies
 	-- TODO: Add icons for Angel's chem plants.
@@ -41,10 +65,34 @@ if reskins.compatibility.triggers.minimachines.chemplants.angels then
 	-- linked_technologies["mini-chemplant-4"] = "chemical-plant-4"
 elseif reskins.compatibility.triggers.minimachines.chemplants.bobs then
 	-- Use Bob's chemical plants.
-	mini_machine_maps["mini-chemplant-1"] = { source = "chemical-plant", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-2"] = { source = "chemical-plant-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-3"] = { source = "chemical-plant-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
-	mini_machine_maps["mini-chemplant-4"] = { source = "chemical-plant-4", type_name = "assembling-machine", scale = 2 / 3, pattern = "chemical%-plant", replacement = "chemical-plant" }
+	mini_machine_maps["mini-chemplant-1"] = {
+		source = "chemical-plant",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-2"] = {
+		source = "bob-chemical-plant-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-3"] = {
+		source = "bob-chemical-plant-3",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
+	mini_machine_maps["mini-chemplant-4"] = {
+		source = "bob-chemical-plant-4",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "chemical%-plant",
+		replacement = "chemical-plant",
+	}
 
 	technology_icons_to_create["mini-chemplant-1"] = {
 		mod = "bobs",
@@ -54,18 +102,48 @@ elseif reskins.compatibility.triggers.minimachines.chemplants.bobs then
 		icon_name = "chemical-plant",
 	}
 
-	technology_source_mapping["mini-chemplant-2"] = "chemical-plant-2"
-	technology_source_mapping["mini-chemplant-3"] = "chemical-plant-3"
-	technology_source_mapping["mini-chemplant-4"] = "chemical-plant-4"
+	technology_source_mapping["mini-chemplant-2"] = "bob-chemical-plant-2"
+	technology_source_mapping["mini-chemplant-3"] = "bob-chemical-plant-3"
+	technology_source_mapping["mini-chemplant-4"] = "bob-chemical-plant-4"
 end
 
 -- Electrolysers
 if reskins.compatibility.triggers.minimachines.electrolysers then
-	mini_machine_maps["mini-electro-1"] = { source = "electrolyser", type_name = "assembling-machine", scale = 2 / 3, pattern = "electrolyser", replacement = "electrolyser" }
-	mini_machine_maps["mini-electro-2"] = { source = "electrolyser-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "electrolyser", replacement = "electrolyser" }
-	mini_machine_maps["mini-electro-3"] = { source = "electrolyser-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "electrolyser", replacement = "electrolyser" }
-	mini_machine_maps["mini-electro-4"] = { source = "electrolyser-4", type_name = "assembling-machine", scale = 2 / 3, pattern = "electrolyser", replacement = "electrolyser" }
-	mini_machine_maps["mini-electro-5"] = { source = "electrolyser-5", type_name = "assembling-machine", scale = 2 / 3, pattern = "electrolyser", replacement = "electrolyser" }
+	mini_machine_maps["mini-electro-1"] = {
+		source = "bob-electrolyser",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electrolyser",
+		replacement = "electrolyser",
+	}
+	mini_machine_maps["mini-electro-2"] = {
+		source = "bob-electrolyser-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electrolyser",
+		replacement = "electrolyser",
+	}
+	mini_machine_maps["mini-electro-3"] = {
+		source = "bob-electrolyser-3",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electrolyser",
+		replacement = "electrolyser",
+	}
+	mini_machine_maps["mini-electro-4"] = {
+		source = "bob-electrolyser-4",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electrolyser",
+		replacement = "electrolyser",
+	}
+	mini_machine_maps["mini-electro-5"] = {
+		source = "bob-electrolyser-5",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electrolyser",
+		replacement = "electrolyser",
+	}
 
 	technology_icons_to_create["mini-electro-1"] = {
 		mod = "bobs",
@@ -78,20 +156,50 @@ if reskins.compatibility.triggers.minimachines.electrolysers then
 		icon_highlights = "electrolyser-1",
 	}
 
-	technology_source_mapping["mini-electro-2"] = "electrolyser-2"
-	technology_source_mapping["mini-electro-3"] = "electrolyser-3"
-	technology_source_mapping["mini-electro-4"] = "electrolyser-4"
-	technology_source_mapping["mini-electro-5"] = "electrolyser-5"
+	technology_source_mapping["mini-electro-2"] = "bob-electrolyser-2"
+	technology_source_mapping["mini-electro-3"] = "bob-electrolyser-3"
+	technology_source_mapping["mini-electro-4"] = "bob-electrolyser-4"
+	technology_source_mapping["mini-electro-5"] = "bob-electrolyser-5"
 end
 
 -- Assembling machines
 if reskins.compatibility.triggers.minimachines.assemblers then
-	mini_machine_maps["mini-assembler-1"] = { source = "assembling-machine-1", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
-	mini_machine_maps["mini-assembler-2"] = { source = "assembling-machine-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
-	mini_machine_maps["mini-assembler-3"] = { source = "assembling-machine-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
-	mini_machine_maps["mini-assembler-4"] = { source = "assembling-machine-4", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
-	mini_machine_maps["mini-assembler-5"] = { source = "assembling-machine-5", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
-	mini_machine_maps["mini-assembler-6"] = { source = "assembling-machine-6", type_name = "assembling-machine", scale = 2 / 3, pattern = "assembling%-machine" }
+	mini_machine_maps["mini-assembler-1"] = {
+		source = "assembling-machine-1",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
+	mini_machine_maps["mini-assembler-2"] = {
+		source = "assembling-machine-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
+	mini_machine_maps["mini-assembler-3"] = {
+		source = "assembling-machine-3",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
+	mini_machine_maps["mini-assembler-4"] = {
+		source = "bob-assembling-machine-4",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
+	mini_machine_maps["mini-assembler-5"] = {
+		source = "bob-assembling-machine-5",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
+	mini_machine_maps["mini-assembler-6"] = {
+		source = "bob-assembling-machine-6",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "assembling%-machine",
+	}
 
 	-- Technologies
 	technology_source_mapping["mini-assembler-1"] = "automation"
@@ -104,41 +212,115 @@ end
 
 -- Mining drills
 if reskins.compatibility.triggers.minimachines.miners then
-	mini_machine_maps["mini-miner-1"] = { source = "electric-mining-drill", type_name = "mining-drill", scale = 2 / 3, pattern = "electric%-mining%-drill", replacement = "electric-mining-drill" }
-	mini_machine_maps["mini-miner-2"] = { source = "bob-mining-drill-1", type_name = "mining-drill", scale = 2 / 3, pattern = "electric%-mining%-drill", replacement = "electric-mining-drill" }
-	mini_machine_maps["mini-miner-3"] = { source = "bob-mining-drill-2", type_name = "mining-drill", scale = 2 / 3, pattern = "electric%-mining%-drill", replacement = "electric-mining-drill" }
-	mini_machine_maps["mini-miner-4"] = { source = "bob-mining-drill-3", type_name = "mining-drill", scale = 2 / 3, pattern = "electric%-mining%-drill", replacement = "electric-mining-drill" }
-	mini_machine_maps["mini-miner-5"] = { source = "bob-mining-drill-4", type_name = "mining-drill", scale = 2 / 3, pattern = "electric%-mining%-drill", replacement = "electric-mining-drill" }
+	mini_machine_maps["mini-miner-1"] = {
+		source = "electric-mining-drill",
+		type_name = "mining-drill",
+		scale = 2 / 3,
+		pattern = "electric%-mining%-drill",
+		replacement = "electric-mining-drill",
+	}
+	mini_machine_maps["mini-miner-2"] = {
+		source = "bob-mining-drill-1",
+		type_name = "mining-drill",
+		scale = 2 / 3,
+		pattern = "electric%-mining%-drill",
+		replacement = "electric-mining-drill",
+	}
+	mini_machine_maps["mini-miner-3"] = {
+		source = "bob-mining-drill-2",
+		type_name = "mining-drill",
+		scale = 2 / 3,
+		pattern = "electric%-mining%-drill",
+		replacement = "electric-mining-drill",
+	}
+	mini_machine_maps["mini-miner-4"] = {
+		source = "bob-mining-drill-3",
+		type_name = "mining-drill",
+		scale = 2 / 3,
+		pattern = "electric%-mining%-drill",
+		replacement = "electric-mining-drill",
+	}
+	mini_machine_maps["mini-miner-5"] = {
+		source = "bob-mining-drill-4",
+		type_name = "mining-drill",
+		scale = 2 / 3,
+		pattern = "electric%-mining%-drill",
+		replacement = "electric-mining-drill",
+	}
 
 	technology_icons_to_create["mini-miner-1"] = { mod = "bobs", group = "mining", tier = 1, icon_name = "mining-drill" }
 
-	technology_source_mapping["mini-miner-2"] = "bob-drills-1"
-	technology_source_mapping["mini-miner-3"] = "bob-drills-2"
-	technology_source_mapping["mini-miner-4"] = "bob-drills-3"
-	technology_source_mapping["mini-miner-5"] = "bob-drills-4"
+	technology_source_mapping["mini-miner-2"] = "bob-drills-2"
+	technology_source_mapping["mini-miner-3"] = "bob-drills-3"
+	technology_source_mapping["mini-miner-4"] = "bob-drills-4"
+	technology_source_mapping["mini-miner-5"] = "bob-drills-5"
 end
 
 -- Radars
 if reskins.compatibility.triggers.minimachines.radar then
-	mini_machine_maps["mini-radar-1"] = { source = "radar", type_name = "radar", scale = 2 / 3 }
-	mini_machine_maps["mini-radar-2"] = { source = "radar-2", type_name = "radar", scale = 2 / 3 }
-	mini_machine_maps["mini-radar-3"] = { source = "radar-3", type_name = "radar", scale = 2 / 3 }
-	mini_machine_maps["mini-radar-4"] = { source = "radar-4", type_name = "radar", scale = 2 / 3 }
-	mini_machine_maps["mini-radar-5"] = { source = "radar-5", type_name = "radar", scale = 2 / 3 }
+	mini_machine_maps["mini-radar-1"] = {
+		source = "radar",
+		type_name = "radar",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-radar-2"] = {
+		source = "bob-radar-2",
+		type_name = "radar",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-radar-3"] = {
+		source = "bob-radar-3",
+		type_name = "radar",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-radar-4"] = {
+		source = "bob-radar-4",
+		type_name = "radar",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-radar-5"] = {
+		source = "bob-radar-5",
+		type_name = "radar",
+		scale = 2 / 3,
+	}
 
 	technology_icons_to_create["mini-radar-1"] = { mod = "bobs", group = "warfare", tier = 1, icon_name = "radar" }
 
-	technology_source_mapping["mini-radar-2"] = "radars-2"
-	technology_source_mapping["mini-radar-3"] = "radars-3"
-	technology_source_mapping["mini-radar-4"] = "radars-4"
-	technology_source_mapping["mini-radar-5"] = "radars-5"
+	technology_source_mapping["mini-radar-2"] = "bob-radar-2"
+	technology_source_mapping["mini-radar-3"] = "bob-radar-3"
+	technology_source_mapping["mini-radar-4"] = "bob-radar-4"
+	technology_source_mapping["mini-radar-5"] = "bob-radar-5"
 end
 
 if reskins.compatibility.triggers.minimachines.refineries then
-	mini_machine_maps["mini-refinery-1"] = { source = "oil-refinery", type_name = "assembling-machine", scale = 3 / 5, pattern = "oil%-refinery", replacement = "oil-refinery" }
-	mini_machine_maps["mini-refinery-2"] = { source = "oil-refinery-2", type_name = "assembling-machine", scale = 3 / 5, pattern = "oil%-refinery", replacement = "oil-refinery" }
-	mini_machine_maps["mini-refinery-3"] = { source = "oil-refinery-3", type_name = "assembling-machine", scale = 3 / 5, pattern = "oil%-refinery", replacement = "oil-refinery" }
-	mini_machine_maps["mini-refinery-4"] = { source = "oil-refinery-4", type_name = "assembling-machine", scale = 3 / 5, pattern = "oil%-refinery", replacement = "oil-refinery" }
+	mini_machine_maps["mini-refinery-1"] = {
+		source = "oil-refinery",
+		type_name = "assembling-machine",
+		scale = 3 / 5,
+		pattern = "oil%-refinery",
+		replacement = "oil-refinery",
+	}
+	mini_machine_maps["mini-refinery-2"] = {
+		source = "bob-oil-refinery-2",
+		type_name = "assembling-machine",
+		scale = 3 / 5,
+		pattern = "oil%-refinery",
+		replacement = "oil-refinery",
+	}
+	mini_machine_maps["mini-refinery-3"] = {
+		source = "bob-oil-refinery-3",
+		type_name = "assembling-machine",
+		scale = 3 / 5,
+		pattern = "oil%-refinery",
+		replacement = "oil-refinery",
+	}
+	mini_machine_maps["mini-refinery-4"] = {
+		source = "bob-oil-refinery-4",
+		type_name = "assembling-machine",
+		scale = 3 / 5,
+		pattern = "oil%-refinery",
+		replacement = "oil-refinery",
+	}
 
 	technology_icons_to_create["mini-refinery-1"] = { mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery" }
 
@@ -147,11 +329,44 @@ if reskins.compatibility.triggers.minimachines.refineries then
 	technology_source_mapping["mini-refinery-4"] = "oil-processing-4"
 end
 
+if reskins.compatibility.triggers.minimachines.centrifuges then
+	mini_machine_maps["mini-centrifuge-1"] = { source = "centrifuge", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
+	mini_machine_maps["mini-centrifuge-2"] = { source = "bob-centrifuge-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
+	mini_machine_maps["mini-centrifuge-3"] = { source = "bob-centrifuge-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
+
+	technology_source_mapping["mini-centrifuge-2"] = "bob-centrifuge-2"
+	technology_source_mapping["mini-centrifuge-3"] = "bob-centrifuge-3"
+end
+
 if reskins.compatibility.triggers.minimachines.storagetanks then
-	mini_machine_maps["mini-tank-1"] = { source = "storage-tank", type_name = "storage-tank", scale = 2 / 3, pattern = "storage%-tank", replacement = "storage-tank" }
-	mini_machine_maps["mini-tank-2"] = { source = "storage-tank-2", type_name = "storage-tank", scale = 2 / 3, pattern = "storage%-tank", replacement = "storage-tank" }
-	mini_machine_maps["mini-tank-3"] = { source = "storage-tank-3", type_name = "storage-tank", scale = 2 / 3, pattern = "storage%-tank", replacement = "storage-tank" }
-	mini_machine_maps["mini-tank-4"] = { source = "storage-tank-4", type_name = "storage-tank", scale = 2 / 3, pattern = "storage%-tank", replacement = "storage-tank" }
+	mini_machine_maps["mini-tank-1"] = {
+		source = "storage-tank",
+		type_name = "storage-tank",
+		scale = 2 / 3,
+		pattern = "storage%-tank",
+		replacement = "storage-tank",
+	}
+	mini_machine_maps["mini-tank-2"] = {
+		source = "bob-storage-tank-2",
+		type_name = "storage-tank",
+		scale = 2 / 3,
+		pattern = "storage%-tank",
+		replacement = "storage-tank",
+	}
+	mini_machine_maps["mini-tank-3"] = {
+		source = "bob-storage-tank-3",
+		type_name = "storage-tank",
+		scale = 2 / 3,
+		pattern = "storage%-tank",
+		replacement = "storage-tank",
+	}
+	mini_machine_maps["mini-tank-4"] = {
+		source = "bob-storage-tank-4",
+		type_name = "storage-tank",
+		scale = 2 / 3,
+		pattern = "storage%-tank",
+		replacement = "storage-tank",
+	}
 
 	technology_icons_to_create["mini-tank-1"] = { group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank" }
 	technology_icons_to_create["mini-tank-2"] = { group = "mini-machine", tier = 2, prog_tier = 3, icon_name = "storage-tank" }
@@ -160,27 +375,84 @@ if reskins.compatibility.triggers.minimachines.storagetanks then
 end
 
 if reskins.compatibility.triggers.minimachines.beacons then
-	mini_machine_maps["mini-beacon-1"] = { source = "beacon", type_name = "beacon", scale = 2 / 3 }
-	mini_machine_maps["mini-beacon-2"] = { source = "beacon-2", type_name = "beacon", scale = 2 / 3 }
-	mini_machine_maps["mini-beacon-3"] = { source = "beacon-3", type_name = "beacon", scale = 2 / 3 }
+	mini_machine_maps["mini-beacon-1"] = {
+		source = "beacon",
+		type_name = "beacon",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-beacon-2"] = {
+		source = "bob-beacon-2",
+		type_name = "beacon",
+		scale = 2 / 3,
+	}
+	mini_machine_maps["mini-beacon-3"] = {
+		source = "bob-beacon-3",
+		type_name = "beacon",
+		scale = 2 / 3,
+	}
+	technology_source_mapping["mini-beacon-1"] = "effect-transmission"
+	technology_source_mapping["mini-beacon-2"] = "effect-transmission-2"
+	technology_source_mapping["mini-beacon-3"] = "effect-transmission-3"
 end
 
 if reskins.compatibility.triggers.minimachines.furnaces then
-	mini_machine_maps["mini-furnace-1"] = { source = "electric-furnace", type_name = "furnace", scale = 2 / 3, pattern = "electric%-furnace", replacement = "electric-furnace" }
-	mini_machine_maps["mini-furnace-2"] = { source = "electric-furnace-2", type_name = "furnace", scale = 2 / 3, pattern = "electric%-furnace", replacement = "electric-furnace" }
-	mini_machine_maps["mini-furnace-3"] = { source = "electric-furnace-3", type_name = "furnace", scale = 2 / 3, pattern = "electric%-furnace", replacement = "electric-furnace" }
-	mini_machine_maps["mini-bobchem-1"] = { source = "electric-chemical-furnace", type_name = "assembling-machine", scale = 2 / 3, pattern = "electric%-chemical%-furnace", replacement = "electric-chemical-furnace" }
-	mini_machine_maps["mini-bobmetal-1"] = { source = "electric-mixing-furnace", type_name = "assembling-machine", scale = 2 / 3, pattern = "electric%-mixing%-furnace", replacement = "electric-mixing-furnace" }
-	mini_machine_maps["mini-bobmulti-1"] = { source = "electric-chemical-mixing-furnace", type_name = "assembling-machine", scale = 2 / 3, pattern = "electric%-chemical%-mixing%-furnace", replacement = "electric-chemical-mixing-furnace" }
-	mini_machine_maps["mini-bobmulti-2"] = { source = "electric-chemical-mixing-furnace-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "electric%-chemical%-mixing%-furnace", replacement = "electric-chemical-mixing-furnace" }
+	mini_machine_maps["mini-furnace-1"] = {
+		source = "electric-furnace",
+		type_name = "furnace",
+		scale = 2 / 3,
+		pattern = "electric%-furnace",
+		replacement = "electric-furnace",
+	}
+	mini_machine_maps["mini-furnace-2"] = {
+		source = "bob-electric-furnace-2",
+		type_name = "furnace",
+		scale = 2 / 3,
+		pattern = "electric%-furnace",
+		replacement = "electric-furnace",
+	}
+	mini_machine_maps["mini-furnace-3"] = {
+		source = "bob-electric-furnace-3",
+		type_name = "furnace",
+		scale = 2 / 3,
+		pattern = "electric%-furnace",
+		replacement = "electric-furnace",
+	}
+	mini_machine_maps["mini-bobchem-1"] = {
+		source = "bob-electric-chemical-furnace",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electric%-chemical%-furnace",
+		replacement = "electric-chemical-furnace",
+	}
+	mini_machine_maps["mini-bobmetal-1"] = {
+		source = "bob-electric-mixing-furnace",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electric%-mixing%-furnace",
+		replacement = "electric-mixing-furnace",
+	}
+	mini_machine_maps["mini-bobmulti-1"] = {
+		source = "bob-electric-chemical-mixing-furnace",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electric%-chemical%-mixing%-furnace",
+		replacement = "electric-chemical-mixing-furnace",
+	}
+	mini_machine_maps["mini-bobmulti-2"] = {
+		source = "bob-electric-chemical-mixing-furnace-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "electric%-chemical%-mixing%-furnace",
+		replacement = "electric-chemical-mixing-furnace",
+	}
 
 	technology_source_mapping["mini-furnace-1"] = "advanced-material-processing-2"
 	technology_source_mapping["mini-furnace-2"] = "advanced-material-processing-3"
 	technology_source_mapping["mini-furnace-3"] = "advanced-material-processing-4"
-	technology_source_mapping["mini-bobmetal-1"] = "electric-mixing-furnace"
-	technology_source_mapping["mini-bobchem-1"] = "electric-chemical-furnace"
-	technology_source_mapping["mini-bobmulti-1"] = "multi-purpose-furnace-1"
-	technology_source_mapping["mini-bobmulti-2"] = "multi-purpose-furnace-2"
+	technology_source_mapping["mini-bobmetal-1"] = "bob-electric-mixing-furnace"
+	technology_source_mapping["mini-bobchem-1"] = "bob-electric-chemical-furnace"
+	technology_source_mapping["mini-bobmulti-1"] = "bob-multi-purpose-furnace-1"
+	technology_source_mapping["mini-bobmulti-2"] = "bob-multi-purpose-furnace-2"
 
 	-- Handle fluid boxes for the assembly furnaces
 	local assembly_furnaces = {
@@ -206,6 +478,34 @@ if reskins.compatibility.triggers.minimachines.furnaces then
 
 		::continue::
 	end
+end
+
+---@type data.IconData
+local mini_machine_icon_overlay = {
+	icon = "__reskins-library__/graphics/icons/mini-machine-overlay.png",
+	icon_size = 64,
+	scale = 0.5,
+}
+
+local mini_recycler = data.raw["furnace"]["mini-recycler-1"]
+if mini_recycler then
+	---@type DeferrableIconData
+	local deferrable_icon = {
+		name = "mini-recycler-1",
+		type_name = "furnace",
+		icon_data = {
+			{
+				icon = "__reskins-compatibility__/graphics/icons/mini-machines/mini-recycler.png",
+				icon_size = 64,
+				scale = 0.5,
+			},
+			mini_machine_icon_overlay,
+		},
+	}
+
+	reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
+
+	technology_source_mapping["mini-recycler-1"] = "recycling"
 end
 
 ---
@@ -258,13 +558,6 @@ end
 for name, source in pairs(technology_source_mapping) do
 	set_rescaled_version_of_source_technology_on_target(name, source)
 end
-
----@type data.IconData
-local mini_machine_icon_overlay = {
-	icon = "__reskins-library__/graphics/icons/mini-machine-overlay.png",
-	icon_size = 64,
-	scale = 0.5,
-}
 
 ---
 ---Copies the standard-sized icons from the source item, switches them to the miniature version, and
