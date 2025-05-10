@@ -24,7 +24,7 @@ entity.graphics_set.animation = {
 	layers = {
 		-- aai-industry Base
 		{
-			filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine.png",
+			filename = "__aai-industry__/graphics/entity/burner-assembling-machine/burner-assembling-machine.png",
 			priority = "high",
 			width = 214,
 			height = 226,
@@ -54,7 +54,7 @@ entity.graphics_set.working_visualisations = {
 		fadeout = true,
 		effect = "flicker",
 		animation = {
-			filename = "__aai-industry__/graphics/entity/burner-assembling-machine/hr-burner-assembling-machine-light.png",
+			filename = "__aai-industry__/graphics/entity/burner-assembling-machine/burner-assembling-machine-light.png",
 			priority = "high",
 			width = 214,
 			height = 226,
