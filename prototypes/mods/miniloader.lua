@@ -87,20 +87,20 @@ local item_map = {
 	["ultimate-filter-miniloader"] = { tier = 5, icon_base = "filter-miniloader" },
 
 	-- Miniloaders (Redux)
-	["hps__ml-bob-basic-miniloader"] = { tier = 0 },
-	["hps__ml-miniloader"] = { tier = 1 },
-	["hps__ml-fast-miniloader"] = { tier = 2 },
-	["hps__ml-express-miniloader"] = { tier = 3 },
-	["hps__ml-bob-turbo-miniloader"] = { tier = 4 },
-	["hps__ml-bob-ultimate-miniloader"] = { tier = 5 },
+	["hps__ml-bob-basic-miniloader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
+	["hps__ml-miniloader"] = { tier = 1, base_item = "transport-belt" },
+	["hps__ml-fast-miniloader"] = { tier = 2, base_item = "fast-transport-belt" },
+	["hps__ml-express-miniloader"] = { tier = 3, base_item = "express-transport-belt" },
+	["hps__ml-bob-turbo-miniloader"] = { tier = 4, base_item = "bob-turbo-transport-belt" },
+	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 
 	-- Loaders Modernized
-	["basic-mdrn-loader"] = { tier = 0 },
-	["mdrn-loader"] = { tier = 1 },
-	["fast-mdrn-loader"] = { tier = 2 },
-	["express-mdrn-loader"] = { tier = 3 },
-	["turbo-mdrn-loader"] = { tier = 4 },
-	["ultimate-mdrn-loader"] = { tier = 5 },
+	["basic-mdrn-loader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
+	["mdrn-loader"] = { tier = 1, base_item = "transport-belt" },
+	["fast-mdrn-loader"] = { tier = 2, base_item = "fast-transport-belt" },
+	["express-mdrn-loader"] = { tier = 3, base_item = "express-transport-belt" },
+	["turbo-mdrn-loader"] = { tier = 4, base_item = "bob-turbo-transport-belt" },
+	["ultimate-mdrn-loader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 }
 
 -- Reskin entities
@@ -282,11 +282,13 @@ for name, map in pairs(item_map) do
 	reskins.lib.construct_icon(name, map.tier, inputs)
 
 	-- Handle grouping and ordering in the UI
-	local base_item
-	if name ~= "chute-miniloader" then
-		base_item = data.raw["item"][string.gsub(string.gsub(name, "filter%-", ""), "miniloader", "transport-belt")]
-	elseif data.raw["item"]["bob-basic-transport-belt"] then
-		base_item = data.raw["item"]["bob-basic-transport-belt"]
+	local base_item = map.base_item and data.raw["item"][map.base_item] or nil
+	if not base_item then
+		if name ~= "chute-miniloader" then
+			base_item = data.raw["item"][string.gsub(string.gsub(name, "filter%-", ""), "miniloader", "transport-belt")]
+		elseif data.raw["item"]["bob-basic-transport-belt"] then
+			base_item = data.raw["item"]["bob-basic-transport-belt"]
+		end
 	end
 
 	if base_item then

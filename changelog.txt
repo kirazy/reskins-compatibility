@@ -2,6 +2,7 @@
 Version: 2.3.4
 Date: ????
   Changes:
+    - Loader item subgroups are now aligned with the belt subgroups added by Bob's Logistics.
 ---------------------------------------------------------------------------------------------------
 Version: 2.3.3
 Date: 2025-07-03
