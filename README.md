@@ -62,6 +62,9 @@ Reskins the stacked science packs to use custom sprites instead of dynamically g
 - **[Extended Angels](https://mods.factorio.com/mod/extendedangels)**  
 Tier labels and color progression are applied to the added Bioprocessing structures and Warehouses.
 
+- **[Loaders Modernized](https://mods.factorio.com/mod/loaders-modernized)**  
+Tier labels are displayed on miniloader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
+
 - **[Loader Redux](https://mods.factorio.com/mod/LoaderRedux)**  
 Tier labels are displayed on loader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
 
@@ -72,6 +75,9 @@ Tier labels are displayed on loader icons, and when custom colors is enabled, wi
 Mini machine icons are completely redone in the Artisanal Reskin style, but shrunk by 85%. Tier labels and an icon indicating the machine is "mini" are overlayed on the icon. Custom colors are fully supported.
 
 - **[Miniloader](https://mods.factorio.com/mod/miniloader)**  
+Tier labels are displayed on miniloader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
+
+- **[Miniloader (Redux)](https://mods.factorio.com/mod/miniloader-redux)**  
 Tier labels are displayed on miniloader icons, and when custom colors is enabled, will be reskinned to match the chosen colors.
 
 - **[Offshore P.U.M.P.S. and ground water](https://mods.factorio.com/mod/P-U-M-P-S)**  

@@ -4,7 +4,7 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["miniloader"] then
+if not (mods["miniloader"] or mods["miniloader-redux"] or mods["loaders-modernized"]) then
 	return
 end
 if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
@@ -26,9 +26,10 @@ local inputs = {
 inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
 local tier_map = {
-	-- 1x1 Loader Entities
-	["basic-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
+	-- 1X1 LOADER ENTITIES
+	-- Legacy Miniloaders
 	["chute-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "transport-belt" },
+	["basic-miniloader-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
 	["miniloader-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
 	["fast-miniloader-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
 	["express-miniloader-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
@@ -40,9 +41,25 @@ local tier_map = {
 	["turbo-filter-miniloader-loader"] = { tier = 4, sprite_variant = 2, is_filter = true, base_belt = "bob-turbo-transport-belt" },
 	["ultimate-filter-miniloader-loader"] = { tier = 5, sprite_variant = 2, is_filter = true, base_belt = "bob-ultimate-transport-belt" },
 
+	-- Miniloader (Redux)
+	["hps__ml-bob-basic-miniloader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
+	["hps__ml-miniloader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
+	["hps__ml-fast-miniloader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
+	["hps__ml-express-miniloader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
+	["hps__ml-bob-turbo-miniloader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
+	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
+
+	-- Loaders Modernized
+	["basic-mdrn-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
+	["mdrn-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
+	["fast-mdrn-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
+	["express-mdrn-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
+	["turbo-mdrn-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
+	["ultimate-mdrn-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
+
 	-- Inserter Entities
-	["basic-miniloader-inserter"] = { tier = 0, is_inserter = true },
 	["chute-miniloader-inserter"] = { tier = 0, is_inserter = true },
+	["basic-miniloader-inserter"] = { tier = 0, is_inserter = true },
 	["miniloader-inserter"] = { tier = 1, is_inserter = true },
 	["fast-miniloader-inserter"] = { tier = 2, is_inserter = true },
 	["express-miniloader-inserter"] = { tier = 3, is_inserter = true },
@@ -56,8 +73,8 @@ local tier_map = {
 }
 
 local item_map = {
-	["basic-miniloader"] = { tier = 0 },
 	["chute-miniloader"] = { tier = 0 },
+	["basic-miniloader"] = { tier = 0 },
 	["miniloader"] = { tier = 1 },
 	["fast-miniloader"] = { tier = 2 },
 	["express-miniloader"] = { tier = 3 },
@@ -68,6 +85,22 @@ local item_map = {
 	["express-filter-miniloader"] = { tier = 3, icon_base = "filter-miniloader" },
 	["turbo-filter-miniloader"] = { tier = 4, icon_base = "filter-miniloader" },
 	["ultimate-filter-miniloader"] = { tier = 5, icon_base = "filter-miniloader" },
+
+	-- Miniloaders (Redux)
+	["hps__ml-bob-basic-miniloader"] = { tier = 0 },
+	["hps__ml-miniloader"] = { tier = 1 },
+	["hps__ml-fast-miniloader"] = { tier = 2 },
+	["hps__ml-express-miniloader"] = { tier = 3 },
+	["hps__ml-bob-turbo-miniloader"] = { tier = 4 },
+	["hps__ml-bob-ultimate-miniloader"] = { tier = 5 },
+
+	-- Loaders Modernized
+	["basic-mdrn-loader"] = { tier = 0 },
+	["mdrn-loader"] = { tier = 1 },
+	["fast-mdrn-loader"] = { tier = 2 },
+	["express-mdrn-loader"] = { tier = 3 },
+	["turbo-mdrn-loader"] = { tier = 4 },
+	["ultimate-mdrn-loader"] = { tier = 5 },
 }
 
 -- Reskin entities
@@ -128,7 +161,7 @@ for name, map in pairs(tier_map) do
 			},
 			-- Shadow
 			{
-				filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-shadow.png",
 				height = 192,
 				priority = "extra-high",
 				scale = 0.5,
@@ -173,7 +206,7 @@ for name, map in pairs(tier_map) do
 			},
 			-- Shadow
 			{
-				filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-shadow.png",
 				draw_as_shadow = true,
 				height = 192,
 				priority = "extra-high",
@@ -215,7 +248,7 @@ for name, map in pairs(tier_map) do
 			},
 			-- Shadow
 			{
-				filename = "__miniloader__/graphics/entity/hr-miniloader-structure-shadow.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-shadow.png",
 				height = 192,
 				priority = "extra-high",
 				scale = 0.5,
@@ -275,16 +308,33 @@ end
 
 -- Technologies
 local technology_map = {
-	["basic-miniloader"] = 0,
-	["miniloader"] = 1,
-	["fast-miniloader"] = 2,
-	["express-miniloader"] = 3,
-	["turbo-miniloader"] = 4,
-	["ultimate-miniloader"] = 5,
+	-- Legacy Miniloader
+	["basic-miniloader"] = { tier = 0 },
+	["miniloader"] = { tier = 1 },
+	["fast-miniloader"] = { tier = 2 },
+	["express-miniloader"] = { tier = 3 },
+	["turbo-miniloader"] = { tier = 4 },
+	["ultimate-miniloader"] = { tier = 5 },
+
+	-- Miniloader (Redux)
+	["hps__ml-bob-basic-miniloader"] = { tier = 0 },
+	["hps__ml-miniloader"] = { tier = 1 },
+	["hps__ml-fast-miniloader"] = { tier = 2 },
+	["hps__ml-express-miniloader"] = { tier = 3 },
+	["hps__ml-bob-turbo-miniloader"] = { tier = 4 },
+	["hps__ml-bob-ultimate-miniloader"] = { tier = 5 },
+
+	-- Loaders Modernized
+	["basic-mdrn-loader"] = { tier = 0 },
+	["mdrn-loader"] = { tier = 1 },
+	["fast-mdrn-loader"] = { tier = 2 },
+	["express-mdrn-loader"] = { tier = 3 },
+	["turbo-mdrn-loader"] = { tier = 4 },
+	["ultimate-mdrn-loader"] = { tier = 5 },
 }
 
 -- Reskin technologies
-for name, tier in pairs(technology_map) do
+for name, map in pairs(technology_map) do
 	-- Fetch technology
 	local technology = data.raw["technology"][name]
 	if not technology then
@@ -293,7 +343,7 @@ for name, tier in pairs(technology_map) do
 
 	-- Fix inputs
 	inputs.icon_base = nil
-	inputs.tint = reskins.lib.tiers.get_belt_tint(tier)
+	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
 
 	reskins.lib.construct_technology_icon(name, inputs)
 
