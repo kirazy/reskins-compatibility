@@ -73,18 +73,14 @@ local recipe_source_names_map = {
 	-- Plate composite recipes
 	["angels-plate-tungsten"] = { "bob-tungsten-plate", "casting-powder-tungsten" },
 	["angels-plate-tungsten-2"] = { "bob-tungsten-plate", "angels-roll-tungsten" },
-	["angels-plate-invar-2"] = { "invar-alloy", "angels-roll-invar" },
-	["angels-plate-nitinol-2"] = { "nitinol-alloy", "angels-roll-nitinol" },
-	["angels-plate-cobalt-steel"] = { "cobalt-steel-alloy", "angels-liquid-molten-cobalt-steel" },
-	-- ["angels-plate-cobalt-steel-2"] = { "cobalt-steel-alloy", "angels-roll-cobalt-steel" },
-	["angels-plate-cobalt-steel-1"] = { "cobalt-steel-alloy", "angels-liquid-molten-iron", "angels-liquid-molten-cobalt" },
-	["angels-plate-cobalt-steel-2"] = { "cobalt-steel-alloy", "angels-liquid-molten-steel", "angels-liquid-molten-cobalt" },
-	["angels-plate-brass"] = { "brass-alloy", "angels-liquid-molten-brass" },
-	["angels-plate-brass-2"] = { "brass-alloy", "angels-roll-brass" },
-	["angels-plate-bronze"] = { "bronze-alloy", "angels-liquid-molten-bronze" },
-	["angels-plate-bronze-2"] = { "bronze-alloy", "angels-roll-bronze" },
-	["angels-plate-gunmetal"] = { "gunmetal-alloy", "angels-liquid-molten-gunmetal" },
-	["angels-plate-gunmetal-2"] = { "gunmetal-alloy", "angels-roll-gunmetal" },
+	["angels-plate-invar-2"] = { "bob-invar-alloy", "angels-roll-invar" },
+	["angels-plate-nitinol-2"] = { "bob-nitinol-alloy", "angels-roll-nitinol" },
+	-- ["angels-plate-cobalt-steel-2"] = { "bob-cobalt-steel-alloy", "angels-roll-cobalt-steel" },
+	["angels-plate-cobalt-steel-1"] = { "bob-cobalt-steel-alloy", "angels-liquid-molten-iron", "angels-liquid-molten-cobalt" },
+	["angels-plate-cobalt-steel-2"] = { "bob-cobalt-steel-alloy", "angels-liquid-molten-steel", "angels-liquid-molten-cobalt" },
+	["angels-plate-brass-2"] = { "bob-brass-alloy", "angels-roll-brass" },
+	["angels-plate-bronze-2"] = { "bob-bronze-alloy", "angels-roll-bronze" },
+	["angels-plate-gunmetal-2"] = { "bob-gunmetal-alloy", "angels-roll-gunmetal" },
 }
 
 for recipe_name, source_names in pairs(recipe_source_names_map) do
