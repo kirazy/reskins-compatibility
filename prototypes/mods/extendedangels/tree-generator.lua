@@ -22,15 +22,15 @@ local inputs = {
 }
 
 local tier_map = {
-	["bio-generator-temperate-1"] = { tier = 1, field = "temperate" },
-	["bio-generator-temperate-2"] = { tier = 2, field = "temperate" },
-	["bio-generator-temperate-3"] = { tier = 3, field = "temperate" },
-	["bio-generator-swamp-1"] = { tier = 1, field = "swamp" },
-	["bio-generator-swamp-2"] = { tier = 2, field = "swamp" },
-	["bio-generator-swamp-3"] = { tier = 3, field = "swamp" },
-	["bio-generator-desert-1"] = { tier = 1, field = "desert" },
-	["bio-generator-desert-2"] = { tier = 2, field = "desert" },
-	["bio-generator-desert-3"] = { tier = 3, field = "desert" },
+	["angels-bio-generator-temperate-1"] = { tier = 1, field = "temperate" },
+	["angels-bio-generator-temperate-2"] = { tier = 2, field = "temperate" },
+	["angels-bio-generator-temperate-3"] = { tier = 3, field = "temperate" },
+	["angels-bio-generator-swamp-1"] = { tier = 1, field = "swamp" },
+	["angels-bio-generator-swamp-2"] = { tier = 2, field = "swamp" },
+	["angels-bio-generator-swamp-3"] = { tier = 3, field = "swamp" },
+	["angels-bio-generator-desert-1"] = { tier = 1, field = "desert" },
+	["angels-bio-generator-desert-2"] = { tier = 2, field = "desert" },
+	["angels-bio-generator-desert-3"] = { tier = 3, field = "desert" },
 }
 
 -- Reskin entities, create and assign extra details

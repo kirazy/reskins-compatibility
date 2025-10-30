@@ -23,9 +23,9 @@ local inputs = {
 }
 
 local tier_map = {
-	["seed-extractor"] = { tier = 1 },
-	["seed-extractor-2"] = { tier = 2 },
-	["seed-extractor-3"] = { tier = 3 },
+	["angels-seed-extractor"] = { tier = 1 },
+	["angels-seed-extractor-2"] = { tier = 2 },
+	["angels-seed-extractor-3"] = { tier = 3 },
 }
 
 -- Reskin entities, create and assign extra details

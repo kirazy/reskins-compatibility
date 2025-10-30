@@ -23,9 +23,9 @@ local inputs = {
 }
 
 local tier_map = {
-	["nutrient-extractor"] = { tier = 1, prog_tier = 2 },
-	["nutrient-extractor-2"] = { tier = 2, prog_tier = 3 },
-	["nutrient-extractor-3"] = { tier = 3, prog_tier = 4 },
+	["angels-nutrient-extractor"] = { tier = 1, prog_tier = 2 },
+	["angels-nutrient-extractor-2"] = { tier = 2, prog_tier = 3 },
+	["angels-nutrient-extractor-3"] = { tier = 3, prog_tier = 4 },
 }
 
 -- Reskin entities, create and assign extra details

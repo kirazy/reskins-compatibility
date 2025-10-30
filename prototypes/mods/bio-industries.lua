@@ -162,15 +162,15 @@ local recipe_icon_source_map = {
 
 	-- Pellets
 	["bi-coke-coal"] = {
-		{ name = "pellet-coke", type_name = "item" },
+		{ name = "angels-pellet-coke", type_name = "item" },
 		{ name = "coal", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 	["bi-pellet-coke"] = {
-		{ name = "pellet-coke", type_name = "item" },
+		{ name = "angels-pellet-coke", type_name = "item" },
 		{ name = "solid-fuel", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 	["bi-pellet-coke-2"] = {
-		{ name = "pellet-coke", type_name = "item" },
+		{ name = "angels-pellet-coke", type_name = "item" },
 		{ name = "carbon", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 

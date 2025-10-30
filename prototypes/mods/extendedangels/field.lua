@@ -23,18 +23,18 @@ local inputs = {
 }
 
 local tier_map = {
-	["crop-farm"] = { tier = 1, prog_tier = 1, field = "basic" },
-	["crop-farm-2"] = { tier = 2, prog_tier = 2, field = "basic" },
-	["crop-farm-3"] = { tier = 3, prog_tier = 3, field = "basic" },
-	["temperate-farm"] = { tier = 1, prog_tier = 3, field = "temperate" },
-	["temperate-farm-2"] = { tier = 2, prog_tier = 4, field = "temperate" },
-	["temperate-farm-3"] = { tier = 3, prog_tier = 5, field = "temperate" },
-	["swamp-farm"] = { tier = 1, prog_tier = 3, field = "swamp" },
-	["swamp-farm-2"] = { tier = 2, prog_tier = 4, field = "swamp" },
-	["swamp-farm-3"] = { tier = 3, prog_tier = 5, field = "swamp" },
-	["desert-farm"] = { tier = 1, prog_tier = 3, field = "desert" },
-	["desert-farm-2"] = { tier = 2, prog_tier = 4, field = "desert" },
-	["desert-farm-3"] = { tier = 3, prog_tier = 5, field = "desert" },
+	["angels-crop-farm"] = { tier = 1, prog_tier = 1, field = "basic" },
+	["angels-crop-farm-2"] = { tier = 2, prog_tier = 2, field = "basic" },
+	["angels-crop-farm-3"] = { tier = 3, prog_tier = 3, field = "basic" },
+	["angels-temperate-farm"] = { tier = 1, prog_tier = 3, field = "temperate" },
+	["angels-temperate-farm-2"] = { tier = 2, prog_tier = 4, field = "temperate" },
+	["angels-temperate-farm-3"] = { tier = 3, prog_tier = 5, field = "temperate" },
+	["angels-swamp-farm"] = { tier = 1, prog_tier = 3, field = "swamp" },
+	["angels-swamp-farm-2"] = { tier = 2, prog_tier = 4, field = "swamp" },
+	["angels-swamp-farm-3"] = { tier = 3, prog_tier = 5, field = "swamp" },
+	["angels-desert-farm"] = { tier = 1, prog_tier = 3, field = "desert" },
+	["angels-desert-farm-2"] = { tier = 2, prog_tier = 4, field = "desert" },
+	["angels-desert-farm-3"] = { tier = 3, prog_tier = 5, field = "desert" },
 }
 
 -- Reskin entities, create and assign extra details

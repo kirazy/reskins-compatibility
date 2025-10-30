@@ -22,11 +22,11 @@ local inputs = {
 ---@type CreateIconsFromListTable
 local intermediates = {
 	-- Items
-	["powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide" },
+	["angels-powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide" },
 	-- Recipes
-	["tungsten-carbide-smelting-1"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(1, "smelting") },
-	["tungsten-carbide-smelting-2"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(2, "smelting") },
-	["tungsten-carbide-smelting-3"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(3, "smelting") },
+	["angels-tungsten-carbide-smelting-1"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(1, "smelting") },
+	["angels-tungsten-carbide-smelting-2"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(2, "smelting") },
+	["angels-tungsten-carbide-smelting-3"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(3, "smelting") },
 }
 
 reskins.internal.create_icons_from_list(intermediates, inputs)

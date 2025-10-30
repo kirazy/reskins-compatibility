@@ -23,9 +23,9 @@ local inputs = {
 }
 
 local tier_map = {
-	["bio-arboretum-1"] = { tier = 1 },
-	["bio-arboretum-2"] = { tier = 2 },
-	["bio-arboretum-3"] = { tier = 3 },
+	["angels-bio-arboretum-1"] = { tier = 1 },
+	["angels-bio-arboretum-2"] = { tier = 2 },
+	["angels-bio-arboretum-3"] = { tier = 3 },
 }
 
 -- Reskin entities, create and assign extra details

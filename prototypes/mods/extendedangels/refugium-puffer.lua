@@ -23,9 +23,9 @@ local inputs = {
 }
 
 local tier_map = {
-	["bio-refugium-puffer"] = { tier = 1, prog_tier = 3 },
-	["bio-refugium-puffer-2"] = { tier = 2, prog_tier = 4 },
-	["bio-refugium-puffer-3"] = { tier = 3, prog_tier = 5 },
+	["angels-bio-refugium-puffer"] = { tier = 1, prog_tier = 3 },
+	["angels-bio-refugium-puffer-2"] = { tier = 2, prog_tier = 4 },
+	["angels-bio-refugium-puffer-3"] = { tier = 3, prog_tier = 5 },
 }
 
 -- Reskin entities, create and assign extra details

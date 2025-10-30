@@ -23,9 +23,9 @@ local inputs = {
 }
 
 local tier_map = {
-	["composter"] = { tier = 1 },
-	["composter-2"] = { tier = 2 },
-	["composter-3"] = { tier = 3 },
+	["angels-composter"] = { tier = 1 },
+	["angels-composter-2"] = { tier = 2 },
+	["angels-composter-3"] = { tier = 3 },
 }
 
 local function composter_base()
