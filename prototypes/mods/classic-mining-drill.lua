@@ -407,8 +407,15 @@ for name, map in pairs(tier_map) do
 	end
 
 	-- Reskin entities
-	entity.graphics_set.animation = drill_animations(inputs)
-	entity.wet_mining_graphics_set.animation = drill_animations(inputs)
+	entity.graphics_set = {
+		animation = drill_animations(inputs),
+	}
+	entity.wet_mining_graphics_set = {
+		animation = drill_animations(inputs),
+	}
+
+	-- Hide the integration patch
+	entity.integration_patch = util.empty_sprite()
 
 	-- Reskin the ore output when working with area drills
 	if string.find(name, "area") then
