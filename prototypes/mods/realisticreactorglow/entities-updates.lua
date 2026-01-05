@@ -16,8 +16,8 @@ end
 
 local reactors = {
 	["nuclear-reactor"] = { material = "aluminum-invar" },
-	["nuclear-reactor-2"] = { material = "silver-titanium" },
-	["nuclear-reactor-3"] = { material = "gold-copper" },
+	["bob-nuclear-reactor-2"] = { material = "silver-titanium" },
+	["bob-nuclear-reactor-3"] = { material = "gold-copper" },
 }
 
 local light_color = ""
@@ -35,7 +35,7 @@ for name, map in pairs(reactors) do
 
 	-- Lights
 	entity.working_light_picture = {
-		filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/hr-reactor-lights-color" .. light_color .. ".png",
+		filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/reactor-lights-color" .. light_color .. ".png",
 		blend_mode = "additive",
 		draw_as_glow = true,
 		width = 320,
