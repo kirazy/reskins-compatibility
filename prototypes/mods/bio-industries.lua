@@ -3,7 +3,8 @@ if not mods["Bio_Industries"] then
 	return
 end
 
--- FIXME: Handle the graphics overhaul when it lands
+-- FIXME: Bio Industries has been ported to 2.0 and compatibility needs to be verified
+-- https://github.com/kirazy/reskins-compatibility/issues/10
 if reskins.lib.version.is_same_or_newer(mods["Bio_Industries"], "1.2.0") then
 	return
 end
@@ -232,6 +233,7 @@ local recipe_icon_source_map = {
 }
 
 -- FIXME: This will need follow-up if and/or when Bio Industries is ported to 2.0
+-- https://github.com/kirazy/reskins-compatibility/issues/10
 if mods["bobelectronics"] and reskins.lib.settings.get_value("reskins-bobs-do-bobelectronics-circuit-style") ~= "off" then
 	recipe_icon_source_map["wooden-board"] = {
 		{ name = "wooden-board", type_name = "item" },
