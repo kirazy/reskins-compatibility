@@ -54,6 +54,7 @@ if reskins.compatibility.triggers.minimachines.chemplants.angels then
 
 	-- Technologies
 	-- TODO: Add icons for Angel's chem plants.
+	-- https://github.com/kirazy/reskins-angels/issues/72
 	-- originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
 	-- linked_technologies["mini-chemplant-2"] = "chemical-plant-2"
 	-- linked_technologies["mini-chemplant-3"] = "chemical-plant-3"
