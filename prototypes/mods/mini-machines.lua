@@ -1,8 +1,3 @@
--- Copyright (c) 2024 Kirazy
--- Part of Artisanal Reskins: Compatibility
---
--- See LICENSE in the project directory for license information.
-
 -- Check for mini-machines
 if not mods["mini-machines"] then
 	return
@@ -482,7 +477,7 @@ end
 
 ---@type data.IconData
 local mini_machine_icon_overlay = {
-	icon = "__reskins-library__/graphics/icons/mini-machine-overlay.png",
+	icon = "__reskins-framework__/graphics/icons/mini-machine-overlay.png",
 	icon_size = 64,
 	scale = 0.5,
 }
@@ -526,14 +521,14 @@ local function set_rescaled_version_of_source_technology_on_target(target_name, 
 
 	---@type data.IconData
 	local base_layer = {
-		icon = "__reskins-library__/graphics/technology/mini-machine-underlay.png",
+		icon = "__reskins-framework__/graphics/technology/mini-machine-underlay.png",
 		icon_size = 256,
 		scale = 1,
 	}
 
 	---@type data.IconData
 	local overlay_layer = {
-		icon = "__reskins-library__/graphics/technology/mini-machine-overlay.png",
+		icon = "__reskins-framework__/graphics/technology/mini-machine-overlay.png",
 		icon_size = 256,
 		scale = 1,
 	}
