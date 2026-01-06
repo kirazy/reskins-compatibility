@@ -1,8 +1,3 @@
--- Copyright (c) 2024 Kirazy
--- Part of Artisanal Reskins: Compatibility
---
--- See LICENSE in the project directory for license information.
-
 if not mods["deadlock-beltboxes-loaders"] then
 	return
 end
