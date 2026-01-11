@@ -99,7 +99,7 @@ for warehouse, map in pairs(types) do
 		if n == 1 then
 			name = "angels-" .. warehouse
 		else
-			name = warehouse .. "-mk" .. n
+			name = "angels-" .. warehouse .. "-mk" .. n
 		end
 
 		inputs.type = map.is_logistics and "logistic-container" or "container"
