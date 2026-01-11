@@ -22,7 +22,7 @@ local inputs = {
 ---@type CreateIconsFromListTable
 local intermediates = {
 	-- Items
-	["angels-powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide" },
+	["angels-powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide" },
 	-- Recipes
 	["angels-tungsten-carbide-smelting-1"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(1, "smelting") },
 	["angels-tungsten-carbide-smelting-2"] = { type = "recipe", subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide", icon_extras = reskins.angels.num_tier(2, "smelting") },
@@ -32,7 +32,7 @@ local intermediates = {
 reskins.internal.create_icons_from_list(intermediates, inputs)
 
 -- Setup powder variations
-local powder = data.raw.item["powder-tungsten-carbide"]
+local powder = data.raw.item["angels-powder-tungsten-carbide"]
 
 if powder then
 	powder.pictures = {}
