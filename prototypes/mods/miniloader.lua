@@ -31,10 +31,30 @@ local tier_map = {
 	["turbo-miniloader-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
 	["ultimate-miniloader-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
 	["filter-miniloader-loader"] = { tier = 1, sprite_variant = 1, is_filter = true, base_belt = "transport-belt" },
-	["fast-filter-miniloader-loader"] = { tier = 2, sprite_variant = 2, is_filter = true, base_belt = "fast-transport-belt" },
-	["express-filter-miniloader-loader"] = { tier = 3, sprite_variant = 2, is_filter = true, base_belt = "express-transport-belt" },
-	["turbo-filter-miniloader-loader"] = { tier = 4, sprite_variant = 2, is_filter = true, base_belt = "bob-turbo-transport-belt" },
-	["ultimate-filter-miniloader-loader"] = { tier = 5, sprite_variant = 2, is_filter = true, base_belt = "bob-ultimate-transport-belt" },
+	["fast-filter-miniloader-loader"] = {
+		tier = 2,
+		sprite_variant = 2,
+		is_filter = true,
+		base_belt = "fast-transport-belt",
+	},
+	["express-filter-miniloader-loader"] = {
+		tier = 3,
+		sprite_variant = 2,
+		is_filter = true,
+		base_belt = "express-transport-belt",
+	},
+	["turbo-filter-miniloader-loader"] = {
+		tier = 4,
+		sprite_variant = 2,
+		is_filter = true,
+		base_belt = "bob-turbo-transport-belt",
+	},
+	["ultimate-filter-miniloader-loader"] = {
+		tier = 5,
+		sprite_variant = 2,
+		is_filter = true,
+		base_belt = "bob-ultimate-transport-belt",
+	},
 
 	-- Miniloader (Redux)
 	["hps__ml-bob-basic-miniloader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
@@ -127,7 +147,9 @@ for name, map in pairs(tier_map) do
 		entity.platform_picture.sheets = {
 			-- Base
 			{
-				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-"
+					.. base_path
+					.. "-base.png",
 				height = 192,
 				priority = "extra-high",
 				scale = 0.5,
@@ -172,7 +194,9 @@ for name, map in pairs(tier_map) do
 		entity.structure.direction_in.sheets = {
 			-- Base
 			{
-				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-"
+					.. base_path
+					.. "-base.png",
 				height = 192,
 				priority = "extra-high",
 				scale = 0.5,
@@ -214,7 +238,9 @@ for name, map in pairs(tier_map) do
 		entity.structure.direction_out.sheets = {
 			-- Base
 			{
-				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
+				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-"
+					.. base_path
+					.. "-base.png",
 				height = 192,
 				priority = "extra-high",
 				scale = 0.5,

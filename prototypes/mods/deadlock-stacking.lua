@@ -127,7 +127,8 @@ for name, _ in pairs(data.raw.item) do
 
 		local built_icons = build_stacked_icons(icon_data)
 
-		local stacked_icons = reskins.lib.icons.combine_icons(false, built_icons, removed_symbols, removed_letters, removed_tier_labels)
+		local stacked_icons =
+			reskins.lib.icons.combine_icons(false, built_icons, removed_symbols, removed_letters, removed_tier_labels)
 		local stacked_picture = reskins.lib.sprites.create_sprite_from_icons(built_icons, 1.0)
 
 		update_stack_icons(item.name, stacked_icons, stacked_picture)

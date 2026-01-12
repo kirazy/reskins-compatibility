@@ -50,7 +50,11 @@ for name, map in pairs(reactors) do
 	entity.use_fuel_glow_color = nil
 
 	-- Modify the icon
-	local icon_path = "__reskins-compatibility__/graphics/icons/realisticreactorglow/nuclear-reactor/nuclear-reactor-" .. map.material .. "-color" .. light_color .. ".png"
+	local icon_path = "__reskins-compatibility__/graphics/icons/realisticreactorglow/nuclear-reactor/nuclear-reactor-"
+		.. map.material
+		.. "-color"
+		.. light_color
+		.. ".png"
 	entity.icons[1].icon = icon_path
 
 	-- Modify the icon pictures

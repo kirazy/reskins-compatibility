@@ -129,7 +129,15 @@ for warehouse, map in pairs(types) do
 			reskins.lib.setup_standard_entity(name, tier, inputs)
 
 			-- Setup explosions
-			reskins.lib.create_explosions_and_particles(name, { base_entity_name = inputs.base_entity_name, type = inputs.type, tint = map.particle_tint, particles = inputs.particles })
+			reskins.lib.create_explosions_and_particles(
+				name,
+				{
+					base_entity_name = inputs.base_entity_name,
+					type = inputs.type,
+					tint = map.particle_tint,
+					particles = inputs.particles,
+				}
+			)
 
 			-- Reskin entities
 			local picture

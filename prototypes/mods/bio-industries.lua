@@ -234,7 +234,9 @@ local recipe_icon_source_map = {
 
 -- FIXME: This will need follow-up if and/or when Bio Industries is ported to 2.0
 -- https://github.com/kirazy/reskins-compatibility/issues/10
-if mods["bobelectronics"] and reskins.lib.settings.get_value("reskins-bobs-do-bobelectronics-circuit-style") ~= "off" then
+if
+	mods["bobelectronics"] and reskins.lib.settings.get_value("reskins-bobs-do-bobelectronics-circuit-style") ~= "off"
+then
 	recipe_icon_source_map["wooden-board"] = {
 		{ name = "wooden-board", type_name = "item" },
 		{ name = "wood", type_name = "item", scale = scale, shift = shift_upleft },

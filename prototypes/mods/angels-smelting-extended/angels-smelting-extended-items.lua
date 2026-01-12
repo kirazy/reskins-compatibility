@@ -13,18 +13,20 @@ end
 -- Fix ASE-sand-die and ASE-metal-die
 
 ---@type data.IconData[]
-data.raw.item["ASE-sand-die"].icons = { {
-	icon = "__angelssmeltinggraphics__/graphics/icons/expendable-mold.png",
-	icon_size = 32,
-	scale = 1,
-} }
+data.raw.item["ASE-sand-die"].icons =
+	{ {
+		icon = "__angelssmeltinggraphics__/graphics/icons/expendable-mold.png",
+		icon_size = 32,
+		scale = 1,
+	} }
 
 ---@type data.IconData[]
-data.raw.item["ASE-metal-die"].icons = { {
-	icon = "__angelssmeltinggraphics__/graphics/icons/non-expendable-mold.png",
-	icon_size = 32,
-	scale = 1,
-} }
+data.raw.item["ASE-metal-die"].icons =
+	{ {
+		icon = "__angelssmeltinggraphics__/graphics/icons/non-expendable-mold.png",
+		icon_size = 32,
+		scale = 1,
+	} }
 
 ---
 ---Creates the icon sources for a the given `recipe_name` uses the given list of `source_names`.
@@ -38,11 +40,21 @@ local function add_icon_sources_for_recipe(recipes_icon_sources, recipe_name, so
 	---@type IconSources
 	local sources = {
 		{ name = source_names[1], type_name = "item" },
-		{ name = source_names[2], type_name = "item", scale = reskins.angels.constants.recipe_corner_scale, shift = { -10, -10 } },
+		{
+			name = source_names[2],
+			type_name = "item",
+			scale = reskins.angels.constants.recipe_corner_scale,
+			shift = { -10, -10 },
+		},
 	}
 
 	if source_names[3] then
-		sources[3] = { name = source_names[3], type_name = "item", scale = reskins.angels.constants.recipe_corner_scale, shift = { 10, -10 } }
+		sources[3] = {
+			name = source_names[3],
+			type_name = "item",
+			scale = reskins.angels.constants.recipe_corner_scale,
+			shift = { 10, -10 },
+		}
 	end
 
 	-- Check for liquids and set type parameter
@@ -71,8 +83,16 @@ local recipe_source_names_map = {
 	["angels-plate-invar-2"] = { "bob-invar-alloy", "angels-roll-invar" },
 	["angels-plate-nitinol-2"] = { "bob-nitinol-alloy", "angels-roll-nitinol" },
 	-- ["angels-plate-cobalt-steel-2"] = { "bob-cobalt-steel-alloy", "angels-roll-cobalt-steel" },
-	["angels-plate-cobalt-steel-1"] = { "bob-cobalt-steel-alloy", "angels-liquid-molten-iron", "angels-liquid-molten-cobalt" },
-	["angels-plate-cobalt-steel-2"] = { "bob-cobalt-steel-alloy", "angels-liquid-molten-steel", "angels-liquid-molten-cobalt" },
+	["angels-plate-cobalt-steel-1"] = {
+		"bob-cobalt-steel-alloy",
+		"angels-liquid-molten-iron",
+		"angels-liquid-molten-cobalt",
+	},
+	["angels-plate-cobalt-steel-2"] = {
+		"bob-cobalt-steel-alloy",
+		"angels-liquid-molten-steel",
+		"angels-liquid-molten-cobalt",
+	},
 	["angels-plate-brass-2"] = { "bob-brass-alloy", "angels-roll-brass" },
 	["angels-plate-bronze-2"] = { "bob-bronze-alloy", "angels-roll-bronze" },
 	["angels-plate-gunmetal-2"] = { "bob-gunmetal-alloy", "angels-roll-gunmetal" },
@@ -96,13 +116,29 @@ local gear_materials = {
 -- Build composite table entries for the gear materials
 for _, material in pairs(gear_materials) do
 	if material == "tungsten" then
-		add_icon_sources_for_recipe(recipe_icon_source_map, "angels-" .. material .. "-gear-wheel-casting", { material .. "-gear-wheel", "casting-powder-" .. material })
+		add_icon_sources_for_recipe(
+			recipe_icon_source_map,
+			"angels-" .. material .. "-gear-wheel-casting",
+			{ material .. "-gear-wheel", "casting-powder-" .. material }
+		)
 	else
-		add_icon_sources_for_recipe(recipe_icon_source_map, "angels-" .. material .. "-gear-wheel-casting", { material .. "-gear-wheel", "angels-liquid-molten-" .. material })
+		add_icon_sources_for_recipe(
+			recipe_icon_source_map,
+			"angels-" .. material .. "-gear-wheel-casting",
+			{ material .. "-gear-wheel", "angels-liquid-molten-" .. material }
+		)
 	end
 
-	add_icon_sources_for_recipe(recipe_icon_source_map, "ASE-" .. material .. "-gear-casting-expendable", { material .. "-gear-wheel", "ASE-sand-die" })
-	add_icon_sources_for_recipe(recipe_icon_source_map, "ASE-" .. material .. "-gear-casting-advanced", { material .. "-gear-wheel", "ASE-metal-die" })
+	add_icon_sources_for_recipe(
+		recipe_icon_source_map,
+		"ASE-" .. material .. "-gear-casting-expendable",
+		{ material .. "-gear-wheel", "ASE-sand-die" }
+	)
+	add_icon_sources_for_recipe(
+		recipe_icon_source_map,
+		"ASE-" .. material .. "-gear-casting-advanced",
+		{ material .. "-gear-wheel", "ASE-metal-die" }
+	)
 end
 
 reskins.lib.icons.create_and_assign_combined_icons_from_sources_to_recipe(recipe_icon_source_map)

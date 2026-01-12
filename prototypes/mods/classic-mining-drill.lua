@@ -398,7 +398,9 @@ for name, map in pairs(tier_map) do
 	if max_speed - min_speed == 0 then
 		playback_speed = entity.mining_speed
 	else
-		playback_speed = ((entity.mining_speed / (max_speed - min_speed)) - (min_speed / (max_speed - min_speed))) * max_playback + ((max_speed / (max_speed - min_speed)) - (entity.mining_speed / (max_speed - min_speed))) * min_playback
+		playback_speed = ((entity.mining_speed / (max_speed - min_speed)) - (min_speed / (max_speed - min_speed)))
+				* max_playback
+			+ ((max_speed / (max_speed - min_speed)) - (entity.mining_speed / (max_speed - min_speed))) * min_playback
 	end
 
 	-- Reskin entities

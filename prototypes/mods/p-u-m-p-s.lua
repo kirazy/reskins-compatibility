@@ -389,7 +389,8 @@ local function return_base_pictures(direction)
 end
 
 local function return_underwater_pictures(direction, use_alternate)
-	local filepath = use_alternate and "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/underwater/" or "__base__/graphics/entity/offshore-pump/"
+	local filepath = use_alternate and "__reskins-compatibility__/graphics/entity/p-u-m-p-s/offshore-pump/underwater/"
+		or "__base__/graphics/entity/offshore-pump/"
 	local adjusted_alpha = use_alternate and { 1, 1, 1, 0.5 } or nil
 
 	local underwater_pictures = {

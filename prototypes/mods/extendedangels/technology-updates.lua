@@ -19,12 +19,18 @@ local inputs = {
 local technologies = {}
 
 -- Reskin warehouse technologies
-technologies["angels-logistic-warehouses-2"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
-technologies["angels-logistic-warehouses-3"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
-technologies["angels-logistic-warehouses-4"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
-technologies["angels-warehouses-2"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
-technologies["angels-warehouses-3"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
-technologies["angels-warehouses-4"] = { mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
+technologies["angels-logistic-warehouses-2"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
+technologies["angels-logistic-warehouses-3"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
+technologies["angels-logistic-warehouses-4"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-logistic-warehouses" }
+technologies["angels-warehouses-2"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
+technologies["angels-warehouses-3"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
+technologies["angels-warehouses-4"] =
+	{ mod = "angels", group = "addons-storage", subgroup = "warehouses", image = "angels-warehouses" }
 
 -- Reskin silo technologies
 -- technologies["logistic-silos"] = {subgroup = "silos"}

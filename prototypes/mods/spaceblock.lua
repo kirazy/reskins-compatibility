@@ -146,8 +146,10 @@ local function reskin_boiler_icons(resource_name, fluid)
 		return
 	end
 
-	local icon_tint = reskins.bobs and reskins.bobs.triggers.power.items and format_tint(fluid.base_color) or format_tint(fluid.flow_color)
-	local entity_tint = reskins.bobs and reskins.bobs.triggers.power.entities and format_tint(fluid.base_color) or format_tint(fluid.flow_color)
+	local icon_tint = reskins.bobs and reskins.bobs.triggers.power.items and format_tint(fluid.base_color)
+		or format_tint(fluid.flow_color)
+	local entity_tint = reskins.bobs and reskins.bobs.triggers.power.entities and format_tint(fluid.base_color)
+		or format_tint(fluid.flow_color)
 
 	---@type PrototypeIconSource
 	local fluid_icon_source = {

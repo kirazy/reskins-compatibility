@@ -318,7 +318,8 @@ if reskins.compatibility.triggers.minimachines.refineries then
 		replacement = "oil-refinery",
 	}
 
-	technology_icons_to_create["mini-refinery-1"] = { mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery" }
+	technology_icons_to_create["mini-refinery-1"] =
+		{ mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "oil-refinery" }
 
 	technology_source_mapping["mini-refinery-2"] = "oil-processing-2"
 	technology_source_mapping["mini-refinery-3"] = "oil-processing-3"
@@ -326,9 +327,27 @@ if reskins.compatibility.triggers.minimachines.refineries then
 end
 
 if reskins.compatibility.triggers.minimachines.centrifuges then
-	mini_machine_maps["mini-centrifuge-1"] = { source = "centrifuge", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
-	mini_machine_maps["mini-centrifuge-2"] = { source = "bob-centrifuge-2", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
-	mini_machine_maps["mini-centrifuge-3"] = { source = "bob-centrifuge-3", type_name = "assembling-machine", scale = 2 / 3, pattern = "centrifuge", replacement = "centrifuge" }
+	mini_machine_maps["mini-centrifuge-1"] = {
+		source = "centrifuge",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "centrifuge",
+		replacement = "centrifuge",
+	}
+	mini_machine_maps["mini-centrifuge-2"] = {
+		source = "bob-centrifuge-2",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "centrifuge",
+		replacement = "centrifuge",
+	}
+	mini_machine_maps["mini-centrifuge-3"] = {
+		source = "bob-centrifuge-3",
+		type_name = "assembling-machine",
+		scale = 2 / 3,
+		pattern = "centrifuge",
+		replacement = "centrifuge",
+	}
 
 	technology_source_mapping["mini-centrifuge-2"] = "bob-centrifuge-2"
 	technology_source_mapping["mini-centrifuge-3"] = "bob-centrifuge-3"
@@ -364,10 +383,14 @@ if reskins.compatibility.triggers.minimachines.storagetanks then
 		replacement = "storage-tank",
 	}
 
-	technology_icons_to_create["mini-tank-1"] = { group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank" }
-	technology_icons_to_create["mini-tank-2"] = { group = "mini-machine", tier = 2, prog_tier = 3, icon_name = "storage-tank" }
-	technology_icons_to_create["mini-tank-3"] = { group = "mini-machine", tier = 3, prog_tier = 4, icon_name = "storage-tank" }
-	technology_icons_to_create["mini-tank-4"] = { group = "mini-machine", tier = 4, prog_tier = 5, icon_name = "storage-tank" }
+	technology_icons_to_create["mini-tank-1"] =
+		{ group = "mini-machine", tier = 1, prog_tier = 2, icon_name = "storage-tank" }
+	technology_icons_to_create["mini-tank-2"] =
+		{ group = "mini-machine", tier = 2, prog_tier = 3, icon_name = "storage-tank" }
+	technology_icons_to_create["mini-tank-3"] =
+		{ group = "mini-machine", tier = 3, prog_tier = 4, icon_name = "storage-tank" }
+	technology_icons_to_create["mini-tank-4"] =
+		{ group = "mini-machine", tier = 4, prog_tier = 5, icon_name = "storage-tank" }
 end
 
 if reskins.compatibility.triggers.minimachines.beacons then
@@ -586,7 +609,8 @@ local function set_mini_version_of_source_icon_on_target(target_name, source_nam
 	if pictures then
 		if pictures.layers then
 			for n = 1, #pictures.layers do
-				pictures.layers[n].filename = string.gsub(pictures.layers[n].filename, "/" .. pattern .. "/", "/" .. replacement .. "/mini-")
+				pictures.layers[n].filename =
+					string.gsub(pictures.layers[n].filename, "/" .. pattern .. "/", "/" .. replacement .. "/mini-")
 			end
 		else
 			pictures[1].filename = string.gsub(pictures[1].filename, "/" .. pattern .. "/", "/" .. replacement .. "/mini-")
@@ -610,6 +634,11 @@ for name, map in pairs(mini_machine_maps) do
 
 	if source_prototype and target_prototype then
 		reskins.lib.prototypes.rescale_remnants_of_prototype(target_prototype, map.scale)
-		set_mini_version_of_source_icon_on_target(name, map.source, map.pattern or map.type_name, map.replacement or map.type_name)
+		set_mini_version_of_source_icon_on_target(
+			name,
+			map.source,
+			map.pattern or map.type_name,
+			map.replacement or map.type_name
+		)
 	end
 end
