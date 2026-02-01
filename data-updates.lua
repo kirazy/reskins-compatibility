@@ -5,7 +5,6 @@
 
 -- Mods
 require("prototypes.mods.aai-industry")
-require("prototypes.mods.aai-loaders-bobs")
 require("prototypes.mods.deadlock-stacking-beltboxes")
 -- require("prototypes.mods.sciencecosttweaker")
 require("prototypes.mods.extendedangels.items-updates")
