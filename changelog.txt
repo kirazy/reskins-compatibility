@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.3.10
-Date: ????
+Date: 2026-01-31
   Changes:
     - Improved the color matching of AAI Loaders to the configured belt entity colors.
   Bugfixes:
