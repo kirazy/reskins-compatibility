@@ -23,20 +23,21 @@ local inputs = {
 
 -- Handle belt tier labels
 inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+local sprite_type = reskins.lib.defines.belt_sprites
 
 local tier_map = {
-	["basic-transport-belt-loader"] = { tier = 0, is_loader = true, set_type = reskins.lib.defines.belt_sprites.standard },
-	["transport-belt-loader"] = { tier = 1, is_loader = true, set_type = reskins.lib.defines.belt_sprites.standard },
-	["fast-transport-belt-loader"] = { tier = 2, is_loader = true, set_type = reskins.lib.defines.belt_sprites.express },
-	["express-transport-belt-loader"] = { tier = 3, is_loader = true, set_type = reskins.lib.defines.belt_sprites.express },
-	["turbo-transport-belt-loader"] = { tier = 4, is_loader = true, set_type = reskins.lib.defines.belt_sprites.express },
-	["ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, set_type = reskins.lib.defines.belt_sprites.express },
-	["basic-transport-belt-beltbox"] = { tier = 0, set_type = reskins.lib.defines.belt_sprites.standard },
-	["transport-belt-beltbox"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
-	["fast-transport-belt-beltbox"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
-	["express-transport-belt-beltbox"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
-	["turbo-transport-belt-beltbox"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
-	["ultimate-transport-belt-beltbox"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
+	["basic-transport-belt-loader"] = { tier = 0, is_loader = true, set_type = sprite_type.standard },
+	["transport-belt-loader"] = { tier = 1, is_loader = true, set_type = sprite_type.standard },
+	["fast-transport-belt-loader"] = { tier = 2, is_loader = true, set_type = sprite_type.express },
+	["express-transport-belt-loader"] = { tier = 3, is_loader = true, set_type = sprite_type.express },
+	["turbo-transport-belt-loader"] = { tier = 4, is_loader = true, set_type = sprite_type.express },
+	["ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, set_type = sprite_type.express },
+	["basic-transport-belt-beltbox"] = { tier = 0, set_type = sprite_type.standard },
+	["transport-belt-beltbox"] = { tier = 1, set_type = sprite_type.standard },
+	["fast-transport-belt-beltbox"] = { tier = 2, set_type = sprite_type.express },
+	["express-transport-belt-beltbox"] = { tier = 3, set_type = sprite_type.express },
+	["turbo-transport-belt-beltbox"] = { tier = 4, set_type = sprite_type.express },
+	["ultimate-transport-belt-beltbox"] = { tier = 5, set_type = sprite_type.express },
 }
 
 local function light_tint(tint)

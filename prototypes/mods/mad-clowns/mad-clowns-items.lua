@@ -26,6 +26,7 @@ local intermediates = {
 	["processed-osmium"] = { subgroup = "processed-ores" },
 
 	["powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium" },
+	--stylua: ignore
 	["casting-powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture" },
 	["powder-osmium"] = { subgroup = "powders/osmium" },
 	["casting-powder-osmium"] = { subgroup = "powders/osmium-mixture", image = "powder-osmium-mixture" },
@@ -45,10 +46,27 @@ local intermediates = {
 	------------------------------------------------------------------------------------------------
 	-- Recipes
 	------------------------------------------------------------------------------------------------
-	["pellet-magnesium-titanium-smelting"] = { type = "recipe", mod = "angels", group = "smelting", subgroup = "ingots/titanium", image = "ingot-titanium", icon_extras = reskins.angels.num_tier(3, "smelting") },
+	["pellet-magnesium-titanium-smelting"] = {
+		type = "recipe",
+		mod = "angels",
+		group = "smelting",
+		subgroup = "ingots/titanium",
+		image = "ingot-titanium",
+		icon_extras = reskins.angels.num_tier(3, "smelting"),
+	},
 
-	["casting-powder-depleted-uranium-1"] = { type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(1, "smelting") },
-	["casting-powder-depleted-uranium-2"] = { type = "recipe", subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture", icon_extras = reskins.angels.num_tier(2, "smelting") },
+	["casting-powder-depleted-uranium-1"] = {
+		type = "recipe",
+		subgroup = "powders/depleted-uranium-mixture",
+		image = "powder-depleted-uranium-mixture",
+		icon_extras = reskins.angels.num_tier(1, "smelting"),
+	},
+	["casting-powder-depleted-uranium-2"] = {
+		type = "recipe",
+		subgroup = "powders/depleted-uranium-mixture",
+		image = "powder-depleted-uranium-mixture",
+		icon_extras = reskins.angels.num_tier(2, "smelting"),
+	},
 
 	-- ["molten-aluminium-smelting-3"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(4, "smelting")},
 	-- ["molten-aluminium-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(3, "smelting")},
@@ -84,6 +102,7 @@ if reskins.lib.settings.get_value("reskins-angels-use-item-variations") then
 		-- Setup initial pictures table with primary icon
 		item.pictures = {
 			{
+				--stylua: ignore
 				filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. ".png",
 				flags = { "icon" },
 				size = 64,
@@ -94,6 +113,7 @@ if reskins.lib.settings.get_value("reskins-angels-use-item-variations") then
 
 		for i = 1, 8, 1 do
 			table.insert(item.pictures, {
+				--stylua: ignore
 				filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. "-" .. i .. ".png",
 				flags = { "icon" },
 				size = 64,
@@ -125,6 +145,7 @@ for powder, material in pairs(powder_variations) do
 
 	for i = 1, 6, 1 do
 		table.insert(item.pictures, {
+			--stylua: ignore
 			filename = "__reskins-compatibility__/graphics/icons/mad-clowns/powders/" .. material .. "/powder-" .. material .. "-" .. i .. ".png",
 			flags = { "icon" },
 			size = 64,

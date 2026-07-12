@@ -25,6 +25,7 @@ local inputs = {
 -- Handle belt tier labels
 inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
+--stylua: ignore start
 local tier_map = {
 	-- 1X1 LOADER ENTITIES
 	-- Legacy Miniloaders
@@ -71,6 +72,7 @@ local tier_map = {
 	["turbo-filter-miniloader-inserter"] = { tier = 4, is_inserter = true, is_filter = true },
 	["ultimate-filter-miniloader-inserter"] = { tier = 5, is_inserter = true, is_filter = true },
 }
+--stylua: ignore end
 
 local item_map = {
 	["chute-miniloader"] = { tier = 0 },
@@ -132,6 +134,7 @@ for name, map in pairs(tier_map) do
 		entity.platform_picture.sheets = {
 			-- Base
 			{
+				--stylua: ignore
 				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
 				height = 192,
 				priority = "extra-high",
@@ -177,6 +180,7 @@ for name, map in pairs(tier_map) do
 		entity.structure.direction_in.sheets = {
 			-- Base
 			{
+				--stylua: ignore
 				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
 				height = 192,
 				priority = "extra-high",
@@ -219,6 +223,7 @@ for name, map in pairs(tier_map) do
 		entity.structure.direction_out.sheets = {
 			-- Base
 			{
+				--stylua: ignore
 				filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-" .. base_path .. "-base.png",
 				height = 192,
 				priority = "extra-high",
