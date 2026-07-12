@@ -3,6 +3,8 @@ Version: 2.4.0
 Date: ????
   Features:
     - Updated for Factorio 2.1
+  Bugfixes:
+    - Fixed wrong filenames for Classic Beacons
 ---------------------------------------------------------------------------------------------------
 Version: 2.3.10
 Date: 2026-01-31

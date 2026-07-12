@@ -139,7 +139,7 @@ for name, map in pairs(tier_map) do
 	if reskins.lib.settings.get_value("classic-beacon-do-high-res") == true then
 		-- Beacon Base
 		entity.graphics_set.animation_list[1].animation.layers[1] = {
-			filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-base.png",
+			filename = "__classic-beacon__/graphics/entity/beacon/beacon-base.png",
 			width = 232,
 			height = 186,
 			shift = util.by_pixel(11, 1.5),
@@ -165,7 +165,7 @@ for name, map in pairs(tier_map) do
 		}
 		-- Beacon Base Shadow
 		entity.graphics_set.animation_list[1].animation.layers[4] = {
-			filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-base-shadow.png",
+			filename = "__classic-beacon__/graphics/entity/beacon/beacon-base-shadow.png",
 			width = 232,
 			height = 186,
 			shift = util.by_pixel(11, 1.5),
@@ -174,7 +174,7 @@ for name, map in pairs(tier_map) do
 		}
 		-- Beacon Antenna Base
 		entity.graphics_set.animation_list[2].animation.layers[1] = {
-			filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-antenna.png",
+			filename = "__classic-beacon__/graphics/entity/beacon/beacon-antenna.png",
 			width = 108,
 			height = 100,
 			line_length = 8,
@@ -185,7 +185,7 @@ for name, map in pairs(tier_map) do
 		}
 		-- Beacon Antenna Shadow
 		entity.graphics_set.animation_list[2].animation.layers[2] = {
-			filename = "__classic-beacon__/graphics/entity/beacon/hr-beacon-antenna-shadow.png",
+			filename = "__classic-beacon__/graphics/entity/beacon/beacon-antenna-shadow.png",
 			width = 126,
 			height = 98,
 			line_length = 8,
