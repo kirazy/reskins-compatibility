@@ -538,14 +538,12 @@ local function set_rescaled_version_of_source_technology_on_target(target_name, 
 	local base_layer = {
 		icon = "__reskins-library__/graphics/technology/mini-machine-underlay.png",
 		icon_size = 256,
-		scale = 1,
 	}
 
 	---@type data.IconData
 	local overlay_layer = {
 		icon = "__reskins-library__/graphics/technology/mini-machine-overlay.png",
 		icon_size = 256,
-		scale = 1,
 	}
 
 	local sourced_icon_data = reskins.lib.icons.get_icon_from_prototype_by_reference(source)
