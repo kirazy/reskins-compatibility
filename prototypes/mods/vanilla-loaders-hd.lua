@@ -28,7 +28,7 @@ local tier_map = {
 	["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
 	["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
 	["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
-	["bob-turbo-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
+	["turbo-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
 	["bob-ultimate-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
 }
 
