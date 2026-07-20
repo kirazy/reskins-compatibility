@@ -3,10 +3,14 @@
 --
 -- See LICENSE in the project directory for license information.
 
+---@using Reskins.Api
+
 -- Check to see if reskinning needs to be done.
 if not mods["aai-loaders"] then
 	return
 end
+
+local is_modern_using_aai_graphics = reskins.lib.settings.get_value("mdrn-use-aai-graphics") == true
 
 local loaders = {
 	["aai-basic-loader"] = { tier = 0 },
@@ -15,6 +19,12 @@ local loaders = {
 	["aai-express-loader"] = { tier = 3 },
 	["aai-turbo-loader"] = { tier = 4 },
 	["aai-ultimate-loader"] = { tier = 5 },
+	["mdrn-basic-loader"] = { tier = 0 },
+	["mdrn-loader"] = { tier = 1 },
+	["mdrn-fast-loader"] = { tier = 2 },
+	["mdrn-express-loader"] = { tier = 3 },
+	["mdrn-turbo-loader"] = { tier = 4 },
+	["mdrn-ultimate-loader"] = { tier = 5 },
 }
 
 local function aai_blend_tint()
@@ -22,9 +32,13 @@ local function aai_blend_tint()
 	return { blend, blend, blend, 0 }
 end
 
----@param structure_direction data.Sprite4Way
+---@param structure_direction? data.Sprite4Way
 ---@param tint data.Color
 local function patch_sheet_tint(structure_direction, tint)
+	if not structure_direction then
+		return
+	end
+
 	local highlight_patch_sheet = nil
 	if structure_direction.sheets then
 		for _, sheet in pairs(structure_direction.sheets) do
@@ -64,6 +78,10 @@ local function patch_icons_tint(icons, tint)
 end
 
 for name, map in pairs(loaders) do
+	if name:find("mdrn") and not is_modern_using_aai_graphics then
+		goto continue
+	end
+
 	-- AAI Loaders sets the icon only on the entity.
 	local loader = data.raw["loader-1x1"][name]
 	if not loader then

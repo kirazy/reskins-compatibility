@@ -5,6 +5,7 @@ Date: ????
     - Updated for Factorio 2.1
   Bugfixes:
     - Fixed compatibility with Classic Beacons
+    - Fixed compatibility with Loaders Modernized, and now supports the use of AAI Loader sprites
 ---------------------------------------------------------------------------------------------------
 Version: 2.3.10
 Date: 2026-01-31

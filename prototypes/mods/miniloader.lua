@@ -11,6 +11,8 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
 	return
 end
 
+local is_modern_using_aai_graphics = reskins.lib.settings.get_value("mdrn-use-aai-graphics") == true
+
 -- Set input parameters
 local inputs = {
 	icon_name = "miniloader",
@@ -51,12 +53,12 @@ local tier_map = {
 	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
 
 	-- Loaders Modernized
-	["basic-mdrn-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
+	["mdrn-basic-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
 	["mdrn-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
-	["fast-mdrn-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
-	["express-mdrn-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
-	["turbo-mdrn-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
-	["ultimate-mdrn-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
+	["mdrn-fast-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
+	["mdrn-express-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
+	["mdrn-turbo-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
+	["mdrn-ultimate-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
 
 	-- Inserter Entities
 	["chute-miniloader-inserter"] = { tier = 0, is_inserter = true },
@@ -97,16 +99,20 @@ local item_map = {
 	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 
 	-- Loaders Modernized
-	["basic-mdrn-loader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
+	["mdrn-basic-loader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
 	["mdrn-loader"] = { tier = 1, base_item = "transport-belt" },
-	["fast-mdrn-loader"] = { tier = 2, base_item = "fast-transport-belt" },
-	["express-mdrn-loader"] = { tier = 3, base_item = "express-transport-belt" },
-	["turbo-mdrn-loader"] = { tier = 4, base_item = "bob-turbo-transport-belt" },
-	["ultimate-mdrn-loader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
+	["mdrn-fast-loader"] = { tier = 2, base_item = "fast-transport-belt" },
+	["mdrn-express-loader"] = { tier = 3, base_item = "express-transport-belt" },
+	["mdrn-turbo-loader"] = { tier = 4, base_item = "bob-turbo-transport-belt" },
+	["mdrn-ultimate-loader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 }
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
+	if name:find("mdrn") and is_modern_using_aai_graphics then
+		goto continue
+	end
+
 	if map.is_inserter then
 		inputs.type = "inserter"
 		inputs.make_explosions = true
@@ -272,6 +278,10 @@ end
 
 -- Reskin icons
 for name, map in pairs(item_map) do
+	if name:find("mdrn") and is_modern_using_aai_graphics then
+		goto continue
+	end
+
 	-- Fetch item
 	local item = data.raw["item"][name]
 
@@ -332,16 +342,20 @@ local technology_map = {
 	["hps__ml-bob-ultimate-miniloader"] = { tier = 5 },
 
 	-- Loaders Modernized
-	["basic-mdrn-loader"] = { tier = 0 },
+	["mdrn-basic-loader"] = { tier = 0 },
 	["mdrn-loader"] = { tier = 1 },
-	["fast-mdrn-loader"] = { tier = 2 },
-	["express-mdrn-loader"] = { tier = 3 },
-	["turbo-mdrn-loader"] = { tier = 4 },
-	["ultimate-mdrn-loader"] = { tier = 5 },
+	["mdrn-fast-loader"] = { tier = 2 },
+	["mdrn-express-loader"] = { tier = 3 },
+	["mdrn-turbo-loader"] = { tier = 4 },
+	["mdrn-ultimate-loader"] = { tier = 5 },
 }
 
 -- Reskin technologies
 for name, map in pairs(technology_map) do
+	if name:find("mdrn") and is_modern_using_aai_graphics then
+		goto continue
+	end
+
 	-- Fetch technology
 	local technology = data.raw["technology"][name]
 	if not technology then
