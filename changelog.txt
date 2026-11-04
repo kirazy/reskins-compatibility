@@ -2,6 +2,7 @@
 Version: 2.4.1
 Date: ????
   Changes:
+    - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 2026-07-19
