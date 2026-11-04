@@ -3,6 +3,15 @@
 --
 -- See LICENSE in the project directory for license information.
 
+local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
+
+local Applicators = require("__reskins-assets-api__.api.applicators")
+local Warehouse = require("__reskins-assets-api__.assets.angels.entities.assorted.warehouse")
+
 -- Check to see if reskinning needs to be done.
 if not mods["extendedangels"] then
 	return
@@ -11,172 +20,74 @@ if not (reskins.angels and reskins.angels.triggers.storage.entities) then
 	return
 end
 
-local inputs = {
-	mod = "compatibility",
-	group = "extendedangels",
-	icon_name = "warehouse",
-	base_entity_name = "oil-refinery",
-	particles = { ["big-tint"] = 5, ["medium"] = 2 },
-	make_explosions = false,
-	make_remnants = false,
+local is_tiered = _framework.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") == true
+
+local entities = {
+	["angels-warehouse"] = { tier = 1, prog_tier = 2 },
+	["angels-warehouse-mk2"] = { tier = 2, prog_tier = 3 },
+	["angels-warehouse-mk3"] = { tier = 3, prog_tier = 4 },
+	["angels-warehouse-mk4"] = { tier = 4, prog_tier = 5 },
+	["angels-warehouse-active-provider"] = { tier = 1, prog_tier = 2, logistic_mode = "active-provider" },
+	["angels-warehouse-active-provider-mk2"] = { tier = 2, prog_tier = 3, logistic_mode = "active-provider" },
+	["angels-warehouse-active-provider-mk3"] = { tier = 3, prog_tier = 4, logistic_mode = "active-provider" },
+	["angels-warehouse-active-provider-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "active-provider" },
+	["angels-warehouse-buffer"] = { tier = 1, prog_tier = 2, logistic_mode = "buffer" },
+	["angels-warehouse-buffer-mk2"] = { tier = 2, prog_tier = 3, logistic_mode = "buffer" },
+	["angels-warehouse-buffer-mk3"] = { tier = 3, prog_tier = 4, logistic_mode = "buffer" },
+	["angels-warehouse-buffer-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "buffer" },
+	["angels-warehouse-passive-provider"] = { tier = 1, prog_tier = 2, logistic_mode = "passive-provider" },
+	["angels-warehouse-passive-provider-mk2"] = { tier = 2, prog_tier = 3, logistic_mode = "passive-provider" },
+	["angels-warehouse-passive-provider-mk3"] = { tier = 3, prog_tier = 4, logistic_mode = "passive-provider" },
+	["angels-warehouse-passive-provider-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "passive-provider" },
+	["angels-warehouse-requester"] = { tier = 1, prog_tier = 2, logistic_mode = "requester" },
+	["angels-warehouse-requester-mk2"] = { tier = 2, prog_tier = 3, logistic_mode = "requester" },
+	["angels-warehouse-requester-mk3"] = { tier = 3, prog_tier = 4, logistic_mode = "requester" },
+	["angels-warehouse-requester-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "requester" },
+	["angels-warehouse-storage"] = { tier = 1, prog_tier = 2, logistic_mode = "storage" },
+	["angels-warehouse-storage-mk2"] = { tier = 2, prog_tier = 3, logistic_mode = "storage" },
+	["angels-warehouse-storage-mk3"] = { tier = 3, prog_tier = 4, logistic_mode = "storage" },
+	["angels-warehouse-storage-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "storage" },
 }
-
-local types = {
-	["warehouse"] = { particle_tint = util.color("#403630") },
-	["warehouse-active-provider"] = { particle_tint = util.color("#760fd6"), is_logistics = true },
-	["warehouse-passive-provider"] = { particle_tint = util.color("#ff0000"), is_logistics = true },
-	["warehouse-storage"] = { particle_tint = util.color("#ba7713"), is_logistics = true },
-	["warehouse-buffer"] = { particle_tint = util.color("#00bf13"), is_logistics = true },
-	["warehouse-requester"] = { particle_tint = util.color("#227dae"), is_logistics = true },
-}
-
-local function create_logistic_warehouse_picture(chest)
-	return {
-		-- Base
-		{
-			filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-" .. chest .. ".png",
-			priority = "extra-high",
-			width = 391,
-			height = 446,
-			shift = util.by_pixel(-0.5, -15),
-			scale = 0.5,
-		},
-		-- Shadow
-		{
-			filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-warehouse-shadow.png",
-			priority = "extra-high",
-			width = 592,
-			height = 276,
-			shift = util.by_pixel(52.5, 30.5),
-			draw_as_shadow = true,
-			scale = 0.5,
-		},
-		-- Light
-		{
-			filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/logistic-warehouse-light.png",
-			priority = "extra-high",
-			width = 9,
-			height = 28,
-			shift = util.by_pixel(71.5, -104),
-			draw_as_light = true,
-			scale = 0.5,
-		},
-	}
-end
-
-local function create_standard_warehouse_picture()
-	return {
-		-- Base
-		{
-			filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/warehouse.png",
-			priority = "extra-high",
-			width = 391,
-			height = 446,
-			shift = util.by_pixel(-0.5, -15),
-			scale = 0.5,
-		},
-		-- Shadow
-		{
-			filename = "__reskins-angels__/graphics/entity/addons-storage/warehouse/warehouse-shadow.png",
-			priority = "extra-high",
-			width = 592,
-			height = 276,
-			shift = util.by_pixel(52.5, 30.5),
-			draw_as_shadow = true,
-			scale = 0.5,
-		},
-	}
-end
-
--- Setup defaults
-reskins.lib.set_inputs_defaults(inputs)
 
 -- Reskin Extended Angels warehouses
-for warehouse, map in pairs(types) do
-	for n = 1, 4 do
-		-- Fetch the current entity
-		local name
-		if n == 1 then
-			name = "angels-" .. warehouse
-		else
-			name = "angels-" .. warehouse .. "-mk" .. n
-		end
+for name, options in pairs(entities) do
+	local type_name = options.logistic_mode and "logistic-container" or "container"
 
-		inputs.type = map.is_logistics and "logistic-container" or "container"
-
-		---@type data.LogisticContainerPrototype|data.ContainerPrototype
-		local entity = data.raw[inputs.type][name]
-		if not entity then
-			goto continue
-		end
-
-		-- Handle tier
-		local tier = n
-		if reskins.lib.settings.get_value("reskins-lib-tier-mapping") == "progression-map" then
-			tier = n + 1
-		end
-
-		-- Construct icon base
-		local filename = map.is_logistics and "logistic-" .. warehouse .. "-icon-base" or warehouse .. "-icon-base"
-		inputs.icon_filename = "__reskins-angels__/graphics/icons/addons-storage/warehouse/" .. filename .. ".png"
-
-		inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
-
-		if reskins.lib.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") then
-			inputs.icon_layers = 3
-		else
-			inputs.icon_layers = 1
-		end
-
-		if n == 1 then
-			reskins.lib.construct_icon(name, tier, inputs)
-		else
-			reskins.lib.setup_standard_entity(name, tier, inputs)
-
-			-- Setup explosions
-			reskins.lib.create_explosions_and_particles(name, {
-				base_entity_name = inputs.base_entity_name,
-				type = inputs.type,
-				tint = map.particle_tint,
-				particles = inputs.particles,
-			})
-
-			-- Reskin entities
-			local picture
-			if map.is_logistics then
-				picture = create_logistic_warehouse_picture(warehouse)
-			else
-				picture = create_standard_warehouse_picture()
-			end
-
-			entity.picture = {
-				layers = picture,
-			}
-		end
-
-		if reskins.lib.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") then
-			table.insert(entity.picture.layers, {
-				filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/warehouse-mask.png",
-				priority = "extra-high",
-				width = 391,
-				height = 446,
-				shift = util.by_pixel(-0.5, -15),
-				tint = inputs.tint,
-				scale = 0.5,
-			})
-
-			table.insert(entity.picture.layers, {
-				filename = "__reskins-compatibility__/graphics/entity/extendedangels/warehouse/warehouse-highlights.png",
-				priority = "extra-high",
-				width = 391,
-				height = 446,
-				shift = util.by_pixel(-0.5, -15),
-				blend_mode = reskins.lib.settings.blend_mode,
-				scale = 0.5,
-			})
-		end
-
-		-- Label to skip to next iteration
-		::continue::
+	---@type data.LogisticContainerPrototype|data.ContainerPrototype
+	local entity = data.raw[type_name][name]
+	if not entity then
+		goto continue
 	end
+
+	local tier = _framework.tiers.get_tier(options)
+	local tint = is_tiered and _framework.tiers.get_tint(tier) or nil
+
+	-- The first tier is reskinned by reskins-angels, and takes the sprite set here only when it is tinted.
+	if options.tier > 1 or tint then
+		local sprite_set
+		if options.logistic_mode then
+			sprite_set = Warehouse.get_logistic_sprite_set({ logistic_mode = options.logistic_mode, tint = tint })
+		else
+			sprite_set = Warehouse.get_sprite_set({ tint = tint })
+		end
+		Applicators.apply_sprite_set(entity, sprite_set)
+	end
+
+	local icon_data
+	if options.logistic_mode then
+		icon_data = Warehouse.get_logistic_icon({ logistic_mode = options.logistic_mode, tint = tint })
+	else
+		icon_data = Warehouse.get_icon({ tint = tint })
+	end
+
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = tier,
+		name = entity.name,
+		type_name = entity.type,
+		icon_data = icon_data,
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
+
+	-- Label to skip to next iteration
+	::continue::
 end

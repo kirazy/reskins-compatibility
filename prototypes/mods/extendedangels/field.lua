@@ -3,7 +3,12 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
+local _framework = { tiers = require("__reskins-framework__.api.tiers") }
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
+
+local Applicators = require("__reskins-assets-api__.api.applicators")
+local CropFarm = require("__reskins-assets-api__.assets.angels.entities.bioprocessing.crop-farm")
+
 if not mods["extendedangels"] then
 	return
 end
@@ -11,74 +16,43 @@ if not (reskins.angels and reskins.angels.triggers.bioprocessing.entities) then
 	return
 end
 
--- Set input parameters
-local inputs = {
-	type = "assembling-machine",
-	icon_name = "field",
-	base_entity_name = "assembling-machine-1",
-	mod = "compatibility",
-	particles = { ["big"] = 1, ["medium"] = 2 },
-	group = "extendedangels",
-	make_remnants = false,
+local entities = {
+	["angels-crop-farm"] = { tier = 1, prog_tier = 1, variant = "basic" },
+	["angels-crop-farm-2"] = { tier = 2, prog_tier = 2, variant = "basic" },
+	["angels-crop-farm-3"] = { tier = 3, prog_tier = 3, variant = "basic" },
+	["angels-temperate-farm"] = { tier = 1, prog_tier = 3, variant = "temperate" },
+	["angels-temperate-farm-2"] = { tier = 2, prog_tier = 4, variant = "temperate" },
+	["angels-temperate-farm-3"] = { tier = 3, prog_tier = 5, variant = "temperate" },
+	["angels-swamp-farm"] = { tier = 1, prog_tier = 3, variant = "swamp" },
+	["angels-swamp-farm-2"] = { tier = 2, prog_tier = 4, variant = "swamp" },
+	["angels-swamp-farm-3"] = { tier = 3, prog_tier = 5, variant = "swamp" },
+	["angels-desert-farm"] = { tier = 1, prog_tier = 3, variant = "desert" },
+	["angels-desert-farm-2"] = { tier = 2, prog_tier = 4, variant = "desert" },
+	["angels-desert-farm-3"] = { tier = 3, prog_tier = 5, variant = "desert" },
 }
 
-local tier_map = {
-	["angels-crop-farm"] = { tier = 1, prog_tier = 1, field = "basic" },
-	["angels-crop-farm-2"] = { tier = 2, prog_tier = 2, field = "basic" },
-	["angels-crop-farm-3"] = { tier = 3, prog_tier = 3, field = "basic" },
-	["angels-temperate-farm"] = { tier = 1, prog_tier = 3, field = "temperate" },
-	["angels-temperate-farm-2"] = { tier = 2, prog_tier = 4, field = "temperate" },
-	["angels-temperate-farm-3"] = { tier = 3, prog_tier = 5, field = "temperate" },
-	["angels-swamp-farm"] = { tier = 1, prog_tier = 3, field = "swamp" },
-	["angels-swamp-farm-2"] = { tier = 2, prog_tier = 4, field = "swamp" },
-	["angels-swamp-farm-3"] = { tier = 3, prog_tier = 5, field = "swamp" },
-	["angels-desert-farm"] = { tier = 1, prog_tier = 3, field = "desert" },
-	["angels-desert-farm-2"] = { tier = 2, prog_tier = 4, field = "desert" },
-	["angels-desert-farm-3"] = { tier = 3, prog_tier = 5, field = "desert" },
-}
+local TYPE = "assembling-machine"
 
--- Reskin entities, create and assign extra details
-for name, map in pairs(tier_map) do
-	---@type data.AssemblingMachinePrototype
-	local entity = data.raw[inputs.type][name]
+for name, options in pairs(entities) do
+	local entity = data.raw[TYPE][name]
 	if not entity then
 		goto continue
 	end
 
-	local tier = reskins.lib.tiers.get_tier(map)
+	local tier = _framework.tiers.get_tier(options)
+	local tint = _framework.tiers.get_tint(tier)
 
-	-- Setup icon details
-	inputs.icon_base = "field-" .. map.field
-	inputs.tint = map.tint or reskins.lib.tiers.get_tint(tier)
+	local sprite_set = CropFarm.get_sprite_set({ tint = tint, variant = options.variant })
+	Applicators.apply_sprite_set(entity, sprite_set)
 
-	reskins.lib.setup_standard_entity(name, tier, inputs)
-
-	-- Reskin entities
-	table.insert(entity.graphics_set.working_visualisations, {
-		always_draw = true,
-		animation = {
-			layers = {
-				-- Mask
-				{
-					filename = "__reskins-compatibility__/graphics/entity/extendedangels/field/field-mask.png",
-					priority = "extra-high",
-					width = 224,
-					height = 224,
-					shift = { 0, 0 },
-					tint = inputs.tint,
-				},
-				-- Highlights
-				{
-					filename = "__reskins-compatibility__/graphics/entity/extendedangels/field/field-highlights.png",
-					priority = "extra-high",
-					width = 224,
-					height = 224,
-					shift = { 0, 0 },
-					blend_mode = reskins.lib.settings.blend_mode,
-				},
-			},
-		},
+	local icon_data = CropFarm.get_icon({ tint = tint, variant = options.variant })
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = tier,
+		name = entity.name,
+		type_name = entity.type,
+		icon_data = icon_data,
 	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
 	::continue::
 end
