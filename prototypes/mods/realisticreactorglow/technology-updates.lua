@@ -3,6 +3,8 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
+---@using Reskins.Library.Internal
+
 -- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
@@ -13,6 +15,8 @@ end
 if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then
 	return
 end
+
+local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
 
 ---@type CreateIconsFromListInputs
 local inputs = {
@@ -40,19 +44,19 @@ local technologies = {
 		tier = 1,
 		prog_tier = 3,
 		icon_base = "nuclear-power-" .. material_tiers[1] .. "-color" .. light_color,
-		tint = reskins.bobs.nuclear_reactor_index["nuclear-reactor"].tint,
+		tint = nuclear_reactors["nuclear-reactor"].tint,
 	},
 	["bob-nuclear-power-2"] = {
 		tier = 2,
 		prog_tier = 4,
 		icon_base = "nuclear-power-" .. material_tiers[2] .. "-color" .. light_color,
-		tint = reskins.bobs.nuclear_reactor_index["bob-nuclear-reactor-2"].tint,
+		tint = nuclear_reactors["bob-nuclear-reactor-2"].tint,
 	},
 	["bob-nuclear-power-3"] = {
 		tier = 3,
 		prog_tier = 5,
 		icon_base = "nuclear-power-" .. material_tiers[3] .. "-color" .. light_color,
-		tint = reskins.bobs.nuclear_reactor_index["bob-nuclear-reactor-3"].tint,
+		tint = nuclear_reactors["bob-nuclear-reactor-3"].tint,
 	},
 }
 
