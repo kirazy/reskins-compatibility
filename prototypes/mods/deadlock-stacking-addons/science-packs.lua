@@ -67,22 +67,6 @@ if reskins.lib.settings.get_value("bobmods-enemies-enablenewartifacts") == true 
 	science_packs["science-pack-gold"] = {}
 end
 
-if reskins.lib.settings.get_value("bobmods-tech-colorupdate") == true then
-	if reskins.lib.settings.get_value("reskins-lib-customize-tier-colors") == true then
-		science_packs["automation-science-pack"] = { tier = 1 }
-		science_packs["logistic-science-pack"] = { tier = 2 }
-		science_packs["chemical-science-pack"] = { tier = 3 }
-		science_packs["production-science-pack"] = { tier = 4 }
-		science_packs["utility-science-pack"] = { tier = 5 }
-	else
-		science_packs["automation-science-pack"] = { image = "stacked-utility-science-pack" }
-		science_packs["logistic-science-pack"] = { image = "stacked-automation-science-pack" }
-		science_packs["chemical-science-pack"] = {}
-		science_packs["production-science-pack"] = {}
-		science_packs["utility-science-pack"] = { image = "stacked-logistic-science-pack" }
-	end
-end
-
 if reskins.lib.settings.get_value("bobmods-burnerphase") == true then
 	science_packs["steam-science-pack"] = {}
 end
