@@ -21,24 +21,13 @@ local LiquidMaterial = require("__reskins-assets-api__.assets.angels.items.liqui
 local Pellets = require("__reskins-assets-api__.assets.angels.items.pellets")
 local Plates = require("__reskins-assets-api__.assets.angels.items.plates")
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
+local ProcessedOres = require("__reskins-assets-api__.assets.assorted.items.processed-ores")
 
 ---Gets the numeral of the given `tier`, in the style of Angel's smelting.
 ---@param tier integer The number of the numeral.
 ---@return IconData[]
 local function numeral(tier)
 	return reskins.angels.num_tier(tier, "smelting")
-end
-
----Gets the definition of the processed ore of the given `material`, from the files of this mod.
----@param material string
----@return TieredIconDefinition
-local function processed(material)
-	return {
-		icon_datum = {
-			icon = "__reskins-compatibility__/graphics/icons/mad-clowns/processed-ores/processed-" .. material .. ".png",
-			icon_size = 64,
-		},
-	}
 end
 
 ---Gets the definition of the magnesium ingot, with its picture variations when item variations are enabled.
@@ -58,9 +47,9 @@ end
 
 _framework.tiers.assign_icons_with_tier_labels("item", {
 	-- Processed ores
-	["clowns-processed-depleted-uranium"] = processed("depleted-uranium"),
-	["clowns-processed-magnesium"] = processed("magnesium"),
-	["clowns-processed-osmium"] = processed("osmium"),
+	["clowns-processed-depleted-uranium"] = { composition = ProcessedOres.get_icon_composition({ material = "depleted-uranium" }) },
+	["clowns-processed-magnesium"] = { composition = ProcessedOres.get_icon_composition({ material = "magnesium" }) },
+	["clowns-processed-osmium"] = { composition = ProcessedOres.get_icon_composition({ material = "osmium" }) },
 
 	-- The powders have picture variations.
 	["clowns-powder-depleted-uranium"] = { composition = Powders.get_icon_composition({ material = "depleted-uranium" }) },
