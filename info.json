@@ -11,6 +11,7 @@
 		"reskins-library",
 		"reskins-framework >= 0.2.1",
 		"reskins-assets-api >= 0.2.1",
+		"reskins-assets-assorted >= 2.2.1",
 		"(?) reskins-bobs",
 		"(?) reskins-angels",
 		"? aai-industry",
