@@ -102,13 +102,5 @@ _framework.tiers.assign_icons_with_tier_labels("recipe", {
 		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
 		label = numeral(2),
 	},
-	["clowns-casting-powder-depleted-uranium-3"] = {
-		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
-		label = numeral(3),
-	},
-	["clowns-casting-powder-depleted-uranium-4"] = {
-		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
-		label = numeral(4),
-	},
 	["clowns-magnesium-pellet-smelting"] = magnesium_ingot(),
 })
