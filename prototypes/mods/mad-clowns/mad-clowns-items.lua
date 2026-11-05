@@ -30,7 +30,7 @@ local function numeral(tier)
 end
 
 ---Gets the definition of the processed ore of the given `material`, from the files of this mod.
----@param material string The material of the processed ore.
+---@param material string
 ---@return TieredIconDefinition
 local function processed(material)
 	return {
@@ -62,7 +62,7 @@ _framework.tiers.assign_icons_with_tier_labels("item", {
 	["clowns-processed-magnesium"] = processed("magnesium"),
 	["clowns-processed-osmium"] = processed("osmium"),
 
-	-- Powders, with their picture variations
+	-- The powders have picture variations.
 	["clowns-powder-depleted-uranium"] = { composition = Powders.get_icon_composition({ material = "depleted-uranium" }) },
 	["clowns-casting-powder-depleted-uranium"] = {
 		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
