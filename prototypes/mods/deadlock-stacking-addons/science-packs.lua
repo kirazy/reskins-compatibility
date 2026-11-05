@@ -6,7 +6,7 @@
 ---@using Reskins.Library.Internal
 
 -- Check to see if reskinning needs to be done.
-if not mods["deadlock-beltboxes-loaders"] then
+if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end
 if mods["ScienceCostTweakerM"] then
@@ -29,7 +29,7 @@ local inputs = {
 ---@type data.IconData[]
 local recipe_stack_icon_extras = {
 	{
-		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
+		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-d-64.png",
 		icon_size = 64,
 		scale = 0.25,
 	},
@@ -38,7 +38,7 @@ local recipe_stack_icon_extras = {
 ---@type data.IconData[]
 local recipe_unstack_icon_extras = {
 	{
-		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",
+		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-u-64.png",
 		icon_size = 64,
 		scale = 0.25,
 	},
@@ -51,24 +51,20 @@ local science_packs = {
 	["chemical-science-pack"] = {},
 	["production-science-pack"] = {},
 	["utility-science-pack"] = {},
-	["advanced-logistic-science-pack"] = {},
+	["bob-advanced-logistic-science-pack"] = { image = "stacked-advanced-logistic-science-pack" },
 	["military-science-pack"] = {},
 	["space-science-pack"] = {},
 }
 
 if reskins.lib.settings.get_value("bobmods-enemies-enablenewartifacts") == true then
-	science_packs["alien-science-pack"] = {}
-	science_packs["alien-science-pack-blue"] = {}
-	science_packs["alien-science-pack-orange"] = {}
-	science_packs["alien-science-pack-purple"] = {}
-	science_packs["alien-science-pack-yellow"] = {}
-	science_packs["alien-science-pack-green"] = {}
-	science_packs["alien-science-pack-red"] = {}
-	science_packs["science-pack-gold"] = {}
-end
-
-if reskins.lib.settings.get_value("bobmods-burnerphase") == true then
-	science_packs["steam-science-pack"] = {}
+	science_packs["bob-alien-science-pack"] = { image = "stacked-alien-science-pack" }
+	science_packs["bob-alien-science-pack-blue"] = { image = "stacked-alien-science-pack-blue" }
+	science_packs["bob-alien-science-pack-orange"] = { image = "stacked-alien-science-pack-orange" }
+	science_packs["bob-alien-science-pack-purple"] = { image = "stacked-alien-science-pack-purple" }
+	science_packs["bob-alien-science-pack-yellow"] = { image = "stacked-alien-science-pack-yellow" }
+	science_packs["bob-alien-science-pack-green"] = { image = "stacked-alien-science-pack-green" }
+	science_packs["bob-alien-science-pack-red"] = { image = "stacked-alien-science-pack-red" }
+	science_packs["bob-science-pack-gold"] = { image = "stacked-science-pack-gold" }
 end
 
 ---@type CreateIconsFromListTable
@@ -86,14 +82,7 @@ for name, map in pairs(science_packs) do
 	end
 
 	---@type CreateIconsFromListOverrides
-	local parameters = {}
-	if map.tier then
-		-- We're working with the layered icons
-		parameters.tier = map.tier
-		parameters.flat_icon = false
-	else
-		parameters.image = map.image or ("stacked-" .. name)
-	end
+	local parameters = { image = map.image or ("stacked-" .. name) }
 
 	-- Add items and recipes to list
 	stacking_items[item_name] = util.copy(parameters)

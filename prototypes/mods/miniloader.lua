@@ -29,25 +29,40 @@ local inputs = {
 -- Handle belt tier labels
 inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
 
+-- Miniloader (Redux) draws each miniloader with an inserter, which has the name of the item, and with three loaders.
+local miniloader_redux_loader_suffixes = { "-l", "-turbo-l", "-turbo-lf-l" }
+
+-- Loaders Modernized makes a split lane, a fill, and a split lane fill variant of each loader.
+local loaders_modernized_loader_suffixes = { "", "-split", "-fill", "-split-fill" }
+
 --stylua: ignore start
 local tier_map = {
 	-- Miniloader (Redux)
-	["hps__ml-bob-basic-miniloader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
-	["hps__ml-miniloader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
-	["hps__ml-fast-miniloader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
-	["hps__ml-express-miniloader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
-	["hps__ml-bob-turbo-miniloader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
-	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
+	["hps__ml-bob-basic-miniloader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
+	["hps__ml-miniloader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
+	["hps__ml-fast-miniloader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
+	["hps__ml-express-miniloader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
+	["hps__ml-turbo-miniloader"] = { tier = 4, sprite_variant = 2, base_belt = "turbo-transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
+	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt", loader_suffixes = miniloader_redux_loader_suffixes },
 
 	-- Loaders Modernized
-	["mdrn-basic-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt" },
-	["mdrn-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt" },
-	["mdrn-fast-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt" },
-	["mdrn-express-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt" },
-	["mdrn-turbo-loader"] = { tier = 4, sprite_variant = 2, base_belt = "bob-turbo-transport-belt" },
-	["mdrn-ultimate-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt" },
+	["mdrn-chute-loader"] = { tier = 0, sprite_variant = 1, loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-basic-loader"] = { tier = 0, sprite_variant = 1, base_belt = "bob-basic-transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-loader"] = { tier = 1, sprite_variant = 1, base_belt = "transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-fast-loader"] = { tier = 2, sprite_variant = 2, base_belt = "fast-transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-express-loader"] = { tier = 3, sprite_variant = 2, base_belt = "express-transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-turbo-loader"] = { tier = 4, sprite_variant = 2, base_belt = "turbo-transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
+	["mdrn-ultimate-loader"] = { tier = 5, sprite_variant = 2, base_belt = "bob-ultimate-transport-belt", loader_suffixes = loaders_modernized_loader_suffixes },
 }
 --stylua: ignore end
+
+-- Add the loader entities of each loader.
+local loader_map = {}
+for name, map in pairs(tier_map) do
+	for _, suffix in pairs(map.loader_suffixes) do
+		loader_map[name .. suffix] = map
+	end
+end
 
 local item_map = {
 	-- Miniloaders (Redux)
@@ -56,20 +71,35 @@ local item_map = {
 	["hps__ml-miniloader"] = { tier = 1, base_item = "transport-belt", type = "inserter" },
 	["hps__ml-fast-miniloader"] = { tier = 2, base_item = "fast-transport-belt", type = "inserter" },
 	["hps__ml-express-miniloader"] = { tier = 3, base_item = "express-transport-belt", type = "inserter" },
-	["hps__ml-bob-turbo-miniloader"] = { tier = 4, base_item = "bob-turbo-transport-belt", type = "inserter" },
+	["hps__ml-turbo-miniloader"] = { tier = 4, base_item = "turbo-transport-belt", type = "inserter" },
 	["hps__ml-bob-ultimate-miniloader"] = { tier = 5, base_item = "bob-ultimate-transport-belt", type = "inserter" },
 
 	-- Loaders Modernized
+	["mdrn-chute-loader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
 	["mdrn-basic-loader"] = { tier = 0, base_item = "bob-basic-transport-belt" },
 	["mdrn-loader"] = { tier = 1, base_item = "transport-belt" },
 	["mdrn-fast-loader"] = { tier = 2, base_item = "fast-transport-belt" },
 	["mdrn-express-loader"] = { tier = 3, base_item = "express-transport-belt" },
-	["mdrn-turbo-loader"] = { tier = 4, base_item = "bob-turbo-transport-belt" },
+	["mdrn-turbo-loader"] = { tier = 4, base_item = "turbo-transport-belt" },
 	["mdrn-ultimate-loader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 }
 
+---Gets the layers of the given `icons` that mark a variant of a loader of Loaders Modernized.
+---@param icons? data.IconData[]
+---@return data.IconData[]
+local function get_variant_marks(icons)
+	local marks = {}
+	for _, icon_datum in pairs(icons or {}) do
+		if icon_datum.icon:find("^__loaders%-modernized__/graphics/icon/") then
+			table.insert(marks, icon_datum)
+		end
+	end
+
+	return marks
+end
+
 -- Reskin entities
-for name, map in pairs(tier_map) do
+for name, map in pairs(loader_map) do
 	if name:find("mdrn") and is_modern_using_aai_graphics then
 		goto continue
 	end
@@ -81,6 +111,9 @@ for name, map in pairs(tier_map) do
 		goto continue
 	end
 	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
+
+	-- Keep the layers that mark the loader variants.
+	inputs.icon_extras = get_variant_marks(entity.icons)
 
 	reskins.lib.setup_standard_entity(name, map.tier, inputs)
 
@@ -170,9 +203,22 @@ for name, map in pairs(tier_map) do
 	}
 
 	-- Apply belt set
-	entity.belt_animation_set = base_belt and base_belt.belt_animation_set
+	if base_belt then
+		entity.belt_animation_set = base_belt.belt_animation_set
+	end
 
 	::continue::
+end
+
+inputs.icon_extras = nil
+
+-- The inserter of each Miniloader (Redux) draws the structure of its loaders.
+for name, _ in pairs(tier_map) do
+	local inserter = data.raw["inserter"][name]
+	local loader = data.raw["loader-1x1"][name .. "-l"]
+	if inserter and loader then
+		inserter.platform_picture.sheets = util.copy(loader.structure.direction_in.sheets)
+	end
 end
 
 -- Reskin icons
@@ -220,7 +266,7 @@ local technology_map = {
 	["hps__ml-miniloader"] = { tier = 1 },
 	["hps__ml-fast-miniloader"] = { tier = 2 },
 	["hps__ml-express-miniloader"] = { tier = 3 },
-	["hps__ml-bob-turbo-miniloader"] = { tier = 4 },
+	["hps__ml-turbo-miniloader"] = { tier = 4 },
 	["hps__ml-bob-ultimate-miniloader"] = { tier = 5 },
 
 	-- Loaders Modernized

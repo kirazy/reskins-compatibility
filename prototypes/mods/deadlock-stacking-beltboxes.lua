@@ -5,7 +5,7 @@
 
 -- Check to see if reskinning needs to be done.
 -- if not reskins.bobs then return end
-if not mods["deadlock-beltboxes-loaders"] then
+if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end
 if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
@@ -26,18 +26,18 @@ inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity
 local sprite_type = reskins.lib.defines.belt_sprites
 
 local tier_map = {
-	["basic-transport-belt-loader"] = { tier = 0, is_loader = true, set_type = sprite_type.standard },
+	["bob-basic-transport-belt-loader"] = { tier = 0, is_loader = true, set_type = sprite_type.standard },
 	["transport-belt-loader"] = { tier = 1, is_loader = true, set_type = sprite_type.standard },
 	["fast-transport-belt-loader"] = { tier = 2, is_loader = true, set_type = sprite_type.express },
 	["express-transport-belt-loader"] = { tier = 3, is_loader = true, set_type = sprite_type.express },
 	["turbo-transport-belt-loader"] = { tier = 4, is_loader = true, set_type = sprite_type.express },
-	["ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, set_type = sprite_type.express },
-	["basic-transport-belt-beltbox"] = { tier = 0, set_type = sprite_type.standard },
+	["bob-ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, set_type = sprite_type.express },
+	["bob-basic-transport-belt-beltbox"] = { tier = 0, set_type = sprite_type.standard },
 	["transport-belt-beltbox"] = { tier = 1, set_type = sprite_type.standard },
 	["fast-transport-belt-beltbox"] = { tier = 2, set_type = sprite_type.express },
 	["express-transport-belt-beltbox"] = { tier = 3, set_type = sprite_type.express },
 	["turbo-transport-belt-beltbox"] = { tier = 4, set_type = sprite_type.express },
-	["ultimate-transport-belt-beltbox"] = { tier = 5, set_type = sprite_type.express },
+	["bob-ultimate-transport-belt-beltbox"] = { tier = 5, set_type = sprite_type.express },
 }
 
 local function light_tint(tint)
@@ -80,17 +80,23 @@ for name, map in pairs(tier_map) do
 		entity.structure.direction_in.sheets[3].tint = inputs.tint
 		entity.structure.direction_out.sheets[3].tint = inputs.tint
 
+		-- Retint the masks of the frozen patches, if any.
+		if entity.structure.frozen_patch_in then
+			entity.structure.frozen_patch_in.sheets[3].tint = inputs.tint
+			entity.structure.frozen_patch_out.sheets[3].tint = inputs.tint
+		end
+
 		-- Apply belt set
 		-- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
 		icon_data = {
 			{
-				icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png",
+				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/loader-icon-base.png",
 				icon_size = 64,
 				scale = 0.5,
 			},
 			{
-				icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-mask.png",
+				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/loader-icon-mask.png",
 				icon_size = 64,
 				scale = 0.5,
 				tint = inputs.tint,
@@ -104,14 +110,19 @@ for name, map in pairs(tier_map) do
 		entity.graphics_set.working_visualisations[1].animation.tint = light_tint(inputs.tint)
 		entity.graphics_set.working_visualisations[1].light.color = light_tint(inputs.tint)
 
+		-- Retint the mask of the frozen patch, if any.
+		if entity.graphics_set.frozen_patch then
+			entity.graphics_set.frozen_patch.layers[2].tint = inputs.tint
+		end
+
 		icon_data = {
 			{
-				icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-base.png",
+				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/beltbox-icon-base.png",
 				icon_size = 64,
 				scale = 0.5,
 			},
 			{
-				icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/beltbox-icon-mask.png",
+				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/beltbox-icon-mask.png",
 				icon_size = 64,
 				scale = 0.5,
 				tint = inputs.tint,
@@ -134,7 +145,7 @@ end
 
 -- Technology
 local tech_map = {
-	["basic-transport-belt-beltbox"] = 0,
+	["bob-basic-transport-belt-beltbox"] = 0,
 	["deadlock-stacking-1"] = 1,
 	["deadlock-stacking-2"] = 2,
 	["deadlock-stacking-3"] = 3,
@@ -151,11 +162,11 @@ for name, tier in pairs(tech_map) do
 			type_name = "technology",
 			icon_data = reskins.lib.icons.add_missing_icons_defaults({
 				{
-					icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/beltbox-icon-base-128.png",
+					icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/beltbox-icon-base-128.png",
 					icon_size = 128,
 				},
 				{
-					icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/beltbox-icon-mask-128.png",
+					icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/beltbox-icon-mask-128.png",
 					icon_size = 128,
 					tint = reskins.lib.tiers.get_belt_tint(tier),
 				},

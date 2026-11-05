@@ -4,39 +4,16 @@
 -- See LICENSE in the project directory for license information.
 
 ---@using Reskins.Library
----@using Reskins.Library.Internal
 
 -- Check to see if reskinning needs to be done.
-if not mods["Bio_Industries"] then
+if not mods["Bio_Industries_2"] then
 	return
 end
 
 -- FIXME: Handle the graphics overhaul when it lands
-if reskins.lib.version.is_same_or_newer(mods["Bio_Industries"], "1.2.0") then
+if reskins.lib.version.is_same_or_newer(mods["Bio_Industries_2"], "1.2.0") then
 	return
 end
-
----@type CreateIconsFromListTable
-local intermediates = {}
-
-if reskins.bobs and reskins.bobs.triggers.greenhouse.items then
-	intermediates["seedling"] = { mod = "bobs", group = "greenhouse", subgroup = "items" }
-end
-
-if reskins.bobs and reskins.bobs.triggers.electronics.items then
-	intermediates["bob-resin-wood"] = { mod = "bobs", type = "recipe", group = "plates", subgroup = "recipes" }
-end
-
-if reskins.bobs and reskins.bobs.triggers.plates.items then
-	intermediates["carbon"] = { mod = "bobs", group = "plates", subgroup = "items" }
-end
-
-reskins.internal.create_icons_from_list(intermediates, {
-	mod = "compatibility",
-	group = "bio-industries",
-	make_icon_pictures = false,
-	flat_icon = true,
-})
 
 ---@type data.Vector
 local shift_upleft = { -8, -8 }
@@ -46,6 +23,12 @@ local shift_upright = { 8, -8 }
 
 ---@type double
 local scale = 0.5
+
+-- Bio Industries makes its own pellet coke when Angel's Petrochemical Processing does not provide it.
+local pellet_coke = data.raw.item["angels-pellet-coke"] and "angels-pellet-coke" or "pellet-coke"
+
+-- Bio Industries makes advanced fertilizer from alien artifacts when they exist, and from biomass otherwise.
+local is_using_alien_artifacts = data.raw.item["alien-artifact"] ~= nil
 
 ---A dictionary of recipe names and the icon sources to use to create a composite icon.
 ---The first entry in each icon source table is the base layer of the created icon.
@@ -165,15 +148,15 @@ local recipe_icon_source_map = {
 
 	-- Pellets
 	["bi-coke-coal"] = {
-		{ name = "angels-pellet-coke", type_name = "item" },
+		{ name = pellet_coke, type_name = "item" },
 		{ name = "coal", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 	["bi-pellet-coke"] = {
-		{ name = "angels-pellet-coke", type_name = "item" },
+		{ name = pellet_coke, type_name = "item" },
 		{ name = "solid-fuel", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 	["bi-pellet-coke-2"] = {
-		{ name = "angels-pellet-coke", type_name = "item" },
+		{ name = pellet_coke, type_name = "item" },
 		{ name = "carbon", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 
@@ -211,15 +194,20 @@ local recipe_icon_source_map = {
 	},
 	["bi-fertilizer-2"] = {
 		{ name = "fertilizer", type_name = "item" },
-		{ name = "sodium-hydroxide", type_name = "fluid", scale = scale, shift = shift_upleft },
+		{ name = "bob-sodium-hydroxide", type_name = "item", scale = scale, shift = shift_upleft },
 	},
 	["bi-adv-fertilizer-1"] = {
 		{ name = "bi-adv-fertilizer", type_name = "item" },
-		{ name = "alien-artifact", type_name = "item", scale = scale, shift = shift_upleft },
+		{
+			name = is_using_alien_artifacts and "alien-artifact" or "bi-biomass",
+			type_name = is_using_alien_artifacts and "item" or "fluid",
+			scale = scale,
+			shift = shift_upleft,
+		},
 	},
 	["bi-adv-fertilizer-2"] = {
 		{ name = "bi-adv-fertilizer", type_name = "item" },
-		{ name = "bi-biomass", type_name = "item", scale = scale, shift = shift_upleft },
+		{ name = "bi-biomass", type_name = "fluid", scale = scale, shift = shift_upleft },
 	},
 
 	-- Plastic
@@ -241,23 +229,27 @@ local recipe_icon_source_map = {
 
 -- FIXME: This will need follow-up if and/or when Bio Industries is ported to 2.0
 if
-	mods["bobelectronics"] and reskins.lib.settings.get_value("reskins-bobs-do-bobelectronics-circuit-style") ~= "off"
+	mods["bobelectronics"] and reskins.lib.settings.get_value("reskins-bobs-do-bobelectronics-colored-circuits") == true
 then
-	recipe_icon_source_map["wooden-board"] = {
-		{ name = "wooden-board", type_name = "item" },
+	recipe_icon_source_map["bob-wooden-board"] = {
+		{ name = "bob-wooden-board", type_name = "item" },
 		{ name = "wood", type_name = "item", scale = scale, shift = shift_upleft },
 	}
 
 	recipe_icon_source_map["bi-press-wood"] = {
-		{ name = "wooden-board", type_name = "item" },
+		{ name = "bob-wooden-board", type_name = "item" },
 		{ name = "bi-woodpulp", type_name = "item", scale = scale, shift = shift_upleft },
 		{ name = "resin", type_name = "item", scale = scale, shift = shift_upright },
 	}
 end
 
 for recipe_name, sources in pairs(recipe_icon_source_map) do
-	local icon_data = reskins.lib.icons.create_icons_from_sources(sources)
-	reskins.lib.icons.assign_icons_to_prototype_and_related_prototypes(recipe_name, "recipe", icon_data)
+	local icon_data, has_blank_layers = reskins.lib.icons.create_icons_from_sources(sources)
+
+	-- Skip the recipes with a source that does not exist.
+	if not has_blank_layers then
+		reskins.lib.icons.assign_icons_to_prototype_and_related_prototypes(recipe_name, "recipe", icon_data)
+	end
 end
 
 -- BOILER
@@ -328,177 +320,175 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 		}
 
 		-- Reskin entities
-		entity.structure = {
-			north = {
-				layers = {
-					-- Base
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-N-idle.png",
-						priority = "extra-high",
-						width = 269,
-						height = 221,
-						shift = util.by_pixel(-1.25, 5.25),
-						scale = 0.5,
-					},
-					-- Mask
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-mask.png",
-						priority = "extra-high",
-						width = 269,
-						height = 221,
-						shift = util.by_pixel(-1.25, 5.25),
-						tint = inputs.tint,
-						scale = 0.5,
-					},
-					-- Highlights
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-highlights.png",
-						priority = "extra-high",
-						width = 269,
-						height = 221,
-						shift = util.by_pixel(-1.25, 5.25),
-						blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-						scale = 0.5,
-					},
-					-- Shadow
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-N-shadow.png",
-						priority = "extra-high",
-						width = 274,
-						height = 164,
-						scale = 0.5,
-						shift = util.by_pixel(20.5, 9),
-						draw_as_shadow = true,
-					},
+		entity.pictures.north.structure = {
+			layers = {
+				-- Base
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-N-idle.png",
+					priority = "extra-high",
+					width = 269,
+					height = 221,
+					shift = util.by_pixel(-1.25, 5.25),
+					scale = 0.5,
+				},
+				-- Mask
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-mask.png",
+					priority = "extra-high",
+					width = 269,
+					height = 221,
+					shift = util.by_pixel(-1.25, 5.25),
+					tint = inputs.tint,
+					scale = 0.5,
+				},
+				-- Highlights
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-N-idle-highlights.png",
+					priority = "extra-high",
+					width = 269,
+					height = 221,
+					shift = util.by_pixel(-1.25, 5.25),
+					blend_mode = reskins.lib.settings.blend_mode, -- "additive",
+					scale = 0.5,
+				},
+				-- Shadow
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-N-shadow.png",
+					priority = "extra-high",
+					width = 274,
+					height = 164,
+					scale = 0.5,
+					shift = util.by_pixel(20.5, 9),
+					draw_as_shadow = true,
 				},
 			},
-			east = {
-				layers = {
-					-- Base
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-E-idle.png",
-						priority = "extra-high",
-						width = 216,
-						height = 301,
-						shift = util.by_pixel(-3, 1.25),
-						scale = 0.5,
-					},
-					-- Color mask
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-mask.png",
-						priority = "extra-high",
-						width = 216,
-						height = 301,
-						shift = util.by_pixel(-3, 1.25),
-						tint = inputs.tint,
-						scale = 0.5,
-					},
-					-- Highlights
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-highlights.png",
-						priority = "extra-high",
-						width = 216,
-						height = 301,
-						shift = util.by_pixel(-3, 1.25),
-						blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-						scale = 0.5,
-					},
-					-- Shadow
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-E-shadow.png",
-						priority = "extra-high",
-						width = 184,
-						height = 194,
-						scale = 0.5,
-						shift = util.by_pixel(30, 9.5),
-						draw_as_shadow = true,
-					},
+		}
+		entity.pictures.east.structure = {
+			layers = {
+				-- Base
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-E-idle.png",
+					priority = "extra-high",
+					width = 216,
+					height = 301,
+					shift = util.by_pixel(-3, 1.25),
+					scale = 0.5,
+				},
+				-- Color mask
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-mask.png",
+					priority = "extra-high",
+					width = 216,
+					height = 301,
+					shift = util.by_pixel(-3, 1.25),
+					tint = inputs.tint,
+					scale = 0.5,
+				},
+				-- Highlights
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-E-idle-highlights.png",
+					priority = "extra-high",
+					width = 216,
+					height = 301,
+					shift = util.by_pixel(-3, 1.25),
+					blend_mode = reskins.lib.settings.blend_mode, -- "additive",
+					scale = 0.5,
+				},
+				-- Shadow
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-E-shadow.png",
+					priority = "extra-high",
+					width = 184,
+					height = 194,
+					scale = 0.5,
+					shift = util.by_pixel(30, 9.5),
+					draw_as_shadow = true,
 				},
 			},
-			south = {
-				layers = {
-					-- Base
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-S-idle.png",
-						priority = "extra-high",
-						width = 260,
-						height = 192,
-						shift = util.by_pixel(4, 13),
-						scale = 0.5,
-					},
-					-- Mask
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-mask.png",
-						priority = "extra-high",
-						width = 260,
-						height = 192,
-						shift = util.by_pixel(4, 13),
-						tint = inputs.tint,
-						scale = 0.5,
-					},
-					-- Highlights
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-highlights.png",
-						priority = "extra-high",
-						width = 260,
-						height = 192,
-						shift = util.by_pixel(4, 13),
-						blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-						scale = 0.5,
-					},
-					-- Shadow
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-S-shadow.png",
-						priority = "extra-high",
-						width = 311,
-						height = 131,
-						scale = 0.5,
-						shift = util.by_pixel(29.75, 15.75),
-						draw_as_shadow = true,
-					},
+		}
+		entity.pictures.south.structure = {
+			layers = {
+				-- Base
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-S-idle.png",
+					priority = "extra-high",
+					width = 260,
+					height = 192,
+					shift = util.by_pixel(4, 13),
+					scale = 0.5,
+				},
+				-- Mask
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-mask.png",
+					priority = "extra-high",
+					width = 260,
+					height = 192,
+					shift = util.by_pixel(4, 13),
+					tint = inputs.tint,
+					scale = 0.5,
+				},
+				-- Highlights
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-S-idle-highlights.png",
+					priority = "extra-high",
+					width = 260,
+					height = 192,
+					shift = util.by_pixel(4, 13),
+					blend_mode = reskins.lib.settings.blend_mode, -- "additive",
+					scale = 0.5,
+				},
+				-- Shadow
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-S-shadow.png",
+					priority = "extra-high",
+					width = 311,
+					height = 131,
+					scale = 0.5,
+					shift = util.by_pixel(29.75, 15.75),
+					draw_as_shadow = true,
 				},
 			},
-			west = {
-				layers = {
-					-- Base
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-W-idle.png",
-						priority = "extra-high",
-						width = 196,
-						height = 273,
-						shift = util.by_pixel(1.5, 7.75),
-						scale = 0.5,
-					},
-					-- Mask
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-mask.png",
-						priority = "extra-high",
-						width = 196,
-						height = 273,
-						shift = util.by_pixel(1.5, 7.75),
-						tint = inputs.tint,
-						scale = 0.5,
-					},
-					-- Highlights
-					{
-						filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-highlights.png",
-						priority = "extra-high",
-						width = 196,
-						height = 273,
-						shift = util.by_pixel(1.5, 7.75),
-						blend_mode = reskins.lib.settings.blend_mode, -- "additive",
-						scale = 0.5,
-					},
-					-- Shadow
-					{
-						filename = "__base__/graphics/entity/boiler/boiler-W-shadow.png",
-						priority = "extra-high",
-						width = 206,
-						height = 218,
-						scale = 0.5,
-						shift = util.by_pixel(19.5, 6.5),
-						draw_as_shadow = true,
-					},
+		}
+		entity.pictures.west.structure = {
+			layers = {
+				-- Base
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-W-idle.png",
+					priority = "extra-high",
+					width = 196,
+					height = 273,
+					shift = util.by_pixel(1.5, 7.75),
+					scale = 0.5,
+				},
+				-- Mask
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-mask.png",
+					priority = "extra-high",
+					width = 196,
+					height = 273,
+					shift = util.by_pixel(1.5, 7.75),
+					tint = inputs.tint,
+					scale = 0.5,
+				},
+				-- Highlights
+				{
+					filename = "__reskins-bobs__/graphics/entity/power/boiler/boiler-W-idle-highlights.png",
+					priority = "extra-high",
+					width = 196,
+					height = 273,
+					shift = util.by_pixel(1.5, 7.75),
+					blend_mode = reskins.lib.settings.blend_mode, -- "additive",
+					scale = 0.5,
+				},
+				-- Shadow
+				{
+					filename = "__base__/graphics/entity/boiler/boiler-W-shadow.png",
+					priority = "extra-high",
+					width = 206,
+					height = 218,
+					scale = 0.5,
+					shift = util.by_pixel(19.5, 6.5),
+					draw_as_shadow = true,
 				},
 			},
 		}

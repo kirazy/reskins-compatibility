@@ -7,7 +7,9 @@ Date: ????
     - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
     - Removed support for Angel's Extended Smelting and Compression, Deadlock's Crating Machine, Intermodal Containers, Loader Redux, Miniloader, Offshore P.U.M.P.S. and ground water, and Spaceblock, which are not available for Factorio 2.1
     - The icons of the Mad Clown's items, recipes, and technologies, of the Extended Angel's tungsten carbide and warehouse technologies, and of the nuclear power technologies of Realistic Reactor Glow now come from the Artisanal Reskins: Assets API
+    - Replaced the support for Deadlock's Stacking Beltboxes & Compact Loaders and Black Rubber Belts with support for their continuations for Factorio 2.1, Deadlock's Stacking Beltboxes & Compact Loaders Continued and Black Rubber Belts - Remastered
   Bugfixes:
+    - Fixed that the loaders of Miniloader (Redux), the turbo miniloader, and the chute loader and the split lane and fill variants of Loaders Modernized were not reskinned, and that the turbo loader of Loaders Modernized had no belt
     - Fixed that the processed ores, pellets, powders, ingots, and molten magnesium of Mad Clown's Processing were not reskinned
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0

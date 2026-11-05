@@ -3,14 +3,14 @@
 --
 -- See LICENSE in the project directory for license information.
 
-if not mods["deadlock-beltboxes-loaders"] then
+if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end
 
 ---@return data.IconData
 local function stack_item_base_layer()
 	return {
-		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/blank.png",
+		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/blank.png",
 		icon_size = 32,
 		scale = 1,
 	}
@@ -19,7 +19,7 @@ end
 ---@return data.IconData
 local function stack_recipe_label()
 	return {
-		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
+		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-d-64.png",
 		icon_size = 64,
 		scale = 0.25,
 	}
@@ -28,7 +28,7 @@ end
 ---@return data.IconData
 local function unstack_recipe_label()
 	return {
-		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",
+		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-u-64.png",
 		icon_size = 64,
 		scale = 0.25,
 	}
@@ -114,7 +114,7 @@ for name, _ in pairs(data.raw.item) do
 
 	local item
 	for _, type_name in pairs(type_names_to_check) do
-		item = data.raw[type_name][item_name]
+		item = data.raw[type_name] and data.raw[type_name][item_name]
 		if item then
 			break
 		end
