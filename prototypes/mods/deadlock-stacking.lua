@@ -7,7 +7,7 @@ if not mods["deadlock-beltboxes-loaders"] then
 	return
 end
 
----@returns data.IconData
+---@return data.IconData
 local function stack_item_base_layer()
 	return {
 		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/blank.png",
@@ -16,7 +16,7 @@ local function stack_item_base_layer()
 	}
 end
 
----@returns data.IconData
+---@return data.IconData
 local function stack_recipe_label()
 	return {
 		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-d-64.png",
@@ -25,7 +25,7 @@ local function stack_recipe_label()
 	}
 end
 
----@returns data.IconData
+---@return data.IconData
 local function unstack_recipe_label()
 	return {
 		icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/arrow-u-64.png",

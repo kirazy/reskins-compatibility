@@ -3,6 +3,8 @@
 --
 -- See LICENSE in the project directory for license information.
 
+---@using Reskins.Library.Internal
+
 -- Check for mini-machines
 if not mods["mini-machines"] then
 	return

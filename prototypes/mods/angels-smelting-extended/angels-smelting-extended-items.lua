@@ -3,6 +3,8 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
+---@using Reskins.Library
+
 -- Check to see if reskinning needs to be done.
 if not mods["angels-smelting-extended"] then
 	return

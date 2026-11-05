@@ -3,6 +3,8 @@
 --
 -- See LICENSE in the project directory for license information.
 
+---@using Reskins.Library.Internal
+
 -- Check to see if reskinning needs to be done.
 if not mods["deadlock-beltboxes-loaders"] then
 	return

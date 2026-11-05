@@ -3,6 +3,8 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
+---@using Reskins.Library.Internal
+
 -- Check to see if reskinning needs to be done.
 if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
 	return
