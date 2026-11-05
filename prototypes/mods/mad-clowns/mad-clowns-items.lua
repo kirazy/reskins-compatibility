@@ -3,158 +3,112 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
----@using Reskins.Library.Internal
+---@using data
+---@using Reskins.Framework
 
 -- Check to see if reskinning needs to be done.
 if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
 	return
 end
 
----@type CreateIconsFromListInputs
-local inputs = {
-	mod = "compatibility",
-	group = "mad-clowns",
-	make_icon_pictures = false,
-	flat_icon = true,
+local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
+	tiers = require("__reskins-framework__.api.tiers"),
 }
 
----@type CreateIconsFromListTable
-local intermediates = {
-	------------------------------------------------------------------------------------------------
-	-- Intermediates
-	------------------------------------------------------------------------------------------------
-	["processed-depleted-uranium"] = { subgroup = "processed-ores" },
-	["processed-magnesium"] = { subgroup = "processed-ores" },
-	["processed-osmium"] = { subgroup = "processed-ores" },
+local Ingots = require("__reskins-assets-api__.assets.angels.items.ingots")
+local LiquidMaterial = require("__reskins-assets-api__.assets.angels.items.liquid-material")
+local Pellets = require("__reskins-assets-api__.assets.angels.items.pellets")
+local Plates = require("__reskins-assets-api__.assets.angels.items.plates")
+local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
 
-	["powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium" },
-	--stylua: ignore
-	["casting-powder-depleted-uranium"] = { subgroup = "powders/depleted-uranium-mixture", image = "powder-depleted-uranium-mixture" },
-	["powder-osmium"] = { subgroup = "powders/osmium" },
-	["casting-powder-osmium"] = { subgroup = "powders/osmium-mixture", image = "powder-osmium-mixture" },
+---Gets the numeral of the given `tier`, in the style of Angel's smelting.
+---@param tier integer The number of the numeral.
+---@return IconData[]
+local function numeral(tier)
+	return reskins.angels.num_tier(tier, "smelting")
+end
 
-	["clowns-plate-depleted-uranium"] = { subgroup = "plates" },
-	["clowns-plate-magnesium"] = { subgroup = "plates" },
-	["clowns-plate-osmium"] = { subgroup = "plates" },
-
-	["angels-liquid-molten-magnesium"] = { type = "fluid", subgroup = "liquid-material" },
-
-	["pellet-depleted-uranium"] = { subgroup = "pellets" },
-	["pellet-magnesium"] = { subgroup = "pellets" },
-	["pellet-osmium"] = { subgroup = "pellets" },
-
-	["ingot-magnesium"] = { subgroup = "ingots/magnesium" },
-
-	------------------------------------------------------------------------------------------------
-	-- Recipes
-	------------------------------------------------------------------------------------------------
-	["pellet-magnesium-titanium-smelting"] = {
-		type = "recipe",
-		mod = "angels",
-		group = "smelting",
-		subgroup = "ingots/titanium",
-		image = "ingot-titanium",
-		icon_extras = reskins.angels.num_tier(3, "smelting"),
-	},
-
-	["casting-powder-depleted-uranium-1"] = {
-		type = "recipe",
-		subgroup = "powders/depleted-uranium-mixture",
-		image = "powder-depleted-uranium-mixture",
-		icon_extras = reskins.angels.num_tier(1, "smelting"),
-	},
-	["casting-powder-depleted-uranium-2"] = {
-		type = "recipe",
-		subgroup = "powders/depleted-uranium-mixture",
-		image = "powder-depleted-uranium-mixture",
-		icon_extras = reskins.angels.num_tier(2, "smelting"),
-	},
-
-	-- ["molten-aluminium-smelting-3"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(4, "smelting")},
-	-- ["molten-aluminium-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(3, "smelting")},
-	-- ["molten-aluminium-smelting-5"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-aluminium", icon_extras = reskins.angels.num_tier(5, "smelting")},
-
-	-- ["molten-iron-smelting-6"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-iron", icon_extras = reskins.angels.num_tier(6, "smelting")},
-
-	-- ["angels-brass-smelting-4"] = {type = "recipe", mod = "angels", group = "smelting", subgroup = "liquid-material", image = "angels-liquid-molten-brass", icon_extras = reskins.angels.num_tier(4, "smelting")},
-
-	["magnesium-pellet-smelting"] = { type = "recipe", subgroup = "ingots/magnesium", image = "ingot-magnesium" },
-}
-
-reskins.internal.create_icons_from_list(intermediates, inputs)
-
--- local composite_recipes = {}
-
--- for name, sources in pairs(composite_recipes) do
---     reskins.lib.composite_existing_icons(name, "recipe", sources)
--- end
-
--- Make variations for ingots
-if reskins.lib.settings.get_value("reskins-angels-use-item-variations") then
-	local ingot_variations = {
-		"magnesium",
+---Gets the definition of the processed ore of the given `material`, from the files of this mod.
+---@param material string The material of the processed ore.
+---@return TieredIconDefinition
+local function processed(material)
+	return {
+		icon_datum = {
+			icon = "__reskins-compatibility__/graphics/icons/mad-clowns/processed-ores/processed-" .. material .. ".png",
+			icon_size = 64,
+		},
 	}
-
-	for _, ingot in pairs(ingot_variations) do
-		local item = data.raw.item["ingot-" .. ingot]
-		if not item then
-			goto continue
-		end
-
-		-- Setup initial pictures table with primary icon
-		item.pictures = {
-			{
-				--stylua: ignore
-				filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. ".png",
-				flags = { "icon" },
-				size = 64,
-				mipmap_count = 4,
-				scale = 0.25,
-			},
-		}
-
-		for i = 1, 8, 1 do
-			table.insert(item.pictures, {
-				--stylua: ignore
-				filename = "__reskins-compatibility__/graphics/icons/mad-clowns/ingots/" .. ingot .. "/ingot-" .. ingot .. "-" .. i .. ".png",
-				flags = { "icon" },
-				size = 64,
-				mipmap_count = 4,
-				scale = 0.25,
-			})
-		end
-
-		::continue::
-	end
 end
 
--- Make variations for powders
-local powder_variations = {
-	["powder-depleted-uranium"] = "depleted-uranium",
-	["casting-powder-depleted-uranium"] = "depleted-uranium-mixture",
-	["powder-osmium"] = "osmium",
-	["casting-powder-osmium"] = "osmium-mixture",
-}
-
-for powder, material in pairs(powder_variations) do
-	local item = data.raw.item[powder]
-	if not item then
-		goto continue
+---Gets the definition of the magnesium ingot, with its picture variations when item variations are enabled.
+---@return TieredIconDefinition
+local function magnesium_ingot()
+	if _framework.settings.get_value("reskins-angels-use-item-variations") then
+		return { composition = Ingots.get_icon_composition({ material = "magnesium" }) }
 	end
 
-	-- Setup initial pictures table
-	item.pictures = {}
-
-	for i = 1, 6, 1 do
-		table.insert(item.pictures, {
-			--stylua: ignore
-			filename = "__reskins-compatibility__/graphics/icons/mad-clowns/powders/" .. material .. "/powder-" .. material .. "-" .. i .. ".png",
-			flags = { "icon" },
-			size = 64,
-			mipmap_count = 4,
-			scale = 0.25,
-		})
-	end
-
-	::continue::
+	return {
+		icon_datum = {
+			icon = "__reskins-assets-angels__/graphics/icons/ingots/magnesium/ingot-magnesium.png",
+			icon_size = 64,
+		},
+	}
 end
+
+_framework.tiers.assign_icons_with_tier_labels("item", {
+	-- Processed ores
+	["clowns-processed-depleted-uranium"] = processed("depleted-uranium"),
+	["clowns-processed-magnesium"] = processed("magnesium"),
+	["clowns-processed-osmium"] = processed("osmium"),
+
+	-- Powders, with their picture variations
+	["clowns-powder-depleted-uranium"] = { composition = Powders.get_icon_composition({ material = "depleted-uranium" }) },
+	["clowns-casting-powder-depleted-uranium"] = {
+		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
+	},
+	["clowns-powder-osmium"] = { composition = Powders.get_icon_composition({ material = "osmium" }) },
+	["clowns-casting-powder-osmium"] = { composition = Powders.get_icon_composition({ material = "osmium-mixture" }) },
+
+	-- Plates
+	["clowns-plate-depleted-uranium"] = { composition = Plates.get_icon_composition({ material = "depleted-uranium" }) },
+	["clowns-plate-magnesium"] = { composition = Plates.get_icon_composition({ material = "magnesium" }) },
+	["clowns-plate-osmium"] = { composition = Plates.get_icon_composition({ material = "osmium" }) },
+
+	-- Pellets
+	["clowns-pellet-depleted-uranium"] = { composition = Pellets.get_icon_composition({ material = "depleted-uranium" }) },
+	["clowns-pellet-magnesium"] = { composition = Pellets.get_icon_composition({ material = "magnesium" }) },
+	["clowns-pellet-osmium"] = { composition = Pellets.get_icon_composition({ material = "osmium" }) },
+
+	-- Ingots
+	["clowns-ingot-magnesium"] = magnesium_ingot(),
+})
+
+_framework.tiers.assign_icons_with_tier_labels("fluid", {
+	["clowns-liquid-molten-magnesium"] = { composition = LiquidMaterial.get_icon_composition({ material = "magnesium" }) },
+})
+
+-- Assign the recipes after the items they read.
+_framework.tiers.assign_icons_with_tier_labels("recipe", {
+	["angels-pellet-magnesium-titanium-smelting"] = {
+		composition = Ingots.get_icon_composition({ material = "titanium" }),
+		label = numeral(3),
+	},
+	["clowns-casting-powder-depleted-uranium-1"] = {
+		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
+		label = numeral(1),
+	},
+	["clowns-casting-powder-depleted-uranium-2"] = {
+		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
+		label = numeral(2),
+	},
+	["clowns-casting-powder-depleted-uranium-3"] = {
+		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
+		label = numeral(3),
+	},
+	["clowns-casting-powder-depleted-uranium-4"] = {
+		composition = Powders.get_icon_composition({ material = "depleted-uranium-mixture" }),
+		label = numeral(4),
+	},
+	["clowns-magnesium-pellet-smelting"] = magnesium_ingot(),
+})

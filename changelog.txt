@@ -5,8 +5,10 @@ Date: ????
     - Migrated some entity sprites to use the Artisanal Reskins: Assets API
     - The Extended Angel's bioprocessing buildings and warehouses now take their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
     - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
+    - The icons of the Mad Clown's items, recipes, and technologies and of the Extended Angel's tungsten carbide and warehouse technologies now come from the Artisanal Reskins: Assets API
   Bugfixes:
     - Fixed that the items of the crating machines of Deadlock's Crating Machine showed their tier labels in the world
+    - Fixed that the processed ores, pellets, powders, ingots, and molten magnesium of Mad Clown's Processing were not reskinned
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 2026-07-19

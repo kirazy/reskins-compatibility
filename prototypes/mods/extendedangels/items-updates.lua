@@ -3,7 +3,8 @@
 --
 -- See LICENSE in the project directory for license information.
 
----@using Reskins.Library.Internal
+---@using data
+---@using Reskins.Framework
 
 -- Check to see if reskinning needs to be done.
 if not mods["extendedangels"] then
@@ -13,55 +14,30 @@ if not (reskins.angels and reskins.angels.triggers.smelting.items) then
 	return
 end
 
----@type CreateIconsFromListInputs
-local inputs = {
-	mod = "compatibility",
-	group = "extendedangels",
-	make_icon_pictures = false,
-	flat_icon = true,
-}
+local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 
----@type CreateIconsFromListTable
-local intermediates = {
-	-- Items
-	["angels-powder-tungsten-carbide"] = { subgroup = "powders/tungsten-carbide", image = "powder-tungsten-carbide" },
-	-- Recipes
-	["angels-tungsten-carbide-smelting-1"] = {
-		type = "recipe",
-		subgroup = "powders/tungsten-carbide",
-		image = "powder-tungsten-carbide",
-		icon_extras = reskins.angels.num_tier(1, "smelting"),
-	},
-	["angels-tungsten-carbide-smelting-2"] = {
-		type = "recipe",
-		subgroup = "powders/tungsten-carbide",
-		image = "powder-tungsten-carbide",
-		icon_extras = reskins.angels.num_tier(2, "smelting"),
-	},
-	["angels-tungsten-carbide-smelting-3"] = {
-		type = "recipe",
-		subgroup = "powders/tungsten-carbide",
-		image = "powder-tungsten-carbide",
-		icon_extras = reskins.angels.num_tier(3, "smelting"),
-	},
-}
+local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
 
-reskins.internal.create_icons_from_list(intermediates, inputs)
-
--- Setup powder variations
-local powder = data.raw.item["angels-powder-tungsten-carbide"]
-
-if powder then
-	powder.pictures = {}
-
-	for i = 1, 6, 1 do
-		table.insert(powder.pictures, {
-			--stylua: ignore
-			filename = "__reskins-compatibility__/graphics/icons/extendedangels/powders/tungsten-carbide/powder-tungsten-carbide-" .. i .. ".png",
-			flags = { "icon" },
-			size = 64,
-			mipmap_count = 4,
-			scale = 0.25,
-		})
-	end
+---Gets the numeral of the given `tier`, in the style of Angel's smelting.
+---@param tier integer The number of the numeral.
+---@return IconData[]
+local function numeral(tier)
+	return reskins.angels.num_tier(tier, "smelting")
 end
+
+---Gets the icon of the tungsten carbide powder, with its picture variations.
+---@return IconComposition
+local function tungsten_carbide()
+	return Powders.get_icon_composition({ material = "tungsten-carbide" })
+end
+
+_framework.tiers.assign_icons_with_tier_labels("item", {
+	["angels-powder-tungsten-carbide"] = { composition = tungsten_carbide() },
+})
+
+-- Assign the recipes after the items they read.
+_framework.tiers.assign_icons_with_tier_labels("recipe", {
+	["angels-tungsten-carbide-smelting-1"] = { composition = tungsten_carbide(), label = numeral(1) },
+	["angels-tungsten-carbide-smelting-2"] = { composition = tungsten_carbide(), label = numeral(2) },
+	["angels-tungsten-carbide-smelting-3"] = { composition = tungsten_carbide(), label = numeral(3) },
+})

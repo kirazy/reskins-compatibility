@@ -3,30 +3,19 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
----@using Reskins.Library.Internal
-
 -- Check to see if reskinning needs to be done.
 if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
 	return
 end
 
----@type CreateIconsFromListInputs
-local inputs = {
-	mod = "compatibility",
-	group = "mad-clowns",
-	type = "technology",
-	technology_icon_size = 256,
-	flat_icon = true,
-}
+local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 
----@type CreateIconsFromListTable
-local technologies = {
-	--stylua: ignore start
-	["advanced-depleted-uranium-smelting-1"] = { subgroup = "casting", image = "casting-depleted-uranium-technology-icon" },
-	["advanced-depleted-uranium-smelting-2"] = { subgroup = "casting", image = "casting-depleted-uranium-technology-icon" },
-	["advanced-magnesium-smelting"] = { subgroup = "casting", image = "casting-magnesium-technology-icon" },
-	["advanced-osmium-smelting"] = { subgroup = "casting", image = "casting-osmium-technology-icon" },
-	--stylua: ignore end
-}
+local Casting = require("__reskins-assets-api__.assets.angels.technologies.casting")
 
-reskins.internal.create_icons_from_list(technologies, inputs)
+_framework.tiers.assign_icons_with_tier_labels("technology", {
+	["advanced-depleted-uranium-smelting-1"] = { icon_data = Casting.get_icon({ material = "depleted-uranium" }) },
+	["advanced-depleted-uranium-smelting-2"] = { icon_data = Casting.get_icon({ material = "depleted-uranium" }) },
+	["advanced-magnesium-smelting"] = { icon_data = Casting.get_icon({ material = "magnesium" }) },
+	["advanced-magnesium-smelting-2"] = { icon_data = Casting.get_icon({ material = "magnesium" }) },
+	["advanced-osmium-smelting"] = { icon_data = Casting.get_icon({ material = "osmium" }) },
+})
