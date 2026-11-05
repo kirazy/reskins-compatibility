@@ -16,5 +16,6 @@ _framework.tiers.assign_icons_with_tier_labels("technology", {
 	["advanced-depleted-uranium-smelting-1"] = { icon_data = Casting.get_icon({ material = "depleted-uranium" }) },
 	["advanced-depleted-uranium-smelting-2"] = { icon_data = Casting.get_icon({ material = "depleted-uranium" }) },
 	["advanced-magnesium-smelting"] = { icon_data = Casting.get_icon({ material = "magnesium" }) },
+	["advanced-magnesium-smelting-2"] = { icon_data = Casting.get_icon({ material = "magnesium" }) },
 	["advanced-osmium-smelting"] = { icon_data = Casting.get_icon({ material = "osmium" }) },
 })
