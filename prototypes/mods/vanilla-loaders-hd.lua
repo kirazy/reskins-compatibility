@@ -11,6 +11,10 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
 	return
 end
 
+local _framework = {
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+
 -- Set input parameters
 local inputs = {
 	type = "loader",
@@ -20,7 +24,7 @@ local inputs = {
 	group = "vanilla-loaders-hd",
 	particles = { ["medium"] = 1, ["big"] = 4 },
 	make_remnants = false,
-	tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling"),
+	tier_labels = _framework.tiers.show_labels_on_belts,
 }
 
 local tier_map = {

@@ -11,6 +11,10 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
 	return
 end
 
+local _framework = {
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+
 local is_modern_using_aai_graphics = reskins.lib.settings.get_value("mdrn-use-aai-graphics") == true
 
 -- Set input parameters
@@ -27,7 +31,7 @@ local inputs = {
 }
 
 -- Handle belt tier labels
-inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+inputs.tier_labels = _framework.tiers.show_labels_on_belts
 
 -- Miniloader (Redux) draws each miniloader with an inserter, which has the name of the item, and with three loaders.
 local miniloader_redux_loader_suffixes = { "-l", "-turbo-l", "-turbo-lf-l" }

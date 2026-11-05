@@ -12,6 +12,10 @@ if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
 	return
 end
 
+local _framework = {
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+
 -- Set input parameters
 local inputs = {
 	base_entity_name = "underground-belt",
@@ -22,7 +26,7 @@ local inputs = {
 }
 
 -- Handle belt tier labels
-inputs.tier_labels = reskins.lib.settings.get_value("reskins-bobs-do-belt-entity-tier-labeling") and true or false
+inputs.tier_labels = _framework.tiers.show_labels_on_belts
 local sprite_type = reskins.lib.defines.belt_sprites
 
 local tier_map = {
