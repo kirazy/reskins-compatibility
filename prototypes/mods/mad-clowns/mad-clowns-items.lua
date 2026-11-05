@@ -47,7 +47,9 @@ end
 
 _framework.tiers.assign_icons_with_tier_labels("item", {
 	-- Processed ores
-	["clowns-processed-depleted-uranium"] = { composition = ProcessedOres.get_icon_composition({ material = "depleted-uranium" }) },
+	["clowns-processed-depleted-uranium"] = {
+		composition = ProcessedOres.get_icon_composition({ material = "depleted-uranium" }),
+	},
 	["clowns-processed-magnesium"] = { composition = ProcessedOres.get_icon_composition({ material = "magnesium" }) },
 	["clowns-processed-osmium"] = { composition = ProcessedOres.get_icon_composition({ material = "osmium" }) },
 
