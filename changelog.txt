@@ -5,6 +5,8 @@ Date: ????
     - Migrated some entity sprites to use the Artisanal Reskins: Assets API
     - The Extended Angel's bioprocessing buildings and warehouses now take their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
     - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
+  Bugfixes:
+    - Fixed that the items of the crating machines of Deadlock's Crating Machine showed their tier labels in the world
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 2026-07-19
