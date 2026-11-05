@@ -12,7 +12,7 @@ Date: ????
   Bugfixes:
     - Fixed that the loaders of Miniloader (Redux), the turbo miniloader, and the chute loader and the split lane and fill variants of Loaders Modernized were not reskinned, and that the turbo loader of Loaders Modernized had no belt
     - Fixed that the processed ores, pellets, powders, ingots, and molten magnesium of Mad Clown's Processing were not reskinned
-    - Fixed that the icons of the Mini Machines items referred to files that do not exist or showed the artwork of the full-size machines
+    - Fixed that the icons of the Mini Machines items referred to files that do not exist or showed the artwork of the full-size machines, and that the miniature refineries made from the oil refineries of Angel's Petrochemical Processing and their technologies were not reskinned
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 2026-07-19

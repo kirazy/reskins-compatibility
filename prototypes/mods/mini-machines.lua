@@ -18,6 +18,9 @@ local _framework = {
 	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),
 }
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
+
+local IconComposition = require("__reskins-sprite-utils__.icon-composition")
 
 local MiniAngelsChemicalPlant = require("__reskins-assets-api__.assets.assorted.items.mini-angels-chemical-plant")
 local MiniAssemblingMachine = require("__reskins-assets-api__.assets.assorted.items.mini-assembling-machine")
@@ -38,9 +41,14 @@ local MiniMiningDrillElectricOriginal =
 local MiniOilRefinery = require("__reskins-assets-api__.assets.assorted.items.mini-oil-refinery")
 local MiniRadar = require("__reskins-assets-api__.assets.assorted.items.mini-radar")
 local MiniStorageTank = require("__reskins-assets-api__.assets.assorted.items.mini-storage-tank")
+local OilRefineryTechnology = require("__reskins-assets-api__.assets.bobs.technologies.oil-refinery")
 
 -- Setup technologies table
 local technology_source_mapping = {}
+
+---The tier and progression tier of each miniature refinery technology that takes the oil refinery technology icon.
+---@type table<string, { tier: integer, prog_tier: integer }>
+local refinery_technologies = {}
 
 ---@type CreateIconsFromListTable
 local technology_icons_to_create = {}
@@ -378,6 +386,11 @@ if reskins.compatibility.triggers.minimachines.radar then
 end
 
 if reskins.compatibility.triggers.minimachines.refineries then
+	-- Mini Machines makes the miniature refineries from the upgrades of the oil refinery, which are the oil refineries of
+	-- Angel's Petrochemical Processing when it has them, and those of Bob's Assembling Machines otherwise.
+	local is_using_angels_refineries = data.raw["assembling-machine"]["angels-oil-refinery-2"] ~= nil
+	local refinery_prefix = is_using_angels_refineries and "angels-oil-refinery-" or "bob-oil-refinery-"
+
 	mini_machine_maps["mini-refinery-1"] = {
 		source = "oil-refinery",
 		type_name = "assembling-machine",
@@ -387,7 +400,7 @@ if reskins.compatibility.triggers.minimachines.refineries then
 		get_icon_composition = MiniOilRefinery.get_icon_composition,
 	}
 	mini_machine_maps["mini-refinery-2"] = {
-		source = "bob-oil-refinery-2",
+		source = refinery_prefix .. "2",
 		type_name = "assembling-machine",
 		scale = 3 / 5,
 		tier = 2,
@@ -395,7 +408,7 @@ if reskins.compatibility.triggers.minimachines.refineries then
 		get_icon_composition = MiniOilRefinery.get_icon_composition,
 	}
 	mini_machine_maps["mini-refinery-3"] = {
-		source = "bob-oil-refinery-3",
+		source = refinery_prefix .. "3",
 		type_name = "assembling-machine",
 		scale = 3 / 5,
 		tier = 3,
@@ -403,7 +416,7 @@ if reskins.compatibility.triggers.minimachines.refineries then
 		get_icon_composition = MiniOilRefinery.get_icon_composition,
 	}
 	mini_machine_maps["mini-refinery-4"] = {
-		source = "bob-oil-refinery-4",
+		source = refinery_prefix .. "4",
 		type_name = "assembling-machine",
 		scale = 3 / 5,
 		tier = 4,
@@ -419,9 +432,16 @@ if reskins.compatibility.triggers.minimachines.refineries then
 		icon_name = "oil-refinery",
 	}
 
-	technology_source_mapping["mini-refinery-2"] = "oil-processing-2"
-	technology_source_mapping["mini-refinery-3"] = "oil-processing-3"
-	technology_source_mapping["mini-refinery-4"] = "oil-processing-4"
+	if is_using_angels_refineries then
+		-- The technologies that unlock the refineries of Angel's Petrochemical Processing have no refinery icon.
+		refinery_technologies["mini-refinery-2"] = { tier = 2, prog_tier = 3 }
+		refinery_technologies["mini-refinery-3"] = { tier = 3, prog_tier = 4 }
+		refinery_technologies["mini-refinery-4"] = { tier = 4, prog_tier = 5 }
+	else
+		technology_source_mapping["mini-refinery-2"] = "oil-processing-2"
+		technology_source_mapping["mini-refinery-3"] = "oil-processing-3"
+		technology_source_mapping["mini-refinery-4"] = "oil-processing-4"
+	end
 end
 
 if reskins.compatibility.triggers.minimachines.centrifuges then
@@ -682,6 +702,22 @@ end
 for name, source in pairs(technology_source_mapping) do
 	set_rescaled_version_of_source_technology_on_target(name, source)
 end
+
+-- Miniaturize the oil refinery technology icon in the tint of the tier of each refinery technology.
+---@type table<string, IconDefinition>
+local refinery_technology_icons = {}
+for name, options in pairs(refinery_technologies) do
+	local tint = _framework.tiers.get_tint(_framework.tiers.get_tier(options.tier, options.prog_tier))
+	local underlay = _assets.icons.get_minified_technology_underlay()
+
+	refinery_technology_icons[name] = {
+		composition = IconComposition:from_icon(underlay, nil, "technology")
+			:add_canvas(OilRefineryTechnology.get_icon_composition({ tint = tint }), { scale = 0.8 })
+			:add_symbol(_assets.icons.get_minified_technology_overlay()),
+	}
+end
+
+_sprite_utils.icons.assign_icons("technology", refinery_technology_icons)
 
 ---The group of the mini-machine overlay, which the item icon draws and the item pictures do not.
 ---@type IconCompositionGroup
