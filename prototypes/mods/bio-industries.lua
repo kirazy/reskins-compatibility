@@ -250,7 +250,7 @@ for recipe_name, sources in pairs(recipe_icon_source_map) do
 end
 
 -- BOILER
-if reskins.bobs and reskins.bobs.triggers.power.entities then
+if mods["reskins-bobs"] and mods["bobpower"] then
 	-- Set input parameters
 	local inputs = {
 		type = "boiler",
