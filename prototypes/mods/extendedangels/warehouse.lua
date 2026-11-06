@@ -57,7 +57,7 @@ for name, options in pairs(entities) do
 	local tier = _framework.tiers.get_tier(options)
 	local tint = is_tiered and _framework.tiers.get_tint(tier) or nil
 
-	-- The first tier is reskinned by reskins-angels when it is loaded, and takes the sprite set here only when it is
+	-- The first tier is reskinned by reskins-angels when it is loaded, and is given the sprite set here only when it is
 	-- tinted.
 	if options.tier > 1 or tint or not mods["reskins-angels"] then
 		local sprite_set

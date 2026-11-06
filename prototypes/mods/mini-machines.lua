@@ -32,7 +32,7 @@ local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.techno
 
 local technology_source_mapping = {}
 
----Defines the technology icon of a miniature machine technology that is taken from a technology icon catalog.
+---Defines the technology icon of a miniature machine technology that comes from a technology icon catalog.
 ---@class MiniTechnologyIconParameters
 ---The creator of the technology icon, which is given the tint of the tier and `icon_params`.
 ---@field get_icon_composition fun(params: table): IconComposition
@@ -590,7 +590,7 @@ if mini_recycler and recycler then
 	})
 end
 
----Gets the definition of the icon of a miniature machine technology, which draws the given `content` at 80% of its
+---Gets the definition of the icon for a miniature machine technology, which draws the given `content` at 80% of its
 ---size between the underlay and the overlay of a miniature machine technology icon.
 ---@param content IconCompositionContent
 ---@return IconDefinition
@@ -607,7 +607,7 @@ end
 ---@type table<string, IconDefinition>
 local technology_icon_definitions = {}
 
--- Miniaturize the technology icon of each catalog in the tint of the tier of each technology.
+-- Miniaturize the technology icon of each catalog in the tint of the tier for each technology.
 for name, options in pairs(technology_icons) do
 	if is_source_reskinned(mini_machine_maps[name]) then
 		local params = util.copy(options.icon_params or {})
@@ -634,7 +634,7 @@ end
 
 _sprite_utils.icons.assign_icons("technology", technology_icon_definitions)
 
----Gets the definition of the icon of the target prototype for the given `map`, with the minified icon of the source
+---Gets the definition of the icon for the target prototype of the given `map`, with the minified icon of the source
 ---prototype and its tier.
 ---@param map MiniMachineParameters
 ---@return TieredIconDefinition

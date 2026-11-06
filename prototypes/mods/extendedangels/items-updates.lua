@@ -15,7 +15,7 @@ local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
 
----Gets the definition of the icon of the given `composition` with the numeral of the given `tier`, drawn by Angel's
+---Gets the definition of the icon from the given `composition` with the numeral of the given `tier`, drawn by Angel's
 ---mods in the number tint of Angel's smelting.
 ---@param composition IconComposition The icon under the numeral.
 ---@param tier integer The number of the numeral.
