@@ -197,25 +197,26 @@ local numeral_group = {
 }
 
 ---Gets the group for the given `icon_datum`, which is the group of the numerals from Angel's mods for a layer of a
----numeral and the canvas group for any other layer.
+---numeral, the symbol group for a layer of a symbol or letter from Artisanal Reskins, and the canvas group for any other
+---layer.
 ---@param icon_datum IconData
 ---@return IconCompositionGroup
-local function classify_numeral_layers(icon_datum)
+local function classify_machine_layers(icon_datum)
 	if icon_datum.icon:find("^__angelsrefininggraphics__/graphics/icons/numerals/") then
 		return numeral_group
 	end
 
-	return IconComposition.canvas_group
+	return _assets.icons.classify_symbol_layers(icon_datum)
 end
 
----Gets a composition of the given `icon_data`, with its tier labels and the numerals from Angel's mods in label groups,
----which `minify` does not resize.
+---Gets a composition of the given `icon_data`, with its tier labels and the numerals from Angel's mods in label groups
+---and its symbols and letters in the symbol group, which `minify` does not resize.
 ---@param icon_data IconData[]
 ---@param defaults_type IconDefaultsType
 ---@return IconComposition
 local function get_machine_icon_composition(icon_data, defaults_type)
 	local artwork, tier_labels = _framework.tiers.remove_tier_labels_from_icons(icon_data)
-	local composition = IconComposition:from_classified_icons(artwork, classify_numeral_layers, defaults_type)
+	local composition = IconComposition:from_classified_icons(artwork, classify_machine_layers, defaults_type)
 
 	if tier_labels then
 		composition = composition:add(_framework.tiers.tier_label_group, tier_labels)
