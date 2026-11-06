@@ -165,7 +165,7 @@ local function is_using_reskins_files(graphics)
 	return false
 end
 
----Indicates whether the graphics of the given full-size `machine` use files of an Artisanal Reskins mod.
+---Indicates whether the graphics of the given `machine` use files of an Artisanal Reskins mod.
 ---@param machine EntityPrototype
 ---@return boolean
 local function is_reskinned(machine)
@@ -371,6 +371,34 @@ local function rescale_remnants(entity, machine, scale)
 	end
 end
 
+---Sets the graphics of the given `entity` to a copy of the graphics of the given full-size `machine`, rescaled by the
+---given `scale`, in place. The pipe pictures and pipe covers of each fluid box are copied at their size, as Mini Machines
+---and Micro Machines copy them, and a fluid box from which they removed the pipe pictures keeps none.
+---@param entity MiniMicroMachinePrototype
+---@param machine EntityPrototype
+---@param scale double
+local function copy_graphics(entity, machine, scale)
+	local rescaled = _sprite_utils.sprites.get_rescaled_prototype(machine, scale)
+	for _, field in pairs(GRAPHICS_FIELDS) do
+		entity[field] = rescaled[field]
+	end
+
+	local fluid_boxes = (entity --[[@as AssemblingMachinePrototype]]).fluid_boxes
+	local machine_fluid_boxes = (machine --[[@as AssemblingMachinePrototype]]).fluid_boxes
+	for index, fluid_box in pairs(fluid_boxes or {}) do
+		local source = machine_fluid_boxes and machine_fluid_boxes[index]
+		if source then
+			if fluid_box.pipe_picture ~= nil then
+				fluid_box.pipe_picture = util.copy(source.pipe_picture)
+				fluid_box.pipe_picture_frozen = util.copy(source.pipe_picture_frozen)
+			end
+
+			fluid_box.pipe_covers = util.copy(source.pipe_covers)
+			fluid_box.pipe_covers_frozen = util.copy(source.pipe_covers_frozen)
+		end
+	end
+end
+
 ---Gets the tint of the mask layer in the east pipe picture of the first fluid box of the given `furnace`, if any.
 ---@param furnace AssemblingMachinePrototype
 ---@return Color?
@@ -453,6 +481,12 @@ for _, size in pairs(machine_sizes) do
 			Corpses.apply(entity, _assets.defines.generic_remnants)
 		elseif is_machine_reskinned and entity.scale_value then
 			rescale_remnants(entity, machine, entity.scale_value)
+		end
+
+		-- Mini Machines and Micro Machines copy the graphics of the full-size machine when they make the machine, before
+		-- the reskins of some full-size machines in the same stage.
+		if is_machine_reskinned and entity.scale_value and not is_reskinned(entity) then
+			copy_graphics(entity, machine, entity.scale_value)
 		end
 
 		local composition = get_sized_icon_composition(machine, size)
