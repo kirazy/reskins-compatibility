@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.5.0
 Date: ????
+  Features:
+    - Added support for Micro Machines
   Changes:
     - Migrated some entity sprites to use the Artisanal Reskins: Assets API
     - The Extended Angel's bioprocessing buildings and warehouses now get their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
@@ -12,7 +14,8 @@ Date: ????
     - The reskins of the loaders, beltboxes, Black Rubber Belts, stacked items and science packs, Classic Beacon, Classic Mining Drill, Semi-Classic Mining Drill, the AAI Industry burner assembling machine, the reactors of Realistic Reactor Glow, and Mini Machines now use Artisanal Reskins: Framework, Sprite Utils, and Assets API in place of Artisanal Reskins: Library, and every reskin except that of Bio Industries now assigns its icons through Artisanal Reskins: Sprite Utils
     - The reskins no longer depend on whether Artisanal Reskins: Bob's Mods or Artisanal Reskins: Angel's Mods is loaded or on their per-mod settings, and the nuclear reactors of Realistic Reactor Glow follow the colors of the reactors they draw
     - The loaders, beltboxes, and Black Rubber Belts now use the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
-    - Mini Machines now reskins each miniature machine whose full-size machine is reskinned, and the item icons of the miniature machines and of the mini recycler are the icons of their full-size machines, made smaller
+    - Mini Machines and Micro Machines now reskin each mini and micro machine made from a reskinned full-size machine, with the remnants of the full-size machine rescaled to its size
+    - The icons of the mini and micro machines and of their technologies are now the icons of their full-size machines and of the technologies that unlock them, made smaller, with an overlay for the size, and the full-size machines that can be resized have an overlay of Artisanal Reskins in place of the overlay from Mini/Micro Machines Core Mod
     - The loaders of AAI Loaders, and the loaders of Loaders Modernized that draw the sprites of AAI Loaders, are now tinted and tier-labeled without Bob's mods; the split lane, fill, and chute variants of Loaders Modernized keep their own colors
     - The classic beacon now always draws the high-resolution artwork, and no longer reads the high-resolution setting of Classic Beacon
   Bugfixes:

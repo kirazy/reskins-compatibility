@@ -1,4 +1,4 @@
--- cspell: words Electrolysers bobchem bobelectro bobmetal bobmulti chemplant
+-- cspell: words minifiable
 
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
@@ -9,7 +9,7 @@
 ---@using Reskins.Framework
 ---@using Reskins.SpriteUtils
 
-if not mods["mini-machines"] then
+if not (mods["mini-machines"] or mods["micro-machines"]) then
 	return
 end
 
@@ -30,9 +30,43 @@ local OilRefineryTechnology = require("__reskins-assets-api__.assets.bobs.techno
 local RadarTechnology = require("__reskins-assets-api__.assets.bobs.technologies.radar")
 local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.technologies.storage-tank")
 
-local technology_source_mapping = {}
+---Defines a size of the machines that Mini Machines and Micro Machines make from full-size machines.
+---@class MachineSize
+---The name of the global table that lists the machines of the size, with the type name of each machine under its name.
+---@field machines_global string
+---The scale at which the icon of a machine draws the icon of its full-size machine.
+---@field scale double
+---The overlay on the icons of the machines.
+---@field symbol_overlay SafeIconData
+---The overlay on the technology icons of the machines.
+---@field technology_overlay SafeIconData
+---The technology on which the technologies of the machines depend.
+---@field basic_technology TechnologyID
 
----Defines the technology icon of a miniature machine technology that comes from a technology icon catalog.
+---The sizes of the machines that Mini Machines and Micro Machines make, under the name of each size.
+---@type table<"mini"|"micro", MachineSize>
+local machine_sizes = {
+	mini = {
+		machines_global = "added_mini_machines",
+		scale = 0.8,
+		symbol_overlay = _assets.icons.get_minified_symbol_overlay(),
+		technology_overlay = _assets.icons.get_minified_technology_overlay(),
+		basic_technology = "mini-basic",
+	},
+	micro = {
+		machines_global = "added_micro_machines",
+		scale = 0.6,
+		symbol_overlay = _assets.icons.get_twice_minified_symbol_overlay(),
+		technology_overlay = _assets.icons.get_twice_minified_technology_overlay(),
+		basic_technology = "micro-basic",
+	},
+}
+
+---The mini machines that Mini Machines makes, with the type name of each machine under its name.
+local mini_machines = rawget(_G, machine_sizes.mini.machines_global) or {} --[[@as table<EntityID, string>]]
+
+---Defines the technology icon from a technology icon catalog for the technologies of the machines made from a
+---full-size machine.
 ---@class MiniTechnologyIconParameters
 ---The creator of the technology icon, which is given the tint of the tier and `icon_params`.
 ---@field get_icon_composition fun(params: table): IconComposition
@@ -43,23 +77,50 @@ local technology_source_mapping = {}
 ---The progression tier of the technology icon, if any.
 ---@field prog_tier? Tier
 
----@type table<TechnologyID, MiniTechnologyIconParameters>
+---The technology icons from the technology icon catalogs, under the name of the full-size machine. An icon is used when
+---the full-size machine is reskinned.
+---@type table<EntityID, MiniTechnologyIconParameters>
 local technology_icons = {}
 
----Maps a standard-sized prototype to a miniature-sized prototype.
----@class MiniMachineParameters
----@field source string # The name of the source standard-sized prototype.
----@field scale double # The ratio of bounding box side length in tiles of the source and target prototypes.
----@field type_name string # The type name of the source and target prototypes.
----The tier of the source prototype.
----@field tier Tier
----The progression tier of the source prototype, if any.
----@field prog_tier? Tier
+-- With Angel's Petrochemical Processing, the chemical plant draws the artwork of Angel's mods.
+if not data.raw["assembling-machine"]["angels-chemical-plant-2"] then
+	technology_icons["chemical-plant"] = {
+		get_icon_composition = ChemicalPlantTechnology.get_icon_composition,
+		tier = 1,
+		prog_tier = 2,
+	}
+end
 
----@type table<EntityID, MiniMachineParameters>
-local mini_machine_maps = {}
+--stylua: ignore start
+technology_icons["bob-electrolyser"] = { get_icon_composition = Electrolyser1Technology.get_icon_composition, tier = 1 }
+technology_icons["electric-mining-drill"] = { get_icon_composition = MiningDrillTechnology.get_icon_composition, icon_params = { variant = "standard" }, tier = 1 }
+technology_icons["radar"] = { get_icon_composition = RadarTechnology.get_icon_composition, tier = 1 }
+technology_icons["oil-refinery"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 1, prog_tier = 2 }
+technology_icons["storage-tank"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 1, prog_tier = 2 }
+technology_icons["bob-storage-tank-2"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 2, prog_tier = 3 }
+technology_icons["bob-storage-tank-3"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 3, prog_tier = 4 }
+technology_icons["bob-storage-tank-4"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 4, prog_tier = 5 }
 
----The fields of a source prototype that hold its graphics.
+-- The technologies that unlock the refineries of Angel's Petrochemical Processing have no refinery icon.
+technology_icons["angels-oil-refinery-2"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 2, prog_tier = 3 }
+technology_icons["angels-oil-refinery-3"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 3, prog_tier = 4 }
+technology_icons["angels-oil-refinery-4"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 4, prog_tier = 5 }
+--stylua: ignore end
+
+---The names of the full-size assembly furnaces for which the mini and micro machines draw the pipe pictures of the
+---original assembling machine.
+local ASSEMBLY_FURNACES = {
+	["bob-electric-chemical-furnace"] = true,
+	["bob-electric-mixing-furnace"] = true,
+	["bob-electric-chemical-mixing-furnace"] = true,
+	["bob-electric-chemical-mixing-furnace-2"] = true,
+}
+
+---The prefix of the files for the overlays that Mini/Micro Machines Core Mod adds to the icons of the full-size
+---machines.
+local CORE_MOD_OVERLAY_PREFIX = "__mini-micro-settings__/graphics/overlay/"
+
+---The fields of a full-size machine that hold its graphics.
 local GRAPHICS_FIELDS = {
 	"graphics_set",
 	"wet_mining_graphics_set",
@@ -88,18 +149,12 @@ local function is_using_reskins_files(graphics)
 	return false
 end
 
----Indicates whether the source prototype of the given `map` exists and its graphics use files of an Artisanal Reskins
----mod.
----@param map MiniMachineParameters
+---Indicates whether the graphics of the given full-size `machine` use files of an Artisanal Reskins mod.
+---@param machine EntityPrototype
 ---@return boolean
-local function is_source_reskinned(map)
-	local source = data.raw[map.type_name][map.source]
-	if not source then
-		return false
-	end
-
+local function is_reskinned(machine)
 	for _, field in pairs(GRAPHICS_FIELDS) do
-		if source[field] and is_using_reskins_files(source[field]) then
+		if machine[field] and is_using_reskins_files(machine[field]) then
 			return true
 		end
 	end
@@ -107,554 +162,273 @@ local function is_source_reskinned(map)
 	return false
 end
 
--- Chemical plants
--- Mini Machines makes the miniature chemical plants from the upgrades of the chemical plant, which are the chemical
--- plants of Angel's Petrochemical Processing when it has them, and those of Bob's Assembling Machines otherwise.
-if data.raw["assembling-machine"]["angels-chemical-plant-2"] then
-	-- Use Angel's chemical plants.
-	mini_machine_maps["mini-chemplant-1"] = {
-		source = "chemical-plant",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 1,
-	}
-	mini_machine_maps["mini-chemplant-2"] = {
-		source = "angels-chemical-plant-2",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 2,
-	}
-	mini_machine_maps["mini-chemplant-3"] = {
-		source = "angels-chemical-plant-3",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 3,
-	}
-	mini_machine_maps["mini-chemplant-4"] = {
-		source = "angels-chemical-plant-4",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 4,
-	}
-
-	-- Technologies
-	-- TODO: Add icons for Angel's chem plants.
-	-- originated_technologies["mini-chemplant-1"] = {mod = "bobs", group = "assembly", tier = 1, prog_tier = 2, icon_name = "chemical-plant"}
-	-- linked_technologies["mini-chemplant-2"] = "chemical-plant-2"
-	-- linked_technologies["mini-chemplant-3"] = "chemical-plant-3"
-	-- linked_technologies["mini-chemplant-4"] = "chemical-plant-4"
-else
-	-- Use Bob's chemical plants.
-	mini_machine_maps["mini-chemplant-1"] = {
-		source = "chemical-plant",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 1,
-		prog_tier = 2,
-	}
-	mini_machine_maps["mini-chemplant-2"] = {
-		source = "bob-chemical-plant-2",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 2,
-		prog_tier = 3,
-	}
-	mini_machine_maps["mini-chemplant-3"] = {
-		source = "bob-chemical-plant-3",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 3,
-		prog_tier = 4,
-	}
-	mini_machine_maps["mini-chemplant-4"] = {
-		source = "bob-chemical-plant-4",
-		type_name = "assembling-machine",
-		scale = 2 / 3,
-		tier = 4,
-		prog_tier = 5,
-	}
-
-	technology_icons["mini-chemplant-1"] = {
-		get_icon_composition = ChemicalPlantTechnology.get_icon_composition,
-		tier = 1,
-		prog_tier = 2,
-	}
-
-	technology_source_mapping["mini-chemplant-2"] = "bob-chemical-plant-2"
-	technology_source_mapping["mini-chemplant-3"] = "bob-chemical-plant-3"
-	technology_source_mapping["mini-chemplant-4"] = "bob-chemical-plant-4"
-end
-
--- Electrolysers
-mini_machine_maps["mini-bobelectro-1"] = {
-	source = "bob-electrolyser",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 1,
-}
-mini_machine_maps["mini-bobelectro-2"] = {
-	source = "bob-electrolyser-2",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 2,
-}
-mini_machine_maps["mini-bobelectro-3"] = {
-	source = "bob-electrolyser-3",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-bobelectro-4"] = {
-	source = "bob-electrolyser-4",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 4,
-}
-mini_machine_maps["mini-bobelectro-5"] = {
-	source = "bob-electrolyser-5",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 5,
-}
-
-technology_icons["mini-bobelectro-1"] = {
-	get_icon_composition = Electrolyser1Technology.get_icon_composition,
-	tier = 1,
-}
-
-technology_source_mapping["mini-bobelectro-2"] = "bob-electrolyser-2"
-technology_source_mapping["mini-bobelectro-3"] = "bob-electrolyser-3"
-technology_source_mapping["mini-bobelectro-4"] = "bob-electrolyser-4"
-technology_source_mapping["mini-bobelectro-5"] = "bob-electrolyser-5"
-
--- Assembling machines
-mini_machine_maps["mini-assembler-1"] = {
-	source = "assembling-machine-1",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 1,
-}
-mini_machine_maps["mini-assembler-2"] = {
-	source = "assembling-machine-2",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 2,
-}
-mini_machine_maps["mini-assembler-3"] = {
-	source = "assembling-machine-3",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-assembler-4"] = {
-	source = "bob-assembling-machine-4",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 4,
-}
-mini_machine_maps["mini-assembler-5"] = {
-	source = "bob-assembling-machine-5",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 5,
-}
-mini_machine_maps["mini-assembler-6"] = {
-	source = "bob-assembling-machine-6",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 6,
-}
-
--- Technologies
-technology_source_mapping["mini-assembler-1"] = "automation"
-technology_source_mapping["mini-assembler-2"] = "automation-2"
-technology_source_mapping["mini-assembler-3"] = "automation-3"
-technology_source_mapping["mini-assembler-4"] = "automation-4"
-technology_source_mapping["mini-assembler-5"] = "automation-5"
-technology_source_mapping["mini-assembler-6"] = "automation-6"
-
--- Mining drills
-mini_machine_maps["mini-miner-1"] = {
-	source = "electric-mining-drill",
-	type_name = "mining-drill",
-	scale = 2 / 3,
-	tier = 1,
-	prog_tier = 1,
-}
-mini_machine_maps["mini-miner-2"] = {
-	source = "bob-mining-drill-1",
-	type_name = "mining-drill",
-	scale = 2 / 3,
-	tier = 2,
-	prog_tier = 2,
-}
-mini_machine_maps["mini-miner-3"] = {
-	source = "bob-mining-drill-2",
-	type_name = "mining-drill",
-	scale = 2 / 3,
-	tier = 3,
-	prog_tier = 3,
-}
-mini_machine_maps["mini-miner-4"] = {
-	source = "bob-mining-drill-3",
-	type_name = "mining-drill",
-	scale = 2 / 3,
-	tier = 4,
-	prog_tier = 4,
-}
-mini_machine_maps["mini-miner-5"] = {
-	source = "bob-mining-drill-4",
-	type_name = "mining-drill",
-	scale = 2 / 3,
-	tier = 5,
-	prog_tier = 5,
-}
-
-technology_icons["mini-miner-1"] = {
-	get_icon_composition = MiningDrillTechnology.get_icon_composition,
-	icon_params = { variant = "standard" },
-	tier = 1,
-}
-
-technology_source_mapping["mini-miner-2"] = "bob-drills-2"
-technology_source_mapping["mini-miner-3"] = "bob-drills-3"
-technology_source_mapping["mini-miner-4"] = "bob-drills-4"
-technology_source_mapping["mini-miner-5"] = "bob-drills-5"
-
--- Radars
-mini_machine_maps["mini-radar-1"] = {
-	source = "radar",
-	type_name = "radar",
-	scale = 2 / 3,
-	tier = 1,
-}
-mini_machine_maps["mini-radar-2"] = {
-	source = "bob-radar-2",
-	type_name = "radar",
-	scale = 2 / 3,
-	tier = 2,
-}
-mini_machine_maps["mini-radar-3"] = {
-	source = "bob-radar-3",
-	type_name = "radar",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-radar-4"] = {
-	source = "bob-radar-4",
-	type_name = "radar",
-	scale = 2 / 3,
-	tier = 4,
-}
-mini_machine_maps["mini-radar-5"] = {
-	source = "bob-radar-5",
-	type_name = "radar",
-	scale = 2 / 3,
-	tier = 5,
-}
-
-technology_icons["mini-radar-1"] = { get_icon_composition = RadarTechnology.get_icon_composition, tier = 1 }
-
-technology_source_mapping["mini-radar-2"] = "bob-radar-2"
-technology_source_mapping["mini-radar-3"] = "bob-radar-3"
-technology_source_mapping["mini-radar-4"] = "bob-radar-4"
-technology_source_mapping["mini-radar-5"] = "bob-radar-5"
-
--- Mini Machines makes the miniature refineries from the upgrades of the oil refinery, which are the oil refineries of
--- Angel's Petrochemical Processing when it has them, and those of Bob's Assembling Machines otherwise.
-local is_using_angels_refineries = data.raw["assembling-machine"]["angels-oil-refinery-2"] ~= nil
-local refinery_prefix = is_using_angels_refineries and "angels-oil-refinery-" or "bob-oil-refinery-"
-
-mini_machine_maps["mini-refinery-1"] = {
-	source = "oil-refinery",
-	type_name = "assembling-machine",
-	scale = 3 / 5,
-	tier = 1,
-	prog_tier = 2,
-}
-mini_machine_maps["mini-refinery-2"] = {
-	source = refinery_prefix .. "2",
-	type_name = "assembling-machine",
-	scale = 3 / 5,
-	tier = 2,
-	prog_tier = 3,
-}
-mini_machine_maps["mini-refinery-3"] = {
-	source = refinery_prefix .. "3",
-	type_name = "assembling-machine",
-	scale = 3 / 5,
-	tier = 3,
-	prog_tier = 4,
-}
-mini_machine_maps["mini-refinery-4"] = {
-	source = refinery_prefix .. "4",
-	type_name = "assembling-machine",
-	scale = 3 / 5,
-	tier = 4,
-	prog_tier = 5,
-}
-
-technology_icons["mini-refinery-1"] = {
-	get_icon_composition = OilRefineryTechnology.get_icon_composition,
-	tier = 1,
-	prog_tier = 2,
-}
-
-if is_using_angels_refineries then
-	-- The technologies that unlock the refineries of Angel's Petrochemical Processing have no refinery icon.
-	--stylua: ignore start
-	technology_icons["mini-refinery-2"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 2, prog_tier = 3 }
-	technology_icons["mini-refinery-3"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 3, prog_tier = 4 }
-	technology_icons["mini-refinery-4"] = { get_icon_composition = OilRefineryTechnology.get_icon_composition, tier = 4, prog_tier = 5 }
-	--stylua: ignore end
-else
-	technology_source_mapping["mini-refinery-2"] = "oil-processing-2"
-	technology_source_mapping["mini-refinery-3"] = "oil-processing-3"
-	technology_source_mapping["mini-refinery-4"] = "oil-processing-4"
-end
-
---stylua: ignore start
-mini_machine_maps["mini-centrifuge-1"] = { source = "centrifuge", type_name = "assembling-machine", scale = 2 / 3, tier = 1, prog_tier = 3 }
-mini_machine_maps["mini-centrifuge-2"] = { source = "bob-centrifuge-2", type_name = "assembling-machine", scale = 2 / 3, tier = 2, prog_tier = 4 }
-mini_machine_maps["mini-centrifuge-3"] = { source = "bob-centrifuge-3", type_name = "assembling-machine", scale = 2 / 3, tier = 3, prog_tier = 5 }
---stylua: ignore end
-
-technology_source_mapping["mini-centrifuge-2"] = "bob-centrifuge-2"
-technology_source_mapping["mini-centrifuge-3"] = "bob-centrifuge-3"
-
-mini_machine_maps["mini-tank-1"] = {
-	source = "storage-tank",
-	type_name = "storage-tank",
-	scale = 2 / 3,
-	tier = 1,
-	prog_tier = 2,
-}
-mini_machine_maps["mini-tank-2"] = {
-	source = "bob-storage-tank-2",
-	type_name = "storage-tank",
-	scale = 2 / 3,
-	tier = 2,
-	prog_tier = 3,
-}
-mini_machine_maps["mini-tank-3"] = {
-	source = "bob-storage-tank-3",
-	type_name = "storage-tank",
-	scale = 2 / 3,
-	tier = 3,
-	prog_tier = 4,
-}
-mini_machine_maps["mini-tank-4"] = {
-	source = "bob-storage-tank-4",
-	type_name = "storage-tank",
-	scale = 2 / 3,
-	tier = 4,
-	prog_tier = 5,
-}
-
---stylua: ignore start
-technology_icons["mini-tank-1"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 1, prog_tier = 2 }
-technology_icons["mini-tank-2"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 2, prog_tier = 3 }
-technology_icons["mini-tank-3"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 3, prog_tier = 4 }
-technology_icons["mini-tank-4"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 4, prog_tier = 5 }
---stylua: ignore end
-
-mini_machine_maps["mini-beacon-1"] = {
-	source = "beacon",
-	type_name = "beacon",
-	scale = 2 / 3,
-	tier = 1,
-	prog_tier = 3,
-}
-mini_machine_maps["mini-beacon-2"] = {
-	source = "bob-beacon-2",
-	type_name = "beacon",
-	scale = 2 / 3,
-	tier = 2,
-	prog_tier = 4,
-}
-mini_machine_maps["mini-beacon-3"] = {
-	source = "bob-beacon-3",
-	type_name = "beacon",
-	scale = 2 / 3,
-	tier = 3,
-	prog_tier = 5,
-}
-technology_source_mapping["mini-beacon-1"] = "effect-transmission"
-technology_source_mapping["mini-beacon-2"] = "effect-transmission-2"
-technology_source_mapping["mini-beacon-3"] = "effect-transmission-3"
-
-mini_machine_maps["mini-furnace-1"] = {
-	source = "electric-furnace",
-	type_name = "furnace",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-furnace-2"] = {
-	source = "bob-electric-furnace-2",
-	type_name = "furnace",
-	scale = 2 / 3,
-	tier = 4,
-}
-mini_machine_maps["mini-furnace-3"] = {
-	source = "bob-electric-furnace-3",
-	type_name = "furnace",
-	scale = 2 / 3,
-	tier = 5,
-}
-mini_machine_maps["mini-bobchem-1"] = {
-	source = "bob-electric-chemical-furnace",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-bobmetal-1"] = {
-	source = "bob-electric-mixing-furnace",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 3,
-}
-mini_machine_maps["mini-bobmulti-1"] = {
-	source = "bob-electric-chemical-mixing-furnace",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 4,
-}
-mini_machine_maps["mini-bobmulti-2"] = {
-	source = "bob-electric-chemical-mixing-furnace-2",
-	type_name = "assembling-machine",
-	scale = 2 / 3,
-	tier = 5,
-}
-
-technology_source_mapping["mini-furnace-1"] = "advanced-material-processing-2"
-technology_source_mapping["mini-furnace-2"] = "advanced-material-processing-3"
-technology_source_mapping["mini-furnace-3"] = "advanced-material-processing-4"
-technology_source_mapping["mini-bobmetal-1"] = "bob-electric-mixing-furnace"
-technology_source_mapping["mini-bobchem-1"] = "bob-electric-chemical-furnace"
-technology_source_mapping["mini-bobmulti-1"] = "bob-multi-purpose-furnace-1"
-technology_source_mapping["mini-bobmulti-2"] = "bob-multi-purpose-furnace-2"
-
--- Handle fluid boxes for the assembly furnaces
-local assembly_furnaces = {
-	"mini-bobchem-1",
-	"mini-bobmetal-1",
-	"mini-bobmulti-1",
-	"mini-bobmulti-2",
-}
-
-for _, name in pairs(assembly_furnaces) do
-	local entity = data.raw["assembling-machine"][name]
-	if not (entity and is_source_reskinned(mini_machine_maps[name])) then
-		goto continue
-	end
-
-	if entity.fluid_boxes then
-		-- Fetch tint
-		local tint = entity.fluid_boxes[1].pipe_picture.east.layers[2].tint
-
-		-- Set to standard pipe pictures for now; TODO: Custom pipe pictures
-		entity.fluid_boxes[1].pipe_picture = AssemblingMachineOriginal.get_pipe_pictures({ tint = tint })
-	end
-
-	::continue::
-end
-
----The group of the mini-machine overlay, which the item icon draws and the item pictures do not.
+---The group of the overlay that indicates the size of a machine, which the icon draws and the pictures do not.
 ---@type IconCompositionGroup
-local mini_machine_overlay_group = {
-	name = "mini-machine-overlay",
+local size_overlay_group = {
+	name = "machine-size-overlay",
 	stratum = "symbol",
 	tintable = false,
 	projections = { pictures = false },
 }
 
----Gets the icon of the given `entity` without its tier labels as an `IconComposition`, minified to 80% of its size,
----with the mini-machine overlay.
----@param entity EntityPrototype
+---The group of the numerals from Angel's mods, which the icon and the pictures draw at the size of the icon.
+---@type IconCompositionGroup
+local numeral_group = {
+	name = "angels-numeral",
+	stratum = "label",
+	tintable = false,
+	projections = { pictures = {} },
+}
+
+---Gets the group for the given `icon_datum`, which is the group of the numerals from Angel's mods for a layer of a
+---numeral and the canvas group for any other layer.
+---@param icon_datum IconData
+---@return IconCompositionGroup
+local function classify_numeral_layers(icon_datum)
+	if icon_datum.icon:find("^__angelsrefininggraphics__/graphics/icons/numerals/") then
+		return numeral_group
+	end
+
+	return IconComposition.canvas_group
+end
+
+---Gets a composition of the given `icon_data`, with its tier labels and the numerals from Angel's mods in label groups,
+---which `minify` does not resize.
+---@param icon_data IconData[]
+---@param defaults_type IconDefaultsType
 ---@return IconComposition
-local function get_minified_icon_composition(entity)
-	local icon_data = _framework.tiers.remove_tier_labels_from_icons(_sprite_utils.icons.get_icon_from_prototype(entity))
+local function get_machine_icon_composition(icon_data, defaults_type)
+	local artwork, tier_labels = _framework.tiers.remove_tier_labels_from_icons(icon_data)
+	local composition = IconComposition:from_classified_icons(artwork, classify_numeral_layers, defaults_type)
 
-	return IconComposition:from_icons(icon_data, nil, "item")
-		:minify(0.8)
-		:add(mini_machine_overlay_group, _assets.icons.get_minified_symbol_overlay())
+	if tier_labels then
+		composition = composition:add(_framework.tiers.tier_label_group, tier_labels)
+	end
+
+	return composition
 end
 
-local mini_recycler = data.raw["furnace"]["mini-recycler-1"]
-local recycler = data.raw["furnace"]["recycler"]
-if mini_recycler and recycler then
-	_sprite_utils.icons.apply_icon_assignment({
-		name = "mini-recycler-1",
-		type_name = "furnace",
-		composition = get_minified_icon_composition(recycler),
-	})
+---Gets the icon for a machine of the given `size` as a composition, which draws the icon of the given full-size
+---`machine` at the scale of the size, with the overlay of the size.
+---@param machine EntityPrototype
+---@param size MachineSize
+---@return IconComposition
+local function get_sized_icon_composition(machine, size)
+	return get_machine_icon_composition(_sprite_utils.icons.get_icon_from_prototype(machine), "item")
+		:minify(size.scale)
+		:add(size_overlay_group, size.symbol_overlay)
 end
 
----Gets the definition of the icon for a miniature machine technology, which draws the given `content` at 80% of its
----size between the underlay and the overlay of a miniature machine technology icon.
+---Gets the technology that unlocks the full-size machine of the given `entity`, as Mini Machines or Micro Machines
+---records it, if any.
+---@param entity EntityPrototype A machine that Mini Machines or Micro Machines makes.
+---@return TechnologyPrototype?
+local function get_full_size_technology(entity)
+	local name = rawget(entity, "base_tech")
+
+	-- Micro Machines copies the technology of a micro machine from that of its mini machine, if one exists.
+	local mini_type = name and mini_machines[name]
+	if mini_type then
+		local mini = data.raw[mini_type][name]
+		name = mini and rawget(mini, "base_tech")
+	end
+
+	-- The basic technology is recorded for a full-size machine that no technology unlocks.
+	for _, size in pairs(machine_sizes) do
+		if name == size.basic_technology then
+			return nil
+		end
+	end
+
+	return name and data.raw["technology"][name]
+end
+
+---Gets the content of the technology icon for the given `entity` made from the given full-size `machine`, which is the
+---catalog icon for `machine` when `machine` is reskinned, the icon of the technology that unlocks `machine`, or the
+---icon of `machine`, in that order of preference.
+---@param entity EntityPrototype
+---@param machine EntityPrototype
+---@return IconCompositionContent
+local function get_technology_icon_content(entity, machine)
+	local options = technology_icons[machine.name]
+	if options and is_reskinned(machine) then
+		local params = util.copy(options.icon_params or {})
+		params.tint = _framework.tiers.get_tint(_framework.tiers.get_tier(options.tier, options.prog_tier))
+
+		return options.get_icon_composition(params)
+	end
+
+	local technology = get_full_size_technology(entity)
+	if technology then
+		return technology
+	end
+
+	return get_machine_icon_composition(_sprite_utils.icons.get_icon_from_prototype(machine), "item")
+end
+
+---Gets the definition of the technology icon for a machine of the given `size`, which draws the given `content` at the
+---scale of the size, with the technology overlay of the size.
 ---@param content IconCompositionContent
+---@param size MachineSize
 ---@return IconDefinition
-local function get_mini_technology_icon_definition(content)
-	local underlay = _assets.icons.get_minified_technology_underlay()
-
+local function get_technology_icon_definition(content, size)
 	return {
-		composition = IconComposition:from_icon(underlay, nil, "technology")
-			:add_canvas(content, { scale = 0.8 })
-			:add_symbol(_assets.icons.get_minified_technology_overlay()),
+		composition = IconComposition:from_icon(_sprite_utils.icons.empty_icon("technology"), nil, "technology")
+			:add_canvas(content, { scale = size.scale })
+			:add_symbol(size.technology_overlay),
 	}
 end
+
+---Sets the corpse of the given `entity` to a copy of each corpse of the given full-size `machine`, rescaled by the
+---given `scale`, in place. Each copy is added to `data.raw` under a name made from the name of `entity`, with the
+---localised name of the remnants of `entity`.
+---@param entity EntityWithHealthPrototype
+---@param machine EntityWithHealthPrototype
+---@param scale double
+local function rescale_remnants(entity, machine, scale)
+	local corpse_names = type(machine.corpse) == "table" and machine.corpse or { machine.corpse }
+
+	local localised_name = { "remnant-name", util.copy(entity.localised_name) or { "entity-name." .. entity.name } }
+
+	---@type EntityID[]
+	local rescaled_names = {}
+	for index, corpse_name in pairs(corpse_names) do
+		local corpse = data.raw["corpse"][corpse_name]
+		if corpse then
+			local rescaled = _sprite_utils.sprites.get_rescaled_prototype(corpse, scale)
+			rescaled.name = "ar-" .. entity.name .. "-remnants" .. (index > 1 and "-" .. index or "")
+			rescaled.localised_name = util.copy(localised_name)
+			data:extend({ rescaled })
+
+			rescaled_names[#rescaled_names + 1] = rescaled.name
+		end
+	end
+
+	if #rescaled_names > 1 then
+		entity.corpse = rescaled_names
+	elseif #rescaled_names == 1 then
+		entity.corpse = rescaled_names[1]
+	end
+end
+
+---Gets the tint of the mask layer in the east pipe picture of the first fluid box of the given `furnace`, if any.
+---@param furnace AssemblingMachinePrototype
+---@return Color?
+local function get_pipe_picture_tint(furnace)
+	local fluid_box = furnace.fluid_boxes and furnace.fluid_boxes[1]
+	local pipe_picture = fluid_box and fluid_box.pipe_picture
+	local east = pipe_picture and pipe_picture.east
+	local mask = east and east.layers and east.layers[2]
+
+	return mask and mask.tint
+end
+
+---Sets the icon of each effect that has an icon in the given `technology` to a copy of the given `icon_data`, in place.
+---@param technology TechnologyPrototype
+---@param icon_data IconData[]
+local function set_effect_icons(technology, icon_data)
+	for _, effect in pairs(technology.effects or {}) do
+		if effect.icons then
+			effect.icons = util.copy(icon_data)
+		end
+	end
+end
+
+---Indicates whether the given `icon_datum` is an overlay from Mini/Micro Machines Core Mod.
+---@param icon_datum IconData
+---@return boolean
+local function is_core_mod_overlay(icon_datum)
+	return icon_datum.icon:find(CORE_MOD_OVERLAY_PREFIX, 1, true) == 1
+end
+
+---Indicates whether the icon of the given `prototype` has an overlay from Mini/Micro Machines Core Mod.
+---@param prototype ItemPrototype
+---@return boolean
+local function has_core_mod_overlay(prototype)
+	if not (prototype.icons or prototype.icon) then
+		return false
+	end
+
+	for _, icon_datum in pairs(_sprite_utils.icons.get_icon_from_prototype(prototype)) do
+		if is_core_mod_overlay(icon_datum) then
+			return true
+		end
+	end
+
+	return false
+end
+
+---Assigns the icon of the given full-size `machine`, with the overlay of a machine that can be minified, to `machine`
+---and its related prototypes.
+---@param machine EntityPrototype
+local function assign_minifiable_icon(machine)
+	local icon_data = _sprite_utils.icons.get_icon_from_prototype(machine)
+	local composition = get_machine_icon_composition(icon_data, machine.type):add(
+		size_overlay_group,
+		_assets.icons.get_minifiable_symbol_overlay()
+	)
+
+	_sprite_utils.icons.apply_icon_assignment({ name = machine.name, type_name = machine.type, composition = composition })
+end
+
+---The full-size machines from which Mini Machines or Micro Machines makes machines, under their names.
+---@type table<EntityID, EntityWithHealthPrototype>
+local full_size_machines = {}
 
 ---@type table<string, IconDefinition>
 local technology_icon_definitions = {}
 
--- Miniaturize the technology icon of each catalog in the tint of the tier for each technology.
-for name, options in pairs(technology_icons) do
-	if is_source_reskinned(mini_machine_maps[name]) then
-		local params = util.copy(options.icon_params or {})
-		params.tint = _framework.tiers.get_tint(_framework.tiers.get_tier(options.tier, options.prog_tier))
+for _, size in pairs(machine_sizes) do
+	local machines = rawget(_G, size.machines_global) or {} --[[@as table<EntityID, string>]]
 
-		technology_icon_definitions[name] = get_mini_technology_icon_definition(options.get_icon_composition(params))
+	for name, type_name in pairs(machines) do
+		local entity = data.raw[type_name][name] --[[@as EntityWithHealthPrototype?]]
+		local machine = entity and data.raw[type_name][rawget(entity, "base_machine")] --[[@as EntityWithHealthPrototype?]]
+		if not (entity and machine) then
+			goto continue
+		end
+
+		full_size_machines[machine.name] = machine
+
+		local is_machine_reskinned = is_reskinned(machine)
+		local scale = rawget(entity, "scale_value")
+		if is_machine_reskinned and scale then
+			rescale_remnants(entity, machine, scale)
+		end
+
+		local composition = get_sized_icon_composition(machine, size)
+		_sprite_utils.icons.apply_icon_assignment({ name = name, type_name = type_name, composition = composition })
+
+		local technology = data.raw["technology"][name]
+		if technology then
+			local content = get_technology_icon_content(entity, machine)
+			technology_icon_definitions[name] = get_technology_icon_definition(content, size)
+			set_effect_icons(technology, (composition:build({ to = "item" })))
+		end
+
+		if is_machine_reskinned and ASSEMBLY_FURNACES[machine.name] then
+			local furnace = entity --[[@as AssemblingMachinePrototype]]
+			local fluid_box = furnace.fluid_boxes and furnace.fluid_boxes[1]
+			local tint = get_pipe_picture_tint(machine --[[@as AssemblingMachinePrototype]])
+
+			if fluid_box and tint then
+				fluid_box.pipe_picture = AssemblingMachineOriginal.get_pipe_pictures({ tint = tint })
+			end
+		end
+
+		::continue::
 	end
 end
 
--- Miniaturize the linked techs
-for name, source_name in pairs(technology_source_mapping) do
-	local source = data.raw["technology"][source_name]
-	if source and is_source_reskinned(mini_machine_maps[name]) then
-		technology_icon_definitions[name] =
-			get_mini_technology_icon_definition(_sprite_utils.icons.get_icon_from_prototype(source))
-	end
-end
-
-local recycling = data.raw["technology"]["recycling"]
-if mini_recycler and recycling then
-	technology_icon_definitions["mini-recycler-1"] =
-		get_mini_technology_icon_definition(_sprite_utils.icons.get_icon_from_prototype(recycling))
+for _, size in pairs(machine_sizes) do
+	technology_icon_definitions[size.basic_technology] = { icon_datum = size.technology_overlay }
 end
 
 _sprite_utils.icons.assign_icons("technology", technology_icon_definitions)
 
----Gets the definition of the icon for the target prototype of the given `map`, with the minified icon of the source
----prototype and its tier.
----@param map MiniMachineParameters
----@return TieredIconDefinition
-local function get_mini_icon_definition(map)
-	return {
-		composition = get_minified_icon_composition(data.raw[map.type_name][map.source]),
-		tier = _framework.tiers.get_tier(map.tier, map.prog_tier),
-	}
-end
-
----@type table<string, TieredIconDefinition>
-local mini_machine_icons = {}
-
-for name, map in pairs(mini_machine_maps) do
-	local target_prototype = data.raw[map.type_name][name]
-
-	if target_prototype and is_source_reskinned(map) then
-		_sprite_utils.sprites.rescale_remnants_of_prototype(target_prototype, map.scale)
-		mini_machine_icons[name] = get_mini_icon_definition(map)
+for name, machine in pairs(full_size_machines) do
+	local item = data.raw["item"][name]
+	if item and has_core_mod_overlay(item) then
+		assign_minifiable_icon(machine)
 	end
 end
-
-_framework.tiers.assign_icons_with_tier_labels("item", mini_machine_icons)
