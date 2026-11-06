@@ -12,8 +12,6 @@ if not mods["Bio_Industries_2"] then
 	return
 end
 
--- FIXME: Handle the graphics overhaul when it lands
-
 local _framework = {
 	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),
@@ -30,12 +28,6 @@ local Boiler = require("__reskins-assets-api__.assets.base.entities.boiler")
 
 local upper_left = _sprite_utils.defines.icon_transforms.corners.northwest
 local upper_right = _sprite_utils.defines.icon_transforms.corners.northeast
-
--- Bio Industries makes its own pellet coke when Angel's Petrochemical Processing does not provide it.
-local pellet_coke = data.raw.item["angels-pellet-coke"] and "angels-pellet-coke" or "pellet-coke"
-
--- Bio Industries makes advanced fertilizer from alien artifacts when they exist, and from biomass otherwise.
-local is_using_alien_artifacts = data.raw.item["alien-artifact"] ~= nil
 
 ---The composite icons of the recipes, under the name of each recipe. The first source of each icon is the product, and
 ---the other sources are drawn in the upper corners.
@@ -140,7 +132,7 @@ local recipes = {
 	},
 	["bi-basic-gas-processing"] = {
 		sources = {
-			{ name = "petroleum-gas", type_name = "fluid" },
+			{ names = { "petroleum-gas", "angels-gas-methane" }, type_name = "fluid" },
 			{ name = "coal", type_name = "item", transform = upper_left },
 			{ name = "resin", type_name = "item", transform = upper_right },
 		},
@@ -204,13 +196,13 @@ local recipes = {
 	-- Pellets
 	["bi-coke-coal"] = {
 		sources = {
-			{ name = pellet_coke, type_name = "item" },
+			{ names = { "pellet-coke", "angels-pellet-coke" }, type_name = "item" },
 			{ name = "coal", type_name = "item", transform = upper_left },
 		},
 	},
 	["bi-pellet-coke"] = {
 		sources = {
-			{ name = pellet_coke, type_name = "item" },
+			{ names = { "pellet-coke", "angels-pellet-coke" }, type_name = "item" },
 			{ name = "solid-fuel", type_name = "item", transform = upper_left },
 		},
 	},
@@ -261,16 +253,6 @@ local recipes = {
 			{ name = "sulfur", type_name = "item", transform = upper_left },
 		},
 	},
-	["bi-adv-fertilizer-1"] = {
-		sources = {
-			{ name = "bi-adv-fertilizer", type_name = "item" },
-			{
-				name = is_using_alien_artifacts and "alien-artifact" or "bi-biomass",
-				type_name = is_using_alien_artifacts and "item" or "fluid",
-				transform = upper_left,
-			},
-		},
-	},
 	["bi-adv-fertilizer-2"] = {
 		sources = {
 			{ name = "bi-adv-fertilizer", type_name = "item" },
@@ -282,7 +264,7 @@ local recipes = {
 	["bi-plastic-1"] = {
 		sources = {
 			{ name = "plastic-bar", type_name = "item" },
-			{ name = "wood", type_name = "item", transform = upper_left },
+			{ name = "bi-woodpulp", type_name = "item", transform = upper_left },
 		},
 	},
 	["bi-plastic-2"] = {
@@ -301,21 +283,26 @@ local recipes = {
 	},
 }
 
--- Sodium hydroxide and carbon exist only when another mod provides them.
-if data.raw.item["bob-sodium-hydroxide"] then
+-- Sodium hydroxide exists only when another mod provides it.
+if data.raw.item["bob-sodium-hydroxide"] or data.raw.item["angels-solid-sodium-hydroxide"] then
 	recipes["bi-fertilizer-2"] = {
 		sources = {
 			{ name = "fertilizer", type_name = "item" },
-			{ name = "bob-sodium-hydroxide", type_name = "item", transform = upper_left },
+			{
+				names = { "bob-sodium-hydroxide", "angels-solid-sodium-hydroxide" },
+				type_name = "item",
+				transform = upper_left,
+			},
 		},
 	}
 end
 
-if data.raw.item["carbon"] then
-	recipes["bi-pellet-coke-2"] = {
+-- Bio Industries unlocks the first advanced fertilizer recipe only when alien artifacts exist, which it then uses.
+if data.raw.item["alien-artifact"] then
+	recipes["bi-adv-fertilizer-1"] = {
 		sources = {
-			{ name = pellet_coke, type_name = "item" },
-			{ name = "carbon", type_name = "item", transform = upper_left },
+			{ name = "bi-adv-fertilizer", type_name = "item" },
+			{ name = "alien-artifact", type_name = "item", transform = upper_left },
 		},
 	}
 end
