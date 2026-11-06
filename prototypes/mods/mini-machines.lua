@@ -13,10 +13,7 @@ if not mods["mini-machines"] then
 end
 
 local _assets = { icons = require("__reskins-assets-api__.api.icons") }
-local _framework = {
-	settings = require("__reskins-framework__.api.settings"),
-	tiers = require("__reskins-framework__.api.tiers"),
-}
+local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 local _sprite_utils = {
 	icons = require("__reskins-sprite-utils__.icons"),
 	sprites = require("__reskins-sprite-utils__.sprites"),
@@ -28,26 +25,6 @@ local AssemblingMachineOriginal = require("__reskins-assets-api__.assets.assorte
 local ChemicalPlantTechnology = require("__reskins-assets-api__.assets.bobs.technologies.chemical-plant")
 local Electrolyser1Technology = require("__reskins-assets-api__.assets.bobs.technologies.electrolyser-1")
 local MiningDrillTechnology = require("__reskins-assets-api__.assets.bobs.technologies.mining-drill")
-local MiniAngelsChemicalPlant = require("__reskins-assets-api__.assets.assorted.items.mini-angels-chemical-plant")
-local MiniAssemblingMachine = require("__reskins-assets-api__.assets.assorted.items.mini-assembling-machine")
-local MiniBeacon = require("__reskins-assets-api__.assets.assorted.items.mini-beacon")
-local MiniBeaconOriginal = require("__reskins-assets-api__.assets.assorted.items.mini-beacon-original")
-local MiniCentrifuge = require("__reskins-assets-api__.assets.assorted.items.mini-centrifuge")
-local MiniChemicalPlant = require("__reskins-assets-api__.assets.assorted.items.mini-chemical-plant")
-local MiniElectrolyser = require("__reskins-assets-api__.assets.assorted.items.mini-electrolyser")
-local MiniFurnaceElectric = require("__reskins-assets-api__.assets.assorted.items.mini-furnace-electric")
-local MiniFurnaceElectricChemical =
-	require("__reskins-assets-api__.assets.assorted.items.mini-furnace-electric-chemical")
-local MiniFurnaceElectricChemicalMixing =
-	require("__reskins-assets-api__.assets.assorted.items.mini-furnace-electric-chemical-mixing")
-local MiniFurnaceElectricMixing = require("__reskins-assets-api__.assets.assorted.items.mini-furnace-electric-mixing")
-local MiniMiningDrillElectric = require("__reskins-assets-api__.assets.assorted.items.mini-mining-drill-electric")
-local MiniMiningDrillElectricOriginal =
-	require("__reskins-assets-api__.assets.assorted.items.mini-mining-drill-electric-original")
-local MiniOilRefinery = require("__reskins-assets-api__.assets.assorted.items.mini-oil-refinery")
-local MiniRadar = require("__reskins-assets-api__.assets.assorted.items.mini-radar")
-local MiniRecycler = require("__reskins-assets-api__.assets.assorted.items.mini-recycler")
-local MiniStorageTank = require("__reskins-assets-api__.assets.assorted.items.mini-storage-tank")
 local OilRefineryTechnology = require("__reskins-assets-api__.assets.bobs.technologies.oil-refinery")
 local RadarTechnology = require("__reskins-assets-api__.assets.bobs.technologies.radar")
 local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.technologies.storage-tank")
@@ -80,13 +57,6 @@ local technology_icons = {}
 ---@field tier Tier
 ---The progression tier of the source prototype, if any.
 ---@field prog_tier? Tier
----When `true`, indicates that the icon of the target prototype takes the tint of the first tinted layer of the
----animation of the source prototype, and the tint of the tier when the animation has no tinted layer. Default `false`.
----@field uses_source_tint? boolean
----The creator of the icon of the target prototype, which is given the tint and `icon_params`.
----@field get_icon_composition fun(params: table): IconComposition
----The parameters of `get_icon_composition` other than the tint, if any.
----@field icon_params? table
 
 ---@type { [string]: MiniMachineParameters }
 local mini_machine_maps = {}
@@ -135,62 +105,34 @@ local function is_source_reskinned(map)
 	return false
 end
 
----Gets the tint of the first tinted layer of the animation of the source prototype of the given `map`, if any.
----@param map MiniMachineParameters
----@return Color?
-local function get_source_tint(map)
-	local source = data.raw[map.type_name][map.source]
-	local animation = source and source.graphics_set and source.graphics_set.animation
-	if not (animation and animation.layers) then
-		return nil
-	end
-
-	for _, layer in ipairs(animation.layers) do
-		if layer.tint then
-			return layer.tint
-		end
-	end
-
-	return nil
-end
-
 -- Chemical plants
 -- Mini Machines makes the miniature chemical plants from the upgrades of the chemical plant, which are the chemical
 -- plants of Angel's Petrochemical Processing when it has them, and those of Bob's Assembling Machines otherwise.
 if data.raw["assembling-machine"]["angels-chemical-plant-2"] then
 	-- Use Angel's chemical plants.
-	local get_chemical_plant_icon = MiniAngelsChemicalPlant.get_icon_composition
-	if _framework.settings.get_value("reskins-angels-use-vanilla-chemical-plant-sprites") then
-		get_chemical_plant_icon = MiniChemicalPlant.get_icon_composition
-	end
-
 	mini_machine_maps["mini-chemplant-1"] = {
 		source = "chemical-plant",
 		type_name = "assembling-machine",
 		scale = 2 / 3,
 		tier = 1,
-		get_icon_composition = get_chemical_plant_icon,
 	}
 	mini_machine_maps["mini-chemplant-2"] = {
 		source = "angels-chemical-plant-2",
 		type_name = "assembling-machine",
 		scale = 2 / 3,
 		tier = 2,
-		get_icon_composition = get_chemical_plant_icon,
 	}
 	mini_machine_maps["mini-chemplant-3"] = {
 		source = "angels-chemical-plant-3",
 		type_name = "assembling-machine",
 		scale = 2 / 3,
 		tier = 3,
-		get_icon_composition = get_chemical_plant_icon,
 	}
 	mini_machine_maps["mini-chemplant-4"] = {
 		source = "angels-chemical-plant-4",
 		type_name = "assembling-machine",
 		scale = 2 / 3,
 		tier = 4,
-		get_icon_composition = get_chemical_plant_icon,
 	}
 
 	-- Technologies
@@ -207,7 +149,6 @@ else
 		scale = 2 / 3,
 		tier = 1,
 		prog_tier = 2,
-		get_icon_composition = MiniChemicalPlant.get_icon_composition,
 	}
 	mini_machine_maps["mini-chemplant-2"] = {
 		source = "bob-chemical-plant-2",
@@ -215,7 +156,6 @@ else
 		scale = 2 / 3,
 		tier = 2,
 		prog_tier = 3,
-		get_icon_composition = MiniChemicalPlant.get_icon_composition,
 	}
 	mini_machine_maps["mini-chemplant-3"] = {
 		source = "bob-chemical-plant-3",
@@ -223,7 +163,6 @@ else
 		scale = 2 / 3,
 		tier = 3,
 		prog_tier = 4,
-		get_icon_composition = MiniChemicalPlant.get_icon_composition,
 	}
 	mini_machine_maps["mini-chemplant-4"] = {
 		source = "bob-chemical-plant-4",
@@ -231,7 +170,6 @@ else
 		scale = 2 / 3,
 		tier = 4,
 		prog_tier = 5,
-		get_icon_composition = MiniChemicalPlant.get_icon_composition,
 	}
 
 	technology_icons["mini-chemplant-1"] = {
@@ -251,40 +189,30 @@ mini_machine_maps["mini-bobelectro-1"] = {
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 1,
-	get_icon_composition = MiniElectrolyser.get_icon_composition,
-	icon_params = { tier = 1 },
 }
 mini_machine_maps["mini-bobelectro-2"] = {
 	source = "bob-electrolyser-2",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 2,
-	get_icon_composition = MiniElectrolyser.get_icon_composition,
-	icon_params = { tier = 2 },
 }
 mini_machine_maps["mini-bobelectro-3"] = {
 	source = "bob-electrolyser-3",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 3,
-	get_icon_composition = MiniElectrolyser.get_icon_composition,
-	icon_params = { tier = 3 },
 }
 mini_machine_maps["mini-bobelectro-4"] = {
 	source = "bob-electrolyser-4",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 4,
-	get_icon_composition = MiniElectrolyser.get_icon_composition,
-	icon_params = { tier = 4 },
 }
 mini_machine_maps["mini-bobelectro-5"] = {
 	source = "bob-electrolyser-5",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 5,
-	get_icon_composition = MiniElectrolyser.get_icon_composition,
-	icon_params = { tier = 5 },
 }
 
 technology_icons["mini-bobelectro-1"] = {
@@ -303,48 +231,36 @@ mini_machine_maps["mini-assembler-1"] = {
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 1,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 1 },
 }
 mini_machine_maps["mini-assembler-2"] = {
 	source = "assembling-machine-2",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 2,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 2 },
 }
 mini_machine_maps["mini-assembler-3"] = {
 	source = "assembling-machine-3",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 3,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 3 },
 }
 mini_machine_maps["mini-assembler-4"] = {
 	source = "bob-assembling-machine-4",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 4,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 4 },
 }
 mini_machine_maps["mini-assembler-5"] = {
 	source = "bob-assembling-machine-5",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 5,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 5 },
 }
 mini_machine_maps["mini-assembler-6"] = {
 	source = "bob-assembling-machine-6",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 6,
-	get_icon_composition = MiniAssemblingMachine.get_icon_composition,
-	icon_params = { machine_tier = 6 },
 }
 
 -- Technologies
@@ -356,18 +272,12 @@ technology_source_mapping["mini-assembler-5"] = "automation-5"
 technology_source_mapping["mini-assembler-6"] = "automation-6"
 
 -- Mining drills
-local get_mining_drill_icon = MiniMiningDrillElectric.get_icon_composition
-if mods["classic-mining-drill"] then
-	get_mining_drill_icon = MiniMiningDrillElectricOriginal.get_icon_composition
-end
-
 mini_machine_maps["mini-miner-1"] = {
 	source = "electric-mining-drill",
 	type_name = "mining-drill",
 	scale = 2 / 3,
 	tier = 1,
 	prog_tier = 1,
-	get_icon_composition = get_mining_drill_icon,
 }
 mini_machine_maps["mini-miner-2"] = {
 	source = "bob-mining-drill-1",
@@ -375,7 +285,6 @@ mini_machine_maps["mini-miner-2"] = {
 	scale = 2 / 3,
 	tier = 2,
 	prog_tier = 2,
-	get_icon_composition = get_mining_drill_icon,
 }
 mini_machine_maps["mini-miner-3"] = {
 	source = "bob-mining-drill-2",
@@ -383,7 +292,6 @@ mini_machine_maps["mini-miner-3"] = {
 	scale = 2 / 3,
 	tier = 3,
 	prog_tier = 3,
-	get_icon_composition = get_mining_drill_icon,
 }
 mini_machine_maps["mini-miner-4"] = {
 	source = "bob-mining-drill-3",
@@ -391,7 +299,6 @@ mini_machine_maps["mini-miner-4"] = {
 	scale = 2 / 3,
 	tier = 4,
 	prog_tier = 4,
-	get_icon_composition = get_mining_drill_icon,
 }
 mini_machine_maps["mini-miner-5"] = {
 	source = "bob-mining-drill-4",
@@ -399,7 +306,6 @@ mini_machine_maps["mini-miner-5"] = {
 	scale = 2 / 3,
 	tier = 5,
 	prog_tier = 5,
-	get_icon_composition = get_mining_drill_icon,
 }
 
 technology_icons["mini-miner-1"] = {
@@ -419,35 +325,30 @@ mini_machine_maps["mini-radar-1"] = {
 	type_name = "radar",
 	scale = 2 / 3,
 	tier = 1,
-	get_icon_composition = MiniRadar.get_icon_composition,
 }
 mini_machine_maps["mini-radar-2"] = {
 	source = "bob-radar-2",
 	type_name = "radar",
 	scale = 2 / 3,
 	tier = 2,
-	get_icon_composition = MiniRadar.get_icon_composition,
 }
 mini_machine_maps["mini-radar-3"] = {
 	source = "bob-radar-3",
 	type_name = "radar",
 	scale = 2 / 3,
 	tier = 3,
-	get_icon_composition = MiniRadar.get_icon_composition,
 }
 mini_machine_maps["mini-radar-4"] = {
 	source = "bob-radar-4",
 	type_name = "radar",
 	scale = 2 / 3,
 	tier = 4,
-	get_icon_composition = MiniRadar.get_icon_composition,
 }
 mini_machine_maps["mini-radar-5"] = {
 	source = "bob-radar-5",
 	type_name = "radar",
 	scale = 2 / 3,
 	tier = 5,
-	get_icon_composition = MiniRadar.get_icon_composition,
 }
 
 technology_icons["mini-radar-1"] = { get_icon_composition = RadarTechnology.get_icon_composition, tier = 1 }
@@ -468,7 +369,6 @@ mini_machine_maps["mini-refinery-1"] = {
 	scale = 3 / 5,
 	tier = 1,
 	prog_tier = 2,
-	get_icon_composition = MiniOilRefinery.get_icon_composition,
 }
 mini_machine_maps["mini-refinery-2"] = {
 	source = refinery_prefix .. "2",
@@ -476,7 +376,6 @@ mini_machine_maps["mini-refinery-2"] = {
 	scale = 3 / 5,
 	tier = 2,
 	prog_tier = 3,
-	get_icon_composition = MiniOilRefinery.get_icon_composition,
 }
 mini_machine_maps["mini-refinery-3"] = {
 	source = refinery_prefix .. "3",
@@ -484,7 +383,6 @@ mini_machine_maps["mini-refinery-3"] = {
 	scale = 3 / 5,
 	tier = 3,
 	prog_tier = 4,
-	get_icon_composition = MiniOilRefinery.get_icon_composition,
 }
 mini_machine_maps["mini-refinery-4"] = {
 	source = refinery_prefix .. "4",
@@ -492,7 +390,6 @@ mini_machine_maps["mini-refinery-4"] = {
 	scale = 3 / 5,
 	tier = 4,
 	prog_tier = 5,
-	get_icon_composition = MiniOilRefinery.get_icon_composition,
 }
 
 technology_icons["mini-refinery-1"] = {
@@ -515,9 +412,9 @@ else
 end
 
 --stylua: ignore start
-mini_machine_maps["mini-centrifuge-1"] = { source = "centrifuge", type_name = "assembling-machine", scale = 2 / 3, tier = 1, prog_tier = 3, get_icon_composition = MiniCentrifuge.get_icon_composition }
-mini_machine_maps["mini-centrifuge-2"] = { source = "bob-centrifuge-2", type_name = "assembling-machine", scale = 2 / 3, tier = 2, prog_tier = 4, get_icon_composition = MiniCentrifuge.get_icon_composition }
-mini_machine_maps["mini-centrifuge-3"] = { source = "bob-centrifuge-3", type_name = "assembling-machine", scale = 2 / 3, tier = 3, prog_tier = 5, get_icon_composition = MiniCentrifuge.get_icon_composition }
+mini_machine_maps["mini-centrifuge-1"] = { source = "centrifuge", type_name = "assembling-machine", scale = 2 / 3, tier = 1, prog_tier = 3 }
+mini_machine_maps["mini-centrifuge-2"] = { source = "bob-centrifuge-2", type_name = "assembling-machine", scale = 2 / 3, tier = 2, prog_tier = 4 }
+mini_machine_maps["mini-centrifuge-3"] = { source = "bob-centrifuge-3", type_name = "assembling-machine", scale = 2 / 3, tier = 3, prog_tier = 5 }
 --stylua: ignore end
 
 technology_source_mapping["mini-centrifuge-2"] = "bob-centrifuge-2"
@@ -529,7 +426,6 @@ mini_machine_maps["mini-tank-1"] = {
 	scale = 2 / 3,
 	tier = 1,
 	prog_tier = 2,
-	get_icon_composition = MiniStorageTank.get_icon_composition,
 }
 mini_machine_maps["mini-tank-2"] = {
 	source = "bob-storage-tank-2",
@@ -537,7 +433,6 @@ mini_machine_maps["mini-tank-2"] = {
 	scale = 2 / 3,
 	tier = 2,
 	prog_tier = 3,
-	get_icon_composition = MiniStorageTank.get_icon_composition,
 }
 mini_machine_maps["mini-tank-3"] = {
 	source = "bob-storage-tank-3",
@@ -545,7 +440,6 @@ mini_machine_maps["mini-tank-3"] = {
 	scale = 2 / 3,
 	tier = 3,
 	prog_tier = 4,
-	get_icon_composition = MiniStorageTank.get_icon_composition,
 }
 mini_machine_maps["mini-tank-4"] = {
 	source = "bob-storage-tank-4",
@@ -553,7 +447,6 @@ mini_machine_maps["mini-tank-4"] = {
 	scale = 2 / 3,
 	tier = 4,
 	prog_tier = 5,
-	get_icon_composition = MiniStorageTank.get_icon_composition,
 }
 
 --stylua: ignore start
@@ -563,18 +456,12 @@ technology_icons["mini-tank-3"] = { get_icon_composition = StorageTankTechnology
 technology_icons["mini-tank-4"] = { get_icon_composition = StorageTankTechnology.get_icon_composition, tier = 4, prog_tier = 5 }
 --stylua: ignore end
 
-local get_beacon_icon = MiniBeacon.get_icon_composition
-if mods["classic-beacon"] then
-	get_beacon_icon = MiniBeaconOriginal.get_icon_composition
-end
-
 mini_machine_maps["mini-beacon-1"] = {
 	source = "beacon",
 	type_name = "beacon",
 	scale = 2 / 3,
 	tier = 1,
 	prog_tier = 3,
-	get_icon_composition = get_beacon_icon,
 }
 mini_machine_maps["mini-beacon-2"] = {
 	source = "bob-beacon-2",
@@ -582,7 +469,6 @@ mini_machine_maps["mini-beacon-2"] = {
 	scale = 2 / 3,
 	tier = 2,
 	prog_tier = 4,
-	get_icon_composition = get_beacon_icon,
 }
 mini_machine_maps["mini-beacon-3"] = {
 	source = "bob-beacon-3",
@@ -590,69 +476,52 @@ mini_machine_maps["mini-beacon-3"] = {
 	scale = 2 / 3,
 	tier = 3,
 	prog_tier = 5,
-	get_icon_composition = get_beacon_icon,
 }
 technology_source_mapping["mini-beacon-1"] = "effect-transmission"
 technology_source_mapping["mini-beacon-2"] = "effect-transmission-2"
 technology_source_mapping["mini-beacon-3"] = "effect-transmission-3"
-
--- The chemical mixing furnaces have the artwork of the mixing furnace when Angel's Smelting is active.
-local get_chemical_mixing_furnace_icon = MiniFurnaceElectricChemicalMixing.get_icon_composition
-if mods["angelssmelting"] then
-	get_chemical_mixing_furnace_icon = MiniFurnaceElectricMixing.get_icon_composition
-end
 
 mini_machine_maps["mini-furnace-1"] = {
 	source = "electric-furnace",
 	type_name = "furnace",
 	scale = 2 / 3,
 	tier = 3,
-	uses_source_tint = true,
-	get_icon_composition = MiniFurnaceElectric.get_icon_composition,
 }
 mini_machine_maps["mini-furnace-2"] = {
 	source = "bob-electric-furnace-2",
 	type_name = "furnace",
 	scale = 2 / 3,
 	tier = 4,
-	get_icon_composition = MiniFurnaceElectric.get_icon_composition,
 }
 mini_machine_maps["mini-furnace-3"] = {
 	source = "bob-electric-furnace-3",
 	type_name = "furnace",
 	scale = 2 / 3,
 	tier = 5,
-	get_icon_composition = MiniFurnaceElectric.get_icon_composition,
 }
 mini_machine_maps["mini-bobchem-1"] = {
 	source = "bob-electric-chemical-furnace",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 3,
-	uses_source_tint = true,
-	get_icon_composition = MiniFurnaceElectricChemical.get_icon_composition,
 }
 mini_machine_maps["mini-bobmetal-1"] = {
 	source = "bob-electric-mixing-furnace",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 3,
-	uses_source_tint = true,
-	get_icon_composition = MiniFurnaceElectricMixing.get_icon_composition,
 }
 mini_machine_maps["mini-bobmulti-1"] = {
 	source = "bob-electric-chemical-mixing-furnace",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 4,
-	get_icon_composition = get_chemical_mixing_furnace_icon,
 }
 mini_machine_maps["mini-bobmulti-2"] = {
 	source = "bob-electric-chemical-mixing-furnace-2",
 	type_name = "assembling-machine",
 	scale = 2 / 3,
 	tier = 5,
-	get_icon_composition = get_chemical_mixing_furnace_icon,
 }
 
 technology_source_mapping["mini-furnace-1"] = "advanced-material-processing-2"
@@ -697,14 +566,25 @@ local mini_machine_overlay_group = {
 	projections = { pictures = false },
 }
 
-local mini_recycler = data.raw["furnace"]["mini-recycler-1"]
-if mini_recycler then
-	local overlay = _assets.icons.get_minified_symbol_overlay()
+---Gets the icon of the given `entity` without its tier labels as an `IconComposition`, minified to 80% of its size,
+---with the mini-machine overlay.
+---@param entity EntityPrototype
+---@return IconComposition
+local function get_minified_icon_composition(entity)
+	local icon_data = _framework.tiers.remove_tier_labels_from_icons(_sprite_utils.icons.get_icon_from_prototype(entity))
 
+	return IconComposition:from_icons(icon_data, nil, "item")
+		:minify(0.8)
+		:add(mini_machine_overlay_group, _assets.icons.get_minified_symbol_overlay())
+end
+
+local mini_recycler = data.raw["furnace"]["mini-recycler-1"]
+local recycler = data.raw["furnace"]["recycler"]
+if mini_recycler and recycler then
 	_sprite_utils.icons.apply_icon_assignment({
 		name = "mini-recycler-1",
 		type_name = "furnace",
-		composition = MiniRecycler.get_icon_composition():add(mini_machine_overlay_group, overlay),
+		composition = get_minified_icon_composition(recycler),
 	})
 end
 
@@ -752,19 +632,15 @@ end
 
 _sprite_utils.icons.assign_icons("technology", technology_icon_definitions)
 
----Gets the definition of the icon of the target prototype for the given `map`, with the tint and tier of the source
----prototype and the mini-machine overlay.
+---Gets the definition of the icon of the target prototype for the given `map`, with the minified icon of the source
+---prototype and its tier.
 ---@param map MiniMachineParameters
 ---@return TieredIconDefinition
 local function get_mini_icon_definition(map)
-	local tier = _framework.tiers.get_tier(map.tier, map.prog_tier)
-	local params = util.copy(map.icon_params or {})
-	params.tint = map.uses_source_tint and get_source_tint(map) or _framework.tiers.get_tint(tier)
-
-	local overlay = _assets.icons.get_minified_symbol_overlay()
-	local composition = map.get_icon_composition(params):add(mini_machine_overlay_group, overlay)
-
-	return { composition = composition, tier = tier }
+	return {
+		composition = get_minified_icon_composition(data.raw[map.type_name][map.source]),
+		tier = _framework.tiers.get_tier(map.tier, map.prog_tier),
+	}
 end
 
 ---@type table<string, TieredIconDefinition>

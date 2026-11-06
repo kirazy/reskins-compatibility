@@ -12,9 +12,6 @@ local Composter = require("__reskins-assets-api__.assets.angels.entities.bioproc
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsbioprocessing"]) then
-	return
-end
 
 local entities = {
 	["angels-composter"] = { tier = 1 },

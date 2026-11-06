@@ -15,7 +15,7 @@ local BeaconOriginal = require("__reskins-assets-api__.assets.assorted.entities.
 if not mods["classic-beacon"] then
 	return
 end
-if not (mods["reskins-bobs"] and mods["bobmodules"]) then
+if not mods["bobmodules"] then
 	return
 end
 

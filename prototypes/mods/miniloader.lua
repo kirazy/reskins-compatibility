@@ -3,11 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
-if not (mods["miniloader-redux"] or mods["loaders-modernized"]) then
-	return
-end
-
 local _framework = {
 	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),

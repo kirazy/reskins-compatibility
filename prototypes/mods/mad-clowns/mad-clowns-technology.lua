@@ -4,9 +4,6 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not mods["reskins-angels"] then
-	return
-end
 if
 	not (
 		mods["Clowns-AngelBob-Nuclear"]

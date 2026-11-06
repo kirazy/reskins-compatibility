@@ -12,9 +12,6 @@ local NutrientExtractor = require("__reskins-assets-api__.assets.angels.entities
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsbioprocessing"]) then
-	return
-end
 
 local entities = {
 	["angels-nutrient-extractor"] = { tier = 1, prog_tier = 2 },

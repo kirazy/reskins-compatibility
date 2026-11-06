@@ -12,9 +12,6 @@ local BioProcessor = require("__reskins-assets-api__.assets.angels.entities.biop
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsbioprocessing"]) then
-	return
-end
 
 local entities = {
 	["angels-bio-processor"] = { tier = 1 },

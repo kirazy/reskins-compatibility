@@ -13,13 +13,7 @@ end
 if mods["ScienceCostTweakerM"] then
 	return
 end
-if not mods["reskins-bobs"] then
-	return
-end
 
-local _framework = {
-	settings = require("__reskins-framework__.api.settings"),
-}
 local _sprite_utils = {
 	icons = require("__reskins-sprite-utils__.icons"),
 }
@@ -57,24 +51,15 @@ local science_packs = {
 	}),
 	["military-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "military-science-pack" }),
 	["space-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "space-science-pack" }),
+	["bob-alien-science-pack"] = StackedSciencePacksAlien.get_icon_composition(),
+	["bob-alien-science-pack-blue"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "blue" }),
+	["bob-alien-science-pack-orange"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "orange" }),
+	["bob-alien-science-pack-purple"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "purple" }),
+	["bob-alien-science-pack-yellow"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "yellow" }),
+	["bob-alien-science-pack-green"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "green" }),
+	["bob-alien-science-pack-red"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "red" }),
+	["bob-science-pack-gold"] = StackedSciencePacks.get_icon_composition({ science_pack = "science-pack-gold" }),
 }
-
-if _framework.settings.get_value("bobmods-enemies-enablenewartifacts") == true then
-	science_packs["bob-alien-science-pack"] = StackedSciencePacksAlien.get_icon_composition()
-	science_packs["bob-alien-science-pack-blue"] =
-		StackedSciencePacksAlien.get_colored_icon_composition({ color = "blue" })
-	science_packs["bob-alien-science-pack-orange"] =
-		StackedSciencePacksAlien.get_colored_icon_composition({ color = "orange" })
-	science_packs["bob-alien-science-pack-purple"] =
-		StackedSciencePacksAlien.get_colored_icon_composition({ color = "purple" })
-	science_packs["bob-alien-science-pack-yellow"] =
-		StackedSciencePacksAlien.get_colored_icon_composition({ color = "yellow" })
-	science_packs["bob-alien-science-pack-green"] =
-		StackedSciencePacksAlien.get_colored_icon_composition({ color = "green" })
-	science_packs["bob-alien-science-pack-red"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "red" })
-	science_packs["bob-science-pack-gold"] =
-		StackedSciencePacks.get_icon_composition({ science_pack = "science-pack-gold" })
-end
 
 ---@type table<string, IconDefinition>
 local stacking_items = {}

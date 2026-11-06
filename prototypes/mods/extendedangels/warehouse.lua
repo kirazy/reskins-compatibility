@@ -16,9 +16,6 @@ local Warehouse = require("__reskins-assets-api__.assets.angels.entities.assorte
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsaddons-storage"]) then
-	return
-end
 
 local is_tiered = _framework.settings.get_value("reskins-compatibility-extendedangels-warehouse-tiering") == true
 
@@ -62,8 +59,9 @@ for name, options in pairs(entities) do
 	local tier = _framework.tiers.get_tier(options)
 	local tint = is_tiered and _framework.tiers.get_tint(tier) or nil
 
-	-- The first tier is reskinned by reskins-angels, and takes the sprite set here only when it is tinted.
-	if options.tier > 1 or tint then
+	-- The first tier is reskinned by reskins-angels when it is loaded, and takes the sprite set here only when it is
+	-- tinted.
+	if options.tier > 1 or tint or not mods["reskins-angels"] then
 		local sprite_set
 		if options.logistic_mode then
 			sprite_set = Warehouse.get_logistic_sprite_set({ logistic_mode = options.logistic_mode, tint = tint })

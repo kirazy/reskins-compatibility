@@ -12,9 +12,6 @@ local TreeGenerator = require("__reskins-assets-api__.assets.angels.entities.bio
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsbioprocessing"]) then
-	return
-end
 
 local entities = {
 	["angels-bio-generator-temperate-1"] = { tier = 1, variant = "temperate" },

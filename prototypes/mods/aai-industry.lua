@@ -3,13 +3,13 @@
 --
 -- See LICENSE in the project directory for license information.
 
-local _sprites = require("__reskins-sprite-utils__.sprites")
+local PrototypeScaler = require("__reskins-assets-api__.api.prototype-scaler")
 
 -- Check to see if reskinning needs to be done.
 if not mods["aai-industry"] then
 	return
 end
-if not (mods["reskins-bobs"] and mods["bobassembly"]) then
+if not mods["bobassembly"] then
 	return
 end
 
@@ -86,10 +86,7 @@ entity.energy_source.smoke = {
 }
 
 -- Rescale as needed
--- aai-industry is optionally dependent on angelsrefining and will perform final edits to the burner assembling machine
-local burner_setting = settings.startup["bobmods-assembly-burner"]
-if burner_setting and burner_setting.value and not mods["angelsrefining"] then
-	_sprites.rescale_prototype(entity.graphics_set.animation, 2 / 3)
-	_sprites.rescale_prototype(entity.graphics_set.working_visualisations, 2 / 3)
-	_sprites.rescale_prototype(entity.energy_source.smoke, 2 / 3)
-end
+local scaler = PrototypeScaler.for_prototype(entity, { nominal_width = 3, nominal_height = 3 })
+scaler:rescale(entity.graphics_set.animation)
+scaler:rescale(entity.graphics_set.working_visualisations)
+scaler:rescale(entity.energy_source.smoke)

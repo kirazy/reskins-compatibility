@@ -12,19 +12,12 @@ local _framework = {
 local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
 local NuclearReactor = require("__reskins-assets-api__.assets.base.entities.nuclear-reactor")
+local ReactorArtwork = require("prototypes.mods.realisticreactorglow.reactor-artwork")
 
 -- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
 end
-if not mods["reskins-bobs"] then
-	return
-end
-if not _framework.settings.get_value("bobmods-power-nuclear") then
-	return
-end
-
-local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
 
 local reactors = {
 	["nuclear-reactor"] = { tier = 1, prog_tier = 3, material = "aluminum-invar" },
@@ -43,8 +36,9 @@ end
 -- Fix lighting
 for name, map in pairs(reactors) do
 	local entity = data.raw.reactor[name]
+	local tint = entity and ReactorArtwork.get_reskins_tint(entity)
 
-	if not entity then
+	if not tint then
 		goto continue
 	end
 
@@ -74,7 +68,7 @@ for name, map in pairs(reactors) do
 	local composition = NuclearReactor.get_realistic_icon_composition({
 		glow_color = glow_color,
 		material = map.material,
-		tint = nuclear_reactors[name].tint or _framework.tiers.get_tint(tier),
+		tint = tint,
 	})
 	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
 		tier = tier,

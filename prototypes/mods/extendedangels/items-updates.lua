@@ -10,20 +10,24 @@
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelssmelting"]) then
-	return
-end
 
 local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
-local get_angels_numeral = require("__reskins-compatibility__.prototypes.functions.angels-numerals")
 
----Gets the numeral of the given `tier`, in the style of Angel's smelting.
+---Gets the definition of the icon of the given `composition` with the numeral of the given `tier`, drawn by Angel's
+---mods in the number tint of Angel's smelting.
+---@param composition IconComposition The icon under the numeral.
 ---@param tier integer The number of the numeral.
----@return IconData[]
-local function numeral(tier)
-	return get_angels_numeral(tier, "smelting")
+---@return TieredIconDefinition
+local function numbered(composition, tier)
+	return {
+		icon_data = angelsmods.functions.add_number_icon_layer(
+			composition:build({ to = "recipe" }),
+			tier,
+			angelsmods.smelting.number_tint
+		),
+	}
 end
 
 ---Gets the icon of the tungsten carbide powder, with its picture variations.
@@ -38,7 +42,7 @@ _framework.tiers.assign_icons_with_tier_labels("item", {
 
 -- Assign the recipes after the items they read.
 _framework.tiers.assign_icons_with_tier_labels("recipe", {
-	["angels-tungsten-carbide-smelting-1"] = { composition = tungsten_carbide(), label = numeral(1) },
-	["angels-tungsten-carbide-smelting-2"] = { composition = tungsten_carbide(), label = numeral(2) },
-	["angels-tungsten-carbide-smelting-3"] = { composition = tungsten_carbide(), label = numeral(3) },
+	["angels-tungsten-carbide-smelting-1"] = numbered(tungsten_carbide(), 1),
+	["angels-tungsten-carbide-smelting-2"] = numbered(tungsten_carbide(), 2),
+	["angels-tungsten-carbide-smelting-3"] = numbered(tungsten_carbide(), 3),
 })

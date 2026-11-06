@@ -7,9 +7,6 @@
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsaddons-storage"]) then
-	return
-end
 
 local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 

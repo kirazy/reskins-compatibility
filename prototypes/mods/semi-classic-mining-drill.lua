@@ -17,7 +17,7 @@ local MiningDrillElectricTall = require("__reskins-assets-api__.assets.assorted.
 if not mods["semi-classic-mining-drill"] then
 	return
 end
-if not (mods["reskins-bobs"] and mods["bobmining"]) then
+if not mods["bobmining"] then
 	return
 end
 

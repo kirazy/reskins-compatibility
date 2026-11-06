@@ -3,14 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
-if not mods["aai-loaders"] then
-	return
-end
-if not (mods["reskins-bobs"] and mods["boblogistics"]) then
-	return
-end
-
 local _framework = {
 	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),
@@ -18,6 +10,9 @@ local _framework = {
 local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
 local is_modern_using_aai_graphics = _framework.settings.get_value("mdrn-use-aai-graphics") == true
+
+-- The loaders of AAI Loaders are tinted when Artisanal Reskins: Bob's Mods and Bob's Logistics are loaded.
+local is_tinting_aai_loaders = mods["reskins-bobs"] ~= nil and mods["boblogistics"] ~= nil
 
 local loaders = {
 	["aai-basic-loader"] = { tier = 0 },
@@ -86,6 +81,9 @@ end
 
 for name, map in pairs(loaders) do
 	if name:find("mdrn") and not is_modern_using_aai_graphics then
+		goto continue
+	end
+	if name:find("^aai%-") and not is_tinting_aai_loaders then
 		goto continue
 	end
 

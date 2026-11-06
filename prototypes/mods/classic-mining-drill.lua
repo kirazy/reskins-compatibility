@@ -11,7 +11,6 @@ local _assets = {
 }
 
 local Applicators = require("__reskins-assets-api__.api.applicators")
-local ElectricMiningDrillExplosion = require("__reskins-assets-api__.assets.base.explosions.electric-mining-drill")
 local MiningDrillElectricOriginal =
 	require("__reskins-assets-api__.assets.assorted.entities.mining-drill-electric-original")
 
@@ -19,7 +18,7 @@ local MiningDrillElectricOriginal =
 if not mods["classic-mining-drill"] then
 	return
 end
-if not (mods["reskins-bobs"] and mods["bobmining"]) then
+if not mods["bobmining"] then
 	return
 end
 
@@ -81,12 +80,6 @@ for name, options in pairs(entities) do
 		animation_speed = speed,
 	})
 	Applicators.apply_sprite_set(entity, sprite_set)
-
-	Applicators.apply_corpse_and_explosion(entity, {
-		dying_explosion = ElectricMiningDrillExplosion.get_explosion({
-			tints = { ["electric-mining-drill-long-metal-particle-medium"] = tint },
-		}),
-	})
 
 	local icon_assignment
 	if options.is_area_drill then

@@ -12,9 +12,6 @@ local RefugiumPuffer = require("__reskins-assets-api__.assets.angels.entities.bi
 if not mods["extendedangels"] then
 	return
 end
-if not (mods["reskins-angels"] and mods["angelsbioprocessing"]) then
-	return
-end
 
 local entities = {
 	["angels-bio-refugium-puffer"] = { tier = 1, prog_tier = 3 },

@@ -12,19 +12,12 @@ local _framework = {
 }
 
 local NuclearPower = require("__reskins-assets-api__.assets.base.technologies.nuclear-power")
+local ReactorArtwork = require("prototypes.mods.realisticreactorglow.reactor-artwork")
 
 -- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
 end
-if not mods["reskins-bobs"] then
-	return
-end
-if not _framework.settings.get_value("bobmods-power-nuclear") then
-	return
-end
-
-local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
 
 ---@type NuclearReactorGlowColor
 local glow_color = "blue"
@@ -40,22 +33,16 @@ local material_tiers = {
 
 local technologies = {
 	["nuclear-power"] = {
-		tier = 1,
-		prog_tier = 3,
+		reactor = "nuclear-reactor",
 		material = material_tiers[1],
-		tint = nuclear_reactors["nuclear-reactor"].tint,
 	},
 	["bob-nuclear-power-2"] = {
-		tier = 2,
-		prog_tier = 4,
+		reactor = "bob-nuclear-reactor-2",
 		material = material_tiers[2],
-		tint = nuclear_reactors["bob-nuclear-reactor-2"].tint,
 	},
 	["bob-nuclear-power-3"] = {
-		tier = 3,
-		prog_tier = 5,
+		reactor = "bob-nuclear-reactor-3",
 		material = material_tiers[3],
-		tint = nuclear_reactors["bob-nuclear-reactor-3"].tint,
 	},
 }
 
@@ -63,13 +50,18 @@ local technologies = {
 local definitions = {}
 
 for name, options in pairs(technologies) do
-	definitions[name] = {
-		composition = NuclearPower.get_realistic_icon_composition({
-			glow_color = glow_color,
-			material = options.material,
-			tint = options.tint or _framework.tiers.get_tint(_framework.tiers.get_tier(options)),
-		}),
-	}
+	local reactor = data.raw.reactor[options.reactor]
+	local tint = reactor and ReactorArtwork.get_reskins_tint(reactor)
+
+	if tint then
+		definitions[name] = {
+			composition = NuclearPower.get_realistic_icon_composition({
+				glow_color = glow_color,
+				material = options.material,
+				tint = tint,
+			}),
+		}
+	end
 end
 
 _framework.tiers.assign_icons_with_tier_labels("technology", definitions)
