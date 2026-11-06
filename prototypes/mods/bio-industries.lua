@@ -13,9 +13,6 @@ if not mods["Bio_Industries_2"] then
 end
 
 -- FIXME: Handle the graphics overhaul when it lands
-if helpers.compare_versions(mods["Bio_Industries_2"], "1.2.0") >= 0 then
-	return
-end
 
 local _framework = {
 	settings = require("__reskins-framework__.api.settings"),
