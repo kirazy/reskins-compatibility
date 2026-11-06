@@ -20,9 +20,9 @@ local actions = require("__black-rubber-belts-remastered__.code.functions")
 -- Black Rubber Belts styles every belt from these startup settings.
 local is_using_alternate_bases = _framework.settings.get_value("rail-style") == "ir3-alt"
 local is_using_colored_rails = _framework.settings.get_value("rail-style") == "colored"
-local arrow_style = _framework.settings.get_value("arrow-style") --[[@as string]]
-local tier_style = _framework.settings.get_value("tier-style") --[[@as string]]
-local stripe_style = _framework.settings.get_value("stripe-style") --[[@as string]]
+local arrow_style = _framework.settings.get_value("arrow-style")
+local tier_style = _framework.settings.get_value("tier-style")
+local stripe_style = _framework.settings.get_value("stripe-style")
 local arrow_glow = _framework.settings.get_value("arrow-glow") == true
 local rail_glow = _framework.settings.get_value("rail-glow") == true
 local stripe_glow = _framework.settings.get_value("stripe-glow") == true

@@ -107,8 +107,10 @@ for name, map in pairs(loader_map) do
 	end
 
 	-- Replace the structure in each direction. The loader keeps its patches, corpse, and dying explosion.
-	local sprite_set =
-		VanillaLoader1x1.get_sprite_set({ tint = tint, belt_sprite = _defines.get_belt_sprites(entity.speed) })
+	local sprite_set = VanillaLoader1x1.get_sprite_set({
+		tint = tint,
+		belt_sprite = _defines.get_belt_sprites(entity.speed),
+	})
 	entity.structure.direction_in = sprite_set.set.structure.direction_in
 	entity.structure.direction_out = sprite_set.set.structure.direction_out
 

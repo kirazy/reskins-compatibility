@@ -1,3 +1,5 @@
+-- cspell: words beltbox
+
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
@@ -38,12 +40,11 @@ local function light_tint(tint)
 	return { r = (tint.r + white) / 2, g = (tint.g + white) / 2, b = (tint.b + white) / 2 }
 end
 
+---@return data.Color
 local function tweak_tint(tint)
 	local hsl_tint = _sprite_utils.colors.rgba_to_hsla(tint)
 	hsl_tint.s = (hsl_tint.s - 0.1 >= 0) and hsl_tint.s - 0.1 or 0
-	-- hsl_tint.l = (hsl_tint.l - 0.2 >= 0) and hsl_tint.l - 0.2 or 0
-
-	return _sprite_utils.colors.hsla_to_rgba(hsl_tint)
+	return _sprite_utils.colors.hsla_to_rgba(hsl_tint) --[[@as data.Color]]
 end
 
 for name, map in pairs(tier_map) do
