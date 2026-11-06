@@ -5,8 +5,8 @@
 
 ---@using data
 ---@using Reskins.Framework
+---@using Reskins.SpriteUtils
 
--- Check to see if reskinning needs to be done.
 if not mods["extendedangels"] then
 	return
 end
@@ -30,19 +30,16 @@ local function numbered(composition, tier)
 	}
 end
 
----Gets the icon of the tungsten carbide powder, with its picture variations.
----@return IconComposition
-local function tungsten_carbide()
+local function tungsten_carbide_powder()
 	return Powders.get_icon_composition({ material = "tungsten-carbide" })
 end
 
 _framework.tiers.assign_icons_with_tier_labels("item", {
-	["angels-powder-tungsten-carbide"] = { composition = tungsten_carbide() },
+	["angels-powder-tungsten-carbide"] = { composition = tungsten_carbide_powder() },
 })
 
--- Assign the recipes after the items they read.
 _framework.tiers.assign_icons_with_tier_labels("recipe", {
-	["angels-tungsten-carbide-smelting-1"] = numbered(tungsten_carbide(), 1),
-	["angels-tungsten-carbide-smelting-2"] = numbered(tungsten_carbide(), 2),
-	["angels-tungsten-carbide-smelting-3"] = numbered(tungsten_carbide(), 3),
+	["angels-tungsten-carbide-smelting-1"] = numbered(tungsten_carbide_powder(), 1),
+	["angels-tungsten-carbide-smelting-2"] = numbered(tungsten_carbide_powder(), 2),
+	["angels-tungsten-carbide-smelting-3"] = numbered(tungsten_carbide_powder(), 3),
 })

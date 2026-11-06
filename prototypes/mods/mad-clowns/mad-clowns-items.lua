@@ -7,7 +7,6 @@
 ---@using Reskins.SpriteUtils
 ---@using Reskins.Framework
 
--- Check to see if reskinning needs to be done.
 if
 	not (
 		mods["Clowns-AngelBob-Nuclear"]
@@ -31,7 +30,7 @@ local Plates = require("__reskins-assets-api__.assets.angels.items.plates")
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
 local ProcessedOres = require("__reskins-assets-api__.assets.assorted.items.processed-ores")
 
----Gets the definition of the icon of the given `composition` with the numeral of the given `tier`, drawn by Angel's
+---Gets the definition of the icon from the given `composition` with the numeral of the given `tier`, drawn by Angel's
 ---mods in the number tint of Angel's smelting.
 ---@param composition IconComposition The icon under the numeral.
 ---@param tier integer The number of the numeral.

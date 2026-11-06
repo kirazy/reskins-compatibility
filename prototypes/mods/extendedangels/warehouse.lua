@@ -12,7 +12,6 @@ local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 local Applicators = require("__reskins-assets-api__.api.applicators")
 local Warehouse = require("__reskins-assets-api__.assets.angels.entities.assorted.warehouse")
 
--- Check to see if reskinning needs to be done.
 if not mods["extendedangels"] then
 	return
 end
@@ -46,7 +45,6 @@ local entities = {
 	["angels-warehouse-storage-mk4"] = { tier = 4, prog_tier = 5, logistic_mode = "storage" },
 }
 
--- Reskin Extended Angels warehouses
 for name, options in pairs(entities) do
 	local type_name = options.logistic_mode and "logistic-container" or "container"
 
@@ -86,6 +84,5 @@ for name, options in pairs(entities) do
 	})
 	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
-	-- Label to skip to next iteration
 	::continue::
 end

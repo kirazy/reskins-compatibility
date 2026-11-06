@@ -12,9 +12,7 @@ local _framework = {
 local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
 local NuclearReactor = require("__reskins-assets-api__.assets.base.entities.nuclear-reactor")
-local ReactorArtwork = require("prototypes.mods.realisticreactorglow.reactor-artwork")
 
--- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
 end
@@ -42,7 +40,6 @@ for name, map in pairs(reactors) do
 		goto continue
 	end
 
-	-- Lights
 	entity.working_light_picture = {
 		filename = "__RealisticReactorGlow__/graphics/entity/nuclear-reactor/reactor-lights-color" .. light_color .. ".png",
 		blend_mode = "additive",
@@ -63,7 +60,6 @@ for name, map in pairs(reactors) do
 	entity.default_fuel_glow_color = nil
 	entity.use_fuel_glow_color = nil
 
-	-- Modify the icon
 	local tier = _framework.tiers.get_tier(map)
 	local composition = NuclearReactor.get_realistic_icon_composition({
 		glow_color = glow_color,

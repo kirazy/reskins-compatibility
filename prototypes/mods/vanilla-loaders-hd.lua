@@ -3,7 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
 if not mods["vanilla-loaders-hd"] then
 	return
 end
@@ -27,7 +26,6 @@ local tier_map = {
 }
 
 for name, map in pairs(tier_map) do
-	---@type data.LoaderPrototype
 	local entity = data.raw["loader"][name]
 	if not entity then
 		goto continue

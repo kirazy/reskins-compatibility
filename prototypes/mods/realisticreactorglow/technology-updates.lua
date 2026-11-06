@@ -12,9 +12,7 @@ local _framework = {
 }
 
 local NuclearPower = require("__reskins-assets-api__.assets.base.technologies.nuclear-power")
-local ReactorArtwork = require("prototypes.mods.realisticreactorglow.reactor-artwork")
 
--- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
 end

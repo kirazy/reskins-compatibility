@@ -1,3 +1,5 @@
+-- cspell: words Electrolysers bobchem bobelectro bobmetal bobmulti chemplant
+
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
@@ -7,7 +9,6 @@
 ---@using Reskins.Framework
 ---@using Reskins.SpriteUtils
 
--- Check for mini-machines
 if not mods["mini-machines"] then
 	return
 end
@@ -29,7 +30,6 @@ local OilRefineryTechnology = require("__reskins-assets-api__.assets.bobs.techno
 local RadarTechnology = require("__reskins-assets-api__.assets.bobs.technologies.radar")
 local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.technologies.storage-tank")
 
--- Setup technologies table
 local technology_source_mapping = {}
 
 ---Defines the technology icon of a miniature machine technology that is taken from a technology icon catalog.
@@ -43,9 +43,7 @@ local technology_source_mapping = {}
 ---The progression tier of the technology icon, if any.
 ---@field prog_tier? Tier
 
----The technology icon of each miniature machine technology that takes its icon from a technology icon catalog, by the
----name of the technology.
----@type table<string, MiniTechnologyIconParameters>
+---@type table<TechnologyID, MiniTechnologyIconParameters>
 local technology_icons = {}
 
 ---Maps a standard-sized prototype to a miniature-sized prototype.
@@ -58,11 +56,15 @@ local technology_icons = {}
 ---The progression tier of the source prototype, if any.
 ---@field prog_tier? Tier
 
----@type { [string]: MiniMachineParameters }
+---@type table<EntityID, MiniMachineParameters>
 local mini_machine_maps = {}
 
 ---The fields of a source prototype that hold its graphics.
-local GRAPHICS_FIELDS = { "graphics_set", "wet_mining_graphics_set", "pictures" }
+local GRAPHICS_FIELDS = {
+	"graphics_set",
+	"wet_mining_graphics_set",
+	"pictures",
+}
 
 ---Indicates whether the given table, or a table in it, has a `filename` or `filenames` field that names a file of an
 ---Artisanal Reskins mod.

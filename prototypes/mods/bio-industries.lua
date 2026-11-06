@@ -1,3 +1,5 @@
+-- cspell: words pipecoverspictures
+
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
@@ -5,7 +7,6 @@
 
 ---@using Reskins.Library
 
--- Check to see if reskinning needs to be done.
 if not mods["Bio_Industries_2"] then
 	return
 end
@@ -15,13 +16,9 @@ if reskins.lib.version.is_same_or_newer(mods["Bio_Industries_2"], "1.2.0") then
 	return
 end
 
----@type data.Vector
 local shift_upleft = { -8, -8 }
-
----@type data.Vector
 local shift_upright = { 8, -8 }
 
----@type double
 local scale = 0.5
 
 -- Bio Industries makes its own pellet coke when Angel's Petrochemical Processing does not provide it.
@@ -319,7 +316,6 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 			},
 		}
 
-		-- Reskin entities
 		entity.pictures.north.structure = {
 			layers = {
 				-- Base
@@ -503,7 +499,6 @@ if reskins.bobs and reskins.bobs.triggers.power.entities then
 			light_intensity_to_size_coefficient = 0,
 		}
 
-		-- Label to skip to next iteration
 		::continue::
 	end
 end

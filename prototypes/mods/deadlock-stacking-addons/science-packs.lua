@@ -6,7 +6,6 @@
 ---@using data
 ---@using Reskins.SpriteUtils
 
--- Check to see if reskinning needs to be done.
 if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end

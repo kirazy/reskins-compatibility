@@ -1,3 +1,5 @@
+-- cspell: words mdrn
+
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --

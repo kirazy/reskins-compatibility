@@ -3,7 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
 if not mods["black-rubber-belts-remastered"] then
 	return
 end
@@ -62,7 +61,6 @@ local function get_icon_layer(name, tint)
 	}
 end
 
--- Reskin entities
 for name, map in pairs(tier_map) do
 	---@type data.TransportBeltPrototype
 	local entity = data.raw[inputs.type][name]

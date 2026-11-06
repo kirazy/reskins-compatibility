@@ -1,3 +1,5 @@
+-- cspell: words mdrn
+
 -- Copyright (c) 2024 Kirazy
 -- Part of Artisanal Reskins: Compatibility
 --
@@ -70,7 +72,7 @@ local item_map = {
 	["mdrn-ultimate-loader"] = { tier = 5, base_item = "bob-ultimate-transport-belt" },
 }
 
----Gets the layers of the given `icons` that mark a variant of a loader of Loaders Modernized.
+---Gets the layers of the given `icons` that mark the variant of the loader from Loaders Modernized.
 ---@param icons? data.IconData[]
 ---@return data.IconData[]
 local function get_variant_marks(icons)
@@ -84,7 +86,6 @@ local function get_variant_marks(icons)
 	return marks
 end
 
--- Reskin entities
 for name, map in pairs(loader_map) do
 	if name:find("mdrn") and is_modern_using_aai_graphics then
 		goto continue
@@ -136,21 +137,17 @@ for name, _ in pairs(tier_map) do
 	end
 end
 
--- Reskin icons
 for name, map in pairs(item_map) do
 	if name:find("mdrn") and is_modern_using_aai_graphics then
 		goto continue
 	end
 
-	-- Fetch item
 	local item = data.raw["item"][name]
-
-	-- Check if item exists, if not, skip this iteration
 	if not item then
 		goto continue
 	end
 
-	-- The items have tier labels when the belts have tier labels.
+	-- Tier labels on belt-like items when set via the type directly are not caught and must be handled special.
 	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
 		tier = _framework.tiers.show_labels_on_belts and map.tier or 0,
 		name = name,
@@ -178,7 +175,6 @@ for name, map in pairs(item_map) do
 	::continue::
 end
 
--- Technologies
 local technology_map = {
 	-- Miniloader (Redux)
 	["hps__ml-bob-basic-miniloader"] = { tier = 0 },
@@ -197,13 +193,11 @@ local technology_map = {
 	["mdrn-ultimate-loader"] = { tier = 5 },
 }
 
--- Reskin technologies
 for name, map in pairs(technology_map) do
 	if name:find("mdrn") and is_modern_using_aai_graphics then
 		goto continue
 	end
 
-	-- Fetch technology
 	local technology = data.raw["technology"][name]
 	if not technology then
 		goto continue

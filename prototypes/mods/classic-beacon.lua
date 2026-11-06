@@ -11,7 +11,6 @@ local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 local Applicators = require("__reskins-assets-api__.api.applicators")
 local BeaconOriginal = require("__reskins-assets-api__.assets.assorted.entities.beacon-original")
 
--- Check to see if reskinning needs to be done.
 if not mods["classic-beacon"] then
 	return
 end
@@ -27,7 +26,6 @@ local entities = {
 
 local TYPE = "beacon"
 
--- Reskin entities, create and assign extra details
 for name, options in pairs(entities) do
 	---@type data.BeaconPrototype
 	local entity = data.raw[TYPE][name]
@@ -44,8 +42,8 @@ for name, options in pairs(entities) do
 	local tier = _framework.tiers.get_tier(options)
 	local tint = _framework.tiers.get_tint(tier)
 
-	-- Remove the module art styles of the beacon. The applicator keeps every art style that the sprite set does not
-	-- draw, and the classic beacon draws none.
+	-- Strip module art styles; the applicator retains any art style it does not own and the classic
+	-- beacon does not support art styles.
 	if entity.graphics_set then
 		entity.graphics_set.module_visualisations = nil
 	end

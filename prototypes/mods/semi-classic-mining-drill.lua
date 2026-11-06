@@ -13,7 +13,6 @@ local _assets = {
 local Applicators = require("__reskins-assets-api__.api.applicators")
 local MiningDrillElectricTall = require("__reskins-assets-api__.assets.assorted.entities.mining-drill-electric-tall")
 
--- Check to see if reskinning needs to be done.
 if not mods["semi-classic-mining-drill"] then
 	return
 end
@@ -54,7 +53,6 @@ table.sort(mining_speeds)
 local max_speed = mining_speeds[#mining_speeds] or 0
 local min_speed = mining_speeds[1] or 0
 
--- Reskin entities, create and assign extra details
 for name, options in pairs(entities) do
 	local entity = data.raw[TYPE][name]
 	if not entity then
@@ -64,7 +62,6 @@ for name, options in pairs(entities) do
 	local tier = _framework.tiers.get_tier(options)
 	local tint = _framework.tiers.get_tint(tier)
 
-	-- Calculate new animation playback speed
 	local speed
 	if max_speed - min_speed == 0 then
 		speed = entity.mining_speed

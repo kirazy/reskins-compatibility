@@ -5,7 +5,6 @@
 
 local PrototypeScaler = require("__reskins-assets-api__.api.prototype-scaler")
 
--- Check to see if reskinning needs to be done.
 if not mods["aai-industry"] then
 	return
 end
@@ -24,7 +23,6 @@ end
 -- Reskin the burner assembling machine in the appropriate style
 entity.graphics_set.animation = {
 	layers = {
-		-- aai-industry Base
 		{
 			filename = "__aai-industry__/graphics/entity/burner-assembling-machine/burner-assembling-machine.png",
 			priority = "high",
@@ -35,7 +33,6 @@ entity.graphics_set.animation = {
 			shift = util.by_pixel(0, 2),
 			scale = 0.5,
 		},
-		-- Shadow
 		{
 			filename = "__reskins-assets-assorted__/graphics/entity/assembling-machine-original/shadows/assembling-machine-0-shadow.png",
 			priority = "high",

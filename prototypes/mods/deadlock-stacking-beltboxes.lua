@@ -3,7 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Check to see if reskinning needs to be done.
 if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end
@@ -47,9 +46,7 @@ local function tweak_tint(tint)
 	return _sprite_utils.colors.hsla_to_rgba(hsl_tint)
 end
 
--- Reskin entities
 for name, map in pairs(tier_map) do
-	-- Determine type
 	local type_name = map.is_loader and "loader-1x1" or "furnace"
 
 	---@type data.FurnacePrototype|data.Loader1x1Prototype
@@ -59,8 +56,6 @@ for name, map in pairs(tier_map) do
 	end
 	local tint = tweak_tint(_framework.tiers.get_tint(map.tier))
 
-	-- Give the entity the dying explosion of the underground belt, with the small and the yellow medium metal particles
-	-- tinted.
 	Applicators.apply_corpse_and_explosion(entity, {
 		dying_explosion = UndergroundBeltExplosion.get_explosion({
 			tints = {
@@ -75,11 +70,10 @@ for name, map in pairs(tier_map) do
 	if map.is_loader then
 		---@cast entity data.Loader1x1Prototype
 
-		-- Retint the mask
 		entity.structure.direction_in.sheets[3].tint = tint
 		entity.structure.direction_out.sheets[3].tint = tint
 
-		-- Retint the masks of the frozen patches, if any.
+		-- The third sheet of each frozen patch is a copy of the mask, which Deadlock's loaders draw over the ice.
 		if entity.structure.frozen_patch_in then
 			entity.structure.frozen_patch_in.sheets[3].tint = tint
 			entity.structure.frozen_patch_out.sheets[3].tint = tint
@@ -101,12 +95,11 @@ for name, map in pairs(tier_map) do
 	else
 		---@cast entity data.FurnacePrototype
 
-		-- Retint the mask
 		entity.graphics_set.animation.layers[2].tint = tint
 		entity.graphics_set.working_visualisations[1].animation.tint = light_tint(tint)
 		entity.graphics_set.working_visualisations[1].light.color = light_tint(tint)
 
-		-- Retint the mask of the frozen patch, if any.
+		-- The second layer of the frozen patch is a copy of the mask, which Deadlock's beltboxes draw over the ice.
 		if entity.graphics_set.frozen_patch then
 			entity.graphics_set.frozen_patch.layers[2].tint = tint
 		end
@@ -126,8 +119,8 @@ for name, map in pairs(tier_map) do
 		}
 	end
 
-	-- The tier labels of the loaders and the beltboxes follow the setting for tier labels on belts. The beltboxes are
-	-- furnaces, to which the framework does not apply that setting.
+	-- The tier labels of the loaders and the beltboxes follow the setting for tier labels on belts.
+	-- The beltboxes are furnaces, to which the framework does not apply that setting.
 	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
 		tier = _framework.tiers.show_labels_on_belts and map.tier or 0,
 		name = entity.name,
@@ -139,7 +132,6 @@ for name, map in pairs(tier_map) do
 	::continue::
 end
 
--- Technology
 local tech_map = {
 	["bob-basic-transport-belt-beltbox"] = 0,
 	["deadlock-stacking-1"] = 1,
@@ -149,7 +141,6 @@ local tech_map = {
 	["deadlock-stacking-5"] = 5,
 }
 
--- Reskin technologies
 for name, tier in pairs(tech_map) do
 	if data.raw.technology[name] then
 		_sprite_utils.icons.apply_icon_assignment({
