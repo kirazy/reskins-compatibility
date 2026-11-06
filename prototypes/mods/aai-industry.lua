@@ -3,6 +3,7 @@
 --
 -- See LICENSE in the project directory for license information.
 
+local EnergySources = require("__reskins-assets-api__.api.energy-sources")
 local PrototypeScaler = require("__reskins-assets-api__.api.prototype-scaler")
 
 if not mods["aai-industry"] then
@@ -65,12 +66,7 @@ entity.graphics_set.working_visualisations = {
 	},
 }
 
--- Handle ambient-light
-entity.energy_source.light_flicker = {
-	color = { 0, 0, 0 },
-	minimum_light_size = 0,
-	light_intensity_to_size_coefficient = 0,
-}
+EnergySources.zero_out_light_flicker(entity.energy_source)
 
 -- Tweak smoke
 entity.energy_source.smoke = {

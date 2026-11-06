@@ -11,6 +11,7 @@ local _framework = {
 }
 local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
+local EnergySources = require("__reskins-assets-api__.api.energy-sources")
 local NuclearReactor = require("__reskins-assets-api__.assets.base.entities.nuclear-reactor")
 
 if not mods["RealisticReactorGlow"] then
@@ -47,12 +48,7 @@ for name, reactor in pairs(nuclear_reactors) do
 		shift = { -0.03125, -0.1875 },
 	}
 
-	-- Handle ambient-light
-	entity.energy_source.light_flicker = {
-		color = { 0, 0, 0 },
-		minimum_light_size = 0,
-		light_intensity_to_size_coefficient = 0,
-	}
+	EnergySources.zero_out_light_flicker(entity.energy_source)
 
 	entity.default_fuel_glow_color = nil
 	entity.use_fuel_glow_color = nil
