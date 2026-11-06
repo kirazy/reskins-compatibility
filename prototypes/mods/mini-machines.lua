@@ -13,7 +13,10 @@ if not (mods["mini-machines"] or mods["micro-machines"]) then
 	return
 end
 
-local _assets = { icons = require("__reskins-assets-api__.api.icons") }
+local _assets = {
+	defines = require("__reskins-assets-api__.api.defines"),
+	icons = require("__reskins-assets-api__.api.icons"),
+}
 local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 local _sprite_utils = {
 	icons = require("__reskins-sprite-utils__.icons"),
@@ -21,6 +24,8 @@ local _sprite_utils = {
 }
 
 local IconComposition = require("__reskins-sprite-utils__.icon-composition")
+
+local Corpses = require("__reskins-assets-api__.api.corpses")
 
 local AssemblingMachineOriginal = require("__reskins-assets-api__.assets.assorted.entities.assembling-machine-original")
 local ChemicalPlantTechnology = require("__reskins-assets-api__.assets.bobs.technologies.chemical-plant")
@@ -127,6 +132,9 @@ local ASSEMBLY_FURNACES = {
 ---The prefix of the files for the overlays that Mini/Micro Machines Core Mod adds to the icons of the full-size
 ---machines.
 local CORE_MOD_OVERLAY_PREFIX = "__mini-micro-settings__/graphics/overlay/"
+
+---The folder of the artwork for the generic remnants from the base game.
+local GENERIC_REMNANTS_FOLDER = "__base__/graphics/entity/remnants/"
 
 ---The fields of a full-size machine that hold its graphics.
 local GRAPHICS_FIELDS = {
@@ -287,6 +295,49 @@ local function get_technology_icon_definition(content, size)
 	}
 end
 
+---Adds each file that the given table, or a table in it, names in a `filename` or `filenames` field to the given
+---`filenames`, in place.
+---@param graphics table
+---@param filenames string[]
+local function add_filenames(graphics, filenames)
+	for key, value in pairs(graphics) do
+		if key == "filename" and type(value) == "string" then
+			filenames[#filenames + 1] = value
+		elseif key == "filenames" and type(value) == "table" then
+			for _, filename in pairs(value) do
+				filenames[#filenames + 1] = filename
+			end
+		elseif type(value) == "table" then
+			add_filenames(value, filenames)
+		end
+	end
+end
+
+---Indicates whether the corpses of the given full-size `machine` draw only the artwork of the generic remnants from the
+---base game.
+---@param machine EntityWithHealthPrototype
+---@return boolean
+local function has_generic_remnants(machine)
+	local corpse_names = type(machine.corpse) == "table" and machine.corpse or { machine.corpse }
+
+	---@type string[]
+	local filenames = {}
+	for _, corpse_name in pairs(corpse_names) do
+		local corpse = data.raw["corpse"][corpse_name]
+		if corpse then
+			add_filenames(corpse, filenames)
+		end
+	end
+
+	for _, filename in pairs(filenames) do
+		if filename:find(GENERIC_REMNANTS_FOLDER, 1, true) ~= 1 then
+			return false
+		end
+	end
+
+	return #filenames > 0
+end
+
 ---Sets the corpse of the given `entity` to a copy of each corpse of the given full-size `machine`, rescaled by the
 ---given `scale`, in place. Each copy is added to `data.raw` under a name made from the name of `entity`, with the
 ---localised name of the remnants of `entity`.
@@ -397,9 +448,10 @@ for _, size in pairs(machine_sizes) do
 		full_size_machines[machine.name] = machine
 
 		local is_machine_reskinned = is_reskinned(machine)
-		local scale = entity.scale_value
-		if is_machine_reskinned and scale then
-			rescale_remnants(entity, machine, scale)
+		if is_machine_reskinned and has_generic_remnants(machine) then
+			Corpses.apply(entity, _assets.defines.generic_remnants)
+		elseif is_machine_reskinned and entity.scale_value then
+			rescale_remnants(entity, machine, entity.scale_value)
 		end
 
 		local composition = get_sized_icon_composition(machine, size)
