@@ -43,6 +43,15 @@ local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.techno
 ---The technology on which the technologies of the machines depend.
 ---@field basic_technology TechnologyID
 
+---Defines the fields that Mini Machines and Micro Machines set on each machine they make.
+---@class MiniMicroMachinePrototype : EntityWithHealthPrototype
+---The name of the full-size machine from which the machine is made.
+---@field base_machine EntityID
+---The name of the technology from which the technology of the machine is copied, if any.
+---@field base_tech? TechnologyID
+---The ratio of the tile size of the machine to the tile size of its full-size machine, if any.
+---@field scale_value? double
+
 ---The sizes of the machines that Mini Machines and Micro Machines make, under the name of each size.
 ---@type table<"mini"|"micro", MachineSize>
 local machine_sizes = {
@@ -220,16 +229,16 @@ end
 
 ---Gets the technology that unlocks the full-size machine of the given `entity`, as Mini Machines or Micro Machines
 ---records it, if any.
----@param entity EntityPrototype A machine that Mini Machines or Micro Machines makes.
+---@param entity MiniMicroMachinePrototype
 ---@return TechnologyPrototype?
 local function get_full_size_technology(entity)
-	local name = rawget(entity, "base_tech")
+	local name = entity.base_tech
 
 	-- Micro Machines copies the technology of a micro machine from that of its mini machine, if one exists.
 	local mini_type = name and machine_sizes.mini.machines[name]
 	if mini_type then
-		local mini = data.raw[mini_type][name]
-		name = mini and rawget(mini, "base_tech")
+		local mini = data.raw[mini_type][name] --[[@as MiniMicroMachinePrototype?]]
+		name = mini and mini.base_tech
 	end
 
 	-- The basic technology is recorded for a full-size machine that no technology unlocks.
@@ -245,7 +254,7 @@ end
 ---Gets the content of the technology icon for the given `entity` made from the given full-size `machine`, which is the
 ---catalog icon for `machine` when `machine` is reskinned, the icon of the technology that unlocks `machine`, or the
 ---icon of `machine`, in that order of preference.
----@param entity EntityPrototype
+---@param entity MiniMicroMachinePrototype
 ---@param machine EntityPrototype
 ---@return IconCompositionContent
 local function get_technology_icon_content(entity, machine)
@@ -281,7 +290,7 @@ end
 ---Sets the corpse of the given `entity` to a copy of each corpse of the given full-size `machine`, rescaled by the
 ---given `scale`, in place. Each copy is added to `data.raw` under a name made from the name of `entity`, with the
 ---localised name of the remnants of `entity`.
----@param entity EntityWithHealthPrototype
+---@param entity MiniMicroMachinePrototype
 ---@param machine EntityWithHealthPrototype
 ---@param scale double
 local function rescale_remnants(entity, machine, scale)
@@ -379,8 +388,8 @@ local technology_icon_definitions = {}
 
 for _, size in pairs(machine_sizes) do
 	for name, type_name in pairs(size.machines) do
-		local entity = data.raw[type_name][name] --[[@as EntityWithHealthPrototype?]]
-		local machine = entity and data.raw[type_name][rawget(entity, "base_machine")] --[[@as EntityWithHealthPrototype?]]
+		local entity = data.raw[type_name][name] --[[@as MiniMicroMachinePrototype?]]
+		local machine = entity and data.raw[type_name][entity.base_machine] --[[@as EntityWithHealthPrototype?]]
 		if not (entity and machine) then
 			goto continue
 		end
@@ -388,7 +397,7 @@ for _, size in pairs(machine_sizes) do
 		full_size_machines[machine.name] = machine
 
 		local is_machine_reskinned = is_reskinned(machine)
-		local scale = rawget(entity, "scale_value")
+		local scale = entity.scale_value
 		if is_machine_reskinned and scale then
 			rescale_remnants(entity, machine, scale)
 		end
