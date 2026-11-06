@@ -17,11 +17,11 @@ if not mods["RealisticReactorGlow"] then
 	return
 end
 
-local reactors = {
-	["nuclear-reactor"] = { tier = 1, prog_tier = 3, material = "aluminum-invar" },
-	["bob-nuclear-reactor-2"] = { tier = 2, prog_tier = 4, material = "silver-titanium" },
-	["bob-nuclear-reactor-3"] = { tier = 3, prog_tier = 5, material = "gold-copper" },
-}
+if not (mods["reskins-bobs"] and _framework.settings.get_value("bobmods-power-nuclear")) then
+	return
+end
+
+local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
 
 local light_color = ""
 ---@type NuclearReactorGlowColor
@@ -31,12 +31,9 @@ if _framework.settings.get_value("RealisticReactorGlow-cyan") then
 	glow_color = "cyan"
 end
 
--- Fix lighting
-for name, map in pairs(reactors) do
+for name, reactor in pairs(nuclear_reactors) do
 	local entity = data.raw.reactor[name]
-	local tint = entity and ReactorArtwork.get_reskins_tint(entity)
-
-	if not tint then
+	if not entity then
 		goto continue
 	end
 
@@ -60,11 +57,11 @@ for name, map in pairs(reactors) do
 	entity.default_fuel_glow_color = nil
 	entity.use_fuel_glow_color = nil
 
-	local tier = _framework.tiers.get_tier(map)
+	local tier = _framework.tiers.get_tier(reactor)
 	local composition = NuclearReactor.get_realistic_icon_composition({
 		glow_color = glow_color,
-		material = map.material,
-		tint = tint,
+		material = reactor.material,
+		tint = reactor.tint,
 	})
 	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
 		tier = tier,

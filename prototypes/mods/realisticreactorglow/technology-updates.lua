@@ -17,49 +17,37 @@ if not mods["RealisticReactorGlow"] then
 	return
 end
 
+if not (mods["reskins-bobs"] and _framework.settings.get_value("bobmods-power-nuclear")) then
+	return
+end
+
+local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
+
 ---@type NuclearReactorGlowColor
 local glow_color = "blue"
 if _framework.settings.get_value("RealisticReactorGlow-cyan") then
 	glow_color = "cyan"
 end
 
-local material_tiers = {
-	"aluminum-invar",
-	"silver-titanium",
-	"gold-copper",
-}
-
 local technologies = {
-	["nuclear-power"] = {
-		reactor = "nuclear-reactor",
-		material = material_tiers[1],
-	},
-	["bob-nuclear-power-2"] = {
-		reactor = "bob-nuclear-reactor-2",
-		material = material_tiers[2],
-	},
-	["bob-nuclear-power-3"] = {
-		reactor = "bob-nuclear-reactor-3",
-		material = material_tiers[3],
-	},
+	["nuclear-power"] = "nuclear-reactor",
+	["bob-nuclear-power-2"] = "bob-nuclear-reactor-2",
+	["bob-nuclear-power-3"] = "bob-nuclear-reactor-3",
 }
 
 ---@type table<string, TieredIconDefinition>
 local definitions = {}
 
-for name, options in pairs(technologies) do
-	local reactor = data.raw.reactor[options.reactor]
-	local tint = reactor and ReactorArtwork.get_reskins_tint(reactor)
+for name, reactor_name in pairs(technologies) do
+	local reactor = nuclear_reactors[reactor_name]
 
-	if tint then
-		definitions[name] = {
-			composition = NuclearPower.get_realistic_icon_composition({
-				glow_color = glow_color,
-				material = options.material,
-				tint = tint,
-			}),
-		}
-	end
+	definitions[name] = {
+		composition = NuclearPower.get_realistic_icon_composition({
+			glow_color = glow_color,
+			material = reactor.material,
+			tint = reactor.tint,
+		}),
+	}
 end
 
 _framework.tiers.assign_icons_with_tier_labels("technology", definitions)
