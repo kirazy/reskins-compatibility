@@ -19,7 +19,7 @@ function ReactorArtwork.get_reskins_tint(reactor)
 		return nil
 	end
 
-	for _, layer in ipairs(layers) do
+	for _, layer in pairs(layers) do
 		if layer.tint and layer.filename and layer.filename:find("^__reskins%-") then
 			return layer.tint
 		end
