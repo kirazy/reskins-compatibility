@@ -3,15 +3,15 @@ Version: 2.5.0
 Date: ????
   Changes:
     - Migrated some entity sprites to use the Artisanal Reskins: Assets API
-    - The Extended Angel's bioprocessing buildings and warehouses now take their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
+    - The Extended Angel's bioprocessing buildings and warehouses now get their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
     - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
     - Removed support for Angel's Extended Smelting and Compression, Deadlock's Crating Machine, Intermodal Containers, Loader Redux, Miniloader, Offshore P.U.M.P.S. and ground water, and Spaceblock, which are not available for Factorio 2.1
-    - The icons of the Mad Clown's items, recipes, and technologies, of the Extended Angel's tungsten carbide and warehouse technologies, and of the nuclear reactors and nuclear power technologies of Realistic Reactor Glow now come from the Artisanal Reskins: Assets API
+    - The icons of the Mad Clown's items, recipes, and technologies, of the Extended Angel's tungsten carbide and warehouse technologies, and of the nuclear reactors and nuclear power technologies with Realistic Reactor Glow now come from the Artisanal Reskins: Assets API
     - Replaced the support for Deadlock's Stacking Beltboxes & Compact Loaders and Black Rubber Belts with support for their continuations for Factorio 2.1, Deadlock's Stacking Beltboxes & Compact Loaders Continued and Black Rubber Belts - Remastered
     - The tier labels of the loaders and beltboxes now follow the "Show tier labels on belts" setting of Artisanal Reskins: Framework, which replaces the "Belt tier labels" setting of Artisanal Reskins: Bob's Mods
     - The reskins of the loaders, beltboxes, Black Rubber Belts, stacked items and science packs, Classic Beacon, Classic Mining Drill, Semi-Classic Mining Drill, the AAI Industry burner assembling machine, the reactors of Realistic Reactor Glow, and Mini Machines now use Artisanal Reskins: Framework, Sprite Utils, and Assets API in place of Artisanal Reskins: Library, and every reskin except that of Bio Industries now assigns its icons through Artisanal Reskins: Sprite Utils
     - The reskins no longer depend on whether Artisanal Reskins: Bob's Mods or Artisanal Reskins: Angel's Mods is loaded or on their per-mod settings, and the nuclear reactors of Realistic Reactor Glow follow the colors of the reactors they draw
-    - The loaders, beltboxes, and Black Rubber Belts now take the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
+    - The loaders, beltboxes, and Black Rubber Belts now use the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
     - Mini Machines now reskins each miniature machine whose full-size machine is reskinned, and the item icons of the miniature machines and of the mini recycler are the icons of their full-size machines, made smaller
     - The loaders of AAI Loaders, and the loaders of Loaders Modernized that draw the sprites of AAI Loaders, are now tinted and tier-labeled without Bob's mods; the split lane, fill, and chute variants of Loaders Modernized keep their own colors
     - The classic beacon now always draws the high-resolution artwork, and no longer reads the high-resolution setting of Classic Beacon
