@@ -32,8 +32,8 @@ local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.techno
 
 ---Defines a size of the machines that Mini Machines and Micro Machines make from full-size machines.
 ---@class MachineSize
----The name of the global table that lists the machines of the size, with the type name of each machine under its name.
----@field machines_global string
+---The machines of the size, with the type name of each machine under its name.
+---@field machines table<EntityID, string>
 ---The scale at which the icon of a machine draws the icon of its full-size machine.
 ---@field scale double
 ---The overlay on the icons of the machines.
@@ -47,23 +47,22 @@ local StorageTankTechnology = require("__reskins-assets-api__.assets.bobs.techno
 ---@type table<"mini"|"micro", MachineSize>
 local machine_sizes = {
 	mini = {
-		machines_global = "added_mini_machines",
+		---@diagnostic disable-next-line: undefined-global
+		machines = (added_mini_machines or {}) --[[@as table<EntityID, string>]],
 		scale = 0.8,
 		symbol_overlay = _assets.icons.get_minified_symbol_overlay(),
 		technology_overlay = _assets.icons.get_minified_technology_overlay(),
 		basic_technology = "mini-basic",
 	},
 	micro = {
-		machines_global = "added_micro_machines",
+		---@diagnostic disable-next-line: undefined-global
+		machines = (added_micro_machines or {}) --[[@as table<EntityID, string>]],
 		scale = 0.6,
 		symbol_overlay = _assets.icons.get_twice_minified_symbol_overlay(),
 		technology_overlay = _assets.icons.get_twice_minified_technology_overlay(),
 		basic_technology = "micro-basic",
 	},
 }
-
----The mini machines that Mini Machines makes, with the type name of each machine under its name.
-local mini_machines = rawget(_G, machine_sizes.mini.machines_global) or {} --[[@as table<EntityID, string>]]
 
 ---Defines the technology icon from a technology icon catalog for the technologies of the machines made from a
 ---full-size machine.
@@ -227,7 +226,7 @@ local function get_full_size_technology(entity)
 	local name = rawget(entity, "base_tech")
 
 	-- Micro Machines copies the technology of a micro machine from that of its mini machine, if one exists.
-	local mini_type = name and mini_machines[name]
+	local mini_type = name and machine_sizes.mini.machines[name]
 	if mini_type then
 		local mini = data.raw[mini_type][name]
 		name = mini and rawget(mini, "base_tech")
@@ -379,9 +378,7 @@ local full_size_machines = {}
 local technology_icon_definitions = {}
 
 for _, size in pairs(machine_sizes) do
-	local machines = rawget(_G, size.machines_global) or {} --[[@as table<EntityID, string>]]
-
-	for name, type_name in pairs(machines) do
+	for name, type_name in pairs(size.machines) do
 		local entity = data.raw[type_name][name] --[[@as EntityWithHealthPrototype?]]
 		local machine = entity and data.raw[type_name][rawget(entity, "base_machine")] --[[@as EntityWithHealthPrototype?]]
 		if not (entity and machine) then
