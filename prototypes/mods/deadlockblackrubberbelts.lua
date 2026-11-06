@@ -8,6 +8,7 @@ if not mods["black-rubber-belts-remastered"] then
 end
 
 local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),
 }
 local _sprite_utils = {
@@ -17,14 +18,14 @@ local _sprite_utils = {
 local actions = require("__black-rubber-belts-remastered__.code.functions")
 
 -- Black Rubber Belts styles every belt from these startup settings.
-local is_using_alternate_bases = settings.startup["rail-style"].value == "ir3-alt"
-local is_using_colored_rails = settings.startup["rail-style"].value == "colored"
-local arrow_style = settings.startup["arrow-style"].value
-local tier_style = settings.startup["tier-style"].value
-local stripe_style = settings.startup["stripe-style"].value
-local arrow_glow = settings.startup["arrow-glow"].value
-local rail_glow = settings.startup["rail-glow"].value
-local stripe_glow = settings.startup["stripe-glow"].value
+local is_using_alternate_bases = _framework.settings.get_value("rail-style") == "ir3-alt"
+local is_using_colored_rails = _framework.settings.get_value("rail-style") == "colored"
+local arrow_style = _framework.settings.get_value("arrow-style") --[[@as string]]
+local tier_style = _framework.settings.get_value("tier-style") --[[@as string]]
+local stripe_style = _framework.settings.get_value("stripe-style") --[[@as string]]
+local arrow_glow = _framework.settings.get_value("arrow-glow") == true
+local rail_glow = _framework.settings.get_value("rail-glow") == true
+local stripe_glow = _framework.settings.get_value("stripe-glow") == true
 
 -- The arrows are drawn in a dark tint over the stripes of the "stripe-thick" and "full-paint" stripe styles.
 ---@type data.Color?
