@@ -9,9 +9,15 @@ Date: ????
     - The icons of the Mad Clown's items, recipes, and technologies, of the Extended Angel's tungsten carbide and warehouse technologies, and of the nuclear power technologies of Realistic Reactor Glow now come from the Artisanal Reskins: Assets API
     - Replaced the support for Deadlock's Stacking Beltboxes & Compact Loaders and Black Rubber Belts with support for their continuations for Factorio 2.1, Deadlock's Stacking Beltboxes & Compact Loaders Continued and Black Rubber Belts - Remastered
     - The tier labels of the loaders and beltboxes now follow the "Show tier labels on belts" setting of Artisanal Reskins: Framework, which replaces the "Belt tier labels" setting of Artisanal Reskins: Bob's Mods
+    - The reskins of the loaders, beltboxes, Black Rubber Belts, stacked items and science packs, Classic Beacon, Classic Mining Drill, Semi-Classic Mining Drill, the AAI Industry burner assembling machine, the reactors of Realistic Reactor Glow, and Mini Machines now use Artisanal Reskins: Framework, Sprite Utils, and Assets API in place of Artisanal Reskins: Library, and every reskin except that of Bio Industries now assigns its icons through Artisanal Reskins: Sprite Utils
+    - The reskins now apply when Artisanal Reskins: Bob's Mods or Artisanal Reskins: Angel's Mods is loaded with the mods that it reskins, and no longer follow the per-mod settings of those mods
+    - The loaders, beltboxes, and Black Rubber Belts now take the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
+    - Mini Machines now reskins each miniature machine whose full-size machine is reskinned, and the icons of its technologies and of the mini recycler now come from the Artisanal Reskins: Assets API
+    - The classic beacon now always draws the high-resolution artwork, and no longer reads the high-resolution setting of Classic Beacon
   Bugfixes:
     - Fixed that the loaders of Miniloader (Redux), the turbo miniloader, and the chute loader and the split lane and fill variants of Loaders Modernized were not reskinned, and that the turbo loader of Loaders Modernized had no belt
     - Fixed that the processed ores, pellets, powders, ingots, and molten magnesium of Mad Clown's Processing were not reskinned
+    - Fixed that the area drills of Classic Mining Drill all drew their belt at the speed of the last area drill, and that their wet mining graphics lost the fluid window and fluid of Classic Mining Drill
     - Fixed that the icons of the Mini Machines items referred to files that do not exist or showed the artwork of the full-size machines, and that the miniature refineries made from the oil refineries of Angel's Petrochemical Processing and their technologies were not reskinned
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0

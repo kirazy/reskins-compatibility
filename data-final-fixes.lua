@@ -3,9 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Final set of overrides
-require("prototypes.functions.overrides-final-fixes")
-
 -- Bio Industries does a lot of work on icons in data-final-fixes
 require("prototypes.mods.bio-industries")
 

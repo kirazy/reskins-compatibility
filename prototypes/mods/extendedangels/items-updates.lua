@@ -10,19 +10,20 @@
 if not mods["extendedangels"] then
 	return
 end
-if not (reskins.angels and reskins.angels.triggers.smelting.items) then
+if not (mods["reskins-angels"] and mods["angelssmelting"]) then
 	return
 end
 
 local _framework = { tiers = require("__reskins-framework__.api.tiers") }
 
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
+local get_angels_numeral = require("__reskins-compatibility__.prototypes.functions.angels-numerals")
 
 ---Gets the numeral of the given `tier`, in the style of Angel's smelting.
 ---@param tier integer The number of the numeral.
 ---@return IconData[]
 local function numeral(tier)
-	return reskins.angels.num_tier(tier, "smelting")
+	return get_angels_numeral(tier, "smelting")
 end
 
 ---Gets the icon of the tungsten carbide powder, with its picture variations.

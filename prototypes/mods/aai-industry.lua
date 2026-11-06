@@ -3,11 +3,13 @@
 --
 -- See LICENSE in the project directory for license information.
 
+local _sprites = require("__reskins-sprite-utils__.sprites")
+
 -- Check to see if reskinning needs to be done.
 if not mods["aai-industry"] then
 	return
 end
-if not (reskins.bobs and reskins.bobs.triggers.assembly.entities) then
+if not (mods["reskins-bobs"] and mods["bobassembly"]) then
 	return
 end
 
@@ -35,7 +37,7 @@ entity.graphics_set.animation = {
 		},
 		-- Shadow
 		{
-			filename = "__reskins-bobs__/graphics/entity/assembly/assembling-machine/shadows/assembling-machine-0-shadow.png",
+			filename = "__reskins-assets-assorted__/graphics/entity/assembling-machine-original/shadows/assembling-machine-0-shadow.png",
 			priority = "high",
 			width = 264,
 			height = 165,
@@ -84,8 +86,10 @@ entity.energy_source.smoke = {
 }
 
 -- Rescale as needed
-if reskins.bobs.triggers.assembly.burner_assembling_machine_is_small then
-	reskins.lib.prototypes.rescale_prototype(entity.graphics_set.animation, 2 / 3)
-	reskins.lib.prototypes.rescale_prototype(entity.graphics_set.working_visualisations, 2 / 3)
-	reskins.lib.prototypes.rescale_prototype(entity.energy_source.smoke, 2 / 3)
+-- aai-industry is optionally dependent on angelsrefining and will perform final edits to the burner assembling machine
+local burner_setting = settings.startup["bobmods-assembly-burner"]
+if burner_setting and burner_setting.value and not mods["angelsrefining"] then
+	_sprites.rescale_prototype(entity.graphics_set.animation, 2 / 3)
+	_sprites.rescale_prototype(entity.graphics_set.working_visualisations, 2 / 3)
+	_sprites.rescale_prototype(entity.energy_source.smoke, 2 / 3)
 end

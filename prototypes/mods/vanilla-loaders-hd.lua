@@ -7,126 +7,48 @@
 if not mods["vanilla-loaders-hd"] then
 	return
 end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
-	return
-end
 
 local _framework = {
 	tiers = require("__reskins-framework__.api.tiers"),
 }
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
--- Set input parameters
-local inputs = {
-	type = "loader",
-	icon_name = "loader",
-	base_entity_name = "splitter",
-	mod = "compatibility",
-	group = "vanilla-loaders-hd",
-	particles = { ["medium"] = 1, ["big"] = 4 },
-	make_remnants = false,
-	tier_labels = _framework.tiers.show_labels_on_belts,
-}
+local _defines = require("__reskins-assets-api__.api.defines")
+local Applicators = require("__reskins-assets-api__.api.applicators")
+local VanillaLoader1x2 = require("__reskins-assets-api__.assets.assorted.entities.vanilla-loader-1x2")
 
 local tier_map = {
-	["bob-basic-loader"] = { tier = 0, set_type = reskins.lib.defines.belt_sprites.standard },
-	["loader"] = { tier = 1, set_type = reskins.lib.defines.belt_sprites.standard },
-	["fast-loader"] = { tier = 2, set_type = reskins.lib.defines.belt_sprites.express },
-	["express-loader"] = { tier = 3, set_type = reskins.lib.defines.belt_sprites.express },
-	["turbo-loader"] = { tier = 4, set_type = reskins.lib.defines.belt_sprites.express },
-	["bob-ultimate-loader"] = { tier = 5, set_type = reskins.lib.defines.belt_sprites.express },
+	["bob-basic-loader"] = { tier = 0 },
+	["loader"] = { tier = 1 },
+	["fast-loader"] = { tier = 2 },
+	["express-loader"] = { tier = 3 },
+	["turbo-loader"] = { tier = 4 },
+	["bob-ultimate-loader"] = { tier = 5 },
 }
 
 for name, map in pairs(tier_map) do
 	---@type data.LoaderPrototype
-	local entity = data.raw[inputs.type][name]
+	local entity = data.raw["loader"][name]
 	if not entity then
 		goto continue
 	end
 
-	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
+	local tint = _framework.tiers.get_tint(map.tier)
+	local sprite_set =
+		VanillaLoader1x2.get_sprite_set({ tint = tint, belt_sprite = _defines.get_belt_sprites(entity.speed) })
 
-	reskins.lib.setup_standard_entity(name, map.tier, inputs)
+	-- The loader keeps the belt animation set of its belt.
+	local belt_animation_set = entity.belt_animation_set
+	Applicators.apply_sprite_set(entity, sprite_set)
+	entity.belt_animation_set = belt_animation_set
 
-	-- Retint the entity mask
-	entity.structure.direction_in.sheets = {
-		-- Base
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			scale = 0.5,
-		},
-		-- Mask
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			tint = inputs.tint,
-			scale = 0.5,
-		},
-		-- Highlights
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			blend_mode = "additive",
-			scale = 0.5,
-		},
-		-- Shadow
-		{
-			filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			draw_as_shadow = true,
-			scale = 0.5,
-		},
-	}
-
-	entity.structure.direction_out.sheets = {
-		-- Base
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-base.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			y = 192,
-			scale = 0.5,
-		},
-		-- Mask
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-mask.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			y = 192,
-			tint = inputs.tint,
-			scale = 0.5,
-		},
-		-- Highlights
-		{
-			filename = "__reskins-compatibility__/graphics/entity/vanilla-loaders-hd/loader/loader-structure-highlights.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			y = 192,
-			blend_mode = "additive",
-			scale = 0.5,
-		},
-		-- Shadow
-		{
-			filename = "__vanilla-loaders-hd__/graphics/entity/loader/loader-structure-shadow.png",
-			priority = "extra-high",
-			width = 212,
-			height = 192,
-			y = 192,
-			draw_as_shadow = true,
-			scale = 0.5,
-		},
-	}
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = map.tier,
+		name = entity.name,
+		type_name = entity.type,
+		icon_data = VanillaLoader1x2.get_icon({ tint = tint }),
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
 	::continue::
 end

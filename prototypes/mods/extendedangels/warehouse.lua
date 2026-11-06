@@ -16,7 +16,7 @@ local Warehouse = require("__reskins-assets-api__.assets.angels.entities.assorte
 if not mods["extendedangels"] then
 	return
 end
-if not (reskins.angels and reskins.angels.triggers.storage.entities) then
+if not (mods["reskins-angels"] and mods["angelsaddons-storage"]) then
 	return
 end
 

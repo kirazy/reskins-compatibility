@@ -7,6 +7,17 @@ if not mods["deadlock-beltboxes-loaders-continued"] then
 	return
 end
 
+local _framework = {
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+local _sprite_utils = {
+	icons = require("__reskins-sprite-utils__.icons"),
+	sprites = require("__reskins-sprite-utils__.sprites"),
+}
+local _assets = {
+	icons = require("__reskins-assets-api__.api.icons"),
+}
+
 ---@return data.IconData
 local function stack_item_base_layer()
 	return {
@@ -43,7 +54,7 @@ local function build_stacked_icons(icon_data)
 	---@type data.IconData[]
 	local stacked_icons = { stack_item_base_layer() }
 
-	local scaled_icon_data = reskins.lib.icons.scale_icon(icon_data, 0.85, false)
+	local scaled_icon_data = _sprite_utils.icons.scale_icon(icon_data, 0.85)
 
 	for i = 1, -1, -1 do
 		for _, icon_datum in pairs(scaled_icon_data) do
@@ -64,26 +75,38 @@ end
 ---@param icons data.IconData[] # The icons to assign to the item and recipes.
 ---@param picture data.Sprite # The picture to assign to the item.
 local function update_stack_icons(name, icons, picture)
-	local stack_item = data.raw.item[string.format("deadlock-stack-%s", name)]
-	if stack_item then
-		stack_item.icons = icons
-		stack_item.pictures = picture
+	local stack_item_name = string.format("deadlock-stack-%s", name)
+	if data.raw.item[stack_item_name] then
+		_sprite_utils.icons.apply_icon_assignment({
+			name = stack_item_name,
+			type_name = "item",
+			icon_data = icons,
+			pictures = picture,
+		})
 	end
 
-	local stack_recipe = data.raw.recipe[string.format("deadlock-stacks-stack-%s", name)]
-	if stack_recipe then
+	local stack_recipe_name = string.format("deadlock-stacks-stack-%s", name)
+	if data.raw.recipe[stack_recipe_name] then
 		local stack_icons = util.copy(icons)
 		table.insert(stack_icons, stack_recipe_label())
 
-		stack_recipe.icons = stack_icons
+		_sprite_utils.icons.apply_icon_assignment({
+			name = stack_recipe_name,
+			type_name = "recipe",
+			icon_data = stack_icons,
+		})
 	end
 
-	local unstack_recipe = data.raw.recipe[string.format("deadlock-stacks-unstack-%s", name)]
-	if unstack_recipe then
+	local unstack_recipe_name = string.format("deadlock-stacks-unstack-%s", name)
+	if data.raw.recipe[unstack_recipe_name] then
 		local unstack_icons = util.copy(icons)
 		table.insert(unstack_icons, unstack_recipe_label())
 
-		unstack_recipe.icons = unstack_icons
+		_sprite_utils.icons.apply_icon_assignment({
+			name = unstack_recipe_name,
+			type_name = "recipe",
+			icon_data = unstack_icons,
+		})
 	end
 end
 
@@ -121,20 +144,20 @@ for name, _ in pairs(data.raw.item) do
 	end
 
 	if item then
-		local icon_data = reskins.lib.icons.get_icon_from_prototype_by_reference(item)
+		local icon_data = _sprite_utils.icons.get_icon_from_prototype(item)
 
 		-- Get icon. Get tier. Clean icon. Rebuild icon. Add label. Update.
 		local removed_tier_labels, removed_symbols, removed_letters
 
-		icon_data, removed_tier_labels = reskins.lib.tiers.remove_tier_labels_from_icons(icon_data)
-		icon_data, removed_symbols = reskins.lib.icons.remove_symbols_from_icons(icon_data)
-		icon_data, removed_letters = reskins.lib.icons.remove_letters_from_icons(icon_data)
+		icon_data, removed_tier_labels = _framework.tiers.remove_tier_labels_from_icons(icon_data)
+		icon_data, removed_symbols = _assets.icons.remove_symbols_from_icons(icon_data)
+		icon_data, removed_letters = _assets.icons.remove_letters_from_icons(icon_data)
 
 		local built_icons = build_stacked_icons(icon_data)
 
 		local stacked_icons =
-			reskins.lib.icons.combine_icons(false, built_icons, removed_symbols, removed_letters, removed_tier_labels)
-		local stacked_picture = reskins.lib.sprites.create_sprite_from_icons(built_icons, 1.0)
+			_sprite_utils.icons.compose_icons(nil, built_icons, removed_symbols, removed_letters, removed_tier_labels)
+		local stacked_picture = _sprite_utils.sprites.create_sprite_from_icons(built_icons, 1.0)
 
 		update_stack_icons(item.name, stacked_icons, stacked_picture)
 	end

@@ -4,7 +4,17 @@
 -- See LICENSE.md in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
-if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
+if not mods["reskins-angels"] then
+	return
+end
+if
+	not (
+		mods["Clowns-AngelBob-Nuclear"]
+		or mods["Clowns-Extended-Minerals"]
+		or mods["Clowns-Nuclear"]
+		or mods["Clowns-Processing"]
+	)
+then
 	return
 end
 

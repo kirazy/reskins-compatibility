@@ -3,9 +3,6 @@
 --
 -- See LICENSE in the project directory for license information.
 
--- Core functions
-require("prototypes.functions.functions")
-
 -- Mods
 require("prototypes.mods.aai-loaders")
 require("prototypes.mods.classic-beacon")

@@ -3,7 +3,8 @@
 --
 -- See LICENSE in the project directory for license information.
 
----@using Reskins.Library.Internal
+---@using data
+---@using Reskins.SpriteUtils
 
 -- Check to see if reskinning needs to be done.
 if not mods["deadlock-beltboxes-loaders-continued"] then
@@ -12,21 +13,21 @@ end
 if mods["ScienceCostTweakerM"] then
 	return
 end
-if not (reskins.bobs and reskins.bobs.triggers.technology.items) then
+if not mods["reskins-bobs"] then
 	return
 end
 
----@type CreateIconsFromListInputs
-local inputs = {
-	mod = "compatibility",
-	group = "deadlock-stacking",
-	subgroup = "science-packs",
-	icon_name = "stacked-science-pack",
-	flat_icon = true,
-	tier_labels = false,
+local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
+}
+local _sprite_utils = {
+	icons = require("__reskins-sprite-utils__.icons"),
 }
 
----@type data.IconData[]
+local StackedSciencePacks = require("__reskins-assets-api__.assets.assorted.items.stacked-science-packs")
+local StackedSciencePacksAlien = require("__reskins-assets-api__.assets.assorted.items.stacked-science-packs-alien")
+
+---@type IconData[]
 local recipe_stack_icon_extras = {
 	{
 		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-d-64.png",
@@ -35,7 +36,7 @@ local recipe_stack_icon_extras = {
 	},
 }
 
----@type data.IconData[]
+---@type IconData[]
 local recipe_unstack_icon_extras = {
 	{
 		icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/arrow-u-64.png",
@@ -44,33 +45,44 @@ local recipe_unstack_icon_extras = {
 	},
 }
 
----@type CreateIconsFromListTable
+---@type table<string, IconComposition>
 local science_packs = {
-	["automation-science-pack"] = {},
-	["logistic-science-pack"] = {},
-	["chemical-science-pack"] = {},
-	["production-science-pack"] = {},
-	["utility-science-pack"] = {},
-	["bob-advanced-logistic-science-pack"] = { image = "stacked-advanced-logistic-science-pack" },
-	["military-science-pack"] = {},
-	["space-science-pack"] = {},
+	["automation-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "automation-science-pack" }),
+	["logistic-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "logistic-science-pack" }),
+	["chemical-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "chemical-science-pack" }),
+	["production-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "production-science-pack" }),
+	["utility-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "utility-science-pack" }),
+	["bob-advanced-logistic-science-pack"] = StackedSciencePacks.get_icon_composition({
+		science_pack = "advanced-logistic-science-pack",
+	}),
+	["military-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "military-science-pack" }),
+	["space-science-pack"] = StackedSciencePacks.get_icon_composition({ science_pack = "space-science-pack" }),
 }
 
-if reskins.lib.settings.get_value("bobmods-enemies-enablenewartifacts") == true then
-	science_packs["bob-alien-science-pack"] = { image = "stacked-alien-science-pack" }
-	science_packs["bob-alien-science-pack-blue"] = { image = "stacked-alien-science-pack-blue" }
-	science_packs["bob-alien-science-pack-orange"] = { image = "stacked-alien-science-pack-orange" }
-	science_packs["bob-alien-science-pack-purple"] = { image = "stacked-alien-science-pack-purple" }
-	science_packs["bob-alien-science-pack-yellow"] = { image = "stacked-alien-science-pack-yellow" }
-	science_packs["bob-alien-science-pack-green"] = { image = "stacked-alien-science-pack-green" }
-	science_packs["bob-alien-science-pack-red"] = { image = "stacked-alien-science-pack-red" }
-	science_packs["bob-science-pack-gold"] = { image = "stacked-science-pack-gold" }
+if _framework.settings.get_value("bobmods-enemies-enablenewartifacts") == true then
+	science_packs["bob-alien-science-pack"] = StackedSciencePacksAlien.get_icon_composition()
+	science_packs["bob-alien-science-pack-blue"] =
+		StackedSciencePacksAlien.get_colored_icon_composition({ color = "blue" })
+	science_packs["bob-alien-science-pack-orange"] =
+		StackedSciencePacksAlien.get_colored_icon_composition({ color = "orange" })
+	science_packs["bob-alien-science-pack-purple"] =
+		StackedSciencePacksAlien.get_colored_icon_composition({ color = "purple" })
+	science_packs["bob-alien-science-pack-yellow"] =
+		StackedSciencePacksAlien.get_colored_icon_composition({ color = "yellow" })
+	science_packs["bob-alien-science-pack-green"] =
+		StackedSciencePacksAlien.get_colored_icon_composition({ color = "green" })
+	science_packs["bob-alien-science-pack-red"] = StackedSciencePacksAlien.get_colored_icon_composition({ color = "red" })
+	science_packs["bob-science-pack-gold"] =
+		StackedSciencePacks.get_icon_composition({ science_pack = "science-pack-gold" })
 end
 
----@type CreateIconsFromListTable
+---@type table<string, IconDefinition>
 local stacking_items = {}
 
-for name, map in pairs(science_packs) do
+---@type table<string, IconDefinition>
+local stacking_recipes = {}
+
+for name, composition in pairs(science_packs) do
 	-- Setup working items
 	local item_name = "deadlock-stack-" .. name
 	local recipe_stack_name = "deadlock-stacks-stack-" .. name
@@ -81,21 +93,13 @@ for name, map in pairs(science_packs) do
 		goto continue
 	end
 
-	---@type CreateIconsFromListOverrides
-	local parameters = { image = map.image or ("stacked-" .. name) }
-
 	-- Add items and recipes to list
-	stacking_items[item_name] = util.copy(parameters)
-
-	stacking_items[recipe_stack_name] = util.copy(parameters)
-	stacking_items[recipe_stack_name].type = "recipe"
-	stacking_items[recipe_stack_name].icon_extras = recipe_stack_icon_extras
-
-	stacking_items[recipe_unstack_name] = util.copy(parameters)
-	stacking_items[recipe_unstack_name].type = "recipe"
-	stacking_items[recipe_unstack_name].icon_extras = recipe_unstack_icon_extras
+	stacking_items[item_name] = { composition = composition }
+	stacking_recipes[recipe_stack_name] = { composition = composition, label = recipe_stack_icon_extras }
+	stacking_recipes[recipe_unstack_name] = { composition = composition, label = recipe_unstack_icon_extras }
 
 	::continue::
 end
 
-reskins.internal.create_icons_from_list(stacking_items, inputs)
+_sprite_utils.icons.assign_icons("item", stacking_items)
+_sprite_utils.icons.assign_icons("recipe", stacking_recipes)

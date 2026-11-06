@@ -7,7 +7,17 @@
 ---@using Reskins.Framework
 
 -- Check to see if reskinning needs to be done.
-if not (reskins.angels and reskins.angels.triggers.mad_clowns.is_active) then
+if not mods["reskins-angels"] then
+	return
+end
+if
+	not (
+		mods["Clowns-AngelBob-Nuclear"]
+		or mods["Clowns-Extended-Minerals"]
+		or mods["Clowns-Nuclear"]
+		or mods["Clowns-Processing"]
+	)
+then
 	return
 end
 
@@ -22,12 +32,13 @@ local Pellets = require("__reskins-assets-api__.assets.angels.items.pellets")
 local Plates = require("__reskins-assets-api__.assets.angels.items.plates")
 local Powders = require("__reskins-assets-api__.assets.angels.items.powders")
 local ProcessedOres = require("__reskins-assets-api__.assets.assorted.items.processed-ores")
+local get_angels_numeral = require("__reskins-compatibility__.prototypes.functions.angels-numerals")
 
 ---Gets the numeral of the given `tier`, in the style of Angel's smelting.
 ---@param tier integer The number of the numeral.
 ---@return IconData[]
 local function numeral(tier)
-	return reskins.angels.num_tier(tier, "smelting")
+	return get_angels_numeral(tier, "smelting")
 end
 
 ---Gets the definition of the magnesium ingot, with its picture variations when item variations are enabled.

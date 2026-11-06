@@ -7,31 +7,18 @@
 if not (mods["miniloader-redux"] or mods["loaders-modernized"]) then
 	return
 end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
-	return
-end
 
 local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
 	tiers = require("__reskins-framework__.api.tiers"),
 }
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
 
-local is_modern_using_aai_graphics = reskins.lib.settings.get_value("mdrn-use-aai-graphics") == true
+local _defines = require("__reskins-assets-api__.api.defines")
+local VanillaLoader1x1 = require("__reskins-assets-api__.assets.assorted.entities.vanilla-loader-1x1")
+local VanillaLoader1x1Technology = require("__reskins-assets-api__.assets.assorted.technologies.vanilla-loader-1x1")
 
--- Set input parameters
-local inputs = {
-	type = "loader-1x1",
-	icon_name = "miniloader",
-	base_entity_name = "splitter",
-	mod = "compatibility",
-	group = "miniloader",
-	particles = { ["medium"] = 1, ["big"] = 4 },
-	technology_icon_size = 256,
-	make_explosions = false,
-	make_remnants = false,
-}
-
--- Handle belt tier labels
-inputs.tier_labels = _framework.tiers.show_labels_on_belts
+local is_modern_using_aai_graphics = _framework.settings.get_value("mdrn-use-aai-graphics") == true
 
 -- Miniloader (Redux) draws each miniloader with an inserter, which has the name of the item, and with three loaders.
 local miniloader_redux_loader_suffixes = { "-l", "-turbo-l", "-turbo-lf-l" }
@@ -109,112 +96,41 @@ for name, map in pairs(loader_map) do
 	end
 
 	---@type data.Loader1x1Prototype
-	local entity = data.raw[inputs.type][name]
+	local entity = data.raw["loader-1x1"][name]
 	local base_belt = data.raw["transport-belt"][map.base_belt]
 	if not entity then
 		goto continue
 	end
-	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
+
+	local tint = _framework.tiers.get_tint(map.tier)
 
 	-- Keep the layers that mark the loader variants.
-	inputs.icon_extras = get_variant_marks(entity.icons)
+	local icon_data = VanillaLoader1x1.get_icon({ tint = tint })
+	for _, mark in pairs(get_variant_marks(entity.icons)) do
+		table.insert(icon_data, mark)
+	end
 
-	reskins.lib.setup_standard_entity(name, map.tier, inputs)
-
-	-- Retint the mask
-	entity.structure.direction_in.sheets = {
-		-- Base
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-base.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 0,
-		},
-		-- Mask
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 0,
-			tint = inputs.tint,
-		},
-		-- Highlights
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 0,
-			blend_mode = "additive",
-		},
-		-- Shadow
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-shadow.png",
-			draw_as_shadow = true,
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 0,
-		},
-	}
-
-	entity.structure.direction_out.sheets = {
-		-- Base
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-base.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 192,
-		},
-		-- Mask
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-mask.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 192,
-			tint = inputs.tint,
-		},
-		-- Highlights
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-highlights.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 192,
-			blend_mode = "additive",
-		},
-		-- Shadow
-		{
-			filename = "__reskins-compatibility__/graphics/entity/miniloader/miniloader/miniloader-structure-shadow.png",
-			height = 192,
-			priority = "extra-high",
-			scale = 0.5,
-			width = 192,
-			y = 192,
-			draw_as_shadow = true,
-		},
-	}
+	-- Replace the structure in each direction. The loader keeps its patches, corpse, and dying explosion.
+	local sprite_set =
+		VanillaLoader1x1.get_sprite_set({ tint = tint, belt_sprite = _defines.get_belt_sprites(entity.speed) })
+	entity.structure.direction_in = sprite_set.set.structure.direction_in
+	entity.structure.direction_out = sprite_set.set.structure.direction_out
 
 	-- Apply belt set
 	if base_belt then
 		entity.belt_animation_set = base_belt.belt_animation_set
 	end
 
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = map.tier,
+		name = entity.name,
+		type_name = entity.type,
+		icon_data = icon_data,
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
+
 	::continue::
 end
-
-inputs.icon_extras = nil
 
 -- The inserter of each Miniloader (Redux) draws the structure of its loaders.
 for name, _ in pairs(tier_map) do
@@ -239,12 +155,14 @@ for name, map in pairs(item_map) do
 		goto continue
 	end
 
-	-- Setup icon details
-	inputs.type = map.type
-	inputs.icon_base = "miniloader"
-	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
-
-	reskins.lib.construct_icon(name, map.tier, inputs)
+	-- The items have tier labels when the belts have tier labels.
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = _framework.tiers.show_labels_on_belts and map.tier or 0,
+		name = name,
+		type_name = map.type or "item",
+		icon_data = VanillaLoader1x1.get_icon({ tint = _framework.tiers.get_tint(map.tier) }),
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
 	-- Handle grouping and ordering in the UI
 	local base_item = map.base_item and data.raw["item"][map.base_item] or nil
@@ -253,11 +171,13 @@ for name, map in pairs(item_map) do
 	end
 
 	if base_item then
-		inputs.sort_order = string.gsub(string.gsub(item.order, "^[a-z]", "d"), "transport%-belt", "miniloader")
-		inputs.sort_group = base_item.group
-		inputs.sort_subgroup = base_item.subgroup
+		local order = string.gsub(string.gsub(item.order, "^[a-z]", "d"), "transport%-belt", "miniloader")
+		local entity = map.type and data.raw[map.type][name]
 
-		reskins.lib.assign_order(name, inputs)
+		for _, prototype in pairs({ entity, item }) do
+			prototype.order = order
+			prototype.subgroup = base_item.subgroup
+		end
 	end
 
 	::continue::
@@ -294,11 +214,11 @@ for name, map in pairs(technology_map) do
 		goto continue
 	end
 
-	-- Fix inputs
-	inputs.icon_base = nil
-	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier)
-
-	reskins.lib.construct_technology_icon(name, inputs)
+	_sprite_utils.icons.apply_icon_assignment({
+		name = technology.name,
+		type_name = technology.type,
+		icon_data = VanillaLoader1x1Technology.get_icon({ tint = _framework.tiers.get_tint(map.tier) }),
+	})
 
 	::continue::
 end

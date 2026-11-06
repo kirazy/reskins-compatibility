@@ -4,26 +4,31 @@
 -- See LICENSE.md in the project directory for license information.
 
 ---@using Reskins.Framework
+---@using Reskins.Assets.Base.Entities
+
+local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+
+local NuclearPower = require("__reskins-assets-api__.assets.base.technologies.nuclear-power")
 
 -- Check to see if reskinning needs to be done.
 if not mods["RealisticReactorGlow"] then
 	return
 end
-if not (reskins.bobs and reskins.bobs.triggers.power.technologies) then
+if not mods["reskins-bobs"] then
 	return
 end
-if not (reskins.bobs and reskins.bobs.triggers.power.nuclear) then
+if not _framework.settings.get_value("bobmods-power-nuclear") then
 	return
 end
-
-local _framework = { tiers = require("__reskins-framework__.api.tiers") }
-
-local NuclearPower = require("__reskins-assets-api__.assets.base.technologies.nuclear-power")
 
 local nuclear_reactors = require("__reskins-bobs__.prototypes.functions.nuclear-reactors")
 
+---@type NuclearReactorGlowColor
 local glow_color = "blue"
-if reskins.lib.settings.get_value("RealisticReactorGlow-cyan") then
+if _framework.settings.get_value("RealisticReactorGlow-cyan") then
 	glow_color = "cyan"
 end
 

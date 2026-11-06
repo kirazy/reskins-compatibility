@@ -7,7 +7,7 @@
 if not mods["extendedangels"] then
 	return
 end
-if not (reskins.angels and reskins.angels.triggers.storage.technologies) then
+if not (mods["reskins-angels"] and mods["angelsaddons-storage"]) then
 	return
 end
 

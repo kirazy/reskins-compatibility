@@ -3,14 +3,21 @@
 --
 -- See LICENSE in the project directory for license information.
 
----@using Reskins.Api
-
 -- Check to see if reskinning needs to be done.
 if not mods["aai-loaders"] then
 	return
 end
+if not (mods["reskins-bobs"] and mods["boblogistics"]) then
+	return
+end
 
-local is_modern_using_aai_graphics = reskins.lib.settings.get_value("mdrn-use-aai-graphics") == true
+local _framework = {
+	settings = require("__reskins-framework__.api.settings"),
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+local _sprite_utils = { icons = require("__reskins-sprite-utils__.icons") }
+
+local is_modern_using_aai_graphics = _framework.settings.get_value("mdrn-use-aai-graphics") == true
 
 local loaders = {
 	["aai-basic-loader"] = { tier = 0 },
@@ -88,38 +95,36 @@ for name, map in pairs(loaders) do
 		goto continue
 	end
 
-	local tint = reskins.lib.tiers.get_belt_tint(map.tier)
+	local tint = _framework.tiers.get_tint(map.tier)
 
-	if reskins.bobs and (reskins.bobs.triggers.logistics.entities == true) then
-		if loader.structure then
-			patch_sheet_tint(loader.structure.direction_in, tint)
-			patch_sheet_tint(loader.structure.direction_out, tint)
-		end
+	if loader.structure then
+		patch_sheet_tint(loader.structure.direction_in, tint)
+		patch_sheet_tint(loader.structure.direction_out, tint)
+	end
 
-		if loader.icons then
-			-- Use deferrable_icon workflow to ensure icons are properly updated on the loader and related prototypes.
-			local icon = reskins.lib.icons.get_icon_from_prototype_by_reference(loader)
-			patch_icons_tint(icon, tint)
+	if loader.icons then
+		local icon_data = _sprite_utils.icons.get_icon_from_prototype(loader)
+		patch_icons_tint(icon_data, tint)
 
-			local icon_with_tier = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, icon)
-
-			---@type DeferrableIconData
-			local deferrable_icon = {
-				name = loader.name,
-				type_name = loader.type,
-				icon_data = icon_with_tier,
-				pictures = reskins.lib.sprites.create_sprite_from_icons(icon),
-			}
-
-			reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
-		end
+		local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+			tier = map.tier,
+			name = loader.name,
+			type_name = loader.type,
+			icon_data = icon_data,
+		})
+		_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 	end
 
 	local technology = data.raw["technology"][name]
-	if reskins.bobs and (reskins.bobs.triggers.logistics.technologies == true) then
-		if technology and technology.icons then
-			patch_icons_tint(technology.icons, tint)
-		end
+	if technology and technology.icons then
+		local icon_data = _sprite_utils.icons.get_icon_from_prototype(technology)
+		patch_icons_tint(icon_data, tint)
+
+		_sprite_utils.icons.apply_icon_assignment({
+			name = technology.name,
+			type_name = technology.type,
+			icon_data = icon_data,
+		})
 	end
 
 	::continue::

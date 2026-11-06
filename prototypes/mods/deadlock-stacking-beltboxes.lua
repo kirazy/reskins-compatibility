@@ -4,44 +4,34 @@
 -- See LICENSE in the project directory for license information.
 
 -- Check to see if reskinning needs to be done.
--- if not reskins.bobs then return end
 if not mods["deadlock-beltboxes-loaders-continued"] then
-	return
-end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
 	return
 end
 
 local _framework = {
 	tiers = require("__reskins-framework__.api.tiers"),
 }
-
--- Set input parameters
-local inputs = {
-	base_entity_name = "underground-belt",
-	mod = "compatibility",
-	particles = { ["medium"] = 3, ["small"] = 2 },
-	make_icons = false,
-	make_remnants = false,
+local _sprite_utils = {
+	colors = require("__reskins-sprite-utils__.colors"),
+	icons = require("__reskins-sprite-utils__.icons"),
 }
 
--- Handle belt tier labels
-inputs.tier_labels = _framework.tiers.show_labels_on_belts
-local sprite_type = reskins.lib.defines.belt_sprites
+local Applicators = require("__reskins-assets-api__.api.applicators")
+local UndergroundBeltExplosion = require("__reskins-assets-api__.assets.base.explosions.underground-belt")
 
 local tier_map = {
-	["bob-basic-transport-belt-loader"] = { tier = 0, is_loader = true, set_type = sprite_type.standard },
-	["transport-belt-loader"] = { tier = 1, is_loader = true, set_type = sprite_type.standard },
-	["fast-transport-belt-loader"] = { tier = 2, is_loader = true, set_type = sprite_type.express },
-	["express-transport-belt-loader"] = { tier = 3, is_loader = true, set_type = sprite_type.express },
-	["turbo-transport-belt-loader"] = { tier = 4, is_loader = true, set_type = sprite_type.express },
-	["bob-ultimate-transport-belt-loader"] = { tier = 5, is_loader = true, set_type = sprite_type.express },
-	["bob-basic-transport-belt-beltbox"] = { tier = 0, set_type = sprite_type.standard },
-	["transport-belt-beltbox"] = { tier = 1, set_type = sprite_type.standard },
-	["fast-transport-belt-beltbox"] = { tier = 2, set_type = sprite_type.express },
-	["express-transport-belt-beltbox"] = { tier = 3, set_type = sprite_type.express },
-	["turbo-transport-belt-beltbox"] = { tier = 4, set_type = sprite_type.express },
-	["bob-ultimate-transport-belt-beltbox"] = { tier = 5, set_type = sprite_type.express },
+	["bob-basic-transport-belt-loader"] = { tier = 0, is_loader = true },
+	["transport-belt-loader"] = { tier = 1, is_loader = true },
+	["fast-transport-belt-loader"] = { tier = 2, is_loader = true },
+	["express-transport-belt-loader"] = { tier = 3, is_loader = true },
+	["turbo-transport-belt-loader"] = { tier = 4, is_loader = true },
+	["bob-ultimate-transport-belt-loader"] = { tier = 5, is_loader = true },
+	["bob-basic-transport-belt-beltbox"] = { tier = 0 },
+	["transport-belt-beltbox"] = { tier = 1 },
+	["fast-transport-belt-beltbox"] = { tier = 2 },
+	["express-transport-belt-beltbox"] = { tier = 3 },
+	["turbo-transport-belt-beltbox"] = { tier = 4 },
+	["bob-ultimate-transport-belt-beltbox"] = { tier = 5 },
 }
 
 local function light_tint(tint)
@@ -50,30 +40,35 @@ local function light_tint(tint)
 end
 
 local function tweak_tint(tint)
-	local hsl_tint = reskins.lib.RGBtoHSL(tint)
+	local hsl_tint = _sprite_utils.colors.rgba_to_hsla(tint)
 	hsl_tint.s = (hsl_tint.s - 0.1 >= 0) and hsl_tint.s - 0.1 or 0
 	-- hsl_tint.l = (hsl_tint.l - 0.2 >= 0) and hsl_tint.l - 0.2 or 0
 
-	return reskins.lib.HSLtoRGB(hsl_tint)
+	return _sprite_utils.colors.hsla_to_rgba(hsl_tint)
 end
 
 -- Reskin entities
 for name, map in pairs(tier_map) do
 	-- Determine type
-	if map.is_loader then
-		inputs.type = "loader-1x1"
-	else
-		inputs.type = "furnace"
-	end
+	local type_name = map.is_loader and "loader-1x1" or "furnace"
 
 	---@type data.FurnacePrototype|data.Loader1x1Prototype
-	local entity = data.raw[inputs.type][name]
+	local entity = data.raw[type_name][name]
 	if not entity then
 		goto continue
 	end
-	inputs.tint = tweak_tint(reskins.lib.tiers.get_belt_tint(map.tier))
+	local tint = tweak_tint(_framework.tiers.get_tint(map.tier))
 
-	reskins.lib.setup_standard_entity(name, map.tier, inputs)
+	-- Give the entity the dying explosion of the underground belt, with the small and the yellow medium metal particles
+	-- tinted.
+	Applicators.apply_corpse_and_explosion(entity, {
+		dying_explosion = UndergroundBeltExplosion.get_explosion({
+			tints = {
+				["underground-belt-metal-particle-small"] = tint,
+				["underground-belt-metal-particle-medium-yellow"] = tint,
+			},
+		}),
+	})
 
 	---@type data.IconData[]
 	local icon_data
@@ -81,17 +76,14 @@ for name, map in pairs(tier_map) do
 		---@cast entity data.Loader1x1Prototype
 
 		-- Retint the mask
-		entity.structure.direction_in.sheets[3].tint = inputs.tint
-		entity.structure.direction_out.sheets[3].tint = inputs.tint
+		entity.structure.direction_in.sheets[3].tint = tint
+		entity.structure.direction_out.sheets[3].tint = tint
 
 		-- Retint the masks of the frozen patches, if any.
 		if entity.structure.frozen_patch_in then
-			entity.structure.frozen_patch_in.sheets[3].tint = inputs.tint
-			entity.structure.frozen_patch_out.sheets[3].tint = inputs.tint
+			entity.structure.frozen_patch_in.sheets[3].tint = tint
+			entity.structure.frozen_patch_out.sheets[3].tint = tint
 		end
-
-		-- Apply belt set
-		-- entity.belt_animation_set = reskins.lib.sprites.belts.get_belt_animation_set(map.set_type, inputs.tint)
 
 		icon_data = {
 			{
@@ -103,20 +95,20 @@ for name, map in pairs(tier_map) do
 				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/loader-icon-mask.png",
 				icon_size = 64,
 				scale = 0.5,
-				tint = inputs.tint,
+				tint = tint,
 			},
 		}
 	else
 		---@cast entity data.FurnacePrototype
 
 		-- Retint the mask
-		entity.graphics_set.animation.layers[2].tint = inputs.tint
-		entity.graphics_set.working_visualisations[1].animation.tint = light_tint(inputs.tint)
-		entity.graphics_set.working_visualisations[1].light.color = light_tint(inputs.tint)
+		entity.graphics_set.animation.layers[2].tint = tint
+		entity.graphics_set.working_visualisations[1].animation.tint = light_tint(tint)
+		entity.graphics_set.working_visualisations[1].light.color = light_tint(tint)
 
 		-- Retint the mask of the frozen patch, if any.
 		if entity.graphics_set.frozen_patch then
-			entity.graphics_set.frozen_patch.layers[2].tint = inputs.tint
+			entity.graphics_set.frozen_patch.layers[2].tint = tint
 		end
 
 		icon_data = {
@@ -129,20 +121,20 @@ for name, map in pairs(tier_map) do
 				icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/mipmaps/beltbox-icon-mask.png",
 				icon_size = 64,
 				scale = 0.5,
-				tint = inputs.tint,
+				tint = tint,
 			},
 		}
 	end
 
-	---@type DeferrableIconData
-	local deferrable_icon = {
+	-- The tier labels of the loaders and the beltboxes follow the setting for tier labels on belts. The beltboxes are
+	-- furnaces, to which the framework does not apply that setting.
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = _framework.tiers.show_labels_on_belts and map.tier or 0,
 		name = entity.name,
 		type_name = entity.type,
-		icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, icon_data),
-		pictures = reskins.lib.sprites.create_sprite_from_icons(icon_data, 1.0),
-	}
-
-	reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
+		icon_data = icon_data,
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
 	::continue::
 end
@@ -160,11 +152,10 @@ local tech_map = {
 -- Reskin technologies
 for name, tier in pairs(tech_map) do
 	if data.raw.technology[name] then
-		---@type DeferrableIconData
-		local deferrable_icon = {
+		_sprite_utils.icons.apply_icon_assignment({
 			name = name,
 			type_name = "technology",
-			icon_data = reskins.lib.icons.add_missing_icons_defaults({
+			icon_data = {
 				{
 					icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/beltbox-icon-base-128.png",
 					icon_size = 128,
@@ -172,11 +163,9 @@ for name, tier in pairs(tech_map) do
 				{
 					icon = "__deadlock-beltboxes-loaders-continued__/graphics/icons/square/beltbox-icon-mask-128.png",
 					icon_size = 128,
-					tint = reskins.lib.tiers.get_belt_tint(tier),
+					tint = _framework.tiers.get_tint(tier),
 				},
-			}, true),
-		}
-
-		reskins.lib.icons.assign_deferrable_icon(deferrable_icon)
+			},
+		})
 	end
 end

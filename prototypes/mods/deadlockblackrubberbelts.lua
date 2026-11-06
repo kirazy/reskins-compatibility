@@ -7,9 +7,13 @@
 if not mods["black-rubber-belts-remastered"] then
 	return
 end
-if reskins.bobs and (reskins.bobs.triggers.logistics.entities == false) then
-	return
-end
+
+local _framework = {
+	tiers = require("__reskins-framework__.api.tiers"),
+}
+local _sprite_utils = {
+	icons = require("__reskins-sprite-utils__.icons"),
+}
 
 local actions = require("__black-rubber-belts-remastered__.code.functions")
 
@@ -45,8 +49,6 @@ local tier_map = {
 }
 --stylua: ignore end
 
-reskins.lib.set_inputs_defaults(inputs)
-
 ---Gets the icon layer of Black Rubber Belts for the given `name`.
 ---@param name string The name of the icon file, without extension.
 ---@param tint? data.Color The tint of the layer, if any.
@@ -67,7 +69,7 @@ for name, map in pairs(tier_map) do
 	if not entity then
 		goto continue
 	end
-	inputs.tint = reskins.lib.tiers.get_belt_tint(map.tier) -- actions.hsva2rgba(reskins.lib.RGBtoHSV(reskins.library.tiers.get_belt_tint(map.tier)).h, 0.8, 1)
+	inputs.tint = _framework.tiers.get_tint(map.tier)
 
 	---@type data.IconData[]
 	local base_icon_data = { get_icon_layer("rubber-belt-" .. map.base) }
@@ -84,18 +86,21 @@ for name, map in pairs(tier_map) do
 		table.insert(base_icon_data, get_icon_layer("rubber-rail-mask", inputs.tint))
 	end
 
-	local icon_data = reskins.lib.tiers.add_tier_labels_to_icons(map.tier, base_icon_data)
-	local pictures = reskins.lib.sprites.create_sprite_from_icons(base_icon_data, 1.0)
-
-	reskins.lib.icons.assign_icons_to_prototype_and_related_prototypes(name, "transport-belt", icon_data, pictures)
+	local icon_assignment = _framework.tiers.icon_assignment_with_tier_labels({
+		tier = map.tier,
+		name = name,
+		type_name = "transport-belt",
+		icon_data = base_icon_data,
+	})
+	_sprite_utils.icons.apply_icon_assignment(icon_assignment)
 
 	-- Reskin entity
 	local arrows = arrow_style .. "-" .. (tier_style == "tier-based" and map.arrows or tier_style)
 	entity.belt_animation_set.animation_set =
 		actions.get_belt_animation_set(inputs.tint, map.base, arrows, stripe_style, arrow_glow, rail_glow, stripe_glow)
 
-	-- Share the belt animation set with the underground belt and the splitter of the tier. Artisanal Reskins: Bob's Mods
-	-- gives each of them a copy of the belt animation set of the tiers it reskins.
+	-- Share the belt animation set with the underground belt and the splitter of the tier. In the tiers that Artisanal
+	-- Reskins: Bob's Mods reskins, each of them has a copy of the belt animation set.
 	for _, connectable in pairs({
 		data.raw["underground-belt"][map.underground_belt],
 		data.raw["splitter"][map.splitter],
