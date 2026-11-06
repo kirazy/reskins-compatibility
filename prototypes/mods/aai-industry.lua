@@ -35,7 +35,7 @@ entity.graphics_set.animation = {
 			scale = 0.5,
 		},
 		{
-			filename = "__reskins-assets-assorted__/graphics/entity/assembling-machine-original/shadows/assembling-machine-0-shadow.png",
+			filename = "__reskins-assets-assorted__/graphics/entity/assembling-machine-original/shadows/assembling-machine-1-shadow.png",
 			priority = "high",
 			width = 264,
 			height = 165,
