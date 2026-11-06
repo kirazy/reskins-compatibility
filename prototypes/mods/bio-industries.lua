@@ -151,6 +151,12 @@ local recipes = {
 			{ name = "wood", type_name = "item", transform = upper_left },
 		},
 	},
+	["bi-resin-wood"] = {
+		sources = {
+			{ name = "resin", type_name = "item" },
+			{ name = "wood", type_name = "item", transform = upper_left },
+		},
+	},
 	["bi-resin-pulp"] = {
 		sources = {
 			{ name = "resin", type_name = "item" },
