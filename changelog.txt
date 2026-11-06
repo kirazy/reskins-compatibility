@@ -13,7 +13,7 @@ Date: ????
     - The reskins no longer depend on whether Artisanal Reskins: Bob's Mods or Artisanal Reskins: Angel's Mods is loaded or on their per-mod settings, and the nuclear reactors of Realistic Reactor Glow follow the colors of the reactors they draw
     - The loaders, beltboxes, and Black Rubber Belts now take the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
     - Mini Machines now reskins each miniature machine whose full-size machine is reskinned, and the item icons of the miniature machines and of the mini recycler are the icons of their full-size machines, made smaller
-    - The loaders of Loaders Modernized that draw the sprites of AAI Loaders are now tinted without Bob's Logistics; their split lane, fill, and chute variants keep their own colors
+    - The loaders of AAI Loaders, and the loaders of Loaders Modernized that draw the sprites of AAI Loaders, are now tinted and tier-labeled without Bob's mods; the split lane, fill, and chute variants of Loaders Modernized keep their own colors
     - The classic beacon now always draws the high-resolution artwork, and no longer reads the high-resolution setting of Classic Beacon
   Bugfixes:
     - Fixed that the loaders of Miniloader (Redux), the turbo miniloader, and the chute loader and the split lane and fill variants of Loaders Modernized were not reskinned, and that the turbo loader of Loaders Modernized had no belt
