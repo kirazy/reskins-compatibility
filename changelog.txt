@@ -2,30 +2,30 @@
 Version: 2.5.0
 Date: ????
   Features:
-    - Added support for Micro Machines
+    - Added support for Bio Industries 2, Micro Machines, Deadlock's Stacking Beltboxes & Compact Loaders Continued, and Black Rubber Belts - Remastered
   Changes:
-    - Migrated some entity sprites to use the Artisanal Reskins: Assets API
-    - The Extended Angel's bioprocessing buildings and warehouses now get their tints and tier labels from the settings of Artisanal Reskins: Framework, and their dying explosions, particles, and remnants from the Artisanal Reskins: Assets API, with the generic remnants of the base game that match their size
-    - Removed support for Nauvis Day, which is not available for Factorio 2.0 or later
-    - Removed support for Angel's Extended Smelting and Compression, Deadlock's Crating Machine, Intermodal Containers, Loader Redux, Miniloader, Offshore P.U.M.P.S. and ground water, and Spaceblock, which are not available for Factorio 2.1
-    - The icons of the Mad Clown's items, recipes, and technologies, of the Extended Angel's tungsten carbide and warehouse technologies, and of the nuclear reactors and nuclear power technologies with Realistic Reactor Glow now come from the Artisanal Reskins: Assets API
-    - Replaced the support for Deadlock's Stacking Beltboxes & Compact Loaders and Black Rubber Belts with support for their continuations for Factorio 2.1, Deadlock's Stacking Beltboxes & Compact Loaders Continued and Black Rubber Belts - Remastered
-    - The tier labels of the loaders and beltboxes now follow the "Show tier labels on belts" setting of Artisanal Reskins: Framework, which replaces the "Belt tier labels" setting of Artisanal Reskins: Bob's Mods
-    - The reskins of the loaders, beltboxes, Black Rubber Belts, stacked items and science packs, Classic Beacon, Classic Mining Drill, Semi-Classic Mining Drill, the AAI Industry burner assembling machine, the reactors of Realistic Reactor Glow, Mini Machines, and the Bio Industries recipes and bio boiler now use Artisanal Reskins: Framework, Sprite Utils, and Assets API in place of Artisanal Reskins: Library, and every reskin now assigns its icons through Artisanal Reskins: Sprite Utils
-    - The recipes and bio boiler of Bio Industries are now reskinned in its releases for Factorio 2.1
-    - The reskins no longer depend on whether Artisanal Reskins: Bob's Mods or Artisanal Reskins: Angel's Mods is loaded or on their per-mod settings, and the nuclear reactors of Realistic Reactor Glow follow the colors of the reactors they draw
-    - The loaders, beltboxes, and Black Rubber Belts now use the tier colors of Artisanal Reskins: Framework, so the second tier is no longer pure red
-    - Mini Machines and Micro Machines now reskin each mini and micro machine made from a reskinned full-size machine, with the remnants of the full-size machine rescaled to its size
-    - The icons of the mini and micro machines and of their technologies are now the icons of their full-size machines and of the technologies that unlock them, made smaller except for their letters and symbols, with an overlay for the size, and the full-size machines that can be resized have an overlay of Artisanal Reskins in place of the overlay from Mini/Micro Machines Core Mod
-    - The loaders of AAI Loaders, and the loaders of Loaders Modernized that draw the sprites of AAI Loaders, are now tinted and tier-labeled without Bob's mods; the split lane, fill, and chute variants of Loaders Modernized keep their own colors
-    - The classic beacon now always draws the high-resolution artwork, and no longer reads the high-resolution setting of Classic Beacon
-    - No longer depends on Artisanal Reskins: Library, and is incompatible with it
+    - Migrated all artwork to the Artisanal Reskins: Assets API
+    - Migrated to use Artisanal Reskins: Framework; Artisanal Reskins: Library is no longer required, nor are the settings used
+    - Belt entities are now marked with tier labels and respond to custom tier colors with or without Bob's Logistics
+    - Extended Angels bioprocessing buildings and warehouses now use the generic remnants that match their size
+    - With Realistic Reactor Glow, the nuclear reactor icons now match the colors of their reactors
+    - Reworked support for Mini Machines with added symbols; all resizable entities, items, and technologies are now handled dynamically for a consistent visual appearance
   Bugfixes:
-    - Fixed that the loaders of Miniloader (Redux), the turbo miniloader, and the chute loader and the split lane and fill variants of Loaders Modernized were not reskinned, and that the turbo loader of Loaders Modernized had no belt
+    - Restored compatibility with Bio Industries for Factorio 2.1
+    - Fixed that the Miniloader (Redux) loaders, the turbo miniloader, and the chute, split lane, and fill loaders of Loaders Modernized were not reskinned
+    - Fixed that the Loaders Modernized turbo loader had no belt
     - Fixed that the processed ores, pellets, powders, ingots, and molten magnesium of Mad Clown's Processing were not reskinned
-    - Fixed that the area drills of Classic Mining Drill all drew their belt at the speed of the last area drill, and that their wet mining graphics lost the fluid window and fluid of Classic Mining Drill
-    - Fixed that the burner assembling machine of AAI Industry was drawn at two thirds of its size
-    - Fixed that the icons of the Mini Machines items referred to files that do not exist or showed the artwork of the full-size machines, and that the miniature refineries made from the oil refineries of Angel's Petrochemical Processing and their technologies were not reskinned
+    - Fixed that the Classic Mining Drill area drills all animated their belts at the speed of the last area drill, and were missing the fluid window while mining with fluid
+  Breaking Changes:
+    - Removed support for mods not expected to be migrated to Factorio 2.1:
+      - Angel's Extended Smelting and Compression
+      - Deadlock's Crating Machine
+      - Intermodal Containers
+      - Loader Redux
+      - Miniloader
+      - Offshore P.U.M.P.S. and ground water
+      - Spaceblock
+      - NauvisDay
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.0
 Date: 2026-07-19
