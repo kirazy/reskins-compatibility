@@ -137,7 +137,7 @@ for name, _ in pairs(data.raw.item) do
 
 	local item
 	for _, type_name in pairs(type_names_to_check) do
-		item = data.raw[type_name][item_name]
+		item = data.raw[type_name] and data.raw[type_name][item_name]
 		if item then
 			break
 		end
