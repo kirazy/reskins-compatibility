@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.5.0
-Date: ????
+Date: 2026-11-09
   Features:
     - Added support for Bio Industries 2, Micro Machines, Deadlock's Stacking Beltboxes & Compact Loaders Continued, and Black Rubber Belts - Remastered
   Changes:
