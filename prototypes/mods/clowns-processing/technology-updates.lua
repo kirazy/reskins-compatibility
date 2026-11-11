@@ -3,14 +3,7 @@
 --
 -- See LICENSE.md in the project directory for license information.
 
-if
-	not (
-		mods["Clowns-AngelBob-Nuclear"]
-		or mods["Clowns-Extended-Minerals"]
-		or mods["Clowns-Nuclear"]
-		or mods["Clowns-Processing"]
-	)
-then
+if not mods["Clowns-Processing"] then
 	return
 end
 

@@ -7,14 +7,7 @@
 ---@using Reskins.SpriteUtils
 ---@using Reskins.Framework
 
-if
-	not (
-		mods["Clowns-AngelBob-Nuclear"]
-		or mods["Clowns-Extended-Minerals"]
-		or mods["Clowns-Nuclear"]
-		or mods["Clowns-Processing"]
-	)
-then
+if not mods["Clowns-Processing"] then
 	return
 end
 
